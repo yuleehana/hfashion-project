@@ -1,0 +1,40 @@
+import React from 'react'
+import { useAuthStore } from '../store/authstore'
+import { useNavigate } from 'react-router-dom';
+
+const UserInfo = () => {
+    const { user, onLogout } = useAuthStore();
+
+    const navigate = useNavigate();
+
+
+    // 메서드
+    const handleLogout = () => {
+        onLogout();
+        alert('로그아웃 되었습니다')
+
+        navigate('/')
+    }
+
+
+    if (!user) {
+        return <p>로그인된 유저가 없습니다</p>;
+    }
+
+    return (
+        <div className='sub-page'>
+            <div className='content-inner'>
+                <div className='user-info-left'>
+                    <h2 className='section-title'>마이페이지</h2>
+                </div>
+                <div className='user-info-right'>
+                    <h2>{user.name}</h2>
+                    <p>{user.email}</p>
+                    <button onClick={handleLogout}>로그아웃</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default UserInfo

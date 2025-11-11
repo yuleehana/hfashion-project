@@ -1,0 +1,53 @@
+$main-color1: #000000;
+$main-color2: #ffffff;
+$percent-color: #EEBE81;
+$sub-color1: #F2F2F2;
+$sub-color2: #AAAAAA;
+$sub-color3: #606060;
+
+
+// 공통 사항 layout
+.content-inner{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+// 공통 mixin
+@mixin myFlex($jc:space-between,$ai:center,$fw:null,$gap:20px){
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-wrap: $fw;
+    gap: $gap;
+}
+@mixin myGrid($gap:20px){
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+}
+
+// header title
+.section-title{
+    font-size: 40px;
+}
+.tab-ver1{
+    @include myFlex($gap:0);
+    li{
+        flex:1;
+        line-height:50px;
+        border: 1px solid $main-color2;
+        border-bottom-color: $sub-color3;
+        text-align: center;
+        &.active{
+            border: 1px solid $main-color1;
+            border-bottom-color: $main-color2;
+            a{
+                color: $sub-color3;
+            }
+        }
+        a{
+            font-size: 16px;
+            color: $sub-color1;
+        }
+    }
+}

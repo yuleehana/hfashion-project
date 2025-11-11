@@ -1,0 +1,70 @@
+@use '../../App.scss' as g;
+
+.sub-goods-list {
+    @include g.myGrid();
+
+    li {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .img-box {
+            aspect-ratio: 2/3;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .text-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            .brand {
+                font-size: 1.4rem;
+                color: g.$sub-color2;
+            }
+
+            .title {
+                font-size: 1.6rem;
+                line-height: 1.4;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+
+            .sale-price {
+                font-size: 2rem;
+            }
+
+            span {
+
+                &:has(+ del) {
+                    margin-right: 12px;
+                }
+            }
+
+            del {
+                font-size: 1.4rem;
+                color: g.$sub-color2;
+            }
+
+            .price {
+                @include g.myFlex();
+
+                .sale {
+                    color: g.$percent-color;
+                    font-size: 1.6rem;
+                }
+            }
+
+
+        }
+
+    }
+}
