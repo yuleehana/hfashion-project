@@ -1,0 +1,30 @@
+@use '../../App.scss' as g;
+
+.main-sliders {
+    position: relative;
+
+    .img-box {
+        text-align: center;
+        object-fit: cover;
+        img {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .text-box {
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        transform: translateY(-50%);
+        color: g.$main-color2;
+
+        p {
+            font-size: 18px;
+            &:nth-child(2) {
+                font-size: 50px;
+            }
+        }
+
+    }
+}
