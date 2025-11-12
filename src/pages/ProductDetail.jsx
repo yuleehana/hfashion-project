@@ -1,74 +1,52 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import './scss/productDetail.scss'
-import { useProductStore } from '../store/useProductStore';
-// 사이즈를 저장할 배열
-const sizes = ['S', 'M', 'L'];
+import { useParams } from 'react-router-dom'
+import { products } from '../data/products';
+import './sass/ProductDetail.scss'
+import ProductDetailRightInfo from '../components/ProductDetailRightInfo'
 
 const ProductDetail = () => {
+   const { code } = useParams();
+  console.log(code);
+  const [product, setProduct] = useState(null);
 
-  // 주소줄에 있는 파라메터 값을  받아서 사용하기
-  const { id } = useParams();
-  const { items, onFetchItems } = useProductStore();
-  // 상품을 저장할 변수
-  const [product, setProduct] = useState('');
-  // 선택된 사이즈를 체크하기
-  const [selectSize, setSelectSize] = useState('');
-  // 수량을 체크해줄 변수
-  const [count, setCount] = useState(1);
-
-  // 새로 고침을 하면 다시 랜더리 되면서 모든 값이 초기화 된다
-  // 그래서 다시 제품을 불러오도록 한다
+  // 컴포넌트가 처음 렌더링되거나 code가 변경될 때 상품 찾기
   useEffect(() => {
-    if (items.length === 0) {
-      onFetchItems()
+    if (!code) {
+      setProduct(null);
+      return;
     }
-  }, [])
+    // products 배열에서 현재 code와 일치하는 항목을 찾습니다.
+    // item.code와 code 모두 문자열 타입이므로 바로 === 비교.
+    const findItem = products.find((item) => item.code === code);
+    // 5. 업데이트합니다.
+    setProduct(findItem || null); // 찾지 못하면 null로 설정하여 오류 방지
 
-  useEffect(() => {
-    if (!id || items.length === 0) return
-    // 뿌려질 제품 찾기
-    const findItem = items.find((item) => item.id === Number(id))
-    setProduct(findItem)
-  }, [id, items])
+  }, [code]); // code가 변경될 때마다 다시 실행
+  if (!product) {
+        return null; // 또는 로딩 스피너
+  }
 
   return (
     <div className='sub-page'>
-      <div className="content-inner product-wrap">
-        <div className="product-img">
-          <img src={product.image} alt={product.title} />
+      <div className="content-inner  product-detail-wrap">
+        <div className="detail-left">
+          <div className="product-detail-slide">
+            <img src={product.slide[1]} alt="" />
+          </div>
+          <div className="">이 상품과 비슷한 상품</div>
+          <div className="">
+            <div>상품상세정보 탭</div>
+            <p>'본 상품에 등록되어 있는 정보는 판매자가 직접 등록한 것으로, 등록된 정보에 대한 책임은 판매자에게 있습니다'</p>
+            <h3>상품고시정보</h3>
+            <h3>실측사이즈</h3>
+            <h3>리뷰 (32)</h3>
+            <h3>상품 Q&A</h3>
+            <h3>배송/교환/반품</h3>
+          </div>
         </div>
-        <div className="product-text">
-          <p className='cate-titel'>{product.category}</p>
-          <p className="product--title">{product.title}</p>
-          <p className="product-price">{product.price}</p>
-          <div className='product-size'>
-            <strong>사이즈</strong>
-            <ul>
-              {sizes.map((size, id) => (
-                <li key={id}>
-                  <button className={selectSize === size ? 'active' : ''} onClick={() => setSelectSize(size)}>
-                    {size}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {/* 수량선택 */}
-          <div className='product-count'>
-            <strong>수량</strong>
-            <div className='count-box'>
-              <button onClick={() => setCount((c) => Math.max(1, c - 1))}>-</button>
-              <span>{count}</span>
-              <button onClick={() => setCount((c) => c + 1)}>+</button>
-            </div>
-          </div>
-          {/* 장바구니, 찜버튼 */}
-          <div className='cart-btn'>
-            <button>찜하기</button>
-            <button>장바구니</button>
-          </div>
-          <p className='desc'></p>
+
+        <div className="detail-right">
+          <ProductDetailRightInfo product={product}  />
         </div>
       </div>
     </div>

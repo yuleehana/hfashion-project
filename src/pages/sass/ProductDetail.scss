@@ -1,34 +1,26 @@
+
 @use '../../App.scss' as g;
 
-.product-wrap {
-    @include g.myFlex();
+.product-detail-wrap {
+    @include g.myFlex($gap: 20px, $ai: flex-start);
 
-    .product-text {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        button {
-            padding: 0 20px;
-            
-        }
-
-        .product-size {
-            ul {
-                @include g.myFlex($jc: flex-start);
-
-                li {
-                    button {
-                        &.active {
-                            background: #000;
-                            color: #fff;
-                        }
-                    }
-                }
-
+    .detail-left {
+        flex: 1;
+        border: 1px solid skyblue;
+        .product-detail-slide{
+            width: 500px;
+            object-fit: contain;
+            aspect-ratio: 3/4;
+            img{
+                width: 100%;
+                height: 100%;
             }
         }
+    }
 
-        .product-count {}
-
+    .detail-right {
+        width: 380px;
     }
 }
+
+

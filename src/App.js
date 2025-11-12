@@ -48,7 +48,7 @@ import Pay from './pages/Pay';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import NonMember from './pages/NonMember';
-// import LifeStyle from './pages/LifeStyle'; 제거 KIM 11-10
+import ProductDetail from './pages/ProductDetail';
 
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main />} />
-
+        <Route path='/product-detail/:code' element={<ProductDetail />} />
         <Route path='/women' element={<Women />} >
           <Route index element={<WomenDefault />} />
           <Route path='women-shirt' element={<WomenShirt />} />
