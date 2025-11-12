@@ -47,6 +47,7 @@ import Logout from './pages/Logout';
 import Pay from './pages/Pay';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
+import NonMember from './pages/NonMember';
 // import LifeStyle from './pages/LifeStyle'; 제거 KIM 11-10
 
 
@@ -61,17 +62,17 @@ function App() {
           <Route index element={<WomenDefault />} />
           <Route path='women-shirt' element={<WomenShirt />} />
           <Route path='women-pants' element={<WomenPants />} />
-          <Route path='women-skirt' element={<WomenSkirt />}WomenSkirt />
+          <Route path='women-skirt' element={<WomenSkirt />} />
           <Route path='women-shoes' element={<WomenShoes />} />
         </Route>
-        <Route path='/men'  element={<Men />} >
+        <Route path='/men' element={<Men />} >
           <Route index element={<MenDefault />} />
           <Route path='man-pants' element={<ManPants />} />
           <Route path='man-shirt' element={<ManShirt />} />
           <Route path='man-outer' element={<ManOuter />} />
           <Route path='man-shoes' element={<ManShoes />} />
         </Route>
-        <Route path='/sundries'element={<Sundries />} >
+        <Route path='/sundries' element={<Sundries />} >
           <Route index element={<SundriesDefault />} />
           <Route path='sundries-women-fashion' element={<SundriesWfashion />} />
           <Route path='sundries-man-fashion' element={<SundriesMfashion />} />
@@ -103,6 +104,7 @@ function App() {
 
         <Route path='/search' element={<Search />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/nonmember' element={<NonMember />}></Route>
         <Route path='/join' element={<Join />}></Route>
         <Route path='/userinfo' element={<UserInfo />}></Route>
         <Route path='/cart' element={<Cart />}></Route>

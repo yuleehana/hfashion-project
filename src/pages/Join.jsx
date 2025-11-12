@@ -10,7 +10,10 @@ const Join = () => {
         name: '',
         email: '',
         password: '',
-        nickName: ''
+        nickName: '',
+        passwordCheck: '',
+        phone: '',
+        address: ''
     })
 
 
