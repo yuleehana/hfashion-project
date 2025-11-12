@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuthStore } from '../store/authstore'
 import { useNavigate } from 'react-router-dom';
+import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 
 const UserInfo = () => {
     const { user, onLogout } = useAuthStore();
@@ -25,7 +26,7 @@ const UserInfo = () => {
         <div className='sub-page'>
             <div className='content-inner'>
                 <div className='user-info-left'>
-                    <h2 className='section-title'>마이페이지</h2>
+                    <UserInfoLeftMenu />
                 </div>
                 <div className='user-info-right'>
                     <h2>{user.name}</h2>
