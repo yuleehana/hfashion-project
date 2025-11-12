@@ -125,7 +125,6 @@ const Header = () => {
                                 <img src="./images/cart-icon2-white.svg" alt="장바구니아이콘" />
                             </Link>
                         </li>
-                        <li>마이페이지</li>
                     </ul>
                 </div>
             </div>
