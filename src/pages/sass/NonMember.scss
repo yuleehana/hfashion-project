@@ -1,0 +1,62 @@
+@use "../../App.scss" as g;
+
+.sub-page {
+    padding-top: 100px;
+    max-width: 1720px;
+    margin: 0 auto;
+
+    .sub-page-title {
+        font-size: 4rem;
+        font-weight: 500;
+    }
+
+    .nonmember-wrap {
+        // border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+
+        .sub-inner-left {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            width: 70%;
+            font-size: 1.6rem;
+            font-weight: 400;
+
+            .sub-inner-left-bottom {
+                border: 1px solid g.$sub-color2;
+                display: flex;
+                flex-direction: column;
+                padding: 30px;
+
+                .sub-inner-sec1 {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .sub-order-inf {
+                        display: flex;
+                        flex-direction: column;
+                        width: 45%;
+
+                        >p {
+                            color: g.$sub-color3;
+                        }
+
+                    }
+
+                    .sub-address-inf{
+                        display: flex;
+                        flex-direction: column;
+                        width: 45%;
+                    }
+                }
+            }
+
+        }
+
+        .sub-inner-right {
+            border: 1px solid g.$sub-color2;
+            width: 25%;
+        }
+    }
+}

@@ -35,6 +35,7 @@ textarea {
   background: inherit;
   font-family: Pretendard, "돋움", sans-serif;
   outline: none;
+  cursor: pointer;
 }
 
 img,

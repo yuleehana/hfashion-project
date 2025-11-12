@@ -31,6 +31,11 @@ const Login = () => {
         navigate('/userinfo');
     }
 
+    const handleNonMember = (e) => {
+        e.preventDefault();
+        navigate('/nonmember')
+    }
+
 
     // 화면
     return (
@@ -40,7 +45,7 @@ const Login = () => {
                     <h2 className='section-title'>로그인</h2>
                     <div className='member-btn'>
                         <button>회원</button>
-                        <button>비회원</button>
+                        <button onClick={handleNonMember}>비회원</button>
                     </div>
 
                     <form onSubmit={handleSubmit}>
