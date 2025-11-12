@@ -79,6 +79,9 @@ const Login = () => {
                     </form>
                     <div>
                         <Link to='/join'>지금 회원가입하러 가기</Link>
+                        {/* 추후 삭제될 내용입니다 */}
+                        <h1>이메일 : yuleehana@gmail.com</h1>
+                        <h1>비밀번호 : zhddl0815</h1>
                     </div>
                 </div>
             </div>
