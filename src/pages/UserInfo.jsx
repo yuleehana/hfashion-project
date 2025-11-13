@@ -76,6 +76,11 @@ const UserInfo = () => {
 
                     <div className="recent-orders section">
                         <div className="section-title">최근 주문</div>
+                        <div className="orders-product-list">
+                            <ul className='orders-list-box'>
+                                
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
