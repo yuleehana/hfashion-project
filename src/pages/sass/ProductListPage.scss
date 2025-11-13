@@ -1,51 +1,63 @@
 @use '../../App.scss' as g;
 
 .sub-goods-list {
-    @include g.myGrid();
+    width: 100%;
+    @include g.myGrid($gap: 10rem 2rem);
 
     li {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+
+        >a {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
         .img-box {
             aspect-ratio: 2/3;
 
             img {
                 width: 100%;
-                height: 100%;
+                height: auto;
             }
         }
 
         .text-box {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 8px;
+            font-weight: 400;
 
             .brand {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 color: g.$sub-color2;
+                font-weight: 300;
             }
 
             .title {
-                font-size: 1.6rem;
-                line-height: 1.4;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                line-clamp: 2;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                overflow: hidden;
+                strong {
+                    line-height: 1.4;
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    color: g.$main-color1;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
             }
 
             .sale-price {
+                font-size: 2rem;
+                color: #000;
                 font-size: 2rem;
             }
 
             span {
 
                 &:has(+ del) {
-                    margin-right: 12px;
+                    margin-right: 1.2rem;
                 }
             }
 

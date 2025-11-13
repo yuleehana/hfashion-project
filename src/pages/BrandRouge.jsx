@@ -1,12 +1,13 @@
 import React from 'react'
 import BrandListPage from './BrandListPage'
+import './sass/CategoryPage.scss'
 
 const BrandRouge = () => {
     return (
-        <div>
-            <h2>ROUGE&LOUNGE</h2>
+        <main>
+            <h2 className='category-page-title'>ROUGE&LOUNGE</h2>
             <BrandListPage brand='ROUGELOUNGE' />
-        </div>
+        </main>
     )
 }
 

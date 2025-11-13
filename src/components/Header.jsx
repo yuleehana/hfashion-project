@@ -65,7 +65,7 @@ const Header = () => {
 
     return (
         <header>
-            <div className="inner">
+            <div className="header-inner">
                 <div className="inner-left">
                     <h1 className='logo'>
                         <Link to="/"><img src="/images/header_logo.svg" alt="" /></Link>

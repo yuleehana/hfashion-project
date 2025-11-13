@@ -1,0 +1,22 @@
+@use '../../App.scss' as g;
+
+.sub-main {
+    margin: 4rem auto;
+    max-width: 1440px;
+
+    h2.sub-main-title {
+        text-align: center;
+        color: g.$main-color1;
+        font-family: "Times New Roman";
+        font-size: 4rem;
+        font-weight: 400;
+    }
+
+    h3 {
+        color: g.$main-color1;
+        text-align: center;
+        font-family: "Times New Roman";
+        font-size: 3.2rem;
+        font-weight: 400;
+    }
+}

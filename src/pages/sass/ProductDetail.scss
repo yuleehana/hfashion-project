@@ -1,39 +1,50 @@
 @use '../../App.scss' as g;
 
 .product-detail-wrap {
-    
-    @include g.myFlex($gap: 20px, $ai: flex-start);
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+
+    @include g.myFlex($gap: 2rem, $ai: flex-start);
+
     .detail-left {
-        margin-top: 20px;
+        margin-top: 2rem;
         flex: 1;
         display: flex;
         flex-direction: column;
         gap: 40px;
+
         .product-detail-slide {
             max-width: 980px;
+
             img {
                 max-width: 100%;
             }
         }
-        .product-notice-info{
+
+        .product-notice-info {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            >li{
+            gap: 2rem;
+
+            >li {
                 @include g.myFlex($gap: 0);
                 display: flex;
-                font-size: 14px;
-                strong{
+                font-size: 1.4rem;
+
+                strong {
                     color: g.$sub-color3;
                     width: 180px;
                 }
-                span{
+
+                span {
                     color: g.$sub-color2;
                     flex: 1;
                 }
             }
         }
     }
+
     .detail-right {
         position: sticky;
         top: 100px;
