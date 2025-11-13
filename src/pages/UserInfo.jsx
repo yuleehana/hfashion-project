@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuthStore } from '../store/authstore'
 import { useNavigate } from 'react-router-dom';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
+import "./sass/UserInfo.scss";
 
 const UserInfo = () => {
     const { user, onLogout } = useAuthStore();
@@ -28,6 +29,7 @@ const UserInfo = () => {
                 <div className='user-info-left'>
                     <UserInfoLeftMenu />
                 </div>
+                
                 <div className='user-info-right'>
                     <h2>{user.name}</h2>
                     <p>{user.email}</p>
