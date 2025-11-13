@@ -1,5 +1,10 @@
 import React from 'react'
 import MainSwiper from '../components/MainSwiper'
+import MainKeyWordRanking from '../components/MainKeyWordRanking'
+import MainCategoryNew from '../components/MainCategoryNew'
+import MainBrandLive from '../components/MainBrandLive'
+import MainBestReview from '../components/MainBestReview'
+import './sass/Main.scss'
 
 const Main = () => {
     return (
@@ -7,21 +12,11 @@ const Main = () => {
             <div className="main-slider-wrap">
                 <MainSwiper />
             </div>
-
             <div className="main-content">
-                <section>
-                    <h2>KEYWORD RANKING</h2>
-                </section>
-                <section>
-                    <h2>CATEGORY NEW</h2>
-                </section>
-                <section>
-                    <h2>BRAND LIVE</h2>
-                </section>
-                <section>
-                    <h2>BEST REVIEW</h2>
-                </section>
-                
+                <MainKeyWordRanking />
+                <MainCategoryNew />
+                <MainBrandLive />
+                <MainBestReview />
             </div>
         </div>
     )
