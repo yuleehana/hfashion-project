@@ -31,14 +31,12 @@ const UserInfo = () => {
                 </div>
                 
                 <div className='user-info-right'>
-                    <div className="content-profile-point">
+                    <div className="content-profile-point section">
                         {/* <h2>{user.name}</h2>
                         <p>{user.email}</p>
                         <button onClick={handleLogout}>로그아웃</button> */}
-                        <div className="user-idname-box">
-                            <div className="user-name-box">
-                                {`<span>${user.email}(${user.name})</span>님, 환영합니다!`}
-                            </div>
+                        <div className="user-idname-box section-title">
+                            {`<span>${user.email}(${user.name})</span>님, 환영합니다!`}
                         </div>
 
                         <div className="favor-list-box">
@@ -75,9 +73,11 @@ const UserInfo = () => {
                             </div>
                         </div>
                     </div>
+
+                    <div className="recent-orders section">
+                        <div className="section-title">최근 주문</div>
+                    </div>
                 </div>
-                
-                
             </div>
         </div>
     )
