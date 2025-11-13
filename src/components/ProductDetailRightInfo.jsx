@@ -42,9 +42,13 @@ const ProductDetailRightInfo = ({ product }) => {
       return;
     }
 
-    // const productCard = {
+    const productCart = {
+      ...item,
+      size: selectSize,
+      count: count
+    }
 
-    // }
+    onAddToCart(productCart);
   }
 
 

@@ -46,7 +46,9 @@ export const useProductStore = create((set, get) => ({
     totalPrice:[],
 
     onAddToCart: (products) =>{
-        // const cart =
+        const cart = get().cartItems;
+
+        
 
     },
 
