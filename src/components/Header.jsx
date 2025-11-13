@@ -7,6 +7,13 @@ import "./sass/Header.scss";
 // mainmenu
 const menus = [
     {
+        key: "brand", label: "브랜드", submenu: [
+            { key: 'brand-tommy', label: '타미힐피거' },
+            { key: 'brand-rouge', label: '루즈앤라운지' },
+            { key: 'brand-sjyp', label: 'SJYP' }
+        ]
+    },
+    {
         key: "women", label: "여자", submenu: [
             { key: 'women-shirt', label: '셔츠/블라우스' },
             { key: 'women-pants', label: '팬츠' },
@@ -39,14 +46,7 @@ const menus = [
             { key: 'golf-acc', label: '골프악세사리' }
         ]
     },
-    {
-        key: "brand", label: "브랜드", submenu: [
-            { key: 'brand-rouge', label: '루즈앤라운지' },
-            { key: 'brand-sjyp', label: 'SJYP' },
-            { key: 'brand-tommy', label: '타미힐피거' }
-        ]
-    },
-    // { key: "lifestyle", label: "라이프스타일" }, 제거 KIM 11-10
+    
 ]
 
 const Header = () => {

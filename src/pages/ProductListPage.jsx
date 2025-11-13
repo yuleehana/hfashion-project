@@ -2,6 +2,7 @@ import React from 'react'
 import { useProductStore } from '../store/useProductStore'
 import ProductCard from '../components/ProductCard';
 import './sass/ProductListPage.scss'
+import { Link } from 'react-router-dom';
 
 const ProductListPage = ({ category }) => {
     const { onItemsCategory } = useProductStore();
@@ -15,7 +16,9 @@ const ProductListPage = ({ category }) => {
             <ul className="sub-goods-list">
                 {currentItem.map((item) => (
                     <li key={item.code}>
-                        <ProductCard sendItem={item} />
+                        <Link to={`/product-detail/${item.code}`}>
+                            <ProductCard sendItem={item} />
+                        </Link>
                     </li>
                 ))}
             </ul>

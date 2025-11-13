@@ -1,0 +1,256 @@
+@use '../../App.scss' as g;
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    div.item-brand-favorite {
+        @include g.myFlex($gap: unset);
+
+        .brand {
+            font-size: 14px;
+            color: g.$sub-color2;
+        }
+
+        .favorite {
+            @include g.myFlex($gap: 12px);
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+
+            i {
+                font-size: 12px;
+                font-style: normal;
+                color: g.$sub-color2;
+            }
+        }
+    }
+
+    .item-code {
+        font-size: 14px;
+        color: g.$sub-color2;
+    }
+
+    .item-title {
+        color: g.$main-color1;
+        font-size: 30px;
+        font-weight: 500;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .item-price {
+        @include g.myFlex($gap: 12px, $jc: flex-start);
+
+        strong {
+            color: g.$main-color1;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        span {
+            color: g.$sub-color3;
+            font-family: Pretendard;
+            font-size: 16px;
+        }
+
+        del {
+            color: g.$sub-color2;
+            font-size: 14px;
+        }
+
+        button {
+            font-style: normal;
+        }
+    }
+
+    .item-color {
+        @include g.myFlex($gap: 14px, $jc: flex-start);
+
+        button {
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+
+            &.pink {
+                background-color: pink;
+            }
+
+            &.sky {
+                background-color: skyblue;
+            }
+
+            &.white {
+                background-color: white;
+                border: 1px solid g.$sub-color2;
+
+                &.active {
+                    background-image: url('../../../public/images/icon/icon-color-check-white.png');
+                }
+            }
+
+            &.black {
+                background-color: black;
+            }
+
+            &.active {
+                background-image: url('../../../public/images/icon/icon-color-check.png');
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+
+    .item-size {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+            color: g.$sub-color2;
+            font-size: 14px;
+        }
+
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+
+            button {
+                min-width: 32px;
+                min-height: 24px;
+                line-height: 24px;
+                color: g.$sub-color2;
+                border: 1px solid g.$sub-color2;
+                border-radius: 2px;
+                background: g.$main-color2;
+                font-size: 12px;
+
+                &:disabled {
+                    background: g.$sub-color1;
+                    text-decoration: line-through;
+                }
+
+                &.active {
+                    color: g.$main-color2;
+                    background: g.$main-color1;
+                    border-color: g.$main-color1;
+                }
+            }
+
+        }
+    }
+
+    .item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        color: g.$main-color1;
+        font-size: 14px;
+
+        .btn-count {
+            @include g.myFlex($gap: 0, $jc: flex-start);
+
+            button,
+            span {
+                text-align: center;
+                display: inline-block;
+                height: 28px;
+                background-color: g.$main-color2;
+                border: 1px solid g.$sub-color2;
+                line-height: 28px;
+            }
+
+            button {
+                width: 28px;
+
+                &.minus {
+                    background-image: url('../../../public/images/icon/icon-minus.png');
+                }
+
+                &.plus {
+                    background-image: url('../../../public/images/icon/icon-plus.png');
+                }
+
+                background-repeat: no-repeat;
+                background-position: center;
+
+            }
+
+            span {
+                border-left: none;
+                border-right: none;
+                width: 40px;
+            }
+
+        }
+    }
+
+}
+
+.item-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.item-total {
+    @include g.myFlex($gap: 20px, $jc: flex-start);
+
+    .text {
+        color: g.$sub-color3;
+        font-size: 20px;
+    }
+
+    .num {
+        color: g.$main-color1;
+        font-size: 20px;
+    }
+
+}
+
+.cart-btn {
+    @include g.myFlex($gap: 12px, $jc: flex-start);
+}
+
+.rating {
+    @include g.myFlex($gap: 8px, $jc: flex-start);
+
+    p {
+        &:last-child {
+            color: g.$sub-color2;
+            font-size: 12px;
+        }
+    }
+
+}
+
+.etc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+        @include g.myFlex($gap: 4px);
+
+        strong {
+            min-width: 80px;
+            display: flex;
+            color: g.$main-color1;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        span {
+            flex: 1;
+            color: g.$sub-color3;
+            font-size: 14px;
+        }
+    }
+}
