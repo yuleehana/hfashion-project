@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuthStore } from '../store/authstore'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 import "./sass/UserInfo.scss";
 
@@ -26,7 +26,7 @@ const UserInfo = () => {
     return (
         <div className='sub-page'>
             <div className='content-inner'>
-                <div className="content-top">
+                <div className="content-profile-point">
                     <div className='user-info-left'>
                         <UserInfoLeftMenu />
                     </div>
@@ -73,6 +73,17 @@ const UserInfo = () => {
                     </div>
                 </div>
                 
+                <div className="content-ordered-item">
+                    <div className="content-section-box">
+                        <p className="section-title">최근 주문 정보</p>
+                        <button>
+                            <Link>
+                                더보기
+                                <img src="./images/arrow-right-thin.svg" alt="" />
+                            </Link>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
