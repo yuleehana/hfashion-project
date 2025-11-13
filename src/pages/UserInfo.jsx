@@ -26,64 +26,58 @@ const UserInfo = () => {
     return (
         <div className='sub-page'>
             <div className='content-inner'>
-                <div className="content-profile-point">
-                    <div className='user-info-left'>
-                        <UserInfoLeftMenu />
-                    </div>
-
-                    <div className='user-info-right'>
+                <div className='user-info-left'>
+                    <UserInfoLeftMenu />
+                </div>
+                
+                <div className='user-info-right'>
+                    <div className="content-profile-point">
                         {/* <h2>{user.name}</h2>
                         <p>{user.email}</p>
                         <button onClick={handleLogout}>로그아웃</button> */}
                         <div className="user-idname-box">
-                            <div className="profile-box">
-                                <img src="./images/my-icon-black.svg" alt="profile" />
-                            </div>
-                            <div className="profile-item-box">
-                                <div className="item-box">
-                                    <div className="user-text">
-                                        <p>{`<span>${user.email}(${user.name})</span>님`}</p>
-                                        <p>환영합니다</p>
-                                    </div>
-                                </div>
-
-                                <div className="btn-box">
-                                    <button>로그아웃</button>
-                                    <button>내 회원정보</button>
-                                </div>
+                            <div className="user-name-box">
+                                {`<span>${user.email}(${user.name})</span>님, 환영합니다!`}
                             </div>
                         </div>
 
-                        <div className="point-card-box">
-                            <div className="user-point-box">
-                                <p>내 포인트</p>
-                                <div className="point-price">
-                                    <span>0</span>
-                                    <span>P</span>
+                        <div className="favor-list-box">
+                            <div className="list-box">
+                                <div className="list-name">
+                                    멤버쉽등급
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
                                 </div>
+                                <p>Friend</p>
                             </div>
-                            <div className="point-favor-list">
-                                <p>내 포인트 혜택</p>
-                                <div className="favor-list">
-                                    <div className="earn-favor">최대 5% 적립 가능</div>
-                                    <div className="delivery-free">N배송 무료</div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    멤버쉽등급
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
                                 </div>
+                                <p>15</p>
+                            </div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    상품리뷰
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>21</p>
+                            </div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    적립금
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>1500</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div className="content-ordered-item">
-                    <div className="content-section-box">
-                        <p className="section-title">최근 주문 정보</p>
-                        <button>
-                            <Link>
-                                더보기
-                                <img src="./images/arrow-right-thin.svg" alt="" />
-                            </Link>
-                        </button>
-                    </div>
-                </div>
+                
             </div>
         </div>
     )
