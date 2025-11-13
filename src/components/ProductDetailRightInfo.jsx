@@ -93,7 +93,9 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className="item-color">
             {colors.map((color, id) => (
               <button key={id}
-                className={`${color} ${selectColor ? "active" : ""}`}
+                // className={`${color} ${selectColor ? "active" : ""}`}
+                // className={selectColor===color ? "active" : ""}
+                className={`${color} ${selectColor===color ? "active" : ""}`}
                 onClick={() => setSelectColor(color)}>
               </button>
             ))}

@@ -78,46 +78,54 @@
             border-radius: 10px;
             width: 20px;
             height: 20px;
+            // background-color: red;
+            border: 1px solid red;
+
+            &.active {
+                border: 2px solid green;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
 
             &.pink {
                 background-color: pink;
 
-                &.active {
-                    background-image: url('../../../public/images/icon/icon-color-check.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                }
+                // &.active {
+                //     background-image: url('../../../public/images/icon/icon-color-check.png');
+                //     background-repeat: no-repeat;
+                //     background-position: center;
+                // }
             }
 
             &.sky {
                 background-color: skyblue;
 
-                &.active {
-                    background-image: url('../../../public/images/icon/icon-color-check.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                }
+                // &.active {
+                //     background-image: url('../../../public/images/icon/icon-color-check.png');
+                //     background-repeat: no-repeat;
+                //     background-position: center;
+                // }
             }
 
             &.white {
                 background-color: white;
                 border: 1px solid g.$sub-color2;
 
-                &.active {
-                    background-image: url('../../../public/images/icon/icon-color-check-white.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                }
+                // &.active {
+                //     background-image: url('../../../public/images/icon/icon-color-check-white.png');
+                //     background-repeat: no-repeat;
+                //     background-position: center;
+                // }
             }
 
             &.black {
                 background-color: black;
 
-                &.active {
-                    background-image: url('../../../public/images/icon/icon-color-check.png');
-                    background-repeat: no-repeat;
-                    background-position: center;
-                }
+                // &.active {
+                //     background-image: url('../../../public/images/icon/icon-color-check.png');
+                //     background-repeat: no-repeat;
+                //     background-position: center;
+                // }
             }
 
 
