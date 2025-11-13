@@ -11,7 +11,7 @@ const Footer = () => {
         <footer>
             <div className="inner">
                 <div className="footer-inner-left">
-                    <h1 className='footer-logo'><img src="./images/logo-footer-white.png" alt="푸터로고" /></h1>
+                    <h1 className='footer-logo'><img src="/images/logo-footer-white.png" alt="푸터로고" /></h1>
                     <div className="footer-address">
                         <div className="address-top">
                             <div className="address-top1">
@@ -49,9 +49,9 @@ const Footer = () => {
                     <div className="footer-inner-right-top">
                         <div className="sns-list">
                             <ul>
-                                <li><img src="./images/sns-facebook-icon.svg" alt="" /></li>
-                                <li><img src="./images/sns-insta-icon.svg" alt="" /></li>
-                                <li><img src="./images/sns-naver-icon.svg" alt="" /></li>
+                                <li><img src="/images/sns-facebook-icon.svg" alt="" /></li>
+                                <li><img src="/images/sns-insta-icon.svg" alt="" /></li>
+                                <li><img src="/images/sns-naver-icon.svg" alt="" /></li>
                             </ul>
                         </div>
                         <div className="footer-login">

@@ -49,9 +49,16 @@ import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import NonMember from './pages/NonMember';
 import ProductDetail from './pages/ProductDetail';
+import { useEffect } from 'react';
+import { useProductStore } from './store/useProductStore';
 
 
 function App() {
+  const onFetchItem = useProductStore(state => state.onFetchItem)
+  useEffect(() => {
+    onFetchItem()
+  }, [onFetchItem])
+
   return (
     <div className="App">
       <Header />
