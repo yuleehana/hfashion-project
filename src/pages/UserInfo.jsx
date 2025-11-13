@@ -36,40 +36,40 @@ const UserInfo = () => {
                         <p>{user.email}</p>
                         <button onClick={handleLogout}>로그아웃</button> */}
                         <div className="user-idname-box section-title">
-                            {`<span>${user.email}(${user.name})</span>님, 환영합니다!`}
+                            {`${user.email}(${user.name})님, 환영합니다!`}
                         </div>
 
-                        <div className="favor-list-box">
-                            <div className="list-box">
-                                <div className="list-name">
-                                    멤버쉽등급
-                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                        <div className="favor-list-wrap">
+                            <div className="favor-list-box">
+                                <div className="list-box">
+                                    <div className="list-name">
+                                        멤버쉽등급&gt;
+                                    </div>
+                                    <p>Friend</p>
                                 </div>
-                                <p>Friend</p>
-                            </div>
 
-                            <div className="list-box">
-                                <div className="list-name">
-                                    멤버쉽등급
-                                    <img src="./images/arrow-right-thin.svg" alt="" />
-                                </div>
-                                <p>15</p>
-                            </div>
+                                <div className="inlist-box">
+                                    <div className="list-box">
+                                        <div className="list-name">
+                                            멤버쉽등급&gt;
+                                        </div>
+                                        <p>15</p>
+                                    </div>
 
-                            <div className="list-box">
-                                <div className="list-name">
-                                    상품리뷰
-                                    <img src="./images/arrow-right-thin.svg" alt="" />
-                                </div>
-                                <p>21</p>
-                            </div>
+                                    <div className="list-box">
+                                        <div className="list-name">
+                                            상품리뷰&gt;
+                                        </div>
+                                        <p>21</p>
+                                    </div>
 
-                            <div className="list-box">
-                                <div className="list-name">
-                                    적립금
-                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                    <div className="list-box">
+                                        <div className="list-name">
+                                            적립금&gt;
+                                        </div>
+                                        <p>1500</p>
+                                    </div>
                                 </div>
-                                <p>1500</p>
                             </div>
                         </div>
                     </div>

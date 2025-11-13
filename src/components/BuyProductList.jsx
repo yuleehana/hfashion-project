@@ -1,6 +1,7 @@
 import React from 'react'
 
 const BuyProductList = () => {
+
   return (
     <div className='send-product-box'>
       <div className="date-code-box">
