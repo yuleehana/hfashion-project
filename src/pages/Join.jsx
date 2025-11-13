@@ -40,15 +40,19 @@ const Join = () => {
 
                 <form onSubmit={handleSubmit}>
                     <input type='text' name='name'
+                        value={null}
                         placeholder='이름을 입력해주세요'
                         onChange={handleChange} />
                     <input type='text' name='nickName'
+                        value={null}
                         placeholder='아이디를 입력하세요'
                         onChange={handleChange} />
                     <input type='email' name='email'
+                        value={null}
                         placeholder='이메일을 입력해주세요'
                         onChange={handleChange} />
                     <input type='password' name='password'
+                        value={null}
                         placeholder='비밀번호를 입력해주세요'
                         onChange={handleChange} />
                     <button type='submit'>회원가입</button>

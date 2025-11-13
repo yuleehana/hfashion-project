@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAuthStore } from '../store/authstore'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
+import "./sass/UserInfo.scss";
 
 const UserInfo = () => {
     const { user, onLogout } = useAuthStore();
@@ -28,10 +29,54 @@ const UserInfo = () => {
                 <div className='user-info-left'>
                     <UserInfoLeftMenu />
                 </div>
+                
                 <div className='user-info-right'>
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
-                    <button onClick={handleLogout}>로그아웃</button>
+                    <div className="content-profile-point section">
+                        {/* <h2>{user.name}</h2>
+                        <p>{user.email}</p>
+                        <button onClick={handleLogout}>로그아웃</button> */}
+                        <div className="user-idname-box section-title">
+                            {`<span>${user.email}(${user.name})</span>님, 환영합니다!`}
+                        </div>
+
+                        <div className="favor-list-box">
+                            <div className="list-box">
+                                <div className="list-name">
+                                    멤버쉽등급
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>Friend</p>
+                            </div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    멤버쉽등급
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>15</p>
+                            </div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    상품리뷰
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>21</p>
+                            </div>
+
+                            <div className="list-box">
+                                <div className="list-name">
+                                    적립금
+                                    <img src="./images/arrow-right-thin.svg" alt="" />
+                                </div>
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="recent-orders section">
+                        <div className="section-title">최근 주문</div>
+                    </div>
                 </div>
             </div>
         </div>
