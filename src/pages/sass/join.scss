@@ -1,0 +1,43 @@
+@use '../../App.scss' as g;
+
+.sub-page {
+  .join-inner {
+    max-width: 650px;
+    margin: 0 auto;
+    background: red;
+    .join-wrap {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid black;
+      margin-bottom: 40px;
+      h2 {
+        color: black;
+        font-size: 40px;
+        font-weight: 500;
+        padding-bottom: 16px;
+        margin-bottom: 66px;
+        text-align: center;
+      }
+      > p {
+        font-size: 20px;
+        color: 'black';
+        margin-bottom: 16px;
+      }
+    }
+    .join-form {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 24px;
+      width: 100%;
+      label {
+        font-size: 16px;
+        font-weight: 400;
+        input {
+          background: #f2f2f2;
+          height: 40px;
+          width: 90%;
+        }
+      }
+    }
+  }
+}
