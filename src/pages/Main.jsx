@@ -9,22 +9,19 @@ const Main = () => {
             </div>
 
             <div className="main-content">
-                <section className='category-new-wrap'>
-                    <div className="section-inner-top">
-                        <div className="section-title">
-
-                        </div>
-                    </div>
-                    <div className="section-inner-bottom">
-                        <div className="section-menu-wrap">
-
-                        </div>
-                        <div className="section-item-wrap">
-
-                        </div>
-                    </div>
+                <section>
+                    <h2>KEYWORD RANKING</h2>
                 </section>
-
+                <section>
+                    <h2>CATEGORY NEW</h2>
+                </section>
+                <section>
+                    <h2>BRAND LIVE</h2>
+                </section>
+                <section>
+                    <h2>BEST REVIEW</h2>
+                </section>
+                
             </div>
         </div>
     )

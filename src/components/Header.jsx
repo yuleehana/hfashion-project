@@ -68,7 +68,7 @@ const Header = () => {
             <div className="inner">
                 <div className="inner-left">
                     <h1 className='logo'>
-                        <Link to="/"><img src="./images/header_logo.svg" alt="" /></Link>
+                        <Link to="/"><img src="/images/header_logo.svg" alt="" /></Link>
                     </h1>
                     <nav>
                         <ul className="main-menu">
@@ -95,19 +95,19 @@ const Header = () => {
                     <ul className="gnb-list">
                         <li>
                             <Link to="/search">
-                                <img src="./images/search-icon-white.svg" alt="검색아이콘" />
+                                <img src="/images/search-icon-white.svg" alt="검색아이콘" />
                             </Link>
                         </li>
                         {user ? (
                             <>
                                 <li>
                                     <Link to="/userinfo">
-                                        <img src="./images/my-icon-white.svg" alt="마이페이지" />
+                                        <img src="/images/my-icon-white.svg" alt="마이페이지" />
                                     </Link>
                                 </li>
                                 <li>
                                     <Link onClick={handleLogout}>
-                                        <img src="./images/logout-icon-white.svg" alt="로그아웃" />
+                                        <img src="/images/logout-icon-white.svg" alt="로그아웃" />
                                     </Link>
                                 </li>
                             </>
@@ -115,14 +115,14 @@ const Header = () => {
                             <>
                                 <li>
                                     <Link to="/login">
-                                        <img src="./images/my-icon-white.svg" alt="마이페이지" />
+                                        <img src="/images/my-icon-white.svg" alt="마이페이지" />
                                     </Link>
                                 </li>
                             </>
                         )}
                         <li>
                             <Link to="/cart">
-                                <img src="./images/cart-icon2-white.svg" alt="장바구니아이콘" />
+                                <img src="/images/cart-icon2-white.svg" alt="장바구니아이콘" />
                             </Link>
                         </li>
                     </ul>
