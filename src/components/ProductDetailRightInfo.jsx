@@ -1,7 +1,55 @@
-
+import { useEffect, useState } from 'react';
+import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
+import { useParams } from 'react-router-dom';
 
-const ProductDetailRightInfo = ({product}) => {
+const sizes = ["XS", "S", "M", "L", "XL"]
+
+const ProductDetailRightInfo = ({ product }) => {
+  const { code } = useParams();
+  // 전역변수 불러오기
+  const { items, onFetchItem, onAddToCart } = useProductStore();
+
+  // 상품을 저장할 변수
+  const [item, setItem] = useState("");
+
+  // 선택한 사이즈 체크
+  const [selectSize, setSelectSize] = useState("");
+
+  // 수량 체크 변수
+  const [count, setCount] = useState(1);
+
+
+  // 새로고침시 다시 렌더링 되면서 초기화
+  useEffect(() => {
+    if (items.length === 0) {
+      onFetchItem();
+    }
+  }, [])
+  // 제품 다시 불러오기
+  useEffect(() => {
+    if (!code || items.length === 0) return
+
+    const findItem = items.find((it) => it.code === Number(code))
+    setItem(findItem);
+  }, [code, items])
+
+
+  // 장바구니 메서드
+  const handleAddToCart = () => {
+    if (!selectSize) {
+      alert("사이즈를 선택해주세요")
+      return;
+    }
+
+    // const productCard = {
+
+    // }
+  }
+
+
+
+
 
   return (
     <>

@@ -1,9 +1,12 @@
 import React from 'react'
+import { useProductStore } from '../store/useProductStore'
 
 const Cart = () => {
-    return (
-        <div>Cart</div>
-    )
+  const { cartItems, cartCount, totalPrice, onAddToCart } = useProductStore();
+
+  return (
+    <div>Cart</div>
+  )
 }
 
 export default Cart

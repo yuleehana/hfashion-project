@@ -2,7 +2,10 @@ import { create } from "zustand";
 import { products } from "../data/products.js";
 
 export const useProductStore = create((set, get) => ({
+
     items: [],
+
+
     onFetchItem: () => {
         const allItems = get().items || [];
         if (allItems.length > 0) return;
@@ -33,5 +36,19 @@ export const useProductStore = create((set, get) => ({
             return allItems.filter((item) => item.brand === brand)
         }
     },
+
+
+    // 카트에 담긴 상픔 개수
+    cartItems:[],
+    cartCount: [],
+
+    // 총 금액
+    totalPrice:[],
+
+    onAddToCart: (products) =>{
+        // const cart =
+
+    },
+
 
 }))
