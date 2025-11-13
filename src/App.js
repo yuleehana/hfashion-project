@@ -52,72 +52,68 @@ import ProductDetail from './pages/ProductDetail';
 import { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
 
-
 function App() {
-  const onFetchItem = useProductStore(state => state.onFetchItem)
+  const onFetchItem = useProductStore((state) => state.onFetchItem);
   useEffect(() => {
-    onFetchItem()
-  }, [onFetchItem])
+    onFetchItem();
+  }, [onFetchItem]);
 
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/product-detail/:code' element={<ProductDetail />} />
-        <Route path='/women' element={<Women />} >
+        <Route path="/" element={<Main />} />
+        <Route path="/product-detail/:code" element={<ProductDetail />} />
+        <Route path="/women" element={<Women />}>
           <Route index element={<WomenDefault />} />
-          <Route path='women-shirt' element={<WomenShirt />} />
-          <Route path='women-pants' element={<WomenPants />} />
-          <Route path='women-skirt' element={<WomenSkirt />} />
-          <Route path='women-shoes' element={<WomenShoes />} />
+          <Route path="women-shirt" element={<WomenShirt />} />
+          <Route path="women-pants" element={<WomenPants />} />
+          <Route path="women-skirt" element={<WomenSkirt />} />
+          <Route path="women-shoes" element={<WomenShoes />} />
         </Route>
-        <Route path='/men' element={<Men />} >
+        <Route path="/men" element={<Men />}>
           <Route index element={<MenDefault />} />
-          <Route path='man-pants' element={<ManPants />} />
-          <Route path='man-shirt' element={<ManShirt />} />
-          <Route path='man-outer' element={<ManOuter />} />
-          <Route path='man-shoes' element={<ManShoes />} />
+          <Route path="man-pants" element={<ManPants />} />
+          <Route path="man-shirt" element={<ManShirt />} />
+          <Route path="man-outer" element={<ManOuter />} />
+          <Route path="man-shoes" element={<ManShoes />} />
         </Route>
-        <Route path='/sundries' element={<Sundries />} >
+        <Route path="/sundries" element={<Sundries />}>
           <Route index element={<SundriesDefault />} />
-          <Route path='sundries-women-fashion' element={<SundriesWfashion />} />
-          <Route path='sundries-man-fashion' element={<SundriesMfashion />} />
-          <Route path='sundries-women-bag' element={<SundriesWbag />} />
-          <Route path='sundries-man-bag' element={<SundriesMbag />} />
+          <Route path="sundries-women-fashion" element={<SundriesWfashion />} />
+          <Route path="sundries-man-fashion" element={<SundriesMfashion />} />
+          <Route path="sundries-women-bag" element={<SundriesWbag />} />
+          <Route path="sundries-man-bag" element={<SundriesMbag />} />
         </Route>
-        <Route path='/golf' element={<Golf />} >
+        <Route path="/golf" element={<Golf />}>
           <Route index element={<GolfDefault />} />
-          <Route path='golf-women-outer' element={<GolfWouter />} />
-          <Route path='golf-man-outer' element={<GolfMouter />} />
-          <Route path='golf-women-pants' element={<GolfWpants />} />
-          <Route path='golf-man-pants' element={<GolfMpants />} />
-          <Route path='golf-acc' element={<GolfAcc />} />
+          <Route path="golf-women-outer" element={<GolfWouter />} />
+          <Route path="golf-man-outer" element={<GolfMouter />} />
+          <Route path="golf-women-pants" element={<GolfWpants />} />
+          <Route path="golf-man-pants" element={<GolfMpants />} />
+          <Route path="golf-acc" element={<GolfAcc />} />
         </Route>
 
-        <Route path='/brand' element={<Brand />} >
+        <Route path="/brand" element={<Brand />}>
           <Route index element={<BrandDefault />} />
-          <Route path='brand-rouge' element={<BrandRouge />} />
-          <Route path='brand-sjyp' element={<BrandSJYP />} />
-          <Route path='brand-tommy' element={<BrandTommy />} />
+          <Route path="brand-rouge" element={<BrandRouge />} />
+          <Route path="brand-sjyp" element={<BrandSJYP />} />
+          <Route path="brand-tommy" element={<BrandTommy />} />
         </Route>
 
-
-
-        <Route path='/brand' element={<Brand />}></Route>
+        <Route path="/brand" element={<Brand />}></Route>
         {/* <Route path='/lifestyle' element={<LifeStyle />}></Route>  제거 KIM 11-10 */}
 
-        <Route path='*' element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
 
-        <Route path='/search' element={<Search />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/nonmember' element={<NonMember />}></Route>
-        <Route path='/join' element={<Join />}></Route>
-        <Route path='/userinfo' element={<UserInfo />}></Route>
-        <Route path='/cart' element={<Cart />}></Route>
-        <Route path='/pay' element={<Pay />}></Route>
-        <Route path='/logout' element={<Logout />} />
-
+        <Route path="/search" element={<Search />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/nonmember" element={<NonMember />}></Route>
+        <Route path="/join" element={<Join />}></Route>
+        <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/pay" element={<Pay />}></Route>
+        <Route path="/logout" element={<Logout />} />
       </Routes>
 
       <Footer />
