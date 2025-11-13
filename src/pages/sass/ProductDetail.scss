@@ -1,26 +1,43 @@
-
 @use '../../App.scss' as g;
 
 .product-detail-wrap {
+    
     @include g.myFlex($gap: 20px, $ai: flex-start);
-
     .detail-left {
+        margin-top: 20px;
         flex: 1;
-        border: 1px solid skyblue;
-        .product-detail-slide{
-            width: 500px;
-            object-fit: contain;
-            aspect-ratio: 3/4;
-            img{
-                width: 100%;
-                height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        .product-detail-slide {
+            max-width: 980px;
+            img {
+                max-width: 100%;
+            }
+        }
+        .product-notice-info{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            >li{
+                @include g.myFlex($gap: 0);
+                display: flex;
+                font-size: 14px;
+                strong{
+                    color: g.$sub-color3;
+                    width: 180px;
+                }
+                span{
+                    color: g.$sub-color2;
+                    flex: 1;
+                }
             }
         }
     }
-
     .detail-right {
+        position: sticky;
+        top: 100px;
+        min-width: 380px;
         width: 380px;
     }
 }
-
-
