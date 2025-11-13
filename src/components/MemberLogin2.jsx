@@ -61,7 +61,7 @@ const MemberLogin2 = () => {
                 </p>
             </div>
             <div className="button-grid-wrap">
-                <button type='submit' onSubmit={handleSubmit}>로그인하기</button>
+                <button type='submit' onSubmit={onLogin}>로그인하기</button>
                 <button onClick={handleGoogleLogin}>구글 로그인</button>
                 <button>카카오 로그인</button>
             </div>
