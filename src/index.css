@@ -8,7 +8,7 @@ body,
 html {
   /* min-height: 100vh; */
   line-height: 1;
-  font-family: Pretendard, "돋움", sans-serif;
+  font-family: "Pretendard", Pretendard, "돋움", sans-serif;
   font-size: 10px;
 }
 
@@ -33,7 +33,7 @@ button,
 textarea {
   border: none;
   background: inherit;
-  font-family: Pretendard, "돋움", sans-serif;
+  font-family: "Pretendard", Pretendard, "돋움", sans-serif;
   outline: none;
   cursor: pointer;
 }
@@ -44,3 +44,4 @@ video {
   height: 100%;
   vertical-align: middle;
 }
+
