@@ -8,6 +8,7 @@ export const useAuthStore = create((set) => ({
 
     // 회원가입 변수
     user: null,
+    
 
     // 아이템 변수
     items:[],

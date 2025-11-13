@@ -5,12 +5,12 @@ import { getStorage } from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCP_kTWkrPcuaPJgX5osc96gjQNWXq-TNA",
-  authDomain: "sample-47694.firebaseapp.com",
-  projectId: "sample-47694",
-  storageBucket: "sample-47694.firebasestorage.app",
-  messagingSenderId: "1095798112503",
-  appId: "1:1095798112503:web:a6c1180d701426880753f2"
+  apiKey: "AIzaSyB2BzDQYK6mgABdzPmAA3nMTosBAA7LiPM",
+  authDomain: "hfashion-project.firebaseapp.com",
+  projectId: "hfashion-project",
+  storageBucket: "hfashion-project.firebasestorage.app",
+  messagingSenderId: "326422964641",
+  appId: "1:326422964641:web:1febdf63866201946cc3e0"
 };
 
 
