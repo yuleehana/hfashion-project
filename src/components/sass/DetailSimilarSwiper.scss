@@ -1,0 +1,53 @@
+@use '../../App.scss' as g;
+
+.swiper{margin-left: unset;}
+.detail-sub-goods-list {
+    @include g.myGrid();
+    max-width: 980px;
+    .swiper-slide {
+        .img-box {
+            aspect-ratio: 2/3;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .text-box {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: g.$main-color1;
+
+            .brand {
+                font-size: 12px;
+            }
+
+            .sale-price {
+                font-size: 20px;
+            }
+
+            span {
+                &:has(+ del) {
+                    margin-right: 12px;
+                }
+            }
+
+            del {
+                font-size: 14px;
+                color: g.$sub-color2;
+            }
+
+            .price {
+                @include g.myFlex();
+
+                .sale {
+                    color: g.$percent-color;
+                }
+            }
+
+
+        }
+
+    }
+}
