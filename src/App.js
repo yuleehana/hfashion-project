@@ -51,6 +51,7 @@ import NonMember from './pages/NonMember';
 import ProductDetail from './pages/ProductDetail';
 import { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
+import MainBrandLive from './components/MainBrandLive';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -114,6 +115,7 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
         <Route path="/logout" element={<Logout />} />
+        <Route path="/brandlive" element={<MainBrandLive />} />
       </Routes>
 
       <Footer />
