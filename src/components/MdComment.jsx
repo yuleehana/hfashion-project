@@ -18,7 +18,6 @@ const MdComment = () => {
     fontWeight: '400',
     color: '#838383',
     border: '0.4px solid #838383',
-
   };
   const comment = {
     color: '#000',
