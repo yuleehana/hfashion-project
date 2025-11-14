@@ -62,3 +62,30 @@
     color: #fff;
   }
 }
+
+.orders-product-table{
+  .orders-product-list{
+    padding: 0 8px;
+  }
+
+  .product-btn-list{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F8F3F0;
+    padding: 24px 0;
+
+    p{
+      font-size: 16px;
+      color: #bababa;
+    }
+
+    .button-wrap{
+      button{
+        font-size: 14px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
