@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
-import { Link, usePagirams } from 'react-router-dom';
-import '../App.scss'
+import { Link, useParams } from 'react-router-dom';
+import './sass/button-normal.scss'
 
 const sizes = ["XS", "S", "M", "L", "XL"]
 const colors = ["pink", "sky", "white", "black"]
@@ -139,7 +139,7 @@ const ProductDetailRightInfo = ({ product }) => {
 
         <div className="cart-btn">
           <Link className='btn middle primary'  onClick={handleAddToCart}>장바구니</Link>
-          <Link to='/pay'>바로구매</Link>
+          <Link className='btn middle second primary' to='/pay'>바로구매</Link>
         </div>
 
         <div className='item-box'>
