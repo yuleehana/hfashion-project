@@ -5,6 +5,7 @@ import './sass/ProductDetail.scss'
 import ProductDetailRightInfo from '../components/ProductDetailRightInfo'
 import DetailPageSwiper from '../components/DetailPageSwiper';
 import DetailSimilarSwiper from '../components/DetailSimilarSwiper';
+import DetailImgUrl from '../components/DetailImgUrl';
 
 
 const ProductDetail = () => {
@@ -46,6 +47,7 @@ const ProductDetail = () => {
             <li><Link>상품Q&A(2)</Link></li>
           </ul>
           <p>'본 상품에 등록되어 있는 정보는 판매자가 직접 등록한 것으로, 등록된 정보에 대한 책임은 판매자에게 있습니다'</p>
+          <DetailImgUrl product={product} />
           <section>
             <h3>상품고시정보</h3>
             <ul className='product-notice-info'>
