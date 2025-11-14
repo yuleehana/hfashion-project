@@ -1,10 +1,11 @@
 import React from 'react'
 import BrandListPage from './BrandListPage'
+import './sass/SubMain.scss'
 
 const BrandDefault = () => {
     return (
-        <div>
-            <h2>브랜드 메인</h2>
+        <div className='sub-main'>
+            <h2 className='sub-main-title'>BRAND’S SHOP</h2>
             <BrandListPage brand='MARK LONA' />
         </div>
     )

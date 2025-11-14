@@ -1,12 +1,13 @@
 import React from 'react'
 import SubPage from './SubPage'
+import './sass/SubMain.scss'
 
 const MenDefault = () => {
     return (
-        <>
-            <h2>남자 메인 페이지</h2>
+        <div className='sub-main'>
+            <h2 className='sub-main-title'>MEN’S SHOP</h2>
             <SubPage category='man pants' />
-        </>
+        </div>
     )
 }
 

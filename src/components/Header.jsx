@@ -63,71 +63,71 @@ const Header = () => {
     navigate("/");
   }
 
-  return (
-    <header>
-      <div className="inner">
-        <div className="inner-left">
-          <h1 className='logo'>
-            <Link to="/"><img src="/images/header_logo.svg" alt="" /></Link>
-          </h1>
-          <nav>
-            <ul className="main-menu">
-              {menus.map(menu => (
-                <li key={menu.key}>
-                  <Link to={`/${menu.key}`}>{menu.label}</Link>
-                  {menu.submenu && menu.submenu.length > 0 && (
-                    <ul className="sub-menu">
-                      {menu.submenu.map((sub, index) => (
-                        <li key={`${sub.key}-${sub.key || index}`}>
-                          <Link to={`/${menu.key}/${sub.key || ''}`}>
-                            {sub.label}
-                          </Link>
+    return (
+        <header>
+            <div className="header-inner">
+                <div className="inner-left">
+                    <h1 className='logo'>
+                        <Link to="/"><img src="/images/header_logo.svg" alt="" /></Link>
+                    </h1>
+                    <nav>
+                        <ul className="main-menu">
+                            {menus.map(menu => (
+                                <li key={menu.key}>
+                                    <Link to={`/${menu.key}`}>{menu.label}</Link>
+                                    {menu.submenu && menu.submenu.length > 0 && (
+                                        <ul className="sub-menu">
+                                            {menu.submenu.map((sub, index) => (
+                                                <li key={`${sub.key}-${sub.key || index}`}>
+                                                    <Link to={`/${menu.key}/${sub.key || ''}`}>
+                                                        {sub.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                </div>
+                <div className="inner-right">
+                    <ul className="gnb-list">
+                        <li>
+                            <Link to="/search">
+                                <img src="/images/search-icon-white.svg" alt="검색아이콘" />
+                            </Link>
                         </li>
-                      ))}
+                        {user ? (
+                            <>
+                                <li>
+                                    <Link to="/userinfo">
+                                        <img src="/images/my-icon-white.svg" alt="마이페이지" />
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link onClick={handleLogout}>
+                                        <img src="/images/logout-icon-white.svg" alt="로그아웃" />
+                                    </Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li>
+                                    <Link to="/login">
+                                        <img src="/images/my-icon-white.svg" alt="마이페이지" />
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+                        <li>
+                            <Link to="/cart">
+                                <img src="/images/cart-icon2-white.svg" alt="장바구니아이콘" />
+                            </Link>
+                        </li>
                     </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-        <div className="inner-right">
-          <ul className="gnb-list">
-            <li>
-              <Link to="/search">
-                <img src="/images/search-icon-white.svg" alt="검색아이콘" />
-              </Link>
-            </li>
-            {user ? (
-              <>
-                <li>
-                  <Link to="/userinfo">
-                    <img src="/images/my-icon-white.svg" alt="마이페이지" />
-                  </Link>
-                </li>
-                <li>
-                  <Link onClick={handleLogout}>
-                    <img src="/images/logout-icon-white.svg" alt="로그아웃" />
-                  </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">
-                    <img src="/images/my-icon-white.svg" alt="마이페이지" />
-                  </Link>
-                </li>
-              </>
-            )}
-            <li>
-              <Link to="/cart">
-                <img src="/images/cart-icon2-white.svg" alt="장바구니아이콘" />
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+                </div>
+            </div>
 
     </header>
   )

@@ -8,7 +8,8 @@ header {
     line-height: 80px;
     z-index: 100;
 
-    .inner {
+    .header-inner {
+        
         margin: 0 auto;
         max-width: 1440px;
         @include global.myFlex();
@@ -21,6 +22,10 @@ header {
                     width: 200px;
                     height: 25px;
                 }
+            }
+
+            a {
+                word-break: keep-all;
             }
 
             nav {
@@ -70,7 +75,7 @@ header {
                     >a {
                         color: global.$main-color2;
                         font-weight: border;
-                        font-size: 16px;
+                        font-size: 1.6rem;
                     }
                 }
 
@@ -82,11 +87,12 @@ header {
                     left: 50%;
                     transform: translateX(-50%);
                     width: max-content;
-                    line-height: 24px;
+                    line-height: 2.4rem;
+
                     >li {
                         >a {
                             color: global.$main-color2;
-                            font-size: 14px;
+                            font-size: 1.4rem;
                             font-weight: 300;
                             opacity: 0;
                         }
@@ -99,7 +105,7 @@ header {
         .inner-right {
             .gnb-list {
                 @include global.myFlex($gap: 40px);
-                line-height: 24px;
+                line-height: 2.4rem;
 
                 color: global.$main-color2;
                 font-size: 1.4rem;

@@ -16,7 +16,7 @@ const DetailSimilarSwiper = ({ category, product }) => {
         <Swiper
          className="detail-sub-goods-list"
             slidesPerView={4.6}
-            spaceBetween={44}
+            spaceBetween={20}
         >
                 {filteredItems.map(item => (
                     <SwiperSlide key={item.code}>
