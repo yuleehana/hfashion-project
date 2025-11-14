@@ -42,6 +42,7 @@
           .review-text{
             font-size: 16px;
             word-break:keep-all;
+            line-height: 22px;
           }
         }
         .item-bottom{
@@ -52,6 +53,7 @@
           .product-name{
             font-size: 16px;
             word-break:keep-all;
+            line-height: 22px;
           }
           .rating-box{
             display: flex;
@@ -65,7 +67,7 @@
               display: flex;
               align-items: center;
               gap: 2px;
-              
+
               .star-icon{
                 width: 16px;
                 height: 16px;
