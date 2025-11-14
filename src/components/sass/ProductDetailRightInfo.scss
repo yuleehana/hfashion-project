@@ -1,284 +1,298 @@
 @use '../../App.scss' as g;
 
 .detail-info {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
-    div.item-brand-favorite {
-        @include g.myFlex($gap: unset);
+  div.item-brand-favorite {
+    @include g.myFlex($gap: unset);
 
-        .brand {
-            font-size: 1.4rem;
-            color: g.$sub-color2;
-        }
-
-        .favorite {
-            @include g.myFlex($gap: 1.2rem);
-
-            img {
-                width: 1.6rem;
-                height: 1.6rem;
-            }
-
-            i {
-                font-size: 1.2rem;
-                font-style: normal;
-                color: g.$sub-color2;
-            }
-        }
+    .brand {
+      font-size: 1.4rem;
+      color: g.$sub-color2;
     }
 
-    .item-code {
-        font-size: 1.4rem;
+    .favorite {
+      @include g.myFlex($gap: 1.2rem);
+
+      img {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+
+      i {
+        font-size: 1.2rem;
+        font-style: normal;
         color: g.$sub-color2;
+      }
     }
+  }
 
-    .item-title {
-        color: g.$main-color1;
-        font-size: 30px;
-        font-weight: 500;
-        display: -webkit-box;
-        text-overflow: ellipsis;
-        // -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+  .item-code {
+    font-size: 1.4rem;
+    color: g.$sub-color2;
+  }
 
-    .item-price {
-        @include g.myFlex($gap: 1.2rem, $jc: flex-start);
+  .item-title {
+    color: g.$main-color1;
+    font-size: 30px;
+    font-weight: 500;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    // -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-        strong {
-            color: g.$main-color1;
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        span {
-            color: g.$sub-color3;
-            font-family: Pretendard;
-            font-size: 1.6rem;
-        }
-
-        del {
-            color: g.$sub-color2;
-            font-size: 1.4rem;
-        }
-
-        button {
-            font-style: normal;
-        }
-    }
-
-    .item-color {
-        @include g.myFlex($gap: 14px, $jc: flex-start);
-
-
-        button {
-            border-radius: 10px;
-            width: 20px;
-            height: 20px;
-            // background-color: red;
-            border: 1px solid red;
-
-            &.active {
-                border: 2px solid green;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            &.pink {
-                background-color: pink;
-
-                // &.active {
-                //     background-image: url('../../../public/images/icon/icon-color-check.png');
-                //     background-repeat: no-repeat;
-                //     background-position: center;
-                // }
-            }
-
-            &.sky {
-                background-color: skyblue;
-
-                // &.active {
-                //     background-image: url('../../../public/images/icon/icon-color-check.png');
-                //     background-repeat: no-repeat;
-                //     background-position: center;
-                // }
-            }
-
-            &.white {
-                background-color: white;
-                border: 1px solid g.$sub-color2;
-
-                // &.active {
-                //     background-image: url('../../../public/images/icon/icon-color-check-white.png');
-                //     background-repeat: no-repeat;
-                //     background-position: center;
-                // }
-            }
-
-            &.black {
-                background-color: black;
-
-                // &.active {
-                //     background-image: url('../../../public/images/icon/icon-color-check.png');
-                //     background-repeat: no-repeat;
-                //     background-position: center;
-                // }
-            }
-
-
-        }
-
-
-
-    }
-
-    .item-size {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        p {
-            color: g.$sub-color2;
-            font-size: 1.4rem;
-        }
-
-        div {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-
-            button {
-                min-width: 32px;
-                min-height: 24px;
-                line-height: 2.4rem;
-                color: g.$sub-color2;
-                border: 1px solid g.$sub-color2;
-                border-radius: 2px;
-                background: g.$main-color2;
-                font-size: 1.2rem;
-
-                &:disabled {
-                    background: g.$sub-color1;
-                    text-decoration: line-through;
-                }
-
-                &.active {
-                    color: g.$main-color2;
-                    background: g.$main-color1;
-                    border-color: g.$main-color1;
-                }
-            }
-
-        }
-    }
-
-    .item-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
-        color: g.$main-color1;
-        font-size: 1.4rem;
-
-        .btn-count {
-            @include g.myFlex($gap: 0, $jc: flex-start);
-
-            button,
-            span {
-                text-align: center;
-                display: inline-block;
-                height: 28px;
-                background-color: g.$main-color2;
-                border: 1px solid g.$sub-color2;
-                line-height: 28px;
-            }
-
-            button {
-                width: 28px;
-
-                &.minus {
-                    background-image: url('../../../public/images/icon/icon-minus.png');
-                }
-
-                &.plus {
-                    background-image: url('../../../public/images/icon/icon-plus.png');
-                }
-
-                background-repeat: no-repeat;
-                background-position: center;
-
-            }
-
-            span {
-                border-left: none;
-                border-right: none;
-                width: 40px;
-            }
-
-        }
-    }
-
-}
-
-.item-box {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-}
-
-.item-total {
-    @include g.myFlex($gap: 2rem, $jc: flex-start);
-
-    .text {
-        color: g.$sub-color3;
-        font-size: 2rem;
-    }
-
-    .num {
-        color: g.$main-color1;
-        font-size: 2rem;
-    }
-
-}
-
-.cart-btn {
+  .item-price {
     @include g.myFlex($gap: 1.2rem, $jc: flex-start);
-}
 
-.rating {
-    @include g.myFlex($gap: 8px, $jc: flex-start);
-
-    p {
-        &:last-child {
-            color: g.$sub-color2;
-            font-size: 1.2rem;
-        }
+    strong {
+      color: g.$main-color1;
+      font-size: 2rem;
+      font-weight: 600;
     }
 
-}
+    span {
+      color: g.$sub-color3;
+      font-family: Pretendard;
+      font-size: 1.6rem;
+    }
 
-.etc-info {
+    del {
+      color: g.$sub-color2;
+      font-size: 1.4rem;
+    }
+
+    button {
+      font-style: normal;
+    }
+  }
+
+  $active: true;
+  $white: 'white';
+
+
+  .item-color {
+    @include g.myFlex($gap: 14px, $jc: flex-start);
+
+
+    button {
+      border-radius: 10px;
+      width: 2rem;
+      height: 2rem;
+
+      // &.active {
+      @if () {
+        .white {
+          background-image: url('../../../public/images/icon/icon-color-check.png');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+      }
+
+      @else {
+        &.pink,
+        &.black,
+        &.sky {
+          background-image: url('../../../public/images/icon/icon-color-check-white.png');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+      }
+
+      // }
+
+
+      // &.active {
+      //   background-repeat: no-repeat;
+      //   background-position: center;
+
+      //   // background-image: if #{$is-active}((#{$class-name}), url('../../../public/images/icon/icon-color-check.png'),
+      //   //   url('../../../public/images/icon/icon-color-check-white.png'));
+
+      //   // else: url('../../../public/images/icon/icon-color-check.png');
+
+      //   @if #{$is-active}(#{$class-name}) {
+      //     background-image: url('../../../public/images/icon/icon-color-check.png');
+      //   }
+
+      //   @else {
+      //     background-image: url('../../../public/images/icon/icon-color-check-white.png');
+      //   }
+      // }
+
+      &.pink {
+        background-color: pink;
+      }
+
+      &.sky {
+        background-color: skyblue;
+      }
+
+      &.white {
+        background-color: white;
+        border: 1px solid g.$sub-color2;
+      }
+
+      &.black {
+        background-color: black;
+      }
+
+
+    }
+
+
+
+  }
+
+  .item-size {
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    li {
-        @include g.myFlex($gap: 4px);
-
-        strong {
-            min-width: 80px;
-            display: flex;
-            color: g.$main-color1;
-            font-size: 1.4rem;
-            font-weight: 400;
-        }
-
-        span {
-            flex: 1;
-            color: g.$sub-color3;
-            font-size: 1.4rem;
-        }
+    p {
+      color: g.$sub-color2;
+      font-size: 1.4rem;
     }
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      button {
+        min-width: 32px;
+        min-height: 24px;
+        line-height: 2.4rem;
+        color: g.$sub-color2;
+        border: 1px solid g.$sub-color2;
+        border-radius: 2px;
+        background: g.$main-color2;
+        font-size: 1.2rem;
+
+        &:disabled {
+          background: g.$sub-color1;
+          text-decoration: line-through;
+        }
+
+        &.active {
+          color: g.$main-color2;
+          background: g.$main-color1;
+          border-color: g.$main-color1;
+        }
+      }
+
+    }
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    color: g.$main-color1;
+    font-size: 1.4rem;
+
+    .btn-count {
+      @include g.myFlex($gap: 0, $jc: flex-start);
+
+      button,
+      span {
+        text-align: center;
+        display: inline-block;
+        height: 28px;
+        background-color: g.$main-color2;
+        border: 1px solid g.$sub-color2;
+        line-height: 28px;
+      }
+
+      button {
+        width: 28px;
+
+        &.minus {
+          background-image: url('../../../public/images/icon/icon-minus.png');
+        }
+
+        &.plus {
+          background-image: url('../../../public/images/icon/icon-plus.png');
+        }
+
+        background-repeat: no-repeat;
+        background-position: center;
+
+      }
+
+      span {
+        border-left: none;
+        border-right: none;
+        width: 40px;
+      }
+
+    }
+  }
+
+}
+
+.item-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.item-total {
+  @include g.myFlex($gap: 2rem, $jc: flex-start);
+
+  .text {
+    color: g.$sub-color3;
+    font-size: 2rem;
+  }
+
+  .num {
+    color: g.$main-color1;
+    font-size: 2rem;
+  }
+
+}
+
+.cart-btn {
+  @include g.myFlex($gap: 1.2rem, $jc: flex-start);
+}
+
+.rating {
+  @include g.myFlex($gap: 8px, $jc: flex-start);
+
+  p {
+    &:last-child {
+      color: g.$sub-color2;
+      font-size: 1.2rem;
+    }
+  }
+
+}
+
+.etc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    @include g.myFlex($gap: 4px);
+
+    strong {
+      min-width: 80px;
+      display: flex;
+      color: g.$main-color1;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    span {
+      flex: 1;
+      color: g.$sub-color3;
+      font-size: 1.4rem;
+    }
+  }
 }
