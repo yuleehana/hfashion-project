@@ -4,12 +4,11 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    width: 280px;
-    background: red;
+    width: 250px;
+    height: 450px;
+    // background: red;
     .sub-new-img {
-      img {
-        // width: 288px;
-        height: 365px;
+      > img {
         object-fit: cover;
       }
     }
@@ -46,7 +45,7 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 80px;
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 0 116px;
   overflow: hidden;
 
@@ -71,6 +70,7 @@
     img {
       max-width: none !important;
       object-fit: cover;
+      width: 100%;
     }
   }
 }
@@ -82,6 +82,7 @@
   flex-direction: column;
   align-items: center;
   gap: 80px;
+
   h2 {
     font-size: 54px;
     font-weight: 400;
