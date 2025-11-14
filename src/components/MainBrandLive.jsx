@@ -3,7 +3,7 @@ import React from 'react'
 const MainBrandLive = () => {
     return (
         <section>
-            <h2>MainBrandLive</h2>
+            <h2>BRAND LIVE</h2>
             <div className='container'>
                 내용
             </div>
