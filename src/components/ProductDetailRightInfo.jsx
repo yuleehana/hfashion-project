@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
 import { Link, useParams } from 'react-router-dom';
+import '../../src/'
 
 const sizes = ["XS", "S", "M", "L", "XL"]
 const colors = ["pink", "sky", "white", "black"]
@@ -76,8 +77,8 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className='item-title'>{product.title}</div>
           <div className='item-price'>
             <strong>{(product.price * 0.8).toLocaleString()}</strong>
-            <span>20%</span>
             <del>{(product.price).toLocaleString()}</del>
+            <span>20%</span>
             <button>쿠폰 다운로드</button>
           </div>
         </div>
@@ -137,8 +138,8 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className="cart-btn">
-          <Link><button onClick={handleAddToCart}>장바구니</button></Link>
-          <Link to='/pay'><button>바로구매</button></Link>
+          <Link className='btn middle primary'  onClick={handleAddToCart}>장바구니</Link>
+          <Link to='/pay'>바로구매</Link>
         </div>
 
         <div className='item-box'>
