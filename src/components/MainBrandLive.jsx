@@ -106,7 +106,7 @@ const MainBrandLive = () => {
           {brandCate.map((bCate, id) => (
             <li
               key={id}
-              onClick={() => handleClick(id)}
+              onClick={() => handleClick(id - 1)}
               className={activeIndex === id ? 'active' : ''}
             >
               {bCate}
