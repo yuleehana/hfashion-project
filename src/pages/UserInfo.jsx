@@ -90,11 +90,11 @@ const UserInfo = () => {
                 </div>
 
                 <div className="product-btn-list">
-                  <div className="order-delivery-tracking">
+                  <div className="button-wrap">
                     <button>주문/배송 조회</button>
                   </div>
                   <p>|</p>
-                  <div className="cancel-ex-return">
+                  <div className="button-wrap">
                     <button>취소/교환/반품 <span>0</span>건</button>
                   </div>
                 </div>
