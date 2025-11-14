@@ -41,6 +41,7 @@
           }
           .review-text{
             font-size: 16px;
+            word-break:keep-all;
           }
         }
         .item-bottom{
@@ -50,38 +51,30 @@
 
           .product-name{
             font-size: 16px;
+            word-break:keep-all;
           }
           .rating-box{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
             span{
               font-size: 16px;
+            }
+            .stars{
+              display: flex;
+              align-items: center;
+              gap: 2px;
+              
+              .star-icon{
+                width: 16px;
+                height: 16px;
+                object-fit: contain;
+              }
             }
           }
         }
       }
-    }
-  }
-}
-.more-btn-wrap{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding-top: 30px;
-
-  .more-btn{
-    padding: 10px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-
-    &::after{
-      content:"";
-      background-image: url("../../../public/images/arrow-right-thin.svg");
-      display: inline-block;
-      background-size: contain;
-      width: 8px;
-      height: 8px;
-      margin: 6px;
     }
   }
 }
