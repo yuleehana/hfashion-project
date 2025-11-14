@@ -88,51 +88,14 @@ const brandData = [
 
 
 const MainBrandLive = () => {
-  const brandCate = ['ROUGE&LOUNG', 'TOMMY JEANS', 'SJYP'];
+    return (
+        <section>
+            <h2>BRAND LIVE</h2>
+            <div className='container'>
+                내용
+            </div>
+        </section>
+    )
+}
 
-  const [activeIndex, setActiveIndex] = useState(1);
-
-  const handleClick = (index) => {
-    setActiveIndex(index);
-  };
-
-  //메인이미지
-  const mainNew = brandData.map((group) => group.find((v) => v.id === 1).img);
-
-  return (
-    <section className="brand-live-section">
-      <h2>BRAND LIVE</h2>
-      <div className="container">
-        <ul>
-          {brandCate.map((bCate, id) => (
-            <li
-              key={id}
-              onClick={() => handleClick(id - 1)}
-              className={activeIndex === id ? 'active' : ''}
-            >
-              {bCate}
-            </li>
-          ))}
-        </ul>
-        <div
-          className="live-section-wrap"
-          style={{
-            transform: `translateX(${1 - activeIndex * 33}%)`,
-          }}
-        >
-          {brandData.map((bData, index) => (
-            <BrandLiveProducts
-              key={index}
-              mainNew={bData.find((b) => b.id === 1).img}
-              brand={bData}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default MainBrandLive;
-
-
+export default MainBrandLive
