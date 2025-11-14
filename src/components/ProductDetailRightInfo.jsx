@@ -9,7 +9,7 @@ const colors = ["pink", "sky", "white", "black"]
 const ProductDetailRightInfo = ({ product }) => {
   const { code } = useParams();
   // 전역변수 불러오기
-  const { items, onFetchItem, onAddToCart, onPlusCount } = useProductStore();
+  const { items, onFetchItem, onAddToCart } = useProductStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState("");
@@ -67,11 +67,12 @@ const ProductDetailRightInfo = ({ product }) => {
             <p className='favorite'>
               <span>
                 <i>0</i>
-                <span><img src="../../images/icon/icon-heart-grey.svg" alt="" /></span>
+                <span ><img src="../../images/icon/icon-heart-grey.svg" alt="" /></span>
               </span>
               <span><img src="../../images/icon/icon-share.svg" alt="" /></span>
             </p>
           </div>
+
           <div className='item-code'>{product.code}</div>
           <div className='item-title'>{product.title}</div>
           <div className='item-price'>
@@ -83,18 +84,9 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className='item-box'>
-          {/* <div className='item-color'>
-            <button className='pink'></button>
-            <button className='sky active'></button>
-            <button className='white'></button>
-            <button className='black'></button>
-          </div> */}
-
           <div className="item-color">
             {colors.map((color, id) => (
               <button key={id}
-                // className={`${color} ${selectColor ? "active" : ""}`}
-                // className={selectColor===color ? "active" : ""}
                 className={`${color} ${selectColor === color ? "active" : ""}`}
                 onClick={() => setSelectColor(color)}>
               </button>
@@ -124,8 +116,8 @@ const ProductDetailRightInfo = ({ product }) => {
           <p className='btn-count'>
             <button className='minus' onClick={() => setCount((c) => Math.max(1, c - 1))}>
             </button>
-            <span>{product.count}</span>
-            <button className='plus' onClick={() => onPlusCount(item.code)}>
+            <span>{count}</span>
+            <button className='plus' onClick={() => setCount((c) => c + 1)}>
             </button>
           </p>
 
@@ -133,7 +125,7 @@ const ProductDetailRightInfo = ({ product }) => {
 
         <div className="item-total">
           <span className="text">합계</span>
-          <span className="num">438,000</span>
+          <span className="num">{((product.price * 0.8) * `${count}`).toLocaleString()}</span>
         </div>
 
         <div className="cart-btn">
