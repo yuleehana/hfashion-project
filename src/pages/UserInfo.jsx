@@ -26,6 +26,11 @@ const UserInfo = () => {
 
   return (
     <div className='sub-page'>
+      <div className="channel-wrap">
+        <div className="channel">
+          
+        </div>
+      </div>
       <div className='content-inner'>
         <div className='user-info-left'>
           <UserInfoLeftMenu />

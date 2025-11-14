@@ -858,7 +858,7 @@ export const products = [
         ],
         thumbImg: "/images/products/P4W4RB947GR74/thumbnail.jpg"
     },
-    
+
     {
         category: "man pants",
         rating: 4,
@@ -8997,17 +8997,16 @@ export const products = [
             "WHITE"
         ],
         desc: [
-            "/images/products/PR9QW0EJP20131-N/desc/imgi_30_QW0EJP20131_SIZE.jpg",
-            "/images/products/PR9QW0EJP20131-N/desc/imgi_32_delivery_1.jpg"
+
         ],
         detail: [
+            "/images/products/PR9QW0EJP20131-N/slide/imgi_27_QW0EJP20131_detail2.jpg",
+            "/images/products/PR9QW0EJP20131-N/slide/imgi_28_QW0EJP20131_detail3.jpg"
+        ],
+        slide: [
             "/images/products/PR9QW0EJP20131-N/detail/imgi_26_QW0EJP20131_detail1.jpg",
             "/images/products/PR9QW0EJP20131-N/detail/imgi_56_GPR925042103495_0_ORGINL_1745231629931.jpg",
             "/images/products/PR9QW0EJP20131-N/detail/imgi_57_GPR925042103495_1_ORGINL_1745231630058.jpg"
-        ],
-        slide: [
-            "/images/products/PR9QW0EJP20131-N/slide/imgi_27_QW0EJP20131_detail2.jpg",
-            "/images/products/PR9QW0EJP20131-N/slide/imgi_28_QW0EJP20131_detail3.jpg"
         ],
         thumbImg: "/images/products/PR9QW0EJP20131-N/thumbnail.jpg"
     },
