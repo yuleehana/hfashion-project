@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
-import { Link, useParams } from 'react-router-dom';
-import '../../src/'
+import { Link, usePagirams } from 'react-router-dom';
+import '../App.scss'
 
 const sizes = ["XS", "S", "M", "L", "XL"]
 const colors = ["pink", "sky", "white", "black"]
