@@ -83,47 +83,15 @@
       width: 2rem;
       height: 2rem;
 
-      // &.active {
-      @if () {
-        .white {
-          background-image: url('../../../public/images/icon/icon-color-check.png');
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
+      &.active {
+        background-image: url('../../../public/images/icon/icon-color-check.png');
+        background-repeat: no-repeat;
+        background-position: center;
       }
 
-      @else {
-        &.pink,
-        &.black,
-        &.sky {
-          background-image: url('../../../public/images/icon/icon-color-check-white.png');
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
+      &.active.white {
+        background-image: url('../../../public/images/icon/icon-color-check-white.png');
       }
-
-      // }
-
-
-      // &.active {
-      //   background-repeat: no-repeat;
-      //   background-position: center;
-
-      //   // background-image: if #{$is-active}((#{$class-name}), url('../../../public/images/icon/icon-color-check.png'),
-      //   //   url('../../../public/images/icon/icon-color-check-white.png'));
-
-      //   // else: url('../../../public/images/icon/icon-color-check.png');
-
-      //   @if #{$is-active}(#{$class-name}) {
-      //     background-image: url('../../../public/images/icon/icon-color-check.png');
-      //   }
-
-      //   @else {
-      //     background-image: url('../../../public/images/icon/icon-color-check-white.png');
-      //   }
-      // }
 
       &.pink {
         background-color: pink;
