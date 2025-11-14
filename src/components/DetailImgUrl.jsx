@@ -1,5 +1,5 @@
 import React from 'react';
-import './sass/DetailImgUrl.scss'
+
 const DetailImgUrl = ({ product }) => {
   // product가 undefined일 경우 빈 배열로 대체하여 안전하게 렌더링
   const ditailImgUrls = product?.detail || []
@@ -7,10 +7,12 @@ const DetailImgUrl = ({ product }) => {
 
   return (
     <section>       
-      <ul className='detail-img' >
+      <ul>
         {ditailImgUrls.map((url, id) => (
           <li key={id}>
-            <img src={url} alt={url} />
+            <p>여기{id}</p>
+            {url}
+            <img src={url} alt='' />
           </li>
         ))}
       </ul>

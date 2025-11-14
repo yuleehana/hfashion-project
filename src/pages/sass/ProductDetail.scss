@@ -1,21 +1,14 @@
 @use '../../App.scss' as g;
 
 .product-detail-wrap {
-    margin: 0 auto;
     width: 100%;
     max-width: 1440px;
+    margin: 0 auto;
 
     @include g.myFlex($gap: 2rem, $ai: flex-start);
 
-    h3 {
-        margin-bottom: 40px;
-        color: g.$main-color1;
-        font-size: 24px;
-        font-weight: 500;
-    }
-
     .detail-left {
-        margin-top: 4rem;
+        margin-top: 2rem;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -54,7 +47,7 @@
 
     .detail-right {
         position: sticky;
-        top: 120px;
+        top: 100px;
         min-width: 380px;
         width: 380px;
     }
