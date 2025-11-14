@@ -86,6 +86,7 @@ const brandData = [
   ],
 ];
 
+
 const MainBrandLive = () => {
   const brandCate = ['ROUGE&LOUNG', 'TOMMY JEANS', 'SJYP'];
 
@@ -133,3 +134,5 @@ const MainBrandLive = () => {
 };
 
 export default MainBrandLive;
+
+
