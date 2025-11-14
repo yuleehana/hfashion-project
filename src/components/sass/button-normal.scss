@@ -1,0 +1,36 @@
+@use '../../App.scss' as g;
+
+.btn {
+    text-align: center;
+    &.small {
+        height: 32px;
+        font-size: 16px;    
+    }
+
+    &.middle {
+        height: 42px;
+        line-height: 42px;
+        min-width: 136px;
+        font-size: 16px;
+    }
+
+    &.large {
+        height: 64px;
+        font-size: 24px;
+    }
+
+    &.primary {
+        color: g.$main-color2;
+        background-color: g.$main-color1;
+
+        &.second {
+            background-color: g.$percent-color;
+        }
+    }
+    &.outline{
+      border: 1px solid g.$main-color1;
+    }
+    &.wFull{
+      display: block;
+    }
+}

@@ -11,6 +11,7 @@
     .brand {
       font-size: 1.4rem;
       color: g.$sub-color2;
+      font-weight: 300;
     }
 
     .favorite {
@@ -30,8 +31,11 @@
   }
 
   .item-code {
+    margin-top: 20px;
     font-size: 1.4rem;
-    color: g.$sub-color2;
+    color: g.$sub-color3;
+    font-weight: 300;
+
   }
 
   .item-title {
@@ -55,8 +59,7 @@
     }
 
     span {
-      color: g.$sub-color3;
-      font-family: Pretendard;
+      color: g.$percent-color;
       font-size: 1.6rem;
     }
 
@@ -207,7 +210,8 @@
 .item-box {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.2rem;
+  
 }
 
 .item-total {
