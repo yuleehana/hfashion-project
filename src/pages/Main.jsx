@@ -8,17 +8,17 @@ import './sass/Main.scss'
 
 const Main = () => {
     return (
-        <div className="inner">
+        <>
             <div className="main-slider-wrap">
                 <MainSwiper />
             </div>
-            <div className="main-content">
+            <div className="main-content inner">
                 <MainKeyWordRanking />
                 <MainCategoryNew />
                 <MainBrandLive />
                 <MainBestReview />
             </div>
-        </div>
+        </>
     )
 }
 

@@ -70,6 +70,10 @@
     }
   }
 
+  $active: true;
+  $white: 'white';
+
+
   .item-color {
     @include g.myFlex($gap: 14px, $jc: flex-start);
 
@@ -123,34 +127,33 @@
       font-size: 1.4rem;
     }
 
-    ul {
+    div {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
 
-      li {
-        button {
-          min-width: 32px;
-          min-height: 24px;
-          line-height: 2.4rem;
-          color: g.$sub-color2;
-          border: 1px solid g.$sub-color2;
-          border-radius: 2px;
-          background: g.$main-color2;
-          font-size: 1.2rem;
+      button {
+        min-width: 32px;
+        min-height: 24px;
+        line-height: 2.4rem;
+        color: g.$sub-color2;
+        border: 1px solid g.$sub-color2;
+        border-radius: 2px;
+        background: g.$main-color2;
+        font-size: 1.2rem;
 
-          &:disabled {
-            background: g.$sub-color1;
-            text-decoration: line-through;
-          }
+        &:disabled {
+          background: g.$sub-color1;
+          text-decoration: line-through;
+        }
 
-          &.active {
-            color: g.$main-color2;
-            background: g.$main-color1;
-            border-color: g.$main-color1;
-          }
+        &.active {
+          color: g.$main-color2;
+          background: g.$main-color1;
+          border-color: g.$main-color1;
         }
       }
+
     }
   }
 

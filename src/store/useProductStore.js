@@ -38,8 +38,6 @@ export const useProductStore = create((set, get) => ({
   },
 
 
-
-
   // 카트에 담긴 상픔 개수
   cartItems: [],
   cartCount: [],
@@ -55,31 +53,7 @@ export const useProductStore = create((set, get) => ({
     )
     let updateCart;
 
-    if (existing) {
-      updateCart = cart.map((item) =>
-        item.id === product.id && item.size === product.size ?
-          { ...item, count: item + product.count } : item
-      )
-    }
-    else {
-      updateCart = [...cart, { ...product }]
-    }
-
-    // 총 구매 금액
-    let total = 0;
-    updateCart.foreEach((item) => {
-      total += item.price * item.count
-    })
-
-    set({
-      cartItems: updateCart,
-      cartCount: updateCart.length,
-      totalPrice: total
-    })
-
   },
-
-
 
   onPlusCount: (id) => {
     const cart = get().cartItems;
