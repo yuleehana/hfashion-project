@@ -70,5 +70,18 @@
 
   .more-btn{
     padding: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+
+    &::after{
+      content:"";
+      background-image: url("../../../public/images/arrow-right-thin.svg");
+      display: inline-block;
+      background-size: contain;
+      width: 8px;
+      height: 8px;
+      margin: 6px;
+    }
   }
 }
