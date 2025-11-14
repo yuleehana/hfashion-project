@@ -77,32 +77,32 @@ const UserInfo = () => {
 
           <div className="recent-orders section">
             <div className="section-title">최근 주문</div>
-              <div className="orders-product-table">
-                <div className="orders-product-list">
-                  <ul className='orders-list-box'>
-                    <li>
-                      <BuyProductList />
-                    </li>
-                    <li>
-                      <BuyProductList />
-                    </li>
-                  </ul>
-                </div>
+            <div className="orders-product-table">
+              <div className="orders-product-list">
+                <ul className='orders-list-box'>
+                  <li>
+                    <BuyProductList />
+                  </li>
+                  <li>
+                    <BuyProductList />
+                  </li>
+                </ul>
+              </div>
 
-                <div className="product-btn-list">
-                  <div className="button-wrap">
-                    <button>주문/배송 조회</button>
-                  </div>
-                  <p>|</p>
-                  <div className="button-wrap">
-                    <button>취소/교환/반품 <span>0</span>건</button>
-                  </div>
+              <div className="product-btn-list">
+                <div className="button-wrap">
+                  <button>주문/배송 조회</button>
+                </div>
+                <p>|</p>
+                <div className="button-wrap">
+                  <button>취소/교환/반품 <span>0</span>건</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     )
 }
 
