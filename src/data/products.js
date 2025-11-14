@@ -1109,9 +1109,9 @@ export const products = [
         ],
         detail: [
             "/images/products/POYSP2550530270001/detail/50530270_001_1.jpg",
-            "/images/products/POYSP2550530270001/detail/50530270_001_2.jpg",
-            "/images/products/POYSP2550530270001/detail/50530270_001_3.jpg",
-            "/images/products/POYSP2550530270001/detail/50530270_001_4.jpg"
+            "/images/products/POYSP2550530270001/detail/50530270_001_2.jpg"
+            // "/images/products/POYSP2550530270001/detail/50530270_001_3.jpg",
+            // "/images/products/POYSP2550530270001/detail/50530270_001_4.jpg"
         ],
         slide: [
             "/images/products/POYSP2550530270001/slide/GPOY25071440002_1_ORGINL_1752481055782.jpg",
@@ -3754,11 +3754,11 @@ export const products = [
         ],
         desc: [],
         detail: [
-            "/images/products/T12F7WSH510MT10N5/detail/6238545200112741.jpg",
-            "/images/products/T12F7WSH510MT10N5/detail/6238553866649708.jpg",
-            "/images/products/T12F7WSH510MT10N5/detail/6238635384066446.jpg",
-            "/images/products/T12F7WSH510MT10N5/detail/6752014643004793.jpg",
-            "/images/products/T12F7WSH510MT10N5/detail/6752043337607419.jpg",
+            // "/images/products/T12F7WSH510MT10N5/detail/6238545200112741.jpg",
+            // "/images/products/T12F7WSH510MT10N5/detail/6238553866649708.jpg",
+            // "/images/products/T12F7WSH510MT10N5/detail/6238635384066446.jpg",
+            // "/images/products/T12F7WSH510MT10N5/detail/6752014643004793.jpg",
+            // "/images/products/T12F7WSH510MT10N5/detail/6752043337607419.jpg",
             "/images/products/T12F7WSH510MT10N5/detail/6752059790322445.jpg",
             "/images/products/T12F7WSH510MT10N5/detail/6752076019941106.jpg"
         ],
@@ -3795,10 +3795,10 @@ export const products = [
         ],
         desc: [],
         detail: [
-            "/images/products/T12F7WSH160MT1BDS/detail/1499460464465167.jpg",
-            "/images/products/T12F7WSH160MT1BDS/detail/1499461165774280.jpg",
-            "/images/products/T12F7WSH160MT1BDS/detail/1499461454381520.jpg",
-            "/images/products/T12F7WSH160MT1BDS/detail/1499461779679649.jpg",
+            // "/images/products/T12F7WSH160MT1BDS/detail/1499460464465167.jpg",
+            // "/images/products/T12F7WSH160MT1BDS/detail/1499461165774280.jpg",
+            // "/images/products/T12F7WSH160MT1BDS/detail/1499461454381520.jpg",
+            // "/images/products/T12F7WSH160MT1BDS/detail/1499461779679649.jpg",
             "/images/products/T12F7WSH160MT1BDS/detail/1499462217539728.jpg",
             "/images/products/T12F7WSH160MT1BDS/detail/1499462441938049.jpg"
         ],
@@ -3864,12 +3864,12 @@ export const products = [
         ],
         desc: [],
         detail: [
-            "/images/products/T12F6WSH02CMT2YCF/detail/6239303248382658.jpg",
-            "/images/products/T12F6WSH02CMT2YCF/detail/6239308229160620.jpg",
-            "/images/products/T12F6WSH02CMT2YCF/detail/6239312300486491.jpg",
-            "/images/products/T12F6WSH02CMT2YCF/detail/6239314532816265.jpg",
-            "/images/products/T12F6WSH02CMT2YCF/detail/6751202094582110.jpg",
-            "/images/products/T12F6WSH02CMT2YCF/detail/6751202820654192.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6239303248382658.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6239308229160620.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6239312300486491.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6239314532816265.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6751202094582110.jpg",
+            // "/images/products/T12F6WSH02CMT2YCF/detail/6751202820654192.jpg",
             "/images/products/T12F6WSH02CMT2YCF/detail/6751203530822776.jpg",
             "/images/products/T12F6WSH02CMT2YCF/detail/6751234468395972.jpg"
         ],
