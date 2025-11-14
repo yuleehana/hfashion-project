@@ -6,6 +6,8 @@ import ProductDetailRightInfo from '../components/ProductDetailRightInfo'
 import DetailPageSwiper from '../components/DetailPageSwiper';
 import DetailSimilarSwiper from '../components/DetailSimilarSwiper';
 import DetailImgUrl from '../components/DetailImgUrl';
+import MdComment from '../components/MdComment';
+import ProdctActualSize from '../components/ProdctActualSize';
 
 
 const ProductDetail = () => {
@@ -46,7 +48,8 @@ const ProductDetail = () => {
             <li><Link>리뷰(100)</Link></li>
             <li><Link>상품Q&A(2)</Link></li>
           </ul>
-          <p>'본 상품에 등록되어 있는 정보는 판매자가 직접 등록한 것으로, 등록된 정보에 대한 책임은 판매자에게 있습니다'</p>
+          <MdComment />
+          
           <DetailImgUrl product={product} />
           <section>
             <h3>상품고시정보</h3>
@@ -61,9 +64,8 @@ const ProductDetail = () => {
               <li><strong>A/S 책임자,전화번호</strong><span>(주)한섬,18005700</span></li>
             </ul>
           </section>
-          <section>
-            <h3>실측사이즈</h3>
-          </section>
+          <ProdctActualSize /> 
+          
           <section>
             <h3>리뷰 (32)</h3>
           </section>
