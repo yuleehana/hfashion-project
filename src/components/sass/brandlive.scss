@@ -1,0 +1,109 @@
+// BrandLiveProduct 컴포넌트
+.sub-new-wrap {
+  .sub-new {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 250px;
+    height: 450px;
+    // background: red;
+    .sub-new-img {
+      > img {
+        object-fit: cover;
+      }
+    }
+    .sub-new-textbox {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      .sub-new-text {
+        display: flex;
+        gap: 8px;
+        align-items: end;
+        .sub-new-price {
+          font-size: 18px;
+          font-weight: 400;
+        }
+        .sub-new-saleprice,
+        .sub-new-sale {
+          font-size: 16px;
+        }
+        .sub-new-saleprice {
+          color: rgba($color: #000000, $alpha: 0.3);
+          text-decoration: line-through;
+        }
+        .sub-new-sale {
+          color: #eebe81;
+        }
+      }
+    }
+  }
+}
+
+//BrandLiveProducts
+.brand-live-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 80px;
+  // border: 1px solid black;
+  padding: 0 116px;
+  overflow: hidden;
+
+  .brand-live-wrap-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    > p {
+      text-align: center;
+      font-size: 32px;
+    }
+    .brand-live-wrap-left-img {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+  .main-new {
+    height: 600px;
+    width: 500px;
+    img {
+      max-width: none !important;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+
+// MainBrandLive
+.brand-live-section {
+  margin: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+
+  h2 {
+    font-size: 54px;
+    font-weight: 400;
+  }
+  .container {
+    ul {
+      display: flex;
+      justify-content: center;
+      li {
+        cursor: pointer;
+        width: 180px;
+        font-size: 20px;
+        text-align: center;
+        gap: 90px;
+        margin-bottom: 20px;
+        color: #838383;
+      }
+    }
+    .live-section-wrap {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+  }
+}
