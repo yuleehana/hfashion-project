@@ -3,88 +3,106 @@ import { useAuthStore } from '../store/authstore'
 import { Link, useNavigate } from 'react-router-dom';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 import "./sass/UserInfo.scss";
+import BuyProductList from '../components/BuyProductList';
 
 const UserInfo = () => {
-    const { user, onLogout } = useAuthStore();
+  const { user, onLogout } = useAuthStore();
 
-    const navigate = useNavigate();
-
-
-    // 메서드
-    const handleLogout = () => {
-        onLogout();
-        alert('로그아웃 되었습니다')
-
-        navigate('/')
-    }
+  const navigate = useNavigate();
 
 
-    if (!user) {
-        return <p>로그인된 유저가 없습니다</p>;
-    }
+  // 메서드
+  const handleLogout = () => {
+    onLogout();
+    alert('로그아웃 되었습니다')
 
-    return (
-        <div className='sub-page'>
-            <div className='content-inner'>
-                <div className='user-info-left'>
-                    <UserInfoLeftMenu />
-                </div>
-                
-                <div className='user-info-right'>
-                    <div className="content-profile-point section">
-                        {/* <h2>{user.name}</h2>
-                        <p>{user.email}</p>
-                        <button onClick={handleLogout}>로그아웃</button> */}
-                        <div className="user-idname-box section-title">
-                            {`${user.email}(${user.name})님, 환영합니다!`}
-                        </div>
+    navigate('/')
+  }
 
-                        <div className="favor-list-wrap">
-                            <div className="favor-list-box">
-                                <div className="list-box">
-                                    <div className="list-name">
-                                        멤버쉽등급&gt;
-                                    </div>
-                                    <p>Friend</p>
-                                </div>
 
-                                <div className="inlist-box">
-                                    <div className="list-box">
-                                        <div className="list-name">
-                                            멤버쉽등급&gt;
-                                        </div>
-                                        <p>15</p>
-                                    </div>
+  if (!user) {
+    return <p>로그인된 유저가 없습니다</p>;
+  }
 
-                                    <div className="list-box">
-                                        <div className="list-name">
-                                            상품리뷰&gt;
-                                        </div>
-                                        <p>21</p>
-                                    </div>
-
-                                    <div className="list-box">
-                                        <div className="list-name">
-                                            적립금&gt;
-                                        </div>
-                                        <p>1500</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="recent-orders section">
-                        <div className="section-title">최근 주문</div>
-                        <div className="orders-product-list">
-                            <ul className='orders-list-box'>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className='sub-page'>
+      <div className='content-inner'>
+        <div className='user-info-left'>
+          <UserInfoLeftMenu />
         </div>
+              
+        <div className='user-info-right'>
+          <div className="content-profile-point section">
+            {/* <h2>{user.name}</h2>
+            <p>{user.email}</p>
+            <button onClick={handleLogout}>로그아웃</button> */}
+            <div className="user-idname-box section-title">
+              {`${user.email}(${user.name})님, 환영합니다!`}
+            </div>
+
+            <div className="favor-list-wrap">
+              <div className="favor-list-box">
+                <div className="list-box">
+                  <div className="list-name">
+                    멤버쉽등급&gt;
+                  </div>
+                  <p>Friend</p>
+                </div>
+
+                <div className="inlist-box">
+                  <div className="list-box">
+                    <div className="list-name">
+                      멤버쉽등급&gt;
+                    </div>
+                    <p>15</p>
+                  </div>
+
+                  <div className="list-box">
+                    <div className="list-name">
+                      상품리뷰&gt;
+                    </div>
+                    <p>21</p>
+                  </div>
+
+                  <div className="list-box">
+                    <div className="list-name">
+                      적립금&gt;
+                    </div>
+                    <p>1500</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="recent-orders section">
+            <div className="section-title">최근 주문</div>
+              <div className="orders-product-table">
+                <div className="orders-product-list">
+                  <ul className='orders-list-box'>
+                    <li>
+                      <BuyProductList />
+                    </li>
+                    <li>
+                      <BuyProductList />
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="product-btn-list">
+                  <div className="order-delivery-tracking">
+                    <button>주문/배송 조회</button>
+                  </div>
+                  <p>|</p>
+                  <div className="cancel-ex-return">
+                    <button>취소/교환/반품 <span>0</span>건</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     )
 }
 
