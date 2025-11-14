@@ -1,12 +1,13 @@
 import React from 'react'
 import SubPage from './SubPage'
+import './sass/CategoryPage.scss'
 
 const SundriesWfashion = () => {
   return (
-    <div>
-      <h2>여성 패션 잡화</h2>
+    <main>
+      <h2 className='category-page-title'>여성 패션 잡화</h2>
       <SubPage category='sundries women etc' />
-    </div>
+    </main>
   )
 }
 

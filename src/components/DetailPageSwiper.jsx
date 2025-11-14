@@ -16,6 +16,12 @@ const DetailPageSwiper = ({ product }) => {
             loop={true}
             slidesPerView={2}
             spaceBetween={0}
+            style={{
+                '--swiper-navigation-color': '#000',
+                '--swiper-pagination-color': '#000',
+                '--swiper-pagination-bottom': '40px',
+                '--swiper-pagination-bullet-size': '12px'
+            }}
         >
             {slides.map((imgUrl, idx) => (
                 <SwiperSlide key={idx}>

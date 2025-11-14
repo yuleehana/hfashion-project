@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
-import { useParams } from 'react-router-dom';
+import { Link, usePagirams } from 'react-router-dom';
+import '../App.scss'
 
 const sizes = ["XS", "S", "M", "L", "XL"]
+const colors = ["pink", "sky", "white", "black"]
 
 const ProductDetailRightInfo = ({ product }) => {
   const { code } = useParams();
   // 전역변수 불러오기
-  const { items, onFetchItem, onAddToCart } = useProductStore();
+  const { items, onFetchItem, onAddToCart, onPlusCount } = useProductStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState("");
 
   // 선택한 사이즈 체크
   const [selectSize, setSelectSize] = useState("");
+  // 선택 색상 체크
+  const [selectColor, setSelectColor] = useState("");
 
   // 수량 체크 변수
   const [count, setCount] = useState(1);
@@ -72,51 +76,72 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className='item-code'>{product.code}</div>
           <div className='item-title'>{product.title}</div>
           <div className='item-price'>
-            <strong>{product.price * 0.8}</strong>
+            <strong>{(product.price * 0.8).toLocaleString()}</strong>
+            <del>{(product.price).toLocaleString()}</del>
             <span>20%</span>
-            <del>{product.price}</del>
             <button>쿠폰 다운로드</button>
           </div>
         </div>
-        {/*  */}
+
         <div className='item-box'>
-          <div className='item-color'>
+          {/* <div className='item-color'>
             <button className='pink'></button>
             <button className='sky active'></button>
             <button className='white'></button>
             <button className='black'></button>
+          </div> */}
+
+          <div className="item-color">
+            {colors.map((color, id) => (
+              <button key={id}
+                // className={`${color} ${selectColor ? "active" : ""}`}
+                // className={selectColor===color ? "active" : ""}
+                className={`${color} ${selectColor === color ? "active" : ""}`}
+                onClick={() => setSelectColor(color)}>
+              </button>
+            ))}
           </div>
+
           <div className='item-size'>
             <p>사이즈 선택 </p>
-            <div>
-              <button>XS</button>
-              <button disabled>S</button>
-              <button className='active'>M</button>
-              <button>L</button>
-              <button>XL</button>
-            </div>
+            <ul>
+              {sizes.map((size, id) => (
+                <li key={id}>
+                  <button className={selectSize === size ? "active" : ""}
+                    onClick={() => setSelectSize(size)}>
+                    {size}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
           </div>
         </div>
-        {/*  */}
+
         <div className='item-info'>
           <p>색상:레드, 사이즈:M</p>
+
+          {/* 수량 선택 */}
           <p className='btn-count'>
-            <button className='minus'></button>
-            <span>2</span>
-            <button className='plus'></button>
+            <button className='minus' onClick={() => setCount((c) => Math.max(1, c - 1))}>
+            </button>
+            <span>{product.count}</span>
+            <button className='plus' onClick={() => onPlusCount(item.code)}>
+            </button>
           </p>
+
         </div>
-        {/*  */}
+
         <div className="item-total">
           <span className="text">합계</span>
           <span className="num">438,000</span>
         </div>
-        {/*  */}
+
         <div className="cart-btn">
-          <button>장바구니</button>
-          <button>바로구매</button>
+          <Link className='btn middle primary'  onClick={handleAddToCart}>장바구니</Link>
+          <Link to='/pay'>바로구매</Link>
         </div>
-        {/*  */}
+
         <div className='item-box'>
           <div className="rating">
             <p>★★★★☆</p>

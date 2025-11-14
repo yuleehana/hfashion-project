@@ -59,6 +59,13 @@ const MainSwiper = () => {
                 centeredSlides={true}
                 slidesPerView={1.8}
                 spaceBetween={20}
+
+                style={{
+                    '--swiper-navigation-color': '#fff',
+                    '--swiper-pagination-color': '#fff',
+                    '--swiper-pagination-bottom': '40px',
+                    '--swiper-pagination-bullet-size': '12px'
+                }}
             >
                 {slides.map((slide, id) => (
                     <SwiperSlide key={id}>

@@ -3,9 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const Sundries = () => {
     return (
-        <div>
-            <Outlet />
-        </div>
+        <Outlet />
     )
 }
 

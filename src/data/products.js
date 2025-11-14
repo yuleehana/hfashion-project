@@ -858,7 +858,7 @@ export const products = [
         ],
         thumbImg: "/images/products/P4W4RB947GR74/thumbnail.jpg"
     },
-    
+
     {
         category: "man pants",
         rating: 4,
@@ -1755,12 +1755,12 @@ export const products = [
         ],
         desc: [],
         detail: [
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_1_ORGINL_1761100232953.jpg",
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_2_ORGINL_1761100233192.jpg",
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_3_ORGINL_1761100233420.jpg",
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_4_ORGINL_1761100233615.jpg",
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_5_ORGINL_1751616938451.jpg",
-            "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_6_ORGINL_1751616938644.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_1_ORGINL_1761100232953.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_2_ORGINL_1761100233192.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_3_ORGINL_1761100233420.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_4_ORGINL_1761100233615.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_5_ORGINL_1751616938451.jpg",
+            // "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_6_ORGINL_1751616938644.jpg",
             "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_7_ORGINL_1751616938797.jpg",
             "/images/products/T12F9QVT010MT1DBZ/detail/GM0125070436076_8_ORGINL_1751616939001.jpg"
         ],
@@ -7324,7 +7324,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETMJUO3204-509",
         title: "[테일러메이드] 25FW 남성 라운드 아노락 점퍼",
-        price: 0,
+        price: 350000,
         color: [
             "BEIGE"
         ],
@@ -8907,35 +8907,6 @@ export const products = [
         made: "캄보디아",
         date: "2005.02",
         brand: "Taylormade",
-        code: "PKETWJUO7201-508",
-        title: "[테일러메이드] [엑셀러]25FW 여성 시그니처 바람막이 점퍼 TWJUO7201-508",
-        price: 338000,
-        color: [
-            "L.BEIGE"
-        ],
-        desc: [
-            "/images/products/PKETWJUO7201-508/desc/imgi_42_bottom.jpg"
-        ],
-        detail: [
-            "/images/products/PKETWJUO7201-508/detail/imgi_41_TWJUO7201-508.jpg"
-        ],
-        slide: [
-            "/images/products/PKETWJUO7201-508/slide/imgi_29_L-25FW-11.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_2_GPKE25081853497_3_ORGINL_1757288357751.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_60_GPKE25081853497_0_ORGINL_1757288357311.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_61_GPKE25081853497_3_ORGINL_1757288357751.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_62_GPKE25081853497_4_ORGINL_1757288357904.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_64_GPKE25081853497_1_ORGINL_1757288357456.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_65_GPKE25081853497_2_ORGINL_1757288357603.jpg"
-        ],
-        thumbImg: "/images/products/PKETWJUO7201-508/thumbnail.jpg"
-    },
-    {
-        category: "golf women top",
-        rating: 5,
-        made: "캄보디아",
-        date: "2005.02",
-        brand: "Taylormade",
         code: "PKETWJUO7202-199",
         title: "[테일러메이드] 25FW 여성 하이넥 아노락 점퍼 TWJUO7202-199",
         price: 318000,
@@ -9026,17 +8997,16 @@ export const products = [
             "WHITE"
         ],
         desc: [
-            "/images/products/PR9QW0EJP20131-N/desc/imgi_30_QW0EJP20131_SIZE.jpg",
-            "/images/products/PR9QW0EJP20131-N/desc/imgi_32_delivery_1.jpg"
+
         ],
         detail: [
+            "/images/products/PR9QW0EJP20131-N/slide/imgi_27_QW0EJP20131_detail2.jpg",
+            "/images/products/PR9QW0EJP20131-N/slide/imgi_28_QW0EJP20131_detail3.jpg"
+        ],
+        slide: [
             "/images/products/PR9QW0EJP20131-N/detail/imgi_26_QW0EJP20131_detail1.jpg",
             "/images/products/PR9QW0EJP20131-N/detail/imgi_56_GPR925042103495_0_ORGINL_1745231629931.jpg",
             "/images/products/PR9QW0EJP20131-N/detail/imgi_57_GPR925042103495_1_ORGINL_1745231630058.jpg"
-        ],
-        slide: [
-            "/images/products/PR9QW0EJP20131-N/slide/imgi_27_QW0EJP20131_detail2.jpg",
-            "/images/products/PR9QW0EJP20131-N/slide/imgi_28_QW0EJP20131_detail3.jpg"
         ],
         thumbImg: "/images/products/PR9QW0EJP20131-N/thumbnail.jpg"
     },
@@ -10877,7 +10847,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETMASO3603-101",
         title: "",
-        price: 0,
+        price: 100000,
         color: [
             ""
         ],
@@ -10957,7 +10927,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETWASO7605-101",
         title: "[테일러메이드] 25FW 여성 언발 오버니삭스 TWASO7605-101",
-        price: 0,
+        price: 20000,
         color: [
             ""
         ],
