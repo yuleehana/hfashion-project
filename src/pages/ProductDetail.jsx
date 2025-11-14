@@ -31,7 +31,7 @@ const ProductDetail = () => {
 
   return (
     <div className='sub-page'>
-      <div className="content-inner  product-detail-wrap">
+      <div className="product-detail-wrap">
         <div className="detail-left">
           <div className="product-detail-slide">
             <DetailPageSwiper product={product} />

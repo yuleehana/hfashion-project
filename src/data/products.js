@@ -7324,7 +7324,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETMJUO3204-509",
         title: "[테일러메이드] 25FW 남성 라운드 아노락 점퍼",
-        price: 0,
+        price: 350000,
         color: [
             "BEIGE"
         ],
@@ -8900,35 +8900,6 @@ export const products = [
             "/images/products/PKETWJUO7201-199/slide/imgi_44_GPKE25081853498_2_ORGINL_1757288346767.jpg"
         ],
         thumbImg: "/images/products/PKETWJUO7201-199/thumbnail.jpg"
-    },
-    {
-        category: "golf women top",
-        rating: 5,
-        made: "캄보디아",
-        date: "2005.02",
-        brand: "Taylormade",
-        code: "PKETWJUO7201-508",
-        title: "[테일러메이드] [엑셀러]25FW 여성 시그니처 바람막이 점퍼 TWJUO7201-508",
-        price: 338000,
-        color: [
-            "L.BEIGE"
-        ],
-        desc: [
-            "/images/products/PKETWJUO7201-508/desc/imgi_42_bottom.jpg"
-        ],
-        detail: [
-            "/images/products/PKETWJUO7201-508/detail/imgi_41_TWJUO7201-508.jpg"
-        ],
-        slide: [
-            "/images/products/PKETWJUO7201-508/slide/imgi_29_L-25FW-11.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_2_GPKE25081853497_3_ORGINL_1757288357751.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_60_GPKE25081853497_0_ORGINL_1757288357311.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_61_GPKE25081853497_3_ORGINL_1757288357751.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_62_GPKE25081853497_4_ORGINL_1757288357904.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_64_GPKE25081853497_1_ORGINL_1757288357456.jpg",
-            "/images/products/PKETWJUO7201-508/slide/imgi_65_GPKE25081853497_2_ORGINL_1757288357603.jpg"
-        ],
-        thumbImg: "/images/products/PKETWJUO7201-508/thumbnail.jpg"
     },
     {
         category: "golf women top",
@@ -10877,7 +10848,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETMASO3603-101",
         title: "",
-        price: 0,
+        price: 100000,
         color: [
             ""
         ],
@@ -10957,7 +10928,7 @@ export const products = [
         brand: "Taylormade",
         code: "PKETWASO7605-101",
         title: "[테일러메이드] 25FW 여성 언발 오버니삭스 TWASO7605-101",
-        price: 0,
+        price: 20000,
         color: [
             ""
         ],

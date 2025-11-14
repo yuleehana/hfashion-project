@@ -2,6 +2,7 @@ import React from 'react'
 import './sass/ProductCard.scss'
 
 const ProductCard = ({ sendItem }) => {
+  const price = sendItem?.price ?? 0;
   return (
     <>
       <div className="img-box">
@@ -12,8 +13,8 @@ const ProductCard = ({ sendItem }) => {
         <p className='title'><strong>{sendItem.title}</strong></p>
         <p className='price'>
           <span>
-            <span className='sale-price'>{sendItem.price * 0.8}</span>
-            <del>{sendItem.price}</del>
+            <span className='sale-price'>₩{(price * 0.8).toLocaleString()}</span>
+            <del>{(price).toLocaleString()}</del>
           </span>
           <span className='sale'>20%</span>
         </p>

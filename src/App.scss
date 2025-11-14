@@ -5,50 +5,67 @@ $sub-color1: #f2f2f2;
 $sub-color2: #bababa;
 $sub-color3: #838383;
 $sub-color4: #545454;
-$sub-color5: #2c2c2c;
+$sub-color5: #2C2C2C;
 
 // 공통 사항 layout
 .content-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-// 공통 mixin
-@mixin myFlex($jc: space-between, $ai: center, $fw: null, $gap: 20px) {
-  display: flex;
-  justify-content: $jc;
-  align-items: $ai;
-  flex-wrap: $fw;
-  gap: $gap;
-}
-@mixin myGrid($gap: 20px) {
-  display: grid;
-  gap: $gap;
-  grid-template-columns: repeat(5, minmax(200px, 1fr));
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 // header title
 .section-title {
-  font-size: 40px;
+    font-size: 40px;
 }
+
+// 공통 mixin
+@mixin myFlex($jc: space-between, $ai: center, $fw: null, $gap: 2rem) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-wrap: $fw;
+    gap: $gap;
+}
+
+@mixin myGrid($gap: auto) {
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+
+
 .tab-ver1 {
-  @include myFlex($gap: 0);
-  li {
-    flex: 1;
-    line-height: 50px;
-    border: 1px solid $main-color2;
-    border-bottom-color: $sub-color3;
-    text-align: center;
-    &.active {
-      border: 1px solid $main-color1;
-      border-bottom-color: $main-color2;
-      a {
-        color: $sub-color3;
-      }
+    @include myFlex($gap: 0);
+
+    li {
+        flex: 1;
+        line-height: 50px;
+        border: 1px solid $main-color2;
+        border-bottom-color: $sub-color3;
+        text-align: center;
+
+        &.active {
+            border: 1px solid $main-color1;
+            border-bottom-color: $main-color2;
+
+            a {
+                color: $sub-color3;
+            }
+        }
+
+        a {
+            font-size: 1.6rem;
+            color: $sub-color1;
+        }
     }
-    a {
-      font-size: 16px;
-      color: $sub-color1;
-    }
-  }
 }
+
+.App {
+    &:has(main) {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+

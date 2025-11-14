@@ -9,20 +9,20 @@
         @include g.myFlex($gap: unset);
 
         .brand {
-            font-size: 14px;
+            font-size: 1.4rem;
             color: g.$sub-color2;
         }
 
         .favorite {
-            @include g.myFlex($gap: 12px);
+            @include g.myFlex($gap: 1.2rem);
 
             img {
-                width: 16px;
-                height: 16px;
+                width: 1.6rem;
+                height: 1.6rem;
             }
 
             i {
-                font-size: 12px;
+                font-size: 1.2rem;
                 font-style: normal;
                 color: g.$sub-color2;
             }
@@ -30,7 +30,7 @@
     }
 
     .item-code {
-        font-size: 14px;
+        font-size: 1.4rem;
         color: g.$sub-color2;
     }
 
@@ -46,23 +46,23 @@
     }
 
     .item-price {
-        @include g.myFlex($gap: 12px, $jc: flex-start);
+        @include g.myFlex($gap: 1.2rem, $jc: flex-start);
 
         strong {
             color: g.$main-color1;
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: 600;
         }
 
         span {
             color: g.$sub-color3;
             font-family: Pretendard;
-            font-size: 16px;
+            font-size: 1.6rem;
         }
 
         del {
             color: g.$sub-color2;
-            font-size: 14px;
+            font-size: 1.4rem;
         }
 
         button {
@@ -142,7 +142,7 @@
 
         p {
             color: g.$sub-color2;
-            font-size: 14px;
+            font-size: 1.4rem;
         }
 
         div {
@@ -153,12 +153,12 @@
             button {
                 min-width: 32px;
                 min-height: 24px;
-                line-height: 24px;
+                line-height: 2.4rem;
                 color: g.$sub-color2;
                 border: 1px solid g.$sub-color2;
                 border-radius: 2px;
                 background: g.$main-color2;
-                font-size: 12px;
+                font-size: 1.2rem;
 
                 &:disabled {
                     background: g.$sub-color1;
@@ -178,9 +178,9 @@
     .item-info {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 1.6rem;
         color: g.$main-color1;
-        font-size: 14px;
+        font-size: 1.4rem;
 
         .btn-count {
             @include g.myFlex($gap: 0, $jc: flex-start);
@@ -225,26 +225,26 @@
 .item-box {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1.6rem;
 }
 
 .item-total {
-    @include g.myFlex($gap: 20px, $jc: flex-start);
+    @include g.myFlex($gap: 2rem, $jc: flex-start);
 
     .text {
         color: g.$sub-color3;
-        font-size: 20px;
+        font-size: 2rem;
     }
 
     .num {
         color: g.$main-color1;
-        font-size: 20px;
+        font-size: 2rem;
     }
 
 }
 
 .cart-btn {
-    @include g.myFlex($gap: 12px, $jc: flex-start);
+    @include g.myFlex($gap: 1.2rem, $jc: flex-start);
 }
 
 .rating {
@@ -253,7 +253,7 @@
     p {
         &:last-child {
             color: g.$sub-color2;
-            font-size: 12px;
+            font-size: 1.2rem;
         }
     }
 
@@ -271,14 +271,14 @@
             min-width: 80px;
             display: flex;
             color: g.$main-color1;
-            font-size: 14px;
+            font-size: 1.4rem;
             font-weight: 400;
         }
 
         span {
             flex: 1;
             color: g.$sub-color3;
-            font-size: 14px;
+            font-size: 1.4rem;
         }
     }
 }

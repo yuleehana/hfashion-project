@@ -3,9 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const Women = () => {
     return (
-        <div>
-            <Outlet />
-        </div>
+        <Outlet />
     )
 }
 

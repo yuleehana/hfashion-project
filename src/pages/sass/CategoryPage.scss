@@ -1,0 +1,13 @@
+@use '../../App.scss' as g;
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.category-page-title {
+  color: g.$main-color1;
+  text-align: center;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+}

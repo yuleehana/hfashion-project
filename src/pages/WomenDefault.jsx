@@ -3,8 +3,8 @@ import SubPage from './SubPage'
 
 const Women = () => {
     return (
-        <div>
-            <h2>여자 메인</h2>
+        <div className='sub-main'>
+            <h2 className='sub-main-title'>WOMEN’S SHOP</h2>
             <SubPage category='women pants' />
         </div>
     )

@@ -6,23 +6,19 @@
   gap: 10px;
 
   h2{
-    font-size: 24px;
-	  font-weight: 500;
-    display: flex;
-    padding: 20px 10px;
-    align-items: center;
-    justify-content: flex-start;
+    font-size: 40px;
+	  font-style: normal;
+	  font-weight: 400;
+    padding: 2rem 10px;
     width: 100%;
   }
 
   .menu-list{
 
     button{
-      font-size: 16px;
-      font-weight: 700;
-      display:flex;
-      justify-content: flex-start;
-      padding: 0 10px 20px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      padding: 0 10px 2rem;
       color: #838383;
     }
 
@@ -32,9 +28,7 @@
       flex-direction: column;
 
       li{
-        font-size: 14px;
-        display: flex;
-        justify-content: flex-start;
+        font-size: 1.4rem;
         padding: 0 10px 10px;
         color: #BABABA;
       }
