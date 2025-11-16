@@ -34,33 +34,6 @@ $sub-color5: #2C2C2C;
 }
 
 
-
-.tab-ver1 {
-    @include myFlex($gap: 0);
-
-    li {
-        flex: 1;
-        line-height: 50px;
-        border: 1px solid $main-color2;
-        border-bottom-color: $sub-color3;
-        text-align: center;
-
-        &.active {
-            border: 1px solid $main-color1;
-            border-bottom-color: $main-color2;
-
-            a {
-                color: $sub-color3;
-            }
-        }
-
-        a {
-            font-size: 1.6rem;
-            color: $sub-color1;
-        }
-    }
-}
-
 .App {
     &:has(main) {
         display: flex;
