@@ -5,7 +5,7 @@ const Women = () => {
     return (
         <div className='sub-main'>
             <h2 className='sub-main-title'>WOMEN’S SHOP</h2>
-            <SubPage category='women pants' />
+            <SubPage category='women' />
         </div>
     )
 }
