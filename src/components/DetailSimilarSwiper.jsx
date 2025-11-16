@@ -12,6 +12,7 @@ const DetailSimilarSwiper = ({ category, product }) => {
     // 현재 상품과 같은 카테고리이지만 자기 자신은 제외
     const filteredItems = currentItems.filter(item => item.category === product.category);
     console.log(filteredItems)
+    
     return (
         <Swiper
          className="detail-sub-goods-list"
