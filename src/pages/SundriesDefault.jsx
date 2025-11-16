@@ -6,7 +6,7 @@ const Sundries = () => {
     return (
         <div className='sub-main'>
             <h2 className='sub-main-title'>SUNDRIES’S SHOP</h2>
-            <SubPage category='sundries women etc' />
+            <SubPage category='sundries' />
         </div>
     )
 }
