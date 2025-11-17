@@ -9,10 +9,10 @@ const TargetBrands = [
 
 const BrandTommy = () => {
   return (
-    <main>
+    <div className='sub-main'>
       <h2 className='category-page-title'>TOMMY'S</h2>
       <BrandListPage brand={TargetBrands} />
-w    </main>
+w    </div>
   )
 }
 

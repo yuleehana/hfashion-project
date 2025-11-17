@@ -2,9 +2,9 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 const Brand = () => {
-    return (
-        <Outlet />
-    )
+  return (
+    <Outlet />
+  )
 }
 
 export default Brand
