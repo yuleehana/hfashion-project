@@ -21,99 +21,125 @@
    }
  }
 
-// 슬라이드영역
- .categorynew-slider-wrapper{
+ // 슬라이드영역
+ .categorynew-slider-wrapper {
    display: flex;
    align-items: center;
-   column-gap: 30px; 
+   column-gap: 30px;
    // 화살표랑 상품리스트 간격
  }
 
-// 좌우 화살표 < >
+ // 좌우 화살표 < >
  .arrow-btn {
    width: 35px;
    height: 35px;
    cursor: pointer;
 
-   }
+ }
 
-// 상품리스트
+ // 상품리스트
 
  .categorynew-product-list {
-  flex: 1; // 화살표 빼고 남은 영역을 전부 차지
-  display: flex;
-  gap: 10px;
+   flex: 1; // 화살표 빼고 남은 영역을 전부 차지
+   display: flex;
+   gap: 10px;
 
-  .product-card {
-    position: relative;
-    flex: 0 0 calc((100% - 30px) / 4);
-    cursor: pointer;
+   .product-card {
+     position: relative;
+     flex: 0 0 calc((100% - 30px) / 4);
+     cursor: pointer;
 
-    /* 이미지 영역 */
-    .categorynew-product-img {
-      position: relative;
-      width: 100%;
-      padding-top: 140%; // 세로 비율 유지
-      overflow: hidden;
+     /* 이미지 영역 */
+     .categorynew-product-img {
+       position: relative;
+       width: 100%;
+       padding-top: 140%; // 세로 비율 유지
+       overflow: hidden;
 
-      img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
+       img {
+         position: absolute;
+         inset: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: transform 0.5s ease;
+       }
 
-      /* hover 시 어두워지는 오버레이 */
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.45);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-    }
+       /* hover 시 어두워지는 오버레이 */
+       &::after {
+         content: "";
+         position: absolute;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.5);
+         opacity: 0;
+         transition: opacity 0.5s ease;
+       }
+     }
 
-    /* 상품 정보 (정중앙 위치 + 기본 숨김) */
-    .categorynew-overlay-info {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+     /* 상품 정보 (정중앙 위치 + 기본 숨김) */
+     .categorynew-overlay-info {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       z-index: 2;
+       text-align: start;
+       opacity: 0;
+       transition: opacity 0.3s ease;
+      //  background-color: tomato;
 
-      .name {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        color: g.$main-color2;
-      }
+       .categorynew-name {
+         font-size: 2rem;
+         font-weight: 500;
+         margin-bottom: 20px;
+         color: g.$main-color2;
+           max-width: 90%;
+         white-space: normal; // 줄바꿈 허용
+         word-break: keep-all; // 너무 긴 단어도 줄바꿈
+       }
 
-      .price {
-        font-size: 1.8rem;
-        color: g.$main-color2;
-      }
-    }
+       .categorynew-price {
+         display: flex;
+         align-items: center;
+         /* 수평 중앙 정렬 */
+         gap: 8px;
+         /* 가격들 사이에 8px 간격 */
+         white-space: nowrap; //한줄로 표시
 
-    /* Hover 효과 */
-    &:hover {
-      .categorynew-product-img {
-        img {
-          transform: scale(1.05);
-        }
+         .categorynew-sale-price {
+           font-size: 1.8rem;
+           color: g.$main-color2;
+         }
 
-        &::after {
-          opacity: 1;
-        }
-      }
+         .categorynew-original-price {
+           font-size: 1.6rem;
+           color: g.$sub-color4;
+         }
 
-      .categorynew-overlay-info {
-        opacity: 1;
-      }
-    }
-  }
-}
+         .categorynew-discount {
+           font-size: 1.6rem;
+           color: g.$percent-color;
+
+         }
+       }
+     }
+
+     /* Hover 효과 */
+     &:hover {
+       .categorynew-product-img {
+         img {
+           transform: scale(1.05);
+         }
+
+         &::after {
+           opacity: 1;
+         }
+       }
+
+       .categorynew-overlay-info {
+         opacity: 1;
+
+         }
+       }
+     }
+   }
