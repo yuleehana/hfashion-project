@@ -56,6 +56,7 @@ import { useAuthStore } from './store/authstore';
 import Picklist from './pages/Picklist';
 import ScrollToTop from './components/ScrollToTop';
 import NotFoundMyPage from './components/NotFoundMyPage';
+import MemberInfor from './components/MemberInfor';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -124,6 +125,7 @@ function App() {
         <Route path="/nonmember" element={<NonMember />}></Route>
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="/userinfo/memberinfor" element={<MemberInfor />} />
         <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
