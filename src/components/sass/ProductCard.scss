@@ -1,0 +1,17 @@
+.img-box{
+    position: relative;
+    >.favorite{
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        width: 28px;
+        height: 28px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 28px;
+        background-image: url('../../../public/images/icon/icon-heart-grey.svg');
+        &.active{
+            background-image: url('../../../public/images/icon/icon-heart-black.svg');
+        }
+    }
+}

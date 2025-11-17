@@ -6,7 +6,7 @@ const Golf = () => {
     return (
         <div className='sub-main'>
             <h2 className='sub-main-title'>GOLF’S SHOP </h2>
-            <SubPage category='golf women top' />
+            <SubPage category='golf' />
         </div>
     )
 }

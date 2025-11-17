@@ -52,6 +52,7 @@ import ProductDetail from './pages/ProductDetail';
 import { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
 import MainBrandLive from './components/MainBrandLive';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -62,6 +63,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/product-detail/:code" element={<ProductDetail />} />
