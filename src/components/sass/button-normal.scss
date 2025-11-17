@@ -1,15 +1,24 @@
 @use '../../App.scss' as g;
 
 .btn {
+    min-width: 100px;
     text-align: center;
+    padding: 0 24px;
+    color: g.$main-color2;
+
+    &.xsmall {
+        height: 24px;
+        font-size: 16px;
+    }
+
     &.small {
         height: 32px;
-        font-size: 16px;    
+        font-size: 16px;
     }
 
     &.middle {
-        height: 42px;
-        line-height: 42px;
+        height: 40px;
+        line-height: 40px;
         min-width: 136px;
         font-size: 16px;
     }
@@ -20,17 +29,20 @@
     }
 
     &.primary {
-        color: g.$main-color2;
         background-color: g.$main-color1;
+    }
 
-        &.second {
-            background-color: g.$percent-color;
-        }
+    &.secondary {
+        background-color: g.$percent-color;
     }
-    &.outline{
-      border: 1px solid g.$main-color1;
+
+    &.outline {
+        color: g.$main-color1;
+        border: 1px solid g.$main-color1;
     }
-    &.wFull{
-      display: block;
+
+    &.wFull {
+        width: 100%;
+        display: block;
     }
 }

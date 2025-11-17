@@ -76,7 +76,7 @@ const Join = () => {
                 onChange={handleChange}
                 required
               />
-              <button type="button" onClick={handleIdCheck}>
+              <button className='btn middle outline' type="button" onClick={handleIdCheck}>
                 중복확인
               </button>
             </span>
@@ -150,7 +150,7 @@ const Join = () => {
                   placeholder="주소를 검색해주세요"
                   onChange={handleChange}
                 />
-                <button type="button">주소검색</button>
+                <button className='btn middle outline' type="button">주소검색</button>
               </span>
               <span className="address-input-tag-bot">
                 <input
@@ -163,7 +163,7 @@ const Join = () => {
             </span>
           </label>
           <div className="join-button-wrap">
-            <button type="submit">회원가입</button>
+            <button className='btn middle primary wFull' type="submit">회원가입</button>
           </div>
         </form>
       </div>
