@@ -12,6 +12,7 @@ import ProductNoticeInfo from '../components/ProductNoticeInfo';
 import Tab from '../components/Tab';
 import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
+import ProdctQNA from '../components/ProdctQNA';
 
 
 const ProductDetail = () => {
@@ -71,7 +72,7 @@ const ProductDetail = () => {
           )}
           {activeTab === 'qna' && (
             <section>
-              <h3>상품 Q&A</h3>
+              <ProdctQNA />
               <Delivery />
             </section>
           )}
