@@ -96,6 +96,11 @@ const MainCategoryNew = () => {
             onClick={() => handleChangeTab('GOLF')}>
             GOLF
           </button>
+
+          <Link to="" className='categorynew-tab-all'>
+            전체보기 <img src="/images/all-view-right-arrow.png" alt="" />
+          </Link>
+
         </div>
 
         {/* 슬라이드 영역 */}
@@ -131,7 +136,8 @@ const MainCategoryNew = () => {
 
                     {/*원래 가격*/}
                     <del className="categorynew-original-price">
-                      {item.price * 1.25.toLocaleString()}원
+                      {/* 소수점 안 나오게 */}
+                        {Math.round(item.price * 1.25).toLocaleString()}원 
                     </del>
 
                     {/*할인 퍼센트*/}
