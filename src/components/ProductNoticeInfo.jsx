@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProductNoticeInfo = ({ product }) => {
   return (
-    <section>
+    <>
       <h3>상품고시정보</h3>
       <ul className='product-notice-info'>
         <li><strong>치수</strong><span>실측정보 참조</span></li>
@@ -14,7 +14,7 @@ const ProductNoticeInfo = ({ product }) => {
         <li><strong>품질보증기준</strong><span>관련법 및 소비자분쟁해결 규정에 따름</span></li>
         <li><strong>A/S 책임자,전화번호</strong><span>(주)한섬,18005700</span></li>
       </ul>
-    </section>
+    </>
   )
 }
 

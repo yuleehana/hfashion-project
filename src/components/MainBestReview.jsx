@@ -3,7 +3,7 @@ import "./sass/MainBestReview.scss";
 import { products } from "../data/products.js";
 import { useProductStore } from '../store/useProductStore.js';
 
-function ReviewCard({ ranking }) {
+export function ReviewCard({ ranking }) {
   console.log(ranking)
 
   return (

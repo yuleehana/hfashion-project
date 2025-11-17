@@ -50,7 +50,7 @@ const brandData = [
     },
     {
       id: 4,
-      img: '/images/products/T12F7QOT714ML1BDS/thumbnail.jpg',
+      img: '/images/products/T32F7TJC54TMT1GS7/thumbnail.jpg',
       title: '릴랙스 배지 테디 재킷',
       price: 229000,
       originPrice: '',
@@ -58,7 +58,7 @@ const brandData = [
     },
   ],
   [
-    { id: 1, img: '/images/products/PW2E9WPC802NDG/thumbnail.jpg' },
+    { id: 1, img: '/images/products/PW2E9WPC802NBS/thumbnail.jpg' },
     {
       id: 2,
       img: '/images/products/PW2F3WPC804WOW/thumbnail.jpg',
@@ -86,16 +86,50 @@ const brandData = [
   ],
 ];
 
-
 const MainBrandLive = () => {
-    return (
-        <section>
-            <h2>BRAND LIVE</h2>
-            <div className='container'>
-                내용
-            </div>
-        </section>
-    )
-}
+  const brandCate = ['ROUGE&LOUNG', 'TOMMY JEANS', 'SJYP'];
 
-export default MainBrandLive
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
+
+  //메인이미지
+  const mainNew = brandData.map((group) => group.find((v) => v.id === 1).img);
+
+  return (
+    <section className="brand-live-section">
+      <h2>BRAND LIVE</h2>
+      <div className="container">
+        <ul>
+          {brandCate.map((bCate, id) => (
+            <li
+              key={id}
+              onClick={() => handleClick(id - 1)}
+              className={activeIndex === id - 1 ? 'active' : ''}
+            >
+              {bCate}
+            </li>
+          ))}
+        </ul>
+        <div
+          className="live-section-wrap"
+          style={{
+            transform: `translateX(${1 - activeIndex * 33.3333333}%)`,
+          }}
+        >
+          {brandData.map((bData, index) => (
+            <BrandLiveProducts
+              key={index}
+              mainNew={bData.find((b) => b.id === 1).img}
+              brand={bData}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MainBrandLive;

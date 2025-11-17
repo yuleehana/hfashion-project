@@ -52,6 +52,11 @@ import ProductDetail from './pages/ProductDetail';
 import { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
 import MainBrandLive from './components/MainBrandLive';
+import { useAuthStore } from './store/authstore';
+import Picklist from './pages/Picklist';
+import ScrollToTop from './components/ScrollToTop';
+import NotFoundMyPage from './components/NotFoundMyPage';
+import MemberInfor from './components/MemberInfor';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -59,9 +64,16 @@ function App() {
     onFetchItem();
   }, [onFetchItem]);
 
+  const initAuth = useAuthStore((state) => state.initAuth);
+
+  useEffect(() => {
+    initAuth();
+  }, []);
+
   return (
     <div className="App">
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/product-detail/:code" element={<ProductDetail />} />
@@ -106,12 +118,15 @@ function App() {
         {/* <Route path='/lifestyle' element={<LifeStyle />}></Route>  제거 KIM 11-10 */}
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/userinfo/:notfoundmypage" element={<NotFoundMyPage />} />
 
         <Route path="/search" element={<Search />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/nonmember" element={<NonMember />}></Route>
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="/userinfo/memberinfor" element={<MemberInfor />} />
+        <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
         <Route path="/logout" element={<Logout />} />

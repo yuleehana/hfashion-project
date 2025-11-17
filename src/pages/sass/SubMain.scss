@@ -1,6 +1,9 @@
 @use '../../App.scss' as g;
 
 .sub-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
     margin: 4rem auto;
     max-width: 1440px;
 

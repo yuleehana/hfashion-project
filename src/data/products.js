@@ -7223,7 +7223,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 2,
         made: "중국",
         date: "2025.10",
         brand: "Taylormade",
@@ -7255,7 +7255,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 2,
         made: "중국",
         date: "2025.10",
         brand: "Taylormade",
@@ -7286,7 +7286,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 2,
         made: "중국",
         date: "2025.10",
         brand: "PKETMJUO3203-199",
@@ -7318,7 +7318,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 2,
         made: "베트남",
         date: "2025.10",
         brand: "Taylormade",
@@ -7383,7 +7383,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 1,
         made: "베트남",
         date: "2025.02",
         brand: "Taylormade",
@@ -7415,7 +7415,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 1,
         made: "캄보디아",
         date: "2025.02",
         brand: "Taylormade",
@@ -7447,7 +7447,7 @@ export const products = [
     },
     {
         category: "golf man top",
-        rating: 5,
+        rating: 1,
         made: "캄보디아",
         date: "2025.02",
         brand: "Taylormade",
@@ -10344,7 +10344,7 @@ export const products = [
     },
     {
         category: "golf women pants",
-        rating: 5,
+        rating: 4,
         made: "japan",
         date: "2025.08",
         brand: "J.Lindeberg",
@@ -10371,7 +10371,7 @@ export const products = [
     },
     {
         category: "golf women pants",
-        rating: 5,
+        rating: 4,
         made: "japan",
         date: "2025.08",
         brand: "J.Lindeberg",
@@ -10397,7 +10397,7 @@ export const products = [
     },
     {
         category: "golf women pants",
-        rating: 5,
+        rating: 4,
         made: "japan",
         date: "2025.08",
         brand: "J.Lindeberg",
@@ -10423,7 +10423,7 @@ export const products = [
     },
     {
         category: "golf etc",
-        rating: 5,
+        rating: 4,
         made: "korea",
         date: "2025.11",
         brand: "J.Lindeberg",
@@ -12479,7 +12479,7 @@ export const products = [
     },
     {
         category: "sundries women bag",
-        rating: 5,
+        rating: 1,
         made: "프랑스",
         date: "2025.10",
         brand: "Calvin Klein Accessories",
@@ -12536,7 +12536,7 @@ export const products = [
     },
     {
         category: "sundries women bag",
-        rating: 5,
+        rating: 1,
         made: "프랑스",
         date: "2025.10",
         brand: "GUESS",
@@ -12559,7 +12559,7 @@ export const products = [
     },
     {
         category: "sundries women bag",
-        rating: 5,
+        rating: 1,
         made: "프랑스",
         date: "2025.10",
         brand: "JESTINA",
@@ -12582,7 +12582,7 @@ export const products = [
     },
     {
         category: "sundries women bag",
-        rating: 5,
+        rating: 1,
         made: "프랑스",
         date: "2025.9",
         brand: "Longchamp",
