@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { products } from '../data/products';
 import './sass/ProductDetail.scss';
 import ProductDetailRightInfo from '../components/ProductDetailRightInfo';
@@ -9,12 +9,9 @@ import DetailImgUrl from '../components/DetailImgUrl';
 import MdComment from '../components/MdComment';
 import ProdctActualSize from '../components/ProdctActualSize';
 import ProductNoticeInfo from '../components/ProductNoticeInfo';
-
 import './sass/TabCommon.scss'
-
 import Tab from '../components/Tab';
 import Delivery from '../components/Delivery';
-
 
 
 const ProductDetail = () => {
