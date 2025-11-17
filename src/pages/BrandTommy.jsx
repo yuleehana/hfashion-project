@@ -12,7 +12,7 @@ const BrandTommy = () => {
     <div className='sub-main'>
       <h2 className='category-page-title'>TOMMY'S</h2>
       <BrandListPage brand={TargetBrands} />
-w    </div>
+    </div>
   )
 }
 
