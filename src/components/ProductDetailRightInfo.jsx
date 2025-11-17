@@ -3,6 +3,7 @@ import { useProductStore } from '../store/useProductStore'
 import './sass/ProductDetailRightInfo.scss'
 import { Link, useParams } from 'react-router-dom';
 import './sass/button-normal.scss'
+import CartPopup from './CartPopup';
 
 const sizes = ["XS", "S", "M", "L", "XL"]
 const colors = ["pink", "sky", "white", "black"]
@@ -23,13 +24,16 @@ const ProductDetailRightInfo = ({ product }) => {
   // 수량 체크 변수
   const [count, setCount] = useState(1);
 
+  // 팝업창을 보이고 숨길 변수
+  const [showPopup, setShowPopup] = useState(false);
+
 
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
     }
-  }, [])
+  }, [items.length, onFetchItem])
   // 제품 다시 불러오기
   useEffect(() => {
     if (!code || items.length === 0) return
@@ -49,14 +53,20 @@ const ProductDetailRightInfo = ({ product }) => {
     const productCart = {
       ...item,
       size: selectSize,
+      color: selectColor,
       count: count
     }
 
     onAddToCart(productCart);
+
+    setShowPopup(true)
   }
 
 
-
+  // 장바구니 팝업 닫기
+  const handleClosePopup = () => {
+    setShowPopup(false)
+  }
 
 
   return (
@@ -130,7 +140,7 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className="cart-btn">
-          <Link className='btn middle primary'  onClick={handleAddToCart}>장바구니</Link>
+          <Link className='btn middle primary' onClick={handleAddToCart}>장바구니</Link>
           <Link className='btn middle second primary' to='/pay'>바로구매</Link>
         </div>
 
@@ -155,6 +165,10 @@ const ProductDetailRightInfo = ({ product }) => {
           </ul>
         </div>
       </div>
+
+      {/* 팝업 보여주기 */}
+      {showPopup ? <CartPopup onClose={handleClosePopup} /> : ""}
+
     </>
   )
 }

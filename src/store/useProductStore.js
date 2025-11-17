@@ -42,7 +42,7 @@ export const useProductStore = create((set, get) => ({
 
   // 카트에 담긴 상픔 개수
   cartItems: [],
-  cartCount: [],
+  cartCount: 0,
 
   // 총 금액
   totalPrice: 0,
@@ -51,14 +51,14 @@ export const useProductStore = create((set, get) => ({
     const cart = get().cartItems;
 
     const existing = cart.find((item) =>
-      item.id === product.id && item.size === product.size
+      item.code === product.code && item.size === product.size
     )
     let updateCart;
 
     if (existing) {
       updateCart = cart.map((item) =>
-        item.id === product.id && item.size === product.size ?
-          { ...item, count: item + product.count } : item
+        item.code === product.code && item.size === product.size ?
+          { ...item, count: item.count + product.count } : item
       )
     }
     else {
