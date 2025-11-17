@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { products } from '../data/products';
 import './sass/ProductDetail.scss';
 import ProductDetailRightInfo from '../components/ProductDetailRightInfo';
@@ -9,7 +9,6 @@ import DetailImgUrl from '../components/DetailImgUrl';
 import MdComment from '../components/MdComment';
 import ProdctActualSize from '../components/ProdctActualSize';
 import ProductNoticeInfo from '../components/ProductNoticeInfo';
-import './sass/TabCommon.scss'
 import Tab from '../components/Tab';
 import Delivery from '../components/Delivery';
 
@@ -54,62 +53,41 @@ const ProductDetail = () => {
             <h3>이 상품과 비슷한 상품</h3>
             <DetailSimilarSwiper product={product} />
           </section>
+          <Tab
+            activeTab={activeTab}
+            handleTabClick={handleTabClick}
+          />
+          {activeTab === 'detail' && (
+            <section>
+              <MdComment />
+              <DetailImgUrl product={product} />
+              <ProductNoticeInfo product={product} />
+              <ProdctActualSize />
+            </section>
+          )}
+          {activeTab === 'review' && (
+            <section>
+              <p className='best-review'>포토/동영상 리뷰 1,000M, 텍스트 리뷰 300M, 첫리뷰 2,000M를 드립니다.</p>
+              <dl className='best-review'>
+                <dt>아주 좋아요</dt><dd>29</dd>
+                <dt>마음에 들어요</dt><dd>1</dd>
+                <dt>보통이예요</dt><dd>3</dd>
+                <dt>그냥 그래요</dt><dd>0</dd>
+                <dt>별로예요</dt><dd>0</dd>
+              </dl>
+            </section>
+          )}
+          {activeTab === 'qna' && (
+            <section>
+              <h3>상품 Q&A</h3>
+              <Delivery />
+            </section>
+          )}
 
-          <ul className='tab-ver1'>
-            <li className='active'><Link>상품상세정보</Link></li>
-            <li><Link>리뷰(100)</Link></li>
-            <li><Link>상품Q&A(2)</Link></li>
-          </ul>
-          <MdComment />
-          <DetailImgUrl product={product} />
-          <ProductNoticeInfo product={product} />
-          <ProdctActualSize />
-
-          <section>
-            <h3>리뷰 (32)</h3>
-          </section>
-          <section>
-            <h3>상품 Q&A</h3>
-          </section>
-          <section>
-            <h3>배송/교환/반품</h3>
-          </section>
         </div>
-
-        <Tab
-          activeTab={activeTab}
-          handleTabClick={handleTabClick}
-        />
-        {activeTab === 'detail' && (
-          <section>
-            <MdComment />
-            <DetailImgUrl product={product} />
-            <ProductNoticeInfo product={product} />
-            <ProdctActualSize />
-          </section>
-        )}
-        {activeTab === 'review' && (
-          <section>
-            <p className='best-review'>포토/동영상 리뷰 1,000M, 텍스트 리뷰 300M, 첫리뷰 2,000M를 드립니다.</p>
-            <dl className='best-review'>
-              <dt>아주 좋아요</dt><dd>29</dd>
-              <dt>마음에 들어요</dt><dd>1</dd>
-              <dt>보통이예요</dt><dd>3</dd>
-              <dt>그냥 그래요</dt><dd>0</dd>
-              <dt>별로예요</dt><dd>0</dd>
-            </dl>
-          </section>
-        )}
-        {activeTab === 'qna' && (
-          <section>
-            <h3>상품 Q&A</h3>
-            <Delivery />
-          </section>
-        )}
-
-      </div>
-      <div className="detail-right">
-        <ProductDetailRightInfo product={product} />
+        <div className="detail-right">
+          <ProductDetailRightInfo product={product} />
+        </div>
       </div>
     </div>
   )

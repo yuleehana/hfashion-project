@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './sass/TabCommon.scss'
+import './sass/Tab.scss'
 
 // 탭 컴포넌트의 props로 외부에서 데이터를 받습니다.
 const ReusableTabs = ({ tabsData }) => {
