@@ -9,7 +9,7 @@ import DetailImgUrl from '../components/DetailImgUrl';
 import MdComment from '../components/MdComment';
 import ProdctActualSize from '../components/ProdctActualSize';
 import ProductNoticeInfo from '../components/ProductNoticeInfo';
-
+import './sass/TabCommon.scss'
 
 const ProductDetail = () => {
   const { code } = useParams();
@@ -50,7 +50,6 @@ const ProductDetail = () => {
             <li><Link>상품Q&A(2)</Link></li>
           </ul>
           <MdComment />
-          
           <DetailImgUrl product={product} />
           <ProductNoticeInfo product={product}  />
           <ProdctActualSize /> 
