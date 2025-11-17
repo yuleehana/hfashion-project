@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useProductStore } from '../store/useProductStore'
 import './sass/MainCategoryNew.scss'
+import { Link } from 'react-router-dom';
 
 
 const VISIBLE_COUNT = 4; // 한 화면에 보이는 상품 개수
@@ -16,38 +17,29 @@ const MainCategoryNew = () => {
     onFetchItem();
   }, [onFetchItem]);
 
-//  탭에 따라 상품 필터링
+  //  탭에 따라 상품 필터링
   const filteredItems = useMemo(() => {
-    if (activeTab === 'ALL') return items;
-
-    if (activeTab === 'MEN') {
-      return items.filter(
-        (item) =>
-          item.category.startsWith('man')
-      );
+    switch (activeTab) {
+      case 'ALL':
+        // return items.filter(item =>
+        //   item.category.includes('women blouse') || item.category.includes('man pants')
+        // );
+        // 현재 startIndex 기준으로 번갈아 보여주기
+        return items.filter((item, idx) =>
+          item.category.includes(idx % 2 === 0 ? 'man' : 'women')
+        );
+      case 'WOMEN':
+        return items.filter(item => item.category.includes('women skirt'));
+      case 'MEN':
+        return items.filter(item => item.category.includes('man outer'));
+      case 'BAG_ACC':
+        return items.filter(item => item.category.includes('sundries women bag'));
+      case 'GOLF':
+        return items.filter(item => item.category.includes('golf etc'));
+      default:
+        return items;
     }
-
-    if (activeTab === 'WOMEN') {
-      return items.filter(
-        (item) =>
-          item.category.startsWith('women')
-      );
-    }
-
-    if (activeTab === 'BAG_ACC') {
-      // 잡화/가방류
-      return items.filter((item) => item.category.startsWith('sundries'));
-    }
-
-    if (activeTab === 'GOLF') {
-      //
-      return items.filter((item) =>
-        item.category.startsWith('golf')   // ← 실제 카테고리 키에 맞게 수정!
-      );
-    }
-    return items;
   }, [items, activeTab]);
-
 
   // 슬라이드 관련
   const maxIndex = Math.max(0, filteredItems.length - VISIBLE_COUNT);
@@ -118,32 +110,37 @@ const MainCategoryNew = () => {
 
           <div className="categorynew-product-list">
             {visibleItems.map((item) => (
-              <div key={item.code} className="product-card">
+              <Link
+                key={item.code}
+                to={`/product-detail/${item.code}`}   // ★ 상세 페이지로 이동
+                className="product-card"
+              >
+
                 <div className="categorynew-product-img">
                   <img src={item.thumbImg} alt={item.title} />
                 </div>
 
                 {/* hover 시에만 보이는 영역 */}
                 <div className="categorynew-overlay-info">
-                  <p className="name">{item.title}</p>
-                  <p className="price">
+                  <p className="categorynew-name">{item.title}</p>
+                  <p className="categorynew-price">
                     {/* 세일 가격 */}
-                    <span className="price">
+                    <span className="categorynew-sale-price">
                       {item.price.toLocaleString()}원
                     </span>
 
-                    {/* 원래 가격
-                    <span className="original-price">
-                      {item.price.toLocaleString()}원
-                    </span>
+                    {/*원래 가격*/}
+                    <del className="categorynew-original-price">
+                      {item.price * 1.25.toLocaleString()}원
+                    </del>
 
-                    할인 퍼센트
-                    <span className="discount">
-                      -{item.discount}%
-                    </span> */}
+                    {/*할인 퍼센트*/}
+                    <span className="categorynew-discount">
+                      20%
+                    </span>
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -156,6 +153,8 @@ const MainCategoryNew = () => {
           </button>
         </div>
       </div>
+
+
     </section>
   )
 }
