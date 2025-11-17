@@ -1,0 +1,20 @@
+.user-pick-wrap {
+  .user-info-right-inner {
+    margin: 40px 20px;
+    background: red;
+    .user-info-right-title {
+      display: flex;
+      gap: 30px;
+      .user-info-right-icon-box {
+      }
+      .user-info-right-text-box {
+        strong {
+          font-size: 26px;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
