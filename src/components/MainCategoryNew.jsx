@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useProductStore } from '../store/useProductStore'
 import './sass/MainCategoryNew.scss'
+import { Link } from 'react-router-dom';
 
 
 const VISIBLE_COUNT = 4; // 한 화면에 보이는 상품 개수
@@ -109,7 +110,12 @@ const MainCategoryNew = () => {
 
           <div className="categorynew-product-list">
             {visibleItems.map((item) => (
-              <div key={item.code} className="product-card">
+              <Link
+                key={item.code}
+                to={`/product-detail/${item.code}`}   // ★ 상세 페이지로 이동
+                className="product-card"
+              >
+
                 <div className="categorynew-product-img">
                   <img src={item.thumbImg} alt={item.title} />
                 </div>
@@ -134,7 +140,7 @@ const MainCategoryNew = () => {
                     </span>
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
