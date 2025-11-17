@@ -1,30 +1,70 @@
-@use '../../App.scss' as g;
-
 .main-sliders {
-    position: relative;
+  width: 100%;
+  //   padding: 40px 0;
+  background: #000; // 전체 배경 블랙 (이미지처럼)
+
+  .swiper {
+    padding-bottom: 60px;
+  }
+
+  /* 양옆(기본 슬라이드 스타일) */
+  .swiper-slide {
+    transition: 0.45s ease;
+    transform: scale(0.8);
+    opacity: 0.8;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .img-box {
-        text-align: center;
-        object-fit: cover;
-        img {
-            max-width: 100%;
-            width: 100%;
-        }
+      position: relative;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      /* 검은 오버레이 */
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        transition: 0.45s ease;
+      }
     }
 
     .text-box {
-        position: absolute;
-        top: 50%;
-        left: 100px;
-        transform: translateY(-50%);
-        color: g.$main-color2;
-
-        p {
-            font-size: 18px;
-            &:nth-child(2) {
-                font-size: 50px;
-            }
-        }
-
+      opacity: 0;
+      transition: 0.4s ease;
+      position: absolute;
+      left: 50%;
+      top: 70%;
+      transform: translateX(-50%);
+      color: #fff;
+      text-align: center;
+      pointer-events: none;
     }
+  }
+
+  .swiper-slide-active {
+    transform: scale(1);
+    opacity: 1;
+
+    .img-box::after {
+      background: rgba(0, 0, 0, 0); // 오버레이 제거
+    }
+
+    .text-box {
+      opacity: 1;
+      top: 60%;
+    }
+  }
+
+  /* 양옆이 더 흐릿하게 만들고 싶으면 이것 유지 */
+  //   .swiper-slide-prev,
+  //   .swiper-slide-next {
+  //     opacity: 0.15;
+  //   }
 }

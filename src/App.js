@@ -52,6 +52,8 @@ import ProductDetail from './pages/ProductDetail';
 import { useEffect } from 'react';
 import { useProductStore } from './store/useProductStore';
 import MainBrandLive from './components/MainBrandLive';
+import { useAuthStore } from './store/authstore';
+import Picklist from './pages/Picklist';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -59,6 +61,12 @@ function App() {
   useEffect(() => {
     onFetchItem();
   }, [onFetchItem]);
+
+  const initAuth = useAuthStore((state) => state.initAuth);
+
+  useEffect(() => {
+    initAuth();
+  }, []);
 
   return (
     <div className="App">
@@ -114,6 +122,7 @@ function App() {
         <Route path="/nonmember" element={<NonMember />}></Route>
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
+        <Route path="picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
         <Route path="/logout" element={<Logout />} />
