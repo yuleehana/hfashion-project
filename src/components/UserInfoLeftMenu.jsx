@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './sass/UserInfoLeftMenu.scss';
 
 const UserInfoLeftMenu = () => {
   const [liOpen, setLiOpen] = useState(null);
+  const navigate = useNavigate();
 
-  const handleToggle = (index) => {
-    setLiOpen(liOpen === index ? null : index);
-  };
-
-  const menuList = [
-    { title: '쇼핑 정보', list: [
+    const menuList = [
+    { title: '쇼핑 정보', link: '', list: [
       {name:"주문/배송", link:"/userinfo/:notfoundmypage"},
       {name:"취소 / 교환 / 반품", link:"/userinfo/:notfoundmypage"},
       {name:"대량 주문", link:"/userinfo/:notfoundmypage"},
       {name:"찜 리스트", link:"/picklist"}
     ] },
-    { title: '해택 정보', list: [
+    { title: '해택 정보', link: '', list: [
       {name:"쿠폰", link:"/userinfo/:notfoundmypage"},
       {name:"H.Point", link:"/userinfo/:notfoundmypage"},
       {name:"H.Plus", link:"/userinfo/:notfoundmypage"},
@@ -24,7 +21,7 @@ const UserInfoLeftMenu = () => {
       {name:"SK 패션상품권", link:"/userinfo/:notfoundmypage"}
     ] },
     {
-      title: '참여 & 문의',
+      title: '참여 & 문의', link: '',
       list: [
         {name:"1:1 문의내역", link:"/userinfo/:notfoundmypage"},
         {name:"상품 Q&A", link:"/userinfo/:notfoundmypage"},
@@ -35,6 +32,7 @@ const UserInfoLeftMenu = () => {
     },
     {
       title: '회원정보',
+      link:"/userinfo/memberinfor",
       list: [
         {name:"회원정보 수정", link:"/userinfo/:notfoundmypage"},
         {name:"H.Point 연동 관리", link:"/userinfo/:notfoundmypage"},
@@ -48,6 +46,13 @@ const UserInfoLeftMenu = () => {
     },
   ];
 
+  const handleToggle = (index) => {
+    setLiOpen(liOpen === index ? null : index);
+    
+    const pathname = menuList[index].link;
+    if (pathname) navigate(pathname);
+  };
+
   return (
     <div className="menu-list-wrap">
       <h2>MYPAGE</h2>
@@ -56,17 +61,11 @@ const UserInfoLeftMenu = () => {
           <button onClick={() => handleToggle(index)}>{item.title}</button>
           {liOpen === index && (
             <ul>
-              {item.list.map((one, id) => {
-                const isObject = typeof one === "object";
-                const label = isObject ? one.name: one;
-                const to = isObject ? one.link: "#";
-
-                return(
-                  <li key={id}>
-                    <Link to={to}>{label}</Link>
-                  </li>
-                )
-              })}
+              {item.list.map((one, id) => (
+                <li key={id}>
+                  <Link to={one.link}>{one.name}</Link>
+                </li>
+              ))}
             </ul>
           )}
         </div>
