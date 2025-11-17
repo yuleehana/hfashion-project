@@ -122,7 +122,7 @@ function App() {
         <Route path="/nonmember" element={<NonMember />}></Route>
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
-        <Route path="picklist" element={<Picklist />} />
+        <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
         <Route path="/logout" element={<Logout />} />
