@@ -4,6 +4,8 @@ import './sass/ProductDetailRightInfo.scss';
 import { Link, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
+import CartPopup from './CartPopup';
+import { useCartStore } from '../store/useCartStore';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];
@@ -11,8 +13,9 @@ const colors = ['pink', 'sky', 'white', 'black'];
 const ProductDetailRightInfo = ({ product }) => {
   const { code } = useParams();
   // 전역변수 불러오기
-  const { items, onFetchItem, onAddToCart } = useProductStore();
+  const { items, onFetchItem } = useProductStore();
   const { onAddWishList } = usePickStore();
+  const { onAddToCart } = useCartStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState('');
@@ -24,6 +27,10 @@ const ProductDetailRightInfo = ({ product }) => {
 
   // 수량 체크 변수
   const [count, setCount] = useState(1);
+
+  // 팝업창을 보이고 숨길 변수
+  const [showPopup, setShowPopup] = useState(false);
+
 
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
@@ -54,6 +61,12 @@ const ProductDetailRightInfo = ({ product }) => {
 
     onAddToCart(productCart);
   };
+
+  // 팝업 닫기
+  const handleClosePopup = () => {
+    // 장바구니 팝업
+    setShowPopup(false);
+  }
 
   // 찜리스트 메서드
   const handleAddToPick = () => {

@@ -3,7 +3,7 @@ import { useProductStore } from '../store/useProductStore'
 import CartPo from '../components/CartPo';
 
 const Cart = () => {
-  const { cartItems, cartCount, totalPrice, onAddToCart } = useProductStore();
+  
 
   return (
     <div className='sub-page'>
