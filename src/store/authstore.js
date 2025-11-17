@@ -1,8 +1,10 @@
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { create } from 'zustand';
 import { auth, googleProvider, db } from '../firebase/firebase';
@@ -19,11 +21,27 @@ export const useAuthStore = create((set) => ({
   // 아이템 데이터
 
   // 회원가입
-  onMember: async (name, nickName, email, password) => {
+  // firebase에 유저정보 보내는 메서드
+  // zustanduser에 데이터 정보 저장까지 같이
+  onMember: async ({ id, displayName, email, password, phone, address, address2 }) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      set({ user: userCredential.user });
+      await updateProfile(user, { displayName });
+
+      await setDoc(doc(db, 'users', user.uid), {
+        id,
+        displayName,
+        email,
+        phone,
+        address,
+        address2,
+      });
+
+      set({
+        user: { uid: user.uid, id, displayName, email, phone, address, address2 },
+      });
       alert('회원가입 성공');
     } catch (err) {
       alert(err.message);
@@ -49,7 +67,7 @@ export const useAuthStore = create((set) => ({
 
       // 성공
       const user = result.user;
-      const userRef = doc(db, 'user', user.uid);
+      const userRef = doc(db, 'users', user.uid);
 
       // 데이터 없음
       const userDoc = await getDoc(userRef);
@@ -64,7 +82,7 @@ export const useAuthStore = create((set) => ({
         await setDoc(userRef, userInfo);
         set({ user: userInfo });
       }
-      // 데이터ㅓ가져오기
+      // 데이터가져오기
       else {
         set({ user: userDoc.data() });
       }
@@ -77,5 +95,22 @@ export const useAuthStore = create((set) => ({
   onLogout: async () => {
     await signOut(auth);
     set({ user: null });
+  },
+
+  initAuth: () => {
+    //firebase Auth에서 제공하는 이벤트리스너
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          set({ user: userDoc.data() });
+        } else {
+          set({ user: { uid: user.uid, email: user.email, displayName: user.displayName } });
+        }
+      } else {
+        set({ user: null });
+      }
+    });
   },
 }));

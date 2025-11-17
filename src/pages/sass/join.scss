@@ -3,12 +3,12 @@
 .sub-page {
   .join-inner {
     max-width: 650px;
-    margin: 0 auto;
-    background: red;
+    margin: 120px auto 0;
+    // background: red;
     .join-wrap {
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid rgb(26, 24, 24);
       margin-bottom: 40px;
       h2 {
         color: black;
@@ -28,14 +28,57 @@
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       gap: 24px;
-      width: 100%;
       label {
         font-size: 16px;
         font-weight: 400;
+        display: flex;
+        justify-content: space-between;
+        .label-tag {
+          width: 120px;
+        }
+        .id-input-tag {
+          display: flex;
+          justify-content: space-between;
+          background: blue;
+          width: 100%;
+        }
         input {
           background: #f2f2f2;
           height: 40px;
-          width: 90%;
+          width: 100%;
+          padding: 0 10px;
+        }
+        .pass-input-tag {
+          display: flex;
+          gap: 10px;
+          flex-direction: column;
+          width: 100%;
+        }
+        .address-input-tag {
+          display: flex;
+          gap: 6px;
+          flex-direction: column;
+          width: 100%;
+          // background: green;
+          .address-input-tag-top {
+            display: flex;
+            gap: 10px;
+            // width: 100%;
+            button {
+              background: blue;
+            }
+          }
+        }
+      }
+
+      .join-button-wrap {
+        border-top: 1px solid black;
+        margin-top: 34px;
+        padding-top: 66px;
+        display: flex;
+        justify-content: center;
+        button {
+          background: blue;
         }
       }
     }

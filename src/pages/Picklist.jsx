@@ -1,11 +1,11 @@
 import React from 'react';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 import { usePickStore } from '../store/usePickStore';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Picklist = () => {
   const navigte = useNavigate();
-  const { pickLists } = usePickStore();
+  const { pickLists, onRemoveList, resetPcikList } = usePickStore();
   const handleMoveDetail = (code) => {
     navigte(`/product-detail/${code}`);
   };
@@ -21,14 +21,28 @@ const Picklist = () => {
         </div>
 
         <div className="user-info-right">
+          <button onClick={resetPcikList}>전체 삭제</button>
           {pickLists.map((p) => (
             <ul onClick={() => handleMoveDetail(p.code)}>
               <li>
-                <img src={p.thumbImg} alt="" />
+                <div>
+                  <img src={p.thumbImg} alt="" />
+                </div>
+                <div>
+                  <p>{p.brand}</p>
+                  <p>{p.title}</p>
+                  <p>{p.price}</p>
+                </div>
               </li>
-              <li>{p.brand}</li>
-              <li>{p.title}</li>
-              <li>{p.price}</li>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onRemoveList(p.code);
+                }}
+              >
+                삭제
+              </button>
             </ul>
           ))}
         </div>
