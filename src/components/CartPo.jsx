@@ -1,17 +1,19 @@
 import React from 'react'
+import { useCartStore } from '../store/useCartStore'
 
 const CartPo = () => {
-  
 
+  const { cartItems, cartCount, totalPrice } = useCartStore();
 
   return (
     <div className='cartPo-wrap'>
       <div className='cartPo-inner'>
         <p>결제 금액</p>
+
         <div className='cartPo-pay-list'>
           <div className="cartPo-pay item">
             <span>상품금액</span>
-            <span></span>
+            <span>{totalPrice}</span>
           </div>
           <div className="cartPo-pay dis">
             <span>할인금액</span>
@@ -22,13 +24,16 @@ const CartPo = () => {
             <span></span>
           </div>
         </div>
+
         <div className='cartPo-pay-total'>
           <span>총 결제금액</span>
-          <span></span>
+          <span>{totalPrice}</span>
         </div>
+
         <div className='cartPo-btn-wrap'>
-          <button>원 구매하기 개</button>
-        </div>        
+          <button>{totalPrice}원 구매하기 {cartCount}개</button>
+        </div>
+
       </div>
     </div>
   )
