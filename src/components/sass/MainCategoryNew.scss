@@ -19,6 +19,20 @@
        font-weight: bold;
      }
    }
+
+   //  전체보기 버튼 >
+   .categorynew-tab-all {
+     display: flex;
+     margin-left: auto; // 오른쪽 끝으로 보내기
+     font-size: 1.6rem;
+     align-items: center;
+     gap: 6px;
+
+     img {
+       max-width: 14px;
+       height: auto;
+     }
+   }
  }
 
  // 슬라이드영역
@@ -86,14 +100,14 @@
        text-align: start;
        opacity: 0;
        transition: opacity 0.3s ease;
-      //  background-color: tomato;
+       //  background-color: tomato;
 
        .categorynew-name {
          font-size: 2rem;
          font-weight: 500;
          margin-bottom: 20px;
          color: g.$main-color2;
-           max-width: 90%;
+         max-width: 90%;
          white-space: normal; // 줄바꿈 허용
          word-break: keep-all; // 너무 긴 단어도 줄바꿈
        }
@@ -139,7 +153,7 @@
        .categorynew-overlay-info {
          opacity: 1;
 
-         }
        }
      }
    }
+ }
