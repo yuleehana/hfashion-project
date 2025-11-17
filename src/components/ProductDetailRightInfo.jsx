@@ -134,7 +134,7 @@ const ProductDetailRightInfo = ({ product }) => {
           <Link className="btn middle primary" onClick={handleAddToCart}>
             장바구니
           </Link>
-          <Link className="btn middle second primary" to="/pay">
+          <Link className="btn middle secondary" to="/pay">
             바로구매
           </Link>
         </div>

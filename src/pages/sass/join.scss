@@ -3,83 +3,110 @@
 .sub-page {
   .join-inner {
     max-width: 650px;
-    margin: 120px auto 0;
+    margin: 40px auto 0;
+
     // background: red;
     .join-wrap {
       display: flex;
       flex-direction: column;
       border-bottom: 1px solid rgb(26, 24, 24);
       margin-bottom: 40px;
+
       h2 {
         color: black;
         font-size: 40px;
         font-weight: 500;
         padding-bottom: 16px;
-        margin-bottom: 66px;
+        // margin-bottom: 66px;
         text-align: center;
       }
-      > p {
+
+      >p {
         font-size: 20px;
         color: 'black';
         margin-bottom: 16px;
       }
     }
+
     .join-form {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
-      gap: 24px;
+      gap: 20px;
+
       label {
-        font-size: 16px;
-        font-weight: 400;
         display: flex;
         justify-content: space-between;
+        font-size: 16px;
+        font-weight: 400;
+        align-items: center;
+
+        &:nth-of-type(7) {
+          margin-bottom: 16px;
+          align-items: self-start;
+
+          >span {
+            &:first-child {
+              padding-top: 8px;
+            }
+          }
+        }
+
         .label-tag {
           width: 120px;
         }
+
         .id-input-tag {
           display: flex;
           justify-content: space-between;
-          background: blue;
+          gap: 8px;
           width: 100%;
+
+          input {
+            flex: 1;
+          }
         }
+
         input {
           background: #f2f2f2;
           height: 40px;
           width: 100%;
           padding: 0 10px;
         }
+
         .pass-input-tag {
           display: flex;
           gap: 10px;
           flex-direction: column;
           width: 100%;
         }
+
         .address-input-tag {
           display: flex;
           gap: 6px;
           flex-direction: column;
           width: 100%;
+
           // background: green;
           .address-input-tag-top {
             display: flex;
-            gap: 10px;
+            gap: 4px;
             // width: 100%;
-            button {
-              background: blue;
-            }
+            // button {
+            //   background: blue;
+            // }
           }
         }
       }
 
       .join-button-wrap {
-        border-top: 1px solid black;
-        margin-top: 34px;
-        padding-top: 66px;
-        display: flex;
-        justify-content: center;
-        button {
-          background: blue;
-        }
+        // border-top: 1px solid black;
+        // margin-top: 34px;
+        // padding-top: 66px;
+        //  display: flex;
+        // justify-content: center;
+        // button {
+        //   background: blue;
+        // }
       }
     }
   }
