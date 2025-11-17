@@ -55,6 +55,7 @@ import MainBrandLive from './components/MainBrandLive';
 import { useAuthStore } from './store/authstore';
 import Picklist from './pages/Picklist';
 import ScrollToTop from './components/ScrollToTop';
+import NotFoundMyPage from './components/NotFoundMyPage';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -116,6 +117,7 @@ function App() {
         {/* <Route path='/lifestyle' element={<LifeStyle />}></Route>  제거 KIM 11-10 */}
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/userinfo/:notfoundmypage" element={<NotFoundMyPage />} />
 
         <Route path="/search" element={<Search />}></Route>
         <Route path="/login" element={<Login />}></Route>
