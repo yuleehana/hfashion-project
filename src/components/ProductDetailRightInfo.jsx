@@ -141,8 +141,20 @@ const ProductDetailRightInfo = ({ product }) => {
 
         <div className="item-box">
           <div className="rating">
-            <p>★★★★☆</p>
-            <p>100 Reviews</p>
+            <p>
+              {
+                // product.rating 개수만큼 렌더링
+                Array.from({ length: product.rating }, (_, index) => (
+                  <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
+                ))
+              }
+              {
+                Array.from({ length: 5 - product.rating }, (_, index) => (
+                  <img key={product.rating + index} src="/images/icon-star-white.svg" alt="star-empty" />
+                ))
+              }
+            </p>
+            <p>57 Reviews</p>
           </div>
           <ul className="etc-info">
             <li>
