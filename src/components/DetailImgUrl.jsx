@@ -6,16 +6,13 @@ const DetailImgUrl = ({ product }) => {
   console.log(ditailImgUrls)
 
   return (
-    <section>       
-      <ul className='detail-img' >
-        {ditailImgUrls.map((url, id) => (
-          <li key={id}>
-            <img src={url} alt={url} />
-          </li>
-        ))}
-      </ul>
-
-    </section>
+    <ul className='detail-img' >
+      {ditailImgUrls.map((url, id) => (
+        <li key={id}>
+          <img src={url} alt={url} />
+        </li>
+      ))}
+    </ul>
   );
 };
 
