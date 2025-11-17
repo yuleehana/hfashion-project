@@ -22,10 +22,10 @@ const Login = () => {
       <div className="inner">
         <div className="login-wrap">
           <h2 className="section-title">로그인</h2>
-          <div className="member-btn">
-            <button onClick={setIsLogin}>회원</button>
-            <button onClick={handleNonMember}>비회원</button>
-          </div>
+          <ul className="tab-ver1">
+            <li className='active'><Link onClick={setIsLogin}>회원</Link></li>
+            <li><Link onClick={handleNonMember}>비회원</Link></li>
+          </ul>
 
           {isLogin ? <MemberLogin /> : <NoMemberLogin />}
           <div>

@@ -10,6 +10,7 @@ import MdComment from '../components/MdComment';
 import ProdctActualSize from '../components/ProdctActualSize';
 import ProductNoticeInfo from '../components/ProductNoticeInfo';
 import Tab from '../components/Tab';
+import Delivery from '../components/Delivery';
 
 
 const ProductDetail = () => {
@@ -80,14 +81,11 @@ const ProductDetail = () => {
           {activeTab === 'qna' && (
             <section>
               <h3>상품 Q&A</h3>
-              <h3>배송/교환/반품</h3>
+              <Delivery />
             </section>
           )}
 
-
         </div>
-
-
         <div className="detail-right">
           <ProductDetailRightInfo product={product} />
         </div>

@@ -30,7 +30,8 @@ $sub-color5: #2C2C2C;
 @mixin myGrid($gap: auto) {
     display: grid;
     gap: $gap;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(5 , minmax(240px, 1fr));
 }
 
 
