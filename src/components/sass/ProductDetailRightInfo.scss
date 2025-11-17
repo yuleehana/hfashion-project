@@ -205,7 +205,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  
+
 }
 
 .item-total {
@@ -229,6 +229,11 @@
 
 .rating {
   @include g.myFlex($gap: 8px, $jc: flex-start);
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
 
   p {
     &:last-child {

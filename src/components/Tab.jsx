@@ -5,7 +5,7 @@ const Tab = ({ activeTab, handleTabClick }) => {
     // 탭 상태 정의: 기본값은 'detail' (상품상세정보)
     const tabs = [
         { id: 'detail', name: '상품상세정보' },
-        { id: 'review', name: '리뷰(100)' },
+        { id: 'review', name: '리뷰(57)' },
         { id: 'qna', name: '상품Q&A(2)' }
     ];
 
