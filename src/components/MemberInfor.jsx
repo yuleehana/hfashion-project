@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuthStore } from '../store/authstore';
 import UserInfoLeftMenu from './UserInfoLeftMenu'
 import "../pages/sass/UserInfo.scss";
+import "./sass/button-normal.scss"
 
 const MemberInfor = () => {
   const {user} = useAuthStore();
@@ -23,7 +24,7 @@ const MemberInfor = () => {
             <div className="user-information">
               <div className="information-box">
                 <p className='info-th'>아이디</p>
-                <p className="info-td">{user.id}</p>
+                <p className="info-td">{user.uid}</p>
               </div>
               <div className="information-box">
                 <p className='info-th'>이름</p>
@@ -32,7 +33,7 @@ const MemberInfor = () => {
               <div className="information-box">
                 <p className='info-th'>비밀번호</p>
                 <p className="info-td">
-                  <button>비밀번호 변경</button>
+                  <button className='btn small outline'>비밀번호 변경</button>
                 </p>
               </div>
               <div className="information-box">
@@ -48,6 +49,9 @@ const MemberInfor = () => {
                 <p className="info-td">{user.address}{user.address2}</p>
               </div>
             </div>
+          </div>
+          <div className="btn-wrap">
+            <button className='btn large primary'>회원정보 수정</button>
           </div>
         </div>
       </div>
