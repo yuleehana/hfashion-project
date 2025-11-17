@@ -1,11 +1,16 @@
 .user-pick-wrap {
   .user-info-right-inner {
-    margin: 40px 20px;
+    margin: 10px 10px;
     background: red;
     .user-info-right-title {
       display: flex;
       gap: 30px;
+      margin-bottom: 40px;
+      padding: 0 10px;
       .user-info-right-icon-box {
+        .pick-heart-icon {
+          background-image: url(/src/);
+        }
       }
       .user-info-right-text-box {
         strong {
@@ -13,6 +18,37 @@
         }
         span {
           font-size: 12px;
+        }
+      }
+    }
+    .user-picklist-card-wrap {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 10px;
+      .user-picklist-card {
+        cursor: pointer;
+        .user-picklist-card-img {
+        }
+      }
+      .user-picklist-card-text {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .card-text1 {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .picklist-brand {
+            font-size: 1.2rem;
+          }
+        }
+        .picklist-name {
+          font-size: 12px;
+          font-weight: 500;
+          // line-height: 2;
         }
       }
     }
