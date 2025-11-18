@@ -4,12 +4,15 @@ import { persist } from "zustand/middleware";
 export const useCartStore = create(
   persist(
     (set, get) => ({
+
       // 카트에 담을 아이템 배열과 개수
       cartItems: [],
       cartCount: 0,
 
+
       // 총 금액
       totalPrice: 0,
+
 
       // 카트에 상품 추가 메서드
       onAddToCart: (item) => {
@@ -34,6 +37,7 @@ export const useCartStore = create(
 
       },
 
+
       // 카트에서 아이템 제거
       onRemoveCart: (code) => {
         const cart = get().cartItems;
@@ -45,6 +49,25 @@ export const useCartStore = create(
       },
 
       resetCart: () => set({ cartItems: [] }),
+
+
+      onPlusCount: (id) => {
+        const cart = get().cartItems;
+        const updateCart = cart.map((item) =>
+          item.id === id ? { ...item, count: item.count + 1 } : item
+        );
+        let total = 0;
+        updateCart.forEach((item) => {
+          total += item.price * item.count;
+        });
+
+        set({
+          cartItems: updateCart,
+          totalPrice: total,
+        });
+      },
+
+
 
     }),
 

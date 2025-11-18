@@ -42,3 +42,17 @@ $sub-color5: #2C2C2C;
         gap: 40px;
     }
 }
+
+input {
+    // border: 1px solid red;
+    border: none;
+      background: #f2f2f2;
+            color: #bababa;
+
+            font-size: 1.6rem;
+      text-indent: 25px;
+    &:focus {
+        
+        border: 1px solid $main-color1;
+    }
+}
