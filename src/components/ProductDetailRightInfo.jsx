@@ -128,7 +128,7 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className="item-info">
-          <p>색상:레드, 사이즈:M</p>
+          <p>색상:{selectColor}, 사이즈:{selectSize}</p>
 
           {/* 수량 선택 */}
           <p className="btn-count">

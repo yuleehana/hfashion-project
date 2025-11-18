@@ -25,7 +25,7 @@ const Picklist = () => {
           <div className="user-info-right-inner">
             <div className="user-info-right-title">
               <p className="user-info-right-icon-box">
-                <span className="pick-icon">하트</span>
+                <span className="pick-heart-icon"></span>
               </p>
               <p className="user-info-right-text-box">
                 <strong>찜 리스트</strong>
@@ -33,28 +33,32 @@ const Picklist = () => {
               </p>
             </div>
             <hr />
-            <div>
+            <div className="user-picklist-card-wrap">
               {pickLists.map((p) => (
                 <ul className="user-picklist-card" onClick={() => handleMoveDetail(p.code)}>
                   <li>
                     <div className="user-picklist-card-img">
-                      <img src={p.thumbImg} alt="" />
+                      <img src={p.thumbImg} alt="픽이미지" />
                     </div>
                     <div className="user-picklist-card-text">
-                      <p>{p.brand}</p>
-                      <p>{p.title}</p>
-                      <p>{p.price}</p>
+                      <p className="card-text1">
+                        <span className="picklist-brand">{p.brand}</span>
+                        <span
+                          className="picklist-heart"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onRemoveList(p.code);
+                            alert('찜목록에서 제거되었습니다.');
+                          }}
+                        ></span>
+                      </p>
+                      <p className="picklist-name">{p.title}</p>
+                      <p className="card-text3">
+                        <span className="picklist-price">{p.price * 0.8}</span>
+                        <span className="picklist-originPrice">₩{p.price.toLocaleString()}</span>
+                      </p>
                     </div>
                   </li>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onRemoveList(p.code);
-                    }}
-                  >
-                    삭제
-                  </button>
                 </ul>
               ))}
             </div>

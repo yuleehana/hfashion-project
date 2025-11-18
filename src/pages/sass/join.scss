@@ -21,7 +21,7 @@
         text-align: center;
       }
 
-      >p {
+      > p {
         font-size: 20px;
         color: 'black';
         margin-bottom: 16px;
@@ -44,7 +44,7 @@
           margin-bottom: 16px;
           align-items: self-start;
 
-          >span {
+          > span {
             &:first-child {
               padding-top: 8px;
             }
@@ -57,8 +57,9 @@
 
         .id-input-tag {
           display: flex;
+          gap: 10px;
           justify-content: space-between;
-          gap: 8px;
+          // background: blue;
           width: 100%;
 
           input {
@@ -91,22 +92,22 @@
             display: flex;
             gap: 4px;
             // width: 100%;
-            // button {
-            //   background: blue;
-            // }
+            button {
+              // background: blue;
+            }
           }
         }
       }
 
       .join-button-wrap {
-        // border-top: 1px solid black;
-        // margin-top: 34px;
-        // padding-top: 66px;
-        //  display: flex;
-        // justify-content: center;
-        // button {
-        //   background: blue;
-        // }
+        border-top: 1px solid black;
+        margin-top: 34px;
+        padding-top: 66px;
+        display: flex;
+        justify-content: center;
+        button {
+          width: 100%;
+        }
       }
     }
   }
