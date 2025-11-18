@@ -49,7 +49,7 @@ const CartItem = () => {
 
             </li>
             <hr></hr>
-          </>
+          </> 
         ))}
       </ul>
     </div>
