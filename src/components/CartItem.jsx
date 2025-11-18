@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
+import "./sass/CartItem.scss";
 
 const CartItem = () => {
 
-  const { cartItems } = useCartStore();
+  const { cartItems, onRemoveCart } = useCartStore();
 
   return (
     <div className='cart-item-list-wrap'>
@@ -23,7 +24,7 @@ const CartItem = () => {
                   <div className='item-desc'>
                     <Link><span className='item-brand'>{item.brand}</span></Link>
                     <span className='item-title'>{item.title}</span>
-                    <span className='item-op'></span>
+                    <span className='item-op'>{item.color}/{item.size}</span>
                   </div>
                   <div className='op-change'>
                     <span>옵션변경</span>
@@ -37,7 +38,9 @@ const CartItem = () => {
                 <button>바로구매</button>
               </div>
 
-              <span className='del-icon'><img src="/public/close-icon-black.svg" alt="" /></span>
+              <span className='del-icon' onClick={() => onRemoveCart(item.code, item.size)}>
+                <img src="../public/images/close-icon-black.svg" alt="아이템 삭제" />
+              </span>
 
             </div>
 

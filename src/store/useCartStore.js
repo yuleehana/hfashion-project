@@ -19,11 +19,11 @@ export const useCartStore = create(
         const cart = get().cartItems;
 
         // 중복 아이템 체크
-        const existing = cart.find((c) => c.code === item.code)
+        const existing = cart.find((c) => c.code === item.code && c.size === item.size && c.color === item.color)
 
         let updateCart;
         if (existing) {
-          updateCart = cart.filter((c) => c.code !== item.code);
+          updateCart = cart.filter((c) => c.code === item.code && c.size === item.size && c.color === item.color);
           alert('이미 장바구니에 담긴 상품입니다');
         }
         else {
@@ -48,9 +48,20 @@ export const useCartStore = create(
         });
       },
 
-      resetCart: () => set({ cartItems: [] }),
+
+      // 컬러 선택
+      onAddColor: (item) => {
+        const color = get().cartItems.color;
+        console.log(color);
+
+        set({
+          item: color,
+        })
+
+      },
 
 
+      // 수량 변경
       onPlusCount: (id) => {
         const cart = get().cartItems;
         const updateCart = cart.map((item) =>
@@ -66,6 +77,9 @@ export const useCartStore = create(
           totalPrice: total,
         });
       },
+
+
+      resetCart: () => set({ cartItems: [] }),
 
 
 

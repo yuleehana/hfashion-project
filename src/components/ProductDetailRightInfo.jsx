@@ -57,6 +57,7 @@ const ProductDetailRightInfo = ({ product }) => {
       ...item,
       size: selectSize,
       count: count,
+      color: selectColor,
     };
 
     onAddToCart(productCart);
