@@ -35,15 +35,15 @@ export const useCartStore = create(
         let total = 0;
         // 총 금액 구하기
         updateCart.forEach((item) => {
-            total += item.price * item.count
+          total += item.price * item.count
         })
 
         set({
-            cartItems: updateCart,
-            cartCount: updateCart.length,
-            totalPrice: total
+          cartItems: updateCart,
+          cartCount: updateCart.length,
+          totalPrice: total
         })
-        
+
       },
 
 
@@ -52,16 +52,25 @@ export const useCartStore = create(
         const cart = get().cartItems;
         const updateCart = cart.filter((c) => !(c.code === code));
 
+        let total = 0;
+
+        // 총 금액 구하기
+        updateCart.forEach((item) => {
+          total += item.price * item.count
+        })
+
         set({
-          cartItems: updateCart
+          cartItems: updateCart,
+          cartCount: updateCart.length,
+          totalPrice: total
         });
+
       },
 
 
       // 컬러 선택
       onAddColor: (item) => {
         const color = get().cartItems.color;
-        console.log(color);
 
         set({
           item: color,
@@ -88,7 +97,7 @@ export const useCartStore = create(
       // },
 
 
-      resetCart: () => set({ cartItems: [] }),
+      resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
 
 
 

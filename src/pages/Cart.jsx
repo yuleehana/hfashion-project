@@ -20,7 +20,6 @@ const Cart = () => {
         <div className='cart-inner-bottom'>
           <div className='cart-inner-left'>
             {cartItems.length === 0 ? <CartNone /> : <CartItem />}
-            {/* <CartItem /> */}
           </div>
           <div className='cart-inner-right'>
             <CartPo />
