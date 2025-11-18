@@ -26,10 +26,28 @@ const ProductListPage = ({ category }) => {
   //제조국 추출
   const itemMades = allItems.map((item) => item.made).filter((m, id, all) => all.indexOf(m) === id);
 
+  // 가격관련 btn생성 배열
+  const priceRange = [
+    { name: '10만원 이하', value: 100000 },
+    { name: '10만원 - 20만원', value: 200000 },
+    { name: '20만원 - 30만원', value: 300000 },
+    { name: '30만원이상', value: 300000 },
+  ];
+
   //------------------------------------------------------------------------------
   //메서드 브랜드 선택 메서드
   const handleBrand = (brand) => {
     const match = allItems.filter((item) => item.brand === brand);
+    setItems(match);
+  };
+
+  const handleCountry = (made) => {
+    const match = allItems.filter((item) => item.made === made);
+    setItems(match);
+  };
+
+  const handlePrice = (price) => {
+    const match = allItems.filter((item) => item.price < price.value);
     setItems(match);
   };
 
@@ -50,10 +68,24 @@ const ProductListPage = ({ category }) => {
         </ul>
         <ul style={{ display: 'flex', flexDirection: 'row' }}>
           {itemMades.map((i) => (
-            <li style={{ border: '1px solid black', padding: '10px', cursor: 'pointer' }}>{i}</li>
+            <li
+              onClick={() => handleCountry(i)}
+              style={{ border: '1px solid black', padding: '10px', cursor: 'pointer' }}
+            >
+              {i}
+            </li>
           ))}
         </ul>
-        <ul></ul>
+        <ul>
+          {priceRange.map((p) => (
+            <li
+              onClick={() => handlePrice(p.price)}
+              style={{ border: '1px solid black', padding: '10px', cursor: 'pointer' }}
+            >
+              {p.name}
+            </li>
+          ))}
+        </ul>
       </div>
       <ul className="sub-goods-list">
         {currentItems.map((item) => (
