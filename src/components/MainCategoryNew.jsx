@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { useProductStore } from '../store/useProductStore'
+import { usePickStore } from '../store/usePickStore';
 import './sass/MainCategoryNew.scss'
 import { Link } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const VISIBLE_COUNT = 4; // 한 화면에 보이는 상품 개수
 const MainCategoryNew = () => {
   const { items, onFetchItem } = useProductStore();
   const [activeTab, setActiveTab] = useState('ALL');
+  const { pickLists, onAddWishList } = usePickStore();
   const [startIndex, setStartIndex] = useState(0); // 슬라이드 시작 인덱스
 
   // 첫 렌더링 때 상품 불러오기
@@ -59,6 +61,23 @@ const MainCategoryNew = () => {
   const handleChangeTab = (tab) => {
     setActiveTab(tab);
     setStartIndex(0); // 탭 바꾸면 처음으로
+  };
+
+   // MainCategoryNew 전용 찜 추가 함수
+  const handleAddToWishlist = (e, item) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // 이미 찜된 상품이면 추가하지 않음
+    const isAlreadyPicked = pickLists.some(p => p.code === item.code);
+    if (isAlreadyPicked) {
+      alert('이미 찜목록에 추가된 상품입니다.');
+      return;
+    }
+
+    // 추가
+    onAddWishList(item);
+    alert('찜목록에 추가되었습니다!');
   };
 
   return (
@@ -120,6 +139,16 @@ const MainCategoryNew = () => {
                 to={`/product-detail/${item.code}`}   // ★ 상세 페이지로 이동
                 className="product-card"
               >
+                 {/* 찜 버튼 (+) */}
+                  <button
+                    className="categorynew-likebtn"
+                    onClick={(e) => handleAddToWishlist(e, item)}
+                  >
+                    <img
+                      src="/images/plusLike.svg"
+                      alt="찜하기"
+                    />
+                  </button>
 
                 <div className="categorynew-product-img">
                   <img src={item.thumbImg} alt={item.title} />
@@ -137,7 +166,7 @@ const MainCategoryNew = () => {
                     {/*원래 가격*/}
                     <del className="categorynew-original-price">
                       {/* 소수점 안 나오게 */}
-                        {Math.round(item.price * 1.25).toLocaleString()}원 
+                      {Math.round(item.price * 1.25).toLocaleString()}원
                     </del>
 
                     {/*할인 퍼센트*/}

@@ -63,6 +63,22 @@
      flex: 0 0 calc((100% - 30px) / 4);
      cursor: pointer;
 
+     .categorynew-likebtn {
+            position: absolute;
+            bottom: 14px;        // 상품 카드 상단으로부터 10px (원하는 위치로 조정 가능)
+            right: 14px;      // 상품 카드 우측으로부터 10px (원하는 위치로 조정 가능)
+            z-index: 3;
+            
+            width: 30px;
+            height: 30px;
+            
+            // ⭐️ 초기 상태: 숨기기
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+            
+            /* ... 나머지 스타일 ... */
+        }
+
      /* 이미지 영역 */
      .categorynew-product-img {
        position: relative;
@@ -150,7 +166,7 @@
          }
        }
 
-       .categorynew-overlay-info {
+       .categorynew-overlay-info,.categorynew-likebtn {
          opacity: 1;
 
        }
