@@ -65,18 +65,16 @@
 
      .categorynew-likebtn {
             position: absolute;
-            bottom: 14px;        // 상품 카드 상단으로부터 10px (원하는 위치로 조정 가능)
-            right: 14px;      // 상품 카드 우측으로부터 10px (원하는 위치로 조정 가능)
+            bottom: 14px;       
+            right: 14px;   
             z-index: 3;
             
             width: 30px;
             height: 30px;
             
-            // ⭐️ 초기 상태: 숨기기
+            //초기 상태: 숨기기
             opacity: 0; 
             transition: opacity 0.3s ease; 
-            
-            /* ... 나머지 스타일 ... */
         }
 
      /* 이미지 영역 */
