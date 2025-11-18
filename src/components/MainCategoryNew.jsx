@@ -10,7 +10,7 @@ const VISIBLE_COUNT = 4; // 한 화면에 보이는 상품 개수
 
 const MainCategoryNew = () => {
   const { items, onFetchItem } = useProductStore();
-  const [activeTab, setActiveTab] = useState('ALL');
+  const [activeTab, setActiveTab] = useState('WOMEN');
   const { pickLists, onAddWishList } = usePickStore();
   const [startIndex, setStartIndex] = useState(0); // 슬라이드 시작 인덱스
 
@@ -22,22 +22,18 @@ const MainCategoryNew = () => {
   //  탭에 따라 상품 필터링
   const filteredItems = useMemo(() => {
     switch (activeTab) {
-      case 'ALL':
-        // return items.filter(item =>
-        //   item.category.includes('women blouse') || item.category.includes('man pants')
-        // );
-        // 현재 startIndex 기준으로 번갈아 보여주기
-        return items.filter((item, idx) =>
-          item.category.includes(idx % 2 === 0 ? 'man' : 'women')
-        );
       case 'WOMEN':
         return items.filter(item => item.category.includes('women skirt'));
+
       case 'MEN':
         return items.filter(item => item.category.includes('man outer'));
+
       case 'BAG_ACC':
         return items.filter(item => item.category.includes('sundries women bag'));
+
       case 'GOLF':
         return items.filter(item => item.category.includes('golf etc'));
+
       default:
         return items;
     }
@@ -63,7 +59,7 @@ const MainCategoryNew = () => {
     setStartIndex(0); // 탭 바꾸면 처음으로
   };
 
-   // MainCategoryNew 전용 찜 추가 함수
+  // MainCategoryNew 전용 찜 추가 함수
   const handleAddToWishlist = (e, item) => {
     e.preventDefault();
     e.stopPropagation();
@@ -80,18 +76,21 @@ const MainCategoryNew = () => {
     alert('찜목록에 추가되었습니다!');
   };
 
+  //전체보기 버튼 링크
+  const categoryPaths = {
+    WOMEN: "/women/women-skirt",
+    MEN: "/men/man-outer",
+    BAG_ACC: "/sundries/sundries-women-bag",
+    GOLF: "/golf/golf-acc"
+  };
+
   return (
     <section>
       <h2>CATEGORY NEW</h2>
       <div className='container'>
         {/* 탭 */}
         <div className="categorynew-tabs">
-          <button
-            className={activeTab === 'ALL' ? 'active' : ''}
-            onClick={() => handleChangeTab('ALL')}
-          >
-            ALL
-          </button>
+
           <button
             className={activeTab === 'WOMEN' ? 'active' : ''}
             onClick={() => handleChangeTab('WOMEN')}
@@ -116,8 +115,8 @@ const MainCategoryNew = () => {
             GOLF
           </button>
 
-          <Link to="" className='categorynew-tab-all'>
-            전체보기 <img src="/images/all-view-right-arrow.png" alt="" />
+          <Link to={categoryPaths[activeTab]} className='categorynew-tab-all'>
+            전체보기 <img src="/images/all-view-right-arrow.png" alt="전체보기" />
           </Link>
 
         </div>
@@ -139,16 +138,16 @@ const MainCategoryNew = () => {
                 to={`/product-detail/${item.code}`}   // ★ 상세 페이지로 이동
                 className="product-card"
               >
-                 {/* 찜 버튼 (+) */}
-                  <button
-                    className="categorynew-likebtn"
-                    onClick={(e) => handleAddToWishlist(e, item)}
-                  >
-                    <img
-                      src="/images/plusLike.svg"
-                      alt="찜하기"
-                    />
-                  </button>
+                {/* 찜 버튼 (+) */}
+                <button
+                  className="categorynew-likebtn"
+                  onClick={(e) => handleAddToWishlist(e, item)}
+                >
+                  <img
+                    src="/images/plusLike.svg"
+                    alt="찜하기"
+                  />
+                </button>
 
                 <div className="categorynew-product-img">
                   <img src={item.thumbImg} alt={item.title} />
