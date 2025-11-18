@@ -22,8 +22,8 @@
       }
 
       > p {
-        font-size: 20px;
-        color: 'black';
+        text-align: center;
+        font-size: 16px;
         margin-bottom: 16px;
       }
     }
@@ -57,21 +57,17 @@
 
         .id-input-tag {
           display: flex;
-          gap: 10px;
+          gap: 4px;
           justify-content: space-between;
-          // background: blue;
           width: 100%;
-
           input {
             flex: 1;
           }
         }
 
         input {
-          background: #f2f2f2;
           height: 40px;
           width: 100%;
-          padding: 0 10px;
         }
 
         .pass-input-tag {
@@ -87,22 +83,16 @@
           flex-direction: column;
           width: 100%;
 
-          // background: green;
           .address-input-tag-top {
             display: flex;
             gap: 4px;
-            // width: 100%;
-            button {
-              // background: blue;
-            }
           }
         }
       }
 
       .join-button-wrap {
         border-top: 1px solid black;
-        margin-top: 34px;
-        padding-top: 66px;
+        padding-top: 40px;
         display: flex;
         justify-content: center;
         button {
