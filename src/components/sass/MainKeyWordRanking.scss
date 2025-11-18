@@ -10,7 +10,7 @@
     }
     .ranking-item-wrap{
       width: 100%;
-      
+
       .ranking-item{
         button{
           display: flex;
@@ -24,6 +24,24 @@
         ul{
           display: flex;
           gap: 6px;
+          
+          li{
+            width: 114px;
+            height: 170px;
+            background-size: cover;
+            
+            a{
+              .brand-title{
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                height: 100%;
+                font-size: 12px;
+                text-align: center;
+                color: #fff;
+              }
+            }
+          }
         }
       }
     }
