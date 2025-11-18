@@ -215,7 +215,7 @@ const MainKeyWordRanking = () => {
         </div> */}
         {liMenu !== null && (
           <div className='sec-inner-right'>
-            <div className="KWR-main-img"
+            <div className="kwr-main-img"
               style={{
                 backgroundImage: `url(${menuRankProduct[liMenu].rightMainData[0].img})`
               }}>
@@ -229,14 +229,16 @@ const MainKeyWordRanking = () => {
               </div>
             </div>
 
-            <div className="KWR-sub-img-wrap">
+            <div className="kwr-sub-img-wrap">
               <div className="showing-khsn">
-                <p>제목글</p>
-                <p>옷장의 계절을 바꿀 타이밍</p>
+                <div className="top-item">
+                  <p>제목글</p>
+                  <p>옷장의 계절을 바꿀 타이밍</p>
+                </div>
                 <button>더보기</button>
               </div>
               {menuRankProduct[liMenu].rank.slice(0,3).map((it) => (
-                <div className='KWR-sub-img'
+                <div className='kwr-sub-img'
                   key={it.id} style={{backgroundImage:`url(${it.img})`}}
                 >
                   <div className='kwr-sub-text'>
