@@ -6905,7 +6905,7 @@ export const products = [
             "/images/products/E12F9WSC060WDB/slide/GM0125082660083_1_ORGINL_1756463583857.jpg",
             "/images/products/E12F9WSC060WDB/slide/GM0125082660083_2_ORGINL_1756463584072.jpg"
         ],
-        thumbImg: "/images/products/POYSU2550537332460/thumbnail.jpg",
+        thumbImg: "/images/products/E12F9WSC060WDB/thumbnail.jpg",
     },
     {
         category: "women skirt",
