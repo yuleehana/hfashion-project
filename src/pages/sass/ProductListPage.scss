@@ -1,6 +1,6 @@
 @use '../../App.scss' as g;
 
-.product-list-wrap{
+.product-list-wrap {
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -8,9 +8,14 @@
     margin: 0 auto;
     padding: 0 20px;
 }
+
 .sub-goods-list {
     width: 100%;
     @include g.myGrid($gap: 10rem 2rem);
+
+    &:has(+h3) {
+        margin-bottom: 4rem;
+    }
 
     li {
 
