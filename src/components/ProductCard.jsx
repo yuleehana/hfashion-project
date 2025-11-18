@@ -35,7 +35,7 @@ const ProductCard = ({ sendItem }) => {
         </p>
         <p className="price">
           <span>
-            <span className="sale-price">₩{(price * 0.8).toLocaleString()}</span>
+            <span className="sale-price">{(price * 0.8).toLocaleString()}원</span>
             <del>{price.toLocaleString()}</del>
           </span>
           <span className="sale">20%</span>

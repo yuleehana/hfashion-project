@@ -1,15 +1,13 @@
-import { create } from "zustand";
-import { products } from "../data/products.js";
+import { create } from 'zustand';
+import { products } from '../data/products.js';
 
 export const useProductStore = create((set, get) => ({
-
   items: [],
-
 
   onFetchItem: () => {
     const allItems = get().items || [];
     if (allItems.length > 0) return;
-    console.log("상품불러오기")
+    console.log('상품불러오기');
     set({ items: products });
   },
   // 상품목록을 저장할 배열
@@ -66,72 +64,8 @@ export const useProductStore = create((set, get) => ({
     // 3. brand가 문자열인 경우: 기존의 단일 브랜드 필터링
     else {
       // item.brand가 brand 문자열과 정확히 일치하는 상품만 필터링
-      return allItems.filter((item) => item.brand === brand)
+      return allItems.filter((item) => item.brand === brand);
     }
   },
 
-
-
-
-  // // 카트에 담긴 상픔 개수
-  // cartItems: [],
-  // cartCount: 0,
-
-  // // 총 금액
-  // totalPrice: 0,
-
-  // onAddToCart: () => {
-  //   const cart = get().cartItems;
-
-  //   const existing = cart.find((item) =>
-  //     item.code === product.code && item.size === product.size
-  //   )
-  //   let updateCart;
-
-  //   if (existing) {
-  //     updateCart = cart.map((item) =>
-  //       item.code === product.code && item.size === product.size ?
-  //         { ...item, count: item.count + product.count } : item
-  //     )
-  //   }
-  //   else {
-  //     updateCart = [...cart, { ...product }]
-  //   }
-
-  //   // 총 구매 금액
-  //   let total = 0;
-  //   updateCart.foreEach((item) => {
-  //     total += item.price * item.count
-  //   })
-
-  //   set({
-  //     cartItems: updateCart,
-  //     cartCount: updateCart.length,
-  //     totalPrice: total
-  //   })
-
-  // },
-
-
-
-  onPlusCount: (id) => {
-    const cart = get().cartItems;
-    const updateCart = cart.map((item) =>
-      item.id === id ?
-        { ...item, count: item.count + 1 } : item
-    )
-    let total = 0;
-    updateCart.forEach((item) => {
-      total += item.price * item.count
-    })
-
-    set({
-      cartItems: updateCart,
-      totalPrice: total
-    })
-
-
-  },
-
-
-}))
+}));

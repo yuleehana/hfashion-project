@@ -1,7 +1,7 @@
 .user-pick-wrap {
   .user-info-right-inner {
     margin: 10px 10px;
-    background: red;
+    // background: red;
     .user-info-right-title {
       display: flex;
       gap: 30px;
@@ -9,7 +9,11 @@
       padding: 0 10px;
       .user-info-right-icon-box {
         .pick-heart-icon {
-          // background-image: url(/src/);
+          display: block;
+          width: 25px;
+          height: 25px;
+          background: url('../../../public/images/icon/icon-heart-grey.svg') center no-repeat;
+          background-size: contain;
         }
       }
       .user-info-right-text-box {
@@ -28,6 +32,12 @@
       gap: 20px;
       padding: 10px;
       .user-picklist-card {
+        li {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          // height: 450px;
+        }
         cursor: pointer;
         .user-picklist-card-img {
         }
@@ -38,17 +48,38 @@
         flex-direction: column;
         gap: 10px;
         .card-text1 {
+          align-items: center;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           .picklist-brand {
             font-size: 1.2rem;
           }
+          .picklist-heart {
+            width: 20px;
+            height: 20px;
+            background: url('../../../public/images/icon/icon-heart-grey.svg') center no-repeat;
+            background-size: contain;
+          }
         }
         .picklist-name {
+          height: 25px;
+          word-break: break-all;
           font-size: 12px;
           font-weight: 500;
           // line-height: 2;
+        }
+        .card-text3 {
+          display: flex;
+          justify-content: space-between;
+          .picklist-price {
+            font-size: 20px;
+          }
+          .picklist-originPrice {
+            font-size: 16px;
+            color: #eebe81;
+            text-decoration: line-through;
+          }
         }
       }
     }

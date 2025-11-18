@@ -57,6 +57,7 @@ const ProductDetailRightInfo = ({ product }) => {
       ...item,
       size: selectSize,
       count: count,
+      color: selectColor,
     };
 
     onAddToCart(productCart);
@@ -92,7 +93,7 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className="item-code">{product.code}</div>
           <div className="item-title">{product.title}</div>
           <div className="item-price">
-            <strong>{(product.price * 0.8).toLocaleString()}</strong>
+            <strong>{(product.price * 0.8).toLocaleString()}원</strong>
             <del>{product.price.toLocaleString()}</del>
             <span>20%</span>
             <button>쿠폰 다운로드</button>
@@ -128,7 +129,7 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className="item-info">
-          <p>색상:레드, 사이즈:M</p>
+          <p>색상:{selectColor}, 사이즈:{selectSize}</p>
 
           {/* 수량 선택 */}
           <p className="btn-count">
