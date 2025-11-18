@@ -1,6 +1,7 @@
 .main-sec-inner{
   display: flex;
   gap: 122px;
+  justify-content: space-between;
 
   .sec-inner-left{
     .section-title{
@@ -24,11 +25,14 @@
         ul{
           display: flex;
           gap: 6px;
+          flex:1;
           
           li{
             width: 114px;
             height: 170px;
+            background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
             
             a{
               .brand-title{
@@ -43,6 +47,34 @@
             }
           }
         }
+      }
+    }
+  }
+  .sec-inner-right{
+    display: flex;
+    justify-content: space-between;
+    gap:30px;
+    border: 1px solid red;
+    width:100%;
+
+    .kwr-main-img{
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      border: 1px solid blue;
+    }
+    .kwr-sub-img-wrap{
+      width: 100%;
+      border: 1px solid green;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px 30px;
+
+      .kwr-sub-img{
+        background-size: cover;
       }
     }
   }
