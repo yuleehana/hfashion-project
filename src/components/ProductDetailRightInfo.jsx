@@ -61,6 +61,8 @@ const ProductDetailRightInfo = ({ product }) => {
     };
 
     onAddToCart(productCart);
+
+    setShowPopup(true);
   };
 
   // 팝업 닫기

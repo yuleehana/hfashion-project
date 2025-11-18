@@ -31,10 +31,19 @@ export const useCartStore = create(
 
         }
 
-        set({
-          cartItems: updateCart
-        });
+        // 총 구매 금액
+        let total = 0;
+        // 총 금액 구하기
+        updateCart.forEach((item) => {
+            total += item.price * item.count
+        })
 
+        set({
+            cartItems: updateCart,
+            cartCount: updateCart.length,
+            totalPrice: total
+        })
+        
       },
 
 
@@ -62,21 +71,21 @@ export const useCartStore = create(
 
 
       // 수량 변경
-      onPlusCount: (id) => {
-        const cart = get().cartItems;
-        const updateCart = cart.map((item) =>
-          item.id === id ? { ...item, count: item.count + 1 } : item
-        );
-        let total = 0;
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+      // onPlusCount: (id) => {
+      //   const cart = get().cartItems;
+      //   const updateCart = cart.map((item) =>
+      //     item.id === id ? { ...item, count: item.count + 1 } : item
+      //   );
+      //   let total = 0;
+      //   updateCart.forEach((item) => {
+      //     total += item.price * item.count;
+      //   });
 
-        set({
-          cartItems: updateCart,
-          totalPrice: total,
-        });
-      },
+      //   set({
+      //     cartItems: updateCart,
+      //     totalPrice: total,
+      //   });
+      // },
 
 
       resetCart: () => set({ cartItems: [] }),
