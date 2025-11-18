@@ -10,21 +10,23 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const { items, onFetchItem } = useProductStore();
 
+  // ---------------- Hook 최상위에서 선언 ----------------
   const [keyword, setKeyword] = useState(''); // 입력한 검색어
-  const [filteredItems, setFilteredItems] = useState([]); //실시간 필터링 결과
+  const [filteredItems, setFilteredItems] = useState([]); // 실시간 검색 결과
+  const [recentKeywords, setRecentKeywords] = useState([]); // 최근 검색어 저장
+  // -----------------------------------------------------
 
-  // 처음에 상품 데이터 불러오기
+  // 상품 데이터 불러오기
   useEffect(() => {
     onFetchItem();
-  }, []);
+  }, [onFetchItem]);
 
-  // 검색어가 바뀔 때마다 필터링
+  // 검색어 변경 시 필터링
   useEffect(() => {
     if (!keyword.trim()) {
-      setFilteredItems([]); // 입력 없을 때는 결과 비움
+      setFilteredItems([]);
       return;
     }
-
     const lower = keyword.toLowerCase();
     const result = items.filter(
       (item) =>
@@ -34,59 +36,123 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     setFilteredItems(result);
   }, [keyword, items]);
 
-  // 오버레이 꺼져 있으면 렌더링 안함
-  if (!isOpen) return null;
-
-  // 엔터로 검색 제출 시 /search?q=키워드 로 이동
+  // 검색 제출 시 최근 검색어 저장
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search?q=${keyword}`);
-    onClose(); // 오버레이 닫기
+    const trimmedKeyword = keyword.trim();
+    if (trimmedKeyword) {
+      const newRecent = [trimmedKeyword, ...recentKeywords.filter(k => k !== trimmedKeyword)].slice(0, 5);
+      setRecentKeywords(newRecent);
+      navigate(`/search?q=${trimmedKeyword}`);
+      onClose();
+    }
   };
+
+  // 검색어 초기화
+  const handleClear = () => setKeyword('');
+
+  if (!isOpen) return null;
 
   return (
     <div className="search-overlay">
-      {/* 닫기 버튼 */}
-      <button className="close-btn" onClick={onClose}><img src="images/close-icon-white.svg" alt="" /></button>
+      {/* 오버레이 닫기 버튼 */}
+      <button className="close-btn" onClick={onClose}>
+        <img src="images/close-icon-white.svg" alt="닫기" />
+      </button>
 
-      {/* 검색 입력폼 */}
-      <form onSubmit={handleSubmit} className="search-container">
-        <input
-          type="text"
-          placeholder="검색어를 입력하세요"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-        />
-        <button className="search-icon" type="submit"><img src="/images/search-icon-white.svg" alt="" /></button>
+      <div className="search-input-box">
+        <form onSubmit={handleSubmit} className="search-container">
+          {/* 검색 입력 */}
+          <input
+            type="text"
+            placeholder="검색어를 입력하세요"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+          />
 
-        {/* 입력 없을 때 인기 검색어 노출 */}
-        {!keyword && (
-          <div className="popular-keywords">
-            <p>인기 검색어</p>
-            <ul>
-              {popularKeywords.map((kw,index) => (
-                <li key={kw}>
-                  <button onClick={() => setKeyword(kw)}>
-                    <span className="rank">{index + 1}</span>{kw}</button>
-                </li>
+          {/* 입력어 초기화 버튼 */}
+          {keyword && (
+            <button type="button" className="clear-btn" onClick={handleClear}>
+              <img src="/images/close-icon-white.svg" alt="닫기" />
+            </button>
+          )}
+
+          {/* 검색 제출 버튼 */}
+          <button className="search-icon" type="submit">
+            <img src="/images/search-icon-white.svg" alt="검색" />
+          </button>
+
+          {/* 검색어 입력 없을 때: 최근 검색어 + 인기 검색어 */}
+          {!keyword && (
+            <div className="search-suggestions">
+              {/* 최근 검색어 */}
+              <div className="recent-keywords">
+                <p>최근 검색어</p>
+                <ul>
+                  {recentKeywords.map((kw) => (
+                    <li key={kw}>
+                      <button
+                        type="button"
+                        className="keyword-button"
+                        onClick={() => setKeyword(kw)}
+                      >
+                        {kw}
+                      </button>
+                      <button
+                        type="button"
+                        className="delete-btn"
+                        onClick={() =>
+                          setRecentKeywords(recentKeywords.filter((r) => r !== kw))
+                        }
+                      >
+                        <img src="/images/close-icon-white.svg" alt="삭제" />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* 인기 검색어 */}
+              <div className="popular-keywords">
+                <p>인기 검색어</p>
+                <ul>
+                  {popularKeywords.map((kw, index) => (
+                    <li key={kw}>
+                      <button
+                        type="button"
+                        className="popular"
+                        onClick={() => setKeyword(kw)}
+                      >
+                        <span className="rank">{index + 1}</span>
+                        {kw}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {/* 검색어 입력 시 실시간 필터링 결과 */}
+          {keyword && filteredItems.length > 0 && (
+            <ul className="search-preview">
+              {filteredItems.slice(0, 12).map((item) => ( // slice(0, 12) 검색되는 갯수
+                <li key={item.id} onClick={() => {
+                  navigate(`/product-detail/${item.code}`); //해당되는 상품 상세페이지로 이동하기
+                  onClose(); // 검색 오버레이 닫기
+                }}
+                  style={{ cursor: 'pointer' }} // 마우스 커서 표시
+                >{item.title || item.name}</li>
               ))}
             </ul>
-          </div>
-        )}
+          )}
 
-        {/* 실시간 검색 미리보기 */}
-        {keyword && (
-          <ul className="search-preview">
-            {filteredItems.map((item) => (
-              <li key={item.id}>{item.title || item.name}</li>
-            ))}
-          </ul>
-        )}
-        {/* 검색 결과 없을 때 */}
-        {keyword && filteredItems.length === 0 && (
-          <p className="no-result">검색 결과가 없습니다.</p>
-        )}
-      </form>
+          {/* 검색어 입력 시 결과 없음 */}
+          {keyword && filteredItems.length === 0 && (
+            <p className="no-result">검색 결과가 없습니다.</p>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
