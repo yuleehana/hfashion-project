@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import "./sass/CartItem.scss";
 
 const CartItem = () => {
+  const { cartItems, onRemoveCart, totalPrice } = useCartStore();
 
-  const { cartItems, onRemoveCart } = useCartStore();
+  // 체크btn active
+  const [isActive, setIsActive] = useState(false)
 
   return (
     <div className='cart-item-list-wrap'>
@@ -17,8 +19,8 @@ const CartItem = () => {
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <Link className='checkbox'>
-                    <img src="../public/images/check-icon.svg" alt="선택" className='check' />
+                  <Link className='checkbox' onClick={() => setIsActive}>
+                    <img src="../../images/check-icon.svg" alt="선택" className='check' />
                   </Link>
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
@@ -36,20 +38,26 @@ const CartItem = () => {
                 </div>
 
                 <div className='item-right'>
-                  <span>수량</span>
-                  <span>원</span>
+                  <span>수량 : {item.count}</span>
+                  <span>/</span>
+                  <span>{(totalPrice * 0.8).toLocaleString()}원</span>
                   <button>바로구매</button>
                 </div>
 
-                <span className='del-icon' onClick={() => onRemoveCart(item.code, item.size)}>
-                  <img src="../public/images/close-icon-black.svg" alt="아이템 삭제" />
+                <span className='del-icon'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemoveCart(item.code);
+                    alert('장바구니에서 제거되었습니다.')
+                  }}>
+                  <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
                 </span>
 
               </div>
 
             </li>
             <hr></hr>
-          </> 
+          </>
         ))}
       </ul>
     </div>

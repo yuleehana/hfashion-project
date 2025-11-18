@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react'; // 검색창 오픈 상태용 useState 추가 11/18
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 import './sass/Header.scss';
 import { usePickStore } from '../store/usePickStore';
+import SearchOverlay from './SearchOverlay'; // 오버레이 검색창 컴포넌트 11/18
+import { useCartStore } from '../store/useCartStore';
 
 // mainmenu
 const menus = [
@@ -61,15 +63,20 @@ const menus = [
 const Header = () => {
   const { user, onLogout } = useAuthStore();
   const { resetPcikList } = usePickStore();
+  const {resetCart} = useCartStore();
 
   const navigate = useNavigate();
   //   현재 경로
   const location = useLocation();
   const currentPath = location.pathname;
 
+    // 검색창 열림 상태 관리 11/18
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   // 메서드
   const handleLogout = () => {
     resetPcikList();
+    resetCart();
     onLogout();
     alert('로그아웃 되었습니다');
 
@@ -94,6 +101,7 @@ const Header = () => {
   };
 
   return (
+     <>
     <header>
       <div className="header-inner">
         <div className="inner-left">
@@ -129,9 +137,13 @@ const Header = () => {
         <div className="inner-right">
           <ul className="gnb-list">
             <li>
-              <Link to="/search">
+              {/* 검색 아이콘 클릭 시 오버레이 열기 11/18*/}
+                <button onClick={() => setIsSearchOpen(true)} className="search-button">
+                  <img src="/images/search-icon-white.svg" alt="검색아이콘" />
+                </button>
+              {/* <Link to="/search">
                 <img src="/images/search-icon-white.svg" alt="검색아이콘" />
-              </Link>
+              </Link> */}
             </li>
             {user ? (
               <>
@@ -164,6 +176,12 @@ const Header = () => {
         </div>
       </div>
     </header>
+
+          {/*  검색 오버레이 컴포넌트 렌더링 */}
+      <SearchOverlay
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}/>
+         </>
   );
 };
 
