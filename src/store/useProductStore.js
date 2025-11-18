@@ -26,7 +26,6 @@ export const useProductStore = create((set, get) => ({
     if (!cate || cate === 'all') {
       return allItems;
     }
-
     // 2. 필터링 로직 수정: 카테고리 이름에 'cate' 키워드가 포함되어 있는지 확인
     else {
       const lowerCaseCate = cate.toLowerCase(); // 검색 키워드 소문자 처리
@@ -38,7 +37,6 @@ export const useProductStore = create((set, get) => ({
       });
     }
   },
-
 
   onItemsBrand: (brand) => {
     const allItems = get().items || [];
@@ -60,12 +58,23 @@ export const useProductStore = create((set, get) => ({
         return false;
       });
     }
-
     // 3. brand가 문자열인 경우: 기존의 단일 브랜드 필터링
     else {
       // item.brand가 brand 문자열과 정확히 일치하는 상품만 필터링
       return allItems.filter((item) => item.brand === brand);
     }
+  },
+
+  // 메서드: 특정 카테고리, 평점, 슬라이싱 조건을 적용
+  onFetchRatedItems: (cate, rating = 5, start = 10, count = 5) => {
+    // 해당 카테고리의 전체 상품을 가져옴
+    const allItems = get().onItemsCategory(cate);
+    // 평점(rating)이 일치하는 상품만 필터링
+    const ratedItems = allItems.filter((item) => item.rating === rating);
+    // 필터링된 상품 목록에서 10번째(인덱스 9)부터 5개(10번째부터 5개)를 슬라이스합니다.
+    const startIndex = start > 0 ? start - 1 : 0;
+    const endIndex = startIndex + count;
+    return ratedItems.slice(startIndex, endIndex);
   },
 
 }));
