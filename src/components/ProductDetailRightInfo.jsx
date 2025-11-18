@@ -161,11 +161,13 @@ const ProductDetailRightInfo = ({ product }) => {
                   <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
                 ))
               }
-              {
-                Array.from({ length: 5 - product.rating }, (_, index) => (
-                  <img key={product.rating + index} src="/images/icon-star-white.svg" alt="star-empty" />
-                ))
-              }
+              {Array.from({ length: 5 - product.rating }, (_, index) => (
+                <img
+                  key={product.rating + index}
+                  src="/images/icon-star-white.svg"
+                  alt="star-empty"
+                />
+              ))}
             </p>
             <p>57 Reviews</p>
           </div>
@@ -187,8 +189,7 @@ const ProductDetailRightInfo = ({ product }) => {
       </div>
 
       {/* 팝업 보여주기 */}
-      {showPopup ? <CartPopup onClose={handleClosePopup} /> : ""}
-
+      {/* {showPopup ? <CartPopup onClose={handleClosePopup} /> : ''} */}
     </>
   );
 };
