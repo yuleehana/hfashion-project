@@ -39,7 +39,6 @@ export const useProductStore = create((set, get) => ({
     }
   },
 
-
   onItemsBrand: (brand) => {
     const allItems = get().items || [];
 
@@ -68,4 +67,55 @@ export const useProductStore = create((set, get) => ({
     }
   },
 
+  // 카트에 담긴 상픔 개수
+  cartItems: [],
+  cartCount: 0,
+
+  // 총 금액
+  totalPrice: 0,
+
+  onAddToCart: (product) => {
+    const cart = get().cartItems;
+
+    const existing = cart.find((item) => item.code === product.code && item.size === product.size);
+    let updateCart;
+
+    if (existing) {
+      updateCart = cart.map((item) =>
+        item.code === product.code && item.size === product.size
+          ? { ...item, count: item.count + product.count }
+          : item
+      );
+    } else {
+      updateCart = [...cart, { ...product }];
+    }
+
+    // 총 구매 금액
+    let total = 0;
+    updateCart.foreEach((item) => {
+      total += item.price * item.count;
+    });
+
+    set({
+      cartItems: updateCart,
+      cartCount: updateCart.length,
+      totalPrice: total,
+    });
+  },
+
+  onPlusCount: (id) => {
+    const cart = get().cartItems;
+    const updateCart = cart.map((item) =>
+      item.id === id ? { ...item, count: item.count + 1 } : item
+    );
+    let total = 0;
+    updateCart.forEach((item) => {
+      total += item.price * item.count;
+    });
+
+    set({
+      cartItems: updateCart,
+      totalPrice: total,
+    });
+  },
 }));

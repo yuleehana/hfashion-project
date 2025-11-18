@@ -6,7 +6,7 @@ const MenDefault = () => {
   return (
     <div className="sub-main">
       <h2 className="sub-main-title">MEN’S SHOP</h2>
-      <SubPage category="man" />
+      <SubPage category="cateman" />
     </div>
   );
 };
