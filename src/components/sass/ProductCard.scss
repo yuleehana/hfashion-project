@@ -1,3 +1,5 @@
+@use '../../App.scss' as g;
+
 .img-box{
     position: relative;
     >.favorite{
@@ -13,5 +15,17 @@
         &.active{
             background-image: url('../../../public/images/icon/icon-heart-black.svg');
         }
+    }
+    >.best-rank{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 1.6rem;
+        line-height: 28px;
+        text-align: center;
+        background-color: g.$main-color1;
+        color: g.$main-color2;
     }
 }

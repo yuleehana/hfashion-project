@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './sass/ProductListPage.scss';
 import Pagination from '../components/Pagination'; // Pagination 컴포넌트 필요
 import usePagination from '../hooks/usePagination'; // 커스텀 훅 임포트
-import { all } from 'axios';
 
 const ProductListPage = ({ category }) => {
   const { onItemsCategory } = useProductStore();
@@ -53,7 +52,6 @@ const ProductListPage = ({ category }) => {
   };
 
   //제조국 선택 메서드
-
   return (
     <div className="product-list-wrap">
       <div>
