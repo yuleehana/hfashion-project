@@ -1,13 +1,16 @@
 .login-wrap {
     max-width: 500px;
     margin: 0 auto;
-    // margin-top: 100px;
     display: flex;
     flex-direction: column;
     gap: 30px;
 
-    &:has(>h2.section-title){
+    &:has(>h2.section-title) {
         padding-top: 40px;
+    }
+
+    h2.section-title {
+        text-align: center;
     }
 
     .member-btn {
@@ -52,25 +55,26 @@
         }
     }
 
-    .login-btn-wrap{
+    .login-btn-wrap {
         display: flex;
         flex-direction: column;
         gap: 10px;
 
-        .login-btn-wrap-top{
-            
-            button{
+        .login-btn-wrap-top {
+
+            button {
                 width: 100%;
                 background-color: black;
                 color: white;
                 padding: 8px 25px;
             }
         }
-        .login-btn-wrap-bottom{
+
+        .login-btn-wrap-bottom {
             display: flex;
             gap: 5px;
 
-            button{
+            button {
                 width: 100%;
                 padding: 8px 25px;
             }

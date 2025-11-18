@@ -165,7 +165,7 @@ const Join = () => {
             </span>
           </label>
           <div className="join-button-wrap">
-            <button className="btn middle outline" type="submit">
+            <button className="btn middle primary" type="submit">
               회원가입
             </button>
           </div>

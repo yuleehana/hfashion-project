@@ -34,7 +34,6 @@ $sub-color5: #2C2C2C;
 }
 
 
-
 .App {
     &:has(main) {
         display: flex;
@@ -43,16 +42,3 @@ $sub-color5: #2C2C2C;
     }
 }
 
-input {
-    // border: 1px solid red;
-    border: none;
-      background: #f2f2f2;
-            color: #bababa;
-
-            font-size: 1.6rem;
-      text-indent: 25px;
-    &:focus {
-        
-        border: 1px solid $main-color1;
-    }
-}
