@@ -1,0 +1,31 @@
+.main-sec-inner{
+  display: flex;
+  gap: 122px;
+
+  .sec-inner-left{
+    .section-title{
+      font-size: 54px;
+      text-align: start;
+      margin-bottom: 88px;
+    }
+    .ranking-item-wrap{
+      width: 100%;
+      
+      .ranking-item{
+        button{
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          border-bottom: 1px solid #000;
+          width: 100%;
+          padding-left: 50px;
+          padding-bottom: 30px;
+        }
+        ul{
+          display: flex;
+          gap: 6px;
+        }
+      }
+    }
+  }
+}
