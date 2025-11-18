@@ -88,20 +88,20 @@ const MainKeyWordRanking = () => {
     {title:"가방", rank:[
       {
         id: 1,
-        img: '/images/products/P4W4D3116GUB1/detail/detail_1.jpg',
+        img: '/images/products/P4W4D3116GUB1/thumbnail.jpg',
         brand: 'Calvin Klein Accessories',
       }, {
         id: 2,
-        img: '/images/products/P8ZHP3A3A01/thumbnail.jpg',
-        brand: 'GUESS',
+        img: '/images/products/P4W4D3155GUB1/thumbnail.jpg',
+        brand: 'Calvin Klein Accessories',
       }, {
         id: 3,
-        img: '/images/products/QO04314553/thumbnail.jpg',
-        brand: 'Vivienne Westwood',
+        img: '/images/products/POYSP2550535706001/thumbnail.jpg',
+        brand: 'HUGO',
       }, {
         id: 4,
-        img: '/images/products/QO04320705/thumbnail.jpg',
-        brand: 'Burberry',
+        img: '/images/products/Q7H0401DC/thumbnail.jpg',
+        brand: 'Magforce',
       }
     ]},
     {title:"신발", rank:[
@@ -178,9 +178,9 @@ const MainKeyWordRanking = () => {
                 {liMenu === index && (
                   <ul>
                     {item.rank.map((it,id) => (
-                      <li key={id}>
+                      <li key={id} style={{backgroundImage:`url(${it.img})`}}>
                         <Link to={it.id}>
-                          <img src={it.img} alt="" />
+                          <p className='brand-title'>{it.brand}</p>
                         </Link>
                       </li>
                     ))}
