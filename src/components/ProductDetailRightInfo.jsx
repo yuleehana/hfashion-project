@@ -92,7 +92,7 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className="item-code">{product.code}</div>
           <div className="item-title">{product.title}</div>
           <div className="item-price">
-            <strong>{(product.price * 0.8).toLocaleString()}</strong>
+            <strong>{(product.price * 0.8).toLocaleString()}원</strong>
             <del>{product.price.toLocaleString()}</del>
             <span>20%</span>
             <button>쿠폰 다운로드</button>
