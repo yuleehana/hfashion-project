@@ -7,23 +7,23 @@ const outerData = [
   {
     id: 1,
     img: '/images/products/POYFA2550543492001/thumbnail.jpg',
-    brand: 'BOSS'
+    brand: 'BOSS',
   },
   {
     id: 2,
     img: '/images/products/POYFA2550543240202/thumbnail.jpg',
-    brand: 'BOSS'
+    brand: 'BOSS',
   },
   {
     id: 3,
     img: '/images/products/POYFA2550543388404/thumbnail.jpg',
-    brand: 'BOSS'
+    brand: 'BOSS',
   },
   {
     id: 4,
     img: '/images/products/POYSP2550530270001/thumbnail.jpg',
-    brand: 'BOSS'
-  }
+    brand: 'BOSS',
+  },
 ];
 
 const pantsData = [
@@ -31,95 +31,93 @@ const pantsData = [
   {
     id: 1,
     img: '/images/products/T32F7NEW45TWT11BK/thumbnail.jpg',
-    brand: 'TOMMY JEANS'
+    brand: 'TOMMY JEANS',
   },
   {
     id: 2,
     img: '/images/products/T12F6NPC010MT11BC/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER MEN'
+    brand: 'TOMMY HILFIGER MEN',
   },
   {
     id: 3,
     img: '/images/products/T32F7WPC16TWT1C1G/thumbnail.jpg',
-    brand: 'TOMMY JEANS'
+    brand: 'TOMMY JEANS',
   },
   {
     id: 4,
     img: '/images/products/T22F7WPC080WT1ADZ/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER WOMEN'
-  }
+    brand: 'TOMMY HILFIGER WOMEN',
+  },
 ];
 
 const bagData = [
   {
     id: 1,
     img: '/images/products/P4W4D3116GUB1/detail/detail_1.jpg',
-    brand: 'Calvin Klein Accessories'
+    brand: 'Calvin Klein Accessories',
   },
   {
     id: 2,
     img: '/images/products/P8ZHP3A3A01/thumbnail.jpg',
-    brand: 'GUESS'
+    brand: 'GUESS',
   },
   {
     id: 3,
     img: '/images/products/QO04314553/thumbnail.jpg',
-    brand: 'Vivienne Westwood'
+    brand: 'Vivienne Westwood',
   },
   {
     id: 4,
     img: '/images/products/QO04320705/thumbnail.jpg',
-    brand: 'Burberry'
-  }
+    brand: 'Burberry',
+  },
 ];
 
 const shoeData = [
   {
     id: 1,
     img: '/images/products/POYFA2450522833005/thumbnail.jpg',
-    brand: 'BOSS'
+    brand: 'BOSS',
   },
   {
     id: 2,
     img: '/images/products/POYSP2550536504001/thumbnail.jpg',
-    brand: 'BOSS'
+    brand: 'BOSS',
   },
   {
     id: 3,
     img: '/images/products/T52F7ARS130JT1YBI/thumbnail.jpg',
-    brand: 'TOMMY SHOES'
+    brand: 'TOMMY SHOES',
   },
   {
     id: 4,
     img: '/images/products/T52F7ARS130JT1YBI/thumbnail.jpg',
-    brand: 'TOMMY SHOES'
-  }
+    brand: 'TOMMY SHOES',
+  },
 ];
-
 
 const skirtData = [
   {
     id: 1,
     img: '/images/products/T22F7WSC505WL1N56/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER WOMEN'
+    brand: 'TOMMY HILFIGER WOMEN',
   },
   {
     id: 2,
     img: '/images/products/T22F7WSC080WT1MR8/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER WOMEN'
+    brand: 'TOMMY HILFIGER WOMEN',
   },
   {
     id: 3,
     img: '/images/products/T22F7WSC060WT1BDS/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER WOMEN'
+    brand: 'TOMMY HILFIGER WOMEN',
   },
   {
     id: 4,
     img: '/images/products/T22F7WSC061WT10OG/thumbnail.jpg',
-    brand: 'TOMMY HILFIGER WOMEN'
-  }
-]
-
+    brand: 'TOMMY HILFIGER WOMEN',
+  },
+];
 
 const rightMainData = [
   {
@@ -127,9 +125,9 @@ const rightMainData = [
     img: '/images/products/T32F7WSH13TWT1MAS/thumbnail.jpg',
     brand: 'TOMMY JEANS',
     originprice: 139000,
-    dis: '15%'
-  }
-]
+    dis: '15%',
+  },
+];
 
 const rightSubData = [
   [
@@ -139,7 +137,7 @@ const rightSubData = [
       brand: 'TOMMY JEANS',
       title: '마이크로 깅엄 체크 셔츠',
       originprice: 129000,
-      dis: '15%'
+      dis: '15%',
     },
     {
       id: 2,
@@ -147,7 +145,7 @@ const rightSubData = [
       brand: 'TOMMY JEANS',
       title: '데님 크롭 셔켓',
       originprice: 169000,
-      dis: '15%'
+      dis: '15%',
     },
     {
       id: 3,
@@ -155,14 +153,12 @@ const rightSubData = [
       brand: 'TOMMY JEANS',
       title: '벨라 플레어 핏 데님 팬츠',
       originprice: 239000,
-      dis: '15%'
-    }
-  ]
-]
-
+      dis: '15%',
+    },
+  ],
+];
 
 const MainKeyWordRanking = () => {
-
   return (
     <section className="KWR-wrap">
       <div className="main-sec-inner">
@@ -170,11 +166,10 @@ const MainKeyWordRanking = () => {
           <h2 className="section-title">KEYWORD RANKING</h2>
         </div>
 
-        <div className='ranking-item-wrap'>
-
+        <div className="ranking-item-wrap">
           <div className="ranking-item">
             <Link>아우터</Link>
-            <div className='ranking-img-box'>
+            <div className="ranking-img-box">
               {outerData.map((outer) => (
                 <ul>
                   <li key={outer.id}>
@@ -188,23 +183,18 @@ const MainKeyWordRanking = () => {
             </div>
           </div>
 
-          <div className="ranking-item">
-            
-          </div>
+          <div className="ranking-item"></div>
           <div className="ranking-item"></div>
           <div className="ranking-item"></div>
           <div className="ranking-item"></div>
         </div>
 
         <div className="sec-inner-right">
-          <div className="KWR-main-img">
-            {/* {rightMainData} */}
-          </div>
+          <div className="KWR-main-img">{/* <ProductCard /> */}</div>
           <div className="KWR-sub-img"></div>
         </div>
       </div>
     </section>
-
   );
 };
 
