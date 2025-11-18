@@ -16,17 +16,37 @@
     }
 
     .favorite {
-      @include g.myFlex($gap: 1.2rem);
+      @include g.myFlex($gap: 0.8rem);
 
       img {
-        width: 1.6rem;
-        height: 1.6rem;
+        width: 2rem;
+        height: 2rem;
       }
 
-      i {
-        font-size: 1.2rem;
-        font-style: normal;
-        color: g.$sub-color2;
+      .favo {
+        @include g.myFlex($gap: 0.4rem);
+
+        i {
+          font-size: 1.2rem;
+          font-style: normal;
+          color: g.$sub-color2;
+        }
+        span{
+          cursor: pointer;
+        }
+        >span {
+          
+          display: block;
+          width: 2rem;
+          height: 2rem;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url('../../../public/images/icon/icon-heart-grey.svg');
+
+          &.active {
+            background-image: url('../../../public/images/icon/icon-heart-black.svg');
+          }
+        }
       }
     }
   }

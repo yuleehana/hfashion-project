@@ -14,7 +14,7 @@ const ProductDetailRightInfo = ({ product }) => {
   const { code } = useParams();
   // 전역변수 불러오기
   const { items, onFetchItem } = useProductStore();
-  const { onAddWishList } = usePickStore();
+  const { onAddWishList, pickLists } = usePickStore();
   const { onAddToCart } = useCartStore();
 
   // 상품을 저장할 변수
@@ -73,6 +73,9 @@ const ProductDetailRightInfo = ({ product }) => {
   const handleAddToPick = () => {
     onAddWishList(item);
   };
+  const currentProductCode = item?.code || product?.code;
+  const isPicked = pickLists.some((pick) => pick.code === currentProductCode);
+
 
   return (
     <>
@@ -81,12 +84,11 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className="item-brand-favorite">
             <p className="brand">{product.brand}</p>
             <p className="favorite">
-              <span>
-                <i>0</i>
-                <span onClick={handleAddToPick}>
-                  <img src="../../images/icon/icon-heart-grey.svg" alt="" />
-                </span>
+              <span className='favo'>
+                <i>10</i>
+                <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
               </span>
+              <span className='share'><img src="/images/icon/icon-share.svg" alt="공유하기" /></span>
             </p>
           </div>
 
