@@ -1,0 +1,39 @@
+@use "../../App.scss" as g;
+
+.sub-page {
+
+  .inner {
+
+    &.cart {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+
+      .cart-inner-top {
+
+        .sub-page-title {
+          color: g.$main-color1;
+          font-size: 4rem;
+          font-weight: 500;
+
+        }
+      }
+
+      .cart-inner-bottom {
+        display: flex;
+        justify-content: space-between;
+
+        .cart-inner-left {
+          border: 1px solid g.$sub-color2;
+          width: 70%;
+
+        }
+
+        .cart-inner-right {
+          border: 1px solid g.$sub-color2;
+          width: 25%;
+        }
+      }
+    }
+  }
+}
