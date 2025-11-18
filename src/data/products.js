@@ -13453,8 +13453,7 @@ export const products = [
             "/images/products/RA2F3AWLE01KBK/slide/GM0125040997090_4_ORGINL_1744271950388.jpg"
         ],
         thumbImg: "/images/products/RA2F3AWLE01KBK/thumbnail.jpg"
-    }
-]
+    },
 
   {
     category: 'man pants',
