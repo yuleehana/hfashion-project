@@ -15,4 +15,4 @@ const MenDefault = () => {
     )
 }
 
-export default MenDefault
+export default MenDefault;

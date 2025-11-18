@@ -14,7 +14,6 @@ import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
 import ProdctQNA from '../components/ProdctQNA';
 
-
 const ProductDetail = () => {
   const { code } = useParams();
   console.log(code);
@@ -38,14 +37,13 @@ const ProductDetail = () => {
     const findItem = products.find((item) => item.code === code);
     // 업데이트
     setProduct(findItem || null); // 찾지 못하면 null로 설정하여 오류 방지
-
   }, [code]); // code가 변경될 때마다 다시 실행
   if (!product) {
     return null; // 또는 로딩 스피너
   }
 
   return (
-    <div className='sub-page'>
+    <div className="sub-page">
       <div className="product-detail-wrap">
         <div className="detail-left">
           <div className="product-detail-slide">
@@ -55,10 +53,7 @@ const ProductDetail = () => {
             <h3>이 상품과 비슷한 상품</h3>
             <DetailSimilarSwiper product={product} />
           </section>
-          <Tab
-            activeTab={activeTab}
-            handleTabClick={handleTabClick}
-          />
+          <Tab activeTab={activeTab} handleTabClick={handleTabClick} />
           {activeTab === 'detail' && (
             <section>
               <MdComment />
@@ -67,23 +62,20 @@ const ProductDetail = () => {
               <ProdctActualSize />
             </section>
           )}
-          {activeTab === 'review' && (
-            <DetailPageReview />
-          )}
+          {activeTab === 'review' && <DetailPageReview />}
           {activeTab === 'qna' && (
             <section>
               <ProdctQNA />
               <Delivery />
             </section>
           )}
-
         </div>
-        <div className="detail-right">
+        <div className="detail-right" style={{ backgroundImage: 'url(``)' }}>
           <ProductDetailRightInfo product={product} />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;
