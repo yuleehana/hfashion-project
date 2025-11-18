@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "./sass/CartPopup.scss";
 
 const CartPopup = ({ onClose }) => {
   return (

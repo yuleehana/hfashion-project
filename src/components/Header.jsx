@@ -4,6 +4,7 @@ import { useAuthStore } from '../store/authstore';
 import './sass/Header.scss';
 import { usePickStore } from '../store/usePickStore';
 import SearchOverlay from './SearchOverlay'; // 오버레이 검색창 컴포넌트 11/18
+import { useCartStore } from '../store/useCartStore';
 
 // mainmenu
 const menus = [
@@ -62,6 +63,7 @@ const menus = [
 const Header = () => {
   const { user, onLogout } = useAuthStore();
   const { resetPcikList } = usePickStore();
+  const {resetCart} = useCartStore();
 
   const navigate = useNavigate();
   //   현재 경로
@@ -74,6 +76,7 @@ const Header = () => {
   // 메서드
   const handleLogout = () => {
     resetPcikList();
+    resetCart();
     onLogout();
     alert('로그아웃 되었습니다');
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './sass/ProductCard.scss';
 import { usePickStore } from '../store/usePickStore';
 
-const ProductCard = ({ sendItem }) => {
+const ProductCard = ({ sendItem, isBestSeller = false, rank}) => {
   //하트 체크여부
   const [isActive, setIsActive] = useState(null);
 
@@ -26,7 +26,16 @@ const ProductCard = ({ sendItem }) => {
     <>
       <div className="img-box">
         <img src={sendItem.thumbImg} alt={sendItem.title} />
-        <span className={`favorite ${isPick ? 'active' : ''}`} onClick={handleFavoriteClick}></span>
+
+        {/* * 조건부 렌더링 (if/else 역할)을 위한 삼항 연산자 사용 */}
+        {isBestSeller ? (
+          // * isBestSeller가 true일 때 표시할 태그 순위
+          <span className="best-rank">{rank}</span>
+        ) : (
+          // * isBestSeller가 false일 때 표시할 찜하기(하트) 버튼
+          <span className={`favorite ${isPick ? 'active' : ''}`} onClick={handleFavoriteClick}></span>
+        )}
+
       </div>
       <div className="text-box">
         <p className="brand">{sendItem.brand}</p>

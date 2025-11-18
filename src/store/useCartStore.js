@@ -31,9 +31,18 @@ export const useCartStore = create(
 
         }
 
+        // 총 구매 금액
+        let total = 0;
+        // 총 금액 구하기
+        updateCart.forEach((item) => {
+          total += item.price * item.count
+        })
+
         set({
-          cartItems: updateCart
-        });
+          cartItems: updateCart,
+          cartCount: updateCart.length,
+          totalPrice: total
+        })
 
       },
 
@@ -43,16 +52,25 @@ export const useCartStore = create(
         const cart = get().cartItems;
         const updateCart = cart.filter((c) => !(c.code === code));
 
+        let total = 0;
+
+        // 총 금액 구하기
+        updateCart.forEach((item) => {
+          total += item.price * item.count
+        })
+
         set({
-          cartItems: updateCart
+          cartItems: updateCart,
+          cartCount: updateCart.length,
+          totalPrice: total
         });
+
       },
 
 
       // 컬러 선택
       onAddColor: (item) => {
         const color = get().cartItems.color;
-        console.log(color);
 
         set({
           item: color,
@@ -62,24 +80,24 @@ export const useCartStore = create(
 
 
       // 수량 변경
-      onPlusCount: (id) => {
-        const cart = get().cartItems;
-        const updateCart = cart.map((item) =>
-          item.id === id ? { ...item, count: item.count + 1 } : item
-        );
-        let total = 0;
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+      // onPlusCount: (id) => {
+      //   const cart = get().cartItems;
+      //   const updateCart = cart.map((item) =>
+      //     item.id === id ? { ...item, count: item.count + 1 } : item
+      //   );
+      //   let total = 0;
+      //   updateCart.forEach((item) => {
+      //     total += item.price * item.count;
+      //   });
 
-        set({
-          cartItems: updateCart,
-          totalPrice: total,
-        });
-      },
+      //   set({
+      //     cartItems: updateCart,
+      //     totalPrice: total,
+      //   });
+      // },
 
 
-      resetCart: () => set({ cartItems: [] }),
+      resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
 
 
 
