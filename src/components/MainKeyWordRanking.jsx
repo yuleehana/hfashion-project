@@ -8,7 +8,7 @@ const MainKeyWordRanking = () => {
   const navigate = useNavigate();
 
   const menuRankProduct = [
-    {title:"아우터", rightMainData:[
+    {id:1, title:"아우터", rightMainData:[
         {
           img:"/images/products/POYWI2450499551001/thumbnail.jpg",
           brand:"BOSS",
@@ -37,7 +37,7 @@ const MainKeyWordRanking = () => {
           title:"양가죽 봄버 자켓 릴랙스핏"
         }
     ]},
-    {title:"펜츠", rightMainData:[
+    {id:2, title:"펜츠", rightMainData:[
         {
           img:"/images/products/T32F6NEW19TWT11BY/thumbnail.jpg",
           brand:"TOMMY JEANS",
@@ -66,7 +66,7 @@ const MainKeyWordRanking = () => {
           title:"니트 와이드 팬츠"
         }
     ]},
-    {title:"가방", rightMainData:[
+    {id:3, title:"가방", rightMainData:[
         {
           img:"/images/products/P4W4D3202GUB1/thumbnail.jpg",
           brand:"Calvin Klein Accessories",
@@ -95,7 +95,7 @@ const MainKeyWordRanking = () => {
           title:"아델리 펭귄 웨이스트백 - 데저트 카모"
         }
     ]},
-    {title:"신발", rightMainData:[
+    {id:4, title:"신발", rightMainData:[
         {
           img:"/images/products/P4WYM0134401W/thumbnail.jpg",
           brand:"Calvin Klein Accessories",
@@ -124,7 +124,7 @@ const MainKeyWordRanking = () => {
           title:"아카이브 98 웜라인 스니커즈"
         }
     ]},
-    {title:"스커트", rightMainData:[
+    {id:5, title:"스커트", rightMainData:[
         {
           img:"/images/products/T22F7WSC050WT1C1G/thumbnail.jpg",
           brand:"TOMMY HILFIGER WOMEN",
@@ -155,15 +155,12 @@ const MainKeyWordRanking = () => {
     ]}
   ]
 
-  const handleToggle = (index) => {
-    // setLiMenu(liMenu === index ? null : index);
-    // const menuname = menuRankProduct[index].link;
-    // if (menuname) navigate(menuname);
+  const handleHover = (index) => {
     if (liMenu === index) return; // 같은 메뉴 누르면 그대로 유지
     setLiMenu(index);
 
-    const menuname = menuRankProduct[index].link;
-    if (menuname) navigate(menuname);
+    // const menuname = menuRankProduct[index].link;
+    // if (menuname) navigate(menuname);
   }
 
   return (
@@ -173,24 +170,13 @@ const MainKeyWordRanking = () => {
           <h2 className="section-title">KEYWORD<br />RANKING</h2>
 
           <div className="ranking-item-wrap">
-            {/* <div className="ranking-item">
-              <Link>아우터</Link>
-              <div className="ranking-img-box">
-                <ul>
-                  {outerData.map((outer) => (
-                    <li key={outer.id}>
-                      <Link>
-                        <img src={outer.img} alt={outer.id} />
-                        <p>{outer.brand}</p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div> */}
             {menuRankProduct.map((item,index) => (
               <div key={index} className='ranking-item'>
-                <button onClick={() => handleToggle(index)}>{item.title}</button>
+                <button type="button"
+                  onMouseEnter={() => handleHover(index)}
+                >
+                  <span>{item.id}</span>{item.title}
+                </button>
                 {liMenu === index && (
                   <ul>
                     {item.rank.map((it,id) => (
@@ -207,12 +193,6 @@ const MainKeyWordRanking = () => {
           </div>
         </div>
 
-        
-
-        {/* <div className="sec-inner-right">
-          <div className="KWR-main-img"></div>
-          <div className="KWR-sub-img"></div>
-        </div> */}
         {liMenu !== null && (
           <div className='sec-inner-right'>
             <div className="kwr-main-img"
