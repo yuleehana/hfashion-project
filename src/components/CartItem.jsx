@@ -19,9 +19,9 @@ const CartItem = () => {
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <Link className='checkbox' onClick={() => setIsActive}>
+                  <button className='checkbox' onClick={() => setIsActive}>
                     <img src="../../images/check-icon.svg" alt="선택" className={``} />
-                  </Link>
+                  </button>
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
                   </div>

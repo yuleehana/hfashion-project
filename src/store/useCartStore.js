@@ -32,6 +32,10 @@ export const useCartStore = create(
 
         }
 
+        const color = updateCart.color;
+        const size = updateCart.size;
+        const code = updateCart.code;
+
         // 총 구매 금액
         let total = 0;
         // 총 금액 구하기
@@ -69,16 +73,6 @@ export const useCartStore = create(
       },
 
 
-      // 컬러 선택
-      onAddColor: (item) => {
-        const color = get().cartItems.color;
-
-        set({
-          item: color,
-        })
-
-      },
-
 
       // 수량 변경
       // onPlusCount: (id) => {
@@ -99,6 +93,7 @@ export const useCartStore = create(
 
 
       resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
+      // resetSelect: () => set({ onSelectColor: [], onSelectSize: [], onSelectCount: 0 })
 
 
 
