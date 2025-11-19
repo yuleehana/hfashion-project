@@ -6589,7 +6589,7 @@ export const products = [
     thumbImg: '/images/products/PKETMJPO3301-101/thumbnail.jpg',
   },
   {
-    category: 'golf man top',
+    category: 'golf cateman top',
     rating: 2,
     made: '중국',
     date: '2025.10',
