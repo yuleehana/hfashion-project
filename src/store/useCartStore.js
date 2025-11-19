@@ -32,10 +32,6 @@ export const useCartStore = create(
 
         }
 
-        const color = updateCart.color;
-        const size = updateCart.size;
-        const code = updateCart.code;
-
         // 총 구매 금액
         let total = 0;
         // 총 금액 구하기

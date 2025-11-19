@@ -13,6 +13,7 @@
 
         .item-left {
           display: flex;
+          align-items: center;
 
           .checkbox {
             width: 1.6rem;
@@ -31,18 +32,30 @@
             }
           }
 
-          .item-img-box{
+          .item-img-box {
             width: 180px;
-            
+
           }
+
+          .item-text-box {
+            display: flex;
+            flex-direction: column;
+
+            .item-desc {
+              display: flex;
+              flex-direction: column;
+            }
+          }
+
+
         }
 
-        .item-right{
+        .item-right {
           display: flex;
 
         }
 
-        .del-icon{
+        .del-icon {
           width: 2rem;
           height: 2rem;
 
