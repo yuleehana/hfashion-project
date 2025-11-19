@@ -15,7 +15,6 @@
           display: flex;
 
           .checkbox {
-            display: block;
             width: 1.6rem;
             height: 1.6rem;
             aspect-ratio: 1/1;
@@ -31,6 +30,22 @@
               }
             }
           }
+
+          .item-img-box{
+            width: 180px;
+            
+          }
+        }
+
+        .item-right{
+          display: flex;
+
+        }
+
+        .del-icon{
+          width: 2rem;
+          height: 2rem;
+
         }
       }
     }

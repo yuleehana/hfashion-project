@@ -4,17 +4,16 @@ import './sass/ProductDetailRightInfo.scss';
 import { Link, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
-import CartPopup from './CartPopup';
 import { useCartStore } from '../store/useCartStore';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];
 
-const ProductDetailRightInfo = ({ product }) => {
+const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { code } = useParams();
   // 전역변수 불러오기
   const { items, onFetchItem } = useProductStore();
-  const { onAddWishList } = usePickStore();
+  const { onAddWishList, pickLists } = usePickStore();
   const { onAddToCart } = useCartStore();
 
   // 상품을 저장할 변수
@@ -28,14 +27,15 @@ const ProductDetailRightInfo = ({ product }) => {
   // 수량 체크 변수
   const [count, setCount] = useState(1);
 
-  // 팝업창을 보이고 숨길 변수
-  const [showPopup, setShowPopup] = useState(false);
 
 
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
+      selectSize();
+      selectColor();
+      count();
     }
   }, []);
   // 제품 다시 불러오기
@@ -46,12 +46,13 @@ const ProductDetailRightInfo = ({ product }) => {
     setItem(findItem);
   }, [code, items]);
 
+
   // 장바구니 메서드
   const handleAddToCart = () => {
     if (!selectSize) {
       alert('사이즈를 선택해주세요');
       return;
-    }
+    };
 
     const productCart = {
       ...item,
@@ -62,19 +63,18 @@ const ProductDetailRightInfo = ({ product }) => {
 
     onAddToCart(productCart);
 
-    setShowPopup(true);
+    onOpenPopup();
+
   };
 
-  // 팝업 닫기
-  const handleClosePopup = () => {
-    // 장바구니 팝업
-    setShowPopup(false);
-  }
 
   // 찜리스트 메서드
   const handleAddToPick = () => {
     onAddWishList(item);
   };
+  const currentProductCode = item?.code || product?.code;
+  const isPicked = pickLists.some((pick) => pick.code === currentProductCode);
+
 
   return (
     <>
@@ -83,12 +83,11 @@ const ProductDetailRightInfo = ({ product }) => {
           <div className="item-brand-favorite">
             <p className="brand">{product.brand}</p>
             <p className="favorite">
-              <span>
-                <i>0</i>
-                <span onClick={handleAddToPick}>
-                  <img src="../../images/icon/icon-heart-grey.svg" alt="" />
-                </span>
+              <span className='favo'>
+                <i>10</i>
+                <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
               </span>
+              <span className='share'><img src="/images/icon/icon-share.svg" alt="공유하기" /></span>
             </p>
           </div>
 
@@ -147,9 +146,9 @@ const ProductDetailRightInfo = ({ product }) => {
         </div>
 
         <div className="cart-btn">
-          <Link className="btn middle primary" onClick={handleAddToCart}>
+          <button className="btn middle primary" onClick={handleAddToCart}>
             장바구니
-          </Link>
+          </button>
           <Link className="btn middle secondary" to="/pay">
             바로구매
           </Link>
@@ -188,9 +187,6 @@ const ProductDetailRightInfo = ({ product }) => {
           </ul>
         </div>
       </div>
-
-      {/* 팝업 보여주기 */}
-      {showPopup ? <CartPopup onClose={handleClosePopup} /> : ""}
 
     </>
   );

@@ -8,9 +8,9 @@ const CartPopup = ({ onClose }) => {
       <div className='cart-popup' onClick={(e) => e.stopPropagation()}>
         <div className='cart-popup-top'>
           <h2>장바구니 담기 완료</h2>
-          <span>
+          {/* <span>
             <img src='../../images/close-icon-black.svg' alt="popup-close-icon" />
-          </span>
+          </span> */}
         </div>
 
         <div className='cart-popup-middle'>
@@ -19,7 +19,7 @@ const CartPopup = ({ onClose }) => {
         </div>
 
         <div className='cart-popup-bottom'>
-          <button onClick={onclose}>계속 쇼핑하기</button>
+          <button onClick={onClose}>계속 쇼핑하기</button>
           <Link to='/cart'><button>장바구니 보기</button></Link>
         </div>
       </div>

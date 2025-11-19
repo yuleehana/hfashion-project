@@ -13,11 +13,17 @@ import Tab from '../components/Tab';
 import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
 import ProdctQNA from '../components/ProdctQNA';
+import CartPopup from '../components/CartPopup';
+
 
 const ProductDetail = () => {
   const { code } = useParams();
   console.log(code);
   const [product, setProduct] = useState(null);
+
+  // 팝업창을 보이고 숨길 변수
+  const [showPopup, setShowPopup] = useState(false);
+
 
   // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');
@@ -71,10 +77,15 @@ const ProductDetail = () => {
           )}
         </div>
         <div className="detail-right" style={{ backgroundImage: 'url(``)' }}>
-          <ProductDetailRightInfo product={product} />
+          <ProductDetailRightInfo product={product}
+            onOpenPopup={() => setShowPopup(true)}
+          />
         </div>
       </div>
+
+      {showPopup && <CartPopup onClose={() => setShowPopup(false)} />}
     </div>
+
   );
 };
 

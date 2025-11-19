@@ -19,17 +19,22 @@ export const useCartStore = create(
         const cart = get().cartItems;
 
         // 중복 아이템 체크
-        const existing = cart.find((c) => c.code === item.code && c.size === item.size && c.color === item.color)
+        const existing = cart.find((c) => c.code === item.code && c.size === item.size && c.color === item.color);
 
         let updateCart;
         if (existing) {
           updateCart = cart.filter((c) => c.code === item.code && c.size === item.size && c.color === item.color);
           alert('이미 장바구니에 담긴 상품입니다');
+
         }
         else {
           updateCart = [...cart, { ...item }];
 
         }
+
+        const color = updateCart.color;
+        const size = updateCart.size;
+        const code = updateCart.code;
 
         // 총 구매 금액
         let total = 0;
@@ -68,16 +73,6 @@ export const useCartStore = create(
       },
 
 
-      // 컬러 선택
-      onAddColor: (item) => {
-        const color = get().cartItems.color;
-
-        set({
-          item: color,
-        })
-
-      },
-
 
       // 수량 변경
       // onPlusCount: (id) => {
@@ -98,6 +93,7 @@ export const useCartStore = create(
 
 
       resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
+      // resetSelect: () => set({ onSelectColor: [], onSelectSize: [], onSelectCount: 0 })
 
 
 
