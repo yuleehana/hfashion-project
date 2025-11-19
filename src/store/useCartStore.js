@@ -12,7 +12,7 @@ export const useCartStore = create(
 
       // 총 금액
       totalPrice: 0,
-
+      
 
       // 카트에 상품 추가 메서드
       onAddToCart: (item) => {

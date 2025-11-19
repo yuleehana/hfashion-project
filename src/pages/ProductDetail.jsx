@@ -14,6 +14,8 @@ import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
 import ProdctQNA from '../components/ProdctQNA';
 import CartPopup from '../components/CartPopup';
+// import { useStoreWithEqualityFn } from 'zustand/traditional';
+import { useCartStore } from '../store/useCartStore';
 
 
 const ProductDetail = () => {
@@ -23,7 +25,7 @@ const ProductDetail = () => {
 
   // 팝업창을 보이고 숨길 변수
   const [showPopup, setShowPopup] = useState(false);
-
+  const [has,setHas] = useState(false);
 
   // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');
@@ -31,6 +33,7 @@ const ProductDetail = () => {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+
 
   // 컴포넌트가 처음 렌더링되거나 code가 변경될 때 상품 찾기
   useEffect(() => {
@@ -44,6 +47,7 @@ const ProductDetail = () => {
     // 업데이트
     setProduct(findItem || null); // 찾지 못하면 null로 설정하여 오류 방지
   }, [code]); // code가 변경될 때마다 다시 실행
+
   if (!product) {
     return null; // 또는 로딩 스피너
   }

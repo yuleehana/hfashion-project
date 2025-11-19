@@ -14,7 +14,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   // 전역변수 불러오기
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
-  const { onAddToCart } = useCartStore();
+  const { onAddToCart, cartItems } = useCartStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState('');
@@ -33,11 +33,14 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
-      selectSize();
-      selectColor();
-      count();
+      // selectSize();
+      // selectColor();
+      // count();
     }
-  }, []);
+    setSelectSize("")
+    setSelectColor("");
+    setCount(1);
+  }, [code]);
   // 제품 다시 불러오기
   useEffect(() => {
     if (!code || items.length === 0) return;
@@ -61,9 +64,17 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       color: selectColor,
     };
 
-    onAddToCart(productCart);
+    let aa = cartItems.find((c) => c.code === productCart.code && c.size === productCart.size && c.color === productCart.color);
 
-    onOpenPopup();
+    console.log(cartItems, aa,productCart)
+
+    if (!aa) {
+      onAddToCart(productCart);
+      onOpenPopup();
+    }
+    else {
+      onAddToCart(productCart);
+    }
 
   };
 
