@@ -19,12 +19,13 @@ export const useCartStore = create(
         const cart = get().cartItems;
 
         // 중복 아이템 체크
-        const existing = cart.find((c) => c.code === item.code && c.size === item.size && c.color === item.color)
+        const existing = cart.find((c) => c.code === item.code && c.size === item.size && c.color === item.color);
 
         let updateCart;
         if (existing) {
           updateCart = cart.filter((c) => c.code === item.code && c.size === item.size && c.color === item.color);
           alert('이미 장바구니에 담긴 상품입니다');
+
         }
         else {
           updateCart = [...cart, { ...item }];

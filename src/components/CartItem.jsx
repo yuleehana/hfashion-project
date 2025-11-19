@@ -8,7 +8,7 @@ const CartItem = () => {
 
   // 체크btn active
   const [isActive, setIsActive] = useState(false)
-
+  
   return (
     <div className='cart-item-list-wrap'>
       <ul className='cart-item-list'>
@@ -20,7 +20,7 @@ const CartItem = () => {
 
                 <div className='item-left'>
                   <Link className='checkbox' onClick={() => setIsActive}>
-                    <img src="../../images/check-icon.svg" alt="선택" className='check' />
+                    <img src="../../images/check-icon.svg" alt="선택" className={``} />
                   </Link>
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
