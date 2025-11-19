@@ -238,13 +238,15 @@ const MainKeyWordRanking = () => {
               }}
               onClick={handleMainImageClick}
             >
-              <div className="kwr-main-text">
-                <p className="brand">
-                  {menuRankProduct[liMenu].rightMainData[0].brand}
-                </p>
-                <p className="title">
-                  {menuRankProduct[liMenu].rightMainData[0].title}
-                </p>
+              <div className="kwr-main-text-wrap">
+                <div className="kwr-main-text">
+                  <p className="item-brand">
+                    {menuRankProduct[liMenu].rightMainData[0].brand}
+                  </p>
+                  <p className="item-title">
+                    {menuRankProduct[liMenu].rightMainData[0].title}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -259,10 +261,13 @@ const MainKeyWordRanking = () => {
               {menuRankProduct[liMenu].rank.slice(0,3).map((it) => (
                 <div className='kwr-sub-img'
                   key={it.id} style={{backgroundImage:`url(${it.img})`}}
+                  onClick={() => handleRankClick(it.code)}
                 >
-                  <div className='kwr-sub-text'>
-                    <p className="brand">{it.brand}</p>
-                    <p className="title">{it.title}</p>
+                  <div className='kwr-sub-text-wrap'>
+                    <div className='kwr-sub-text'>
+                      <p className="brand">{it.brand}</p>
+                      <p className="title">{it.title}</p>
+                    </div>
                   </div>
                 </div>
               ))}
