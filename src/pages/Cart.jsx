@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CartPo from '../components/CartPo';
 import CartItem from '../components/CartItem';
 import "./sass/Cart.scss";
 import { useCartStore } from '../store/useCartStore';
 import CartNone from '../components/CartNone';
-import DetailSimilarSwiper from '../components/DetailSimilarSwiper';
+// import { useProductStore } from '../store/useProductStore';
 
 const Cart = () => {
   const { cartItems } = useCartStore();
-  const {onItemsCategory} = useCartStore();
-
-  const [product, setProduct] = useState(null);
 
   return (
     <div className='sub-page cart'>
@@ -33,7 +30,7 @@ const Cart = () => {
 
         <div className='cart-inner-bottom'>
           <div className='other-item-wrap'>
-            <DetailSimilarSwiper product={product}/>
+            
           </div>
         </div>
 

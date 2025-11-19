@@ -33,9 +33,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
-      // selectSize();
-      // selectColor();
-      // count();
+      
     }
     setSelectSize("")
     setSelectColor("");

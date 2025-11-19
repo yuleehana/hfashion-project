@@ -12,7 +12,7 @@ export const useCartStore = create(
 
       // 총 금액
       totalPrice: 0,
-      
+
 
       // 카트에 상품 추가 메서드
       onAddToCart: (item) => {
@@ -49,9 +49,10 @@ export const useCartStore = create(
 
 
       // 카트에서 아이템 제거
-      onRemoveCart: (code) => {
+      onRemoveCart: (code, size, color) => {
         const cart = get().cartItems;
-        const updateCart = cart.filter((c) => !(c.code === code));
+
+        const updateCart = cart.filter((c) => c.code === code && !(c.size === size && c.color === color));
 
         let total = 0;
 
@@ -89,9 +90,6 @@ export const useCartStore = create(
 
 
       resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
-      // resetSelect: () => set({ onSelectColor: [], onSelectSize: [], onSelectCount: 0 })
-
-
 
     }),
 

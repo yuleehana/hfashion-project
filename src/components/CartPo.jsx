@@ -2,6 +2,7 @@ import React from 'react'
 import { useCartStore } from '../store/useCartStore'
 import "./sass/CartPo.scss"
 import { Link } from 'react-router-dom';
+import Pay from '../pages/Pay';
 
 const CartPo = () => {
 
@@ -39,8 +40,10 @@ const CartPo = () => {
           </div>
 
           <div className='cartPo-btn'>
-            <Link to='/pay'>{(totalPrice * 0.8).toLocaleString()}원 구매하기 {cartItems.length}개</Link>
+            <Link to='/pay'
+            >{(totalPrice * 0.8).toLocaleString()}원 구매하기 / {cartItems.length}개</Link>
           </div>
+          {/* onclick={cartItems.length === 0 ? alert('장바구니에 담긴 상품이 없습니다.') : ''} */}
         </div>
 
       </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import "./sass/CartItem.scss";
 
@@ -8,6 +7,11 @@ const CartItem = () => {
 
   // 체크btn active
   const [isActive, setIsActive] = useState(false)
+
+
+  const handleToggle = () => {
+    setIsActive(!isActive)
+  }
 
   return (
     <div className='cart-item-list-wrap'>
@@ -19,8 +23,7 @@ const CartItem = () => {
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <button className='checkbox' onClick={() => setIsActive}>
-                    <img src="../../images/check-icon-black.svg" alt="선택" className={isActive ? "active" : ""} />
+                  <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}>
                   </button>
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
@@ -47,7 +50,7 @@ const CartItem = () => {
                 <span className='del-icon'
                   onClick={(e) => {
                     e.stopPropagation();
-                    onRemoveCart(item.code);
+                    onRemoveCart(item.code, item.size, item.color);
                     alert('장바구니에서 제거되었습니다.')
                   }}>
                   <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />

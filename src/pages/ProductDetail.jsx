@@ -14,8 +14,6 @@ import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
 import ProdctQNA from '../components/ProdctQNA';
 import CartPopup from '../components/CartPopup';
-// import { useStoreWithEqualityFn } from 'zustand/traditional';
-import { useCartStore } from '../store/useCartStore';
 
 
 const ProductDetail = () => {
@@ -25,7 +23,7 @@ const ProductDetail = () => {
 
   // 팝업창을 보이고 숨길 변수
   const [showPopup, setShowPopup] = useState(false);
-  const [has,setHas] = useState(false);
+  // const [has,setHas] = useState(false);
 
   // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');

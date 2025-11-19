@@ -1,4 +1,5 @@
 import React from 'react'
+import "./sass/CartNone.scss";
 
 const CartNone = () => {
   return (

@@ -22,13 +22,9 @@
             border: 1px solid g.$sub-color3;
             border-radius: 2px;
 
-            .check {
-              display: none;
+            &.active {
+              background-image: url(../../../public/images/check-icon.svg);
 
-              &.active {
-                width: 1.2rem;
-                display: block;
-              }
             }
           }
 

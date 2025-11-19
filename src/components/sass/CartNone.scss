@@ -1,0 +1,13 @@
+@use "../../App.scss" as g;
+
+.cart-item-none-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+  .cart-none-icon{
+    width: 8%;
+
+  }
+}
