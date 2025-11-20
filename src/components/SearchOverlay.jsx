@@ -36,7 +36,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleInputChange = (e) => setKeyword(e.target.value);
-
   const handleClear = () => setKeyword("");
 
   const handleSubmit = (e) => {
@@ -50,12 +49,17 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  const addRecentKeyword = (kw) => {
-    if (!recentKeywords.includes(kw)) {
-      setRecentKeywords([kw, ...recentKeywords].slice(0, 10)); // 최대 10개
+  // 최근 검색어 최대 10개 + 15자 이상 말줄임(...)
+  const addRecentKeyword = (item) => {
+    const fullText = typeof item === "string" ? item : item.title || item.name;
+    const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
+
+    if (!recentKeywords.includes(keywordText)) {
+      setRecentKeywords([keywordText, ...recentKeywords].slice(0, 10));
     }
   };
 
+  // 인기 검색어 클릭
   const handlePopularKeywordClick = (kw) => {
     addRecentKeyword(kw);
     navigate(`/search?q=${kw}`);
@@ -84,7 +88,8 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                 <li
                   key={item.id}
                   onClick={() => {
-                    addRecentKeyword(item.title || item.name);
+                    addRecentKeyword(item); // item 전체 전달
+                     setKeyword(""); // 검색어 초기화
                     navigate(`/product-detail/${item.code}`);
                     onClose();
                   }}
