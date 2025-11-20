@@ -8,9 +8,6 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
-  // 카트 상품 색상
-  // const [cartItem, setCartItem] = useState(cartItems);
-
 
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
@@ -19,11 +16,6 @@ const CartItem = ({ product, onOpenPopup }) => {
     // setIsActive(!isActive)
     setIsActive(isActive)
     onCheckCart(code)
-  }
-
-  const handleOpChange = () => {
-    
-
   }
 
   return (
