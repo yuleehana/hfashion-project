@@ -51,7 +51,7 @@ const MemberInfor = () => {
             </div>
           </div>
           <div className="btn-wrap">
-            <button className='btn large primary'>회원정보 수정</button>
+            <button className='btn middle primary'>회원정보 수정</button>
           </div>
         </div>
       </div>
