@@ -1,13 +1,14 @@
 import React from 'react'
 import CartPo from '../components/CartPo'
+import "./sass/Pay.scss";
 
 const Pay = () => {
   return (
-    <div className='sub-page Pay'>
-      <div className='inner Pay'>
+    <div className='sub-page pay'>
+      <div className='inner pay'>
 
         <div className='pay-inner-top'>
-          <h2 className='sub-page-title Pay'>주문서</h2>
+          <h2 className='sub-page-title pay'>주문서</h2>
         </div>
 
         <div className='pay-inner-bottom'>
