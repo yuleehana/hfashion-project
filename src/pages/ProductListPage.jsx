@@ -161,7 +161,7 @@ const ProductListPage = ({ category }) => {
           <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
             {itemBrands.map((brand) => (
               <>
-                <label onClick={() => handleBrand(brand)} key={brand}>
+                <label htmlFor="brand" onClick={() => handleBrand(brand)} key={brand}>
                   {brand}
                   <input type="radio" name="brand" />
                 </label>
@@ -171,7 +171,7 @@ const ProductListPage = ({ category }) => {
           <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
             {itemMades.map((i) => (
               <>
-                <label onClick={() => handleCountry(i)}>
+                <label htmlFor="country" onClick={() => handleCountry(i)}>
                   {i}
                   <input type="radio" name="product-detail-country" />
                 </label>
@@ -182,7 +182,7 @@ const ProductListPage = ({ category }) => {
             <div className="price-tag-t">
               {priceRange.map((p) => (
                 <p>
-                  <label onClick={() => handlePrice(p.value)}>
+                  <label htmlFor="product-detail-price" onClick={() => handlePrice(p.value)}>
                     {p.name}
                     <input type="radio" className="product-detail-price" name="list-price" />
                   </label>

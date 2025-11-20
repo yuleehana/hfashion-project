@@ -50,8 +50,11 @@ dl.best-review {
         text-align: center;
 
         a {
+            display: block;
+            line-height: 50px;
             font-size: 1.6rem;
             color: g.$sub-color2;
+            
         }
 
         &.active {
