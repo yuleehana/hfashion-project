@@ -66,6 +66,24 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  //하이라이트 단어
+  const highlightText = (text, keyword) => {
+    if (!keyword) return text;
+
+    const regex = new RegExp(`(${keyword})`, "gi"); // 대소문자 구분 없이 검색
+    const parts = text.split(regex); // 검색어 기준으로 문자열 분리
+
+    return parts.map((part, i) =>
+      regex.test(part) ? (
+        <span key={i} style={{ color: "#EEBE81" }}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <div className="search-overlay">
       <button className="close-btn" onClick={onClose}>
@@ -78,7 +96,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
-            onChange={handleInputChange}
+            onChange={handleInputChange}  className="search-input"
           />
 
           {/* 실시간 검색 미리보기 */}
@@ -88,13 +106,12 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                 <li
                   key={item.id}
                   onClick={() => {
-                    addRecentKeyword(item); // item 전체 전달
-                     setKeyword(""); // 검색어 초기화
+                    addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
                     onClose();
                   }}
                 >
-                  {item.title || item.name}
+                  {highlightText(item.title || item.name, keyword)}
                 </li>
               ))}
             </ul>
