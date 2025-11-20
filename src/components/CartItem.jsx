@@ -8,9 +8,6 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
-  // 카트 상품 색상
-  // const [cartItem, setCartItem] = useState(cartItems);
-
 
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
@@ -20,12 +17,6 @@ const CartItem = ({ product, onOpenPopup }) => {
     setIsActive(isActive)
     onCheckCart(code)
   }
-
-  // const handleOpChange = () => {
-  //   const item = cartItem.find((i) => i.code === cartItems.code && i.color === cartItems.color && i.size === cartItems.size);
-  //   console.log(item);
-
-  // }
 
   return (
     <div className='cart-item-list-wrap'>
