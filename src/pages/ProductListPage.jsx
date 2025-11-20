@@ -194,7 +194,7 @@ const ProductListPage = ({ category }) => {
                 직접입력 <input className='xsmall' type="text" value={filterPrice} onChange={rememberP} />
                 -
                 <input className='xsmall' type="text" value={filterPrice2} onChange={rememberP2} />
-                <button className="btn xsmall outline" type="button" onClick={checkPrice}>
+                <button className="btn xsmall primary" type="button" onClick={checkPrice}>
                   적용
                 </button>
               </div>
