@@ -6,110 +6,108 @@
   gap: 80px;
   max-width: 1720px;
   margin: 0 auto;
-  .product-filter-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // height: 74px;
-    padding-top: 20px;
-    border-top: 1px solid black;
-    .product-filter-top-l {
-      font-size: 2rem;
-    }
-    .product-filter-top-filter {
-      // background: red;
-      padding: 10px 20px;
-      font-size: 20px;
-      position: relative;
-      .product-filter-top-r {
-        ul {
-          width: 100%;
-          background: white;
-          border: 1px solid #bababa;
-          position: absolute;
-          display: none;
-          flex-direction: row;
-          gap: 10px;
-          border-radius: 2px;
-          padding: 10px;
-          top: 40px;
-          left: 0px;
-          &.active {
-            display: block;
-          }
-          li {
-            line-height: 2;
-          }
+  padding: 0 20px;
+}
+.product-filter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // height: 74px;
+  padding-top: 20px;
+  border-top: 1px solid black;
+  .product-filter-top-l {
+    font-size: 2rem;
+  }
+  .product-filter-top-filter {
+    // background: red;
+    padding: 10px 20px;
+    font-size: 20px;
+    position: relative;
+    .product-filter-top-r {
+      ul {
+        width: 100%;
+        background: white;
+        border: 1px solid #bababa;
+        position: absolute;
+        display: none;
+        flex-direction: row;
+        gap: 10px;
+        border-radius: 2px;
+        padding: 10px;
+        top: 40px;
+        left: 0px;
+        &.active {
+          display: block;
+        }
+        li {
+          line-height: 2;
         }
       }
     }
   }
-  .product-filter-bot {
-    border: 1px solid #bababa;
-    padding: 20px;
-    // height: 170px;
-    .product-filter-bot-t {
-      display: flex;
-      flex-direction: row;
-      gap: 25px;
-      // padding-bottom: 10px;
-      font-size: 14px;
-      color: #838383;
-      border-bottom: 1px solid #838383;
-      li {
-        padding: 0px 14px 10px 14px;
-        // background: red;
-        &.active {
-          color: black;
-          border-bottom: 1px solid black;
-        }
+}
+.product-filter-bot {
+  border: 1px solid #bababa;
+  padding: 20px;
+  // height: 170px;
+  .product-filter-bot-t {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    // padding-bottom: 10px;
+    font-size: 14px;
+    color: #838383;
+    border-bottom: 1px solid #838383;
+    li {
+      padding: 0px 14px 10px 14px;
+      // background: red;
+      &.active {
+        color: black;
+        border-bottom: 1px solid black;
       }
     }
-    .product-filter-bot-b {
-      height: 124px;
-      padding-top: 14px;
-      .brand-label,
-      .country-label {
+  }
+  .product-filter-bot-b {
+    height: 124px;
+    padding-top: 14px;
+    .brand-label,
+    .country-label {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      > label {
         display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        align-items: center;
-        > label {
+        flex-direction: row-reverse;
+        gap: 4px;
+        font-size: 14px;
+      }
+    }
+  }
+  .price-label {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    .price-tag-t {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      p {
+        label {
+          font-size: 14px;
           display: flex;
           flex-direction: row-reverse;
           gap: 4px;
-          font-size: 14px;
         }
       }
     }
-    .price-label {
+    .price-tag-b {
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      .price-tag-t {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        p {
-          label {
-            font-size: 14px;
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 4px;
-          }
-        }
-      }
-      .price-tag-b {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 14px;
-        input {
-          width: 100px;
-          background: none;
-          border: 1px solid #bababa;
-          border-radius: 2px;
-        }
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      input {
+        width: 100px;
       }
     }
   }
