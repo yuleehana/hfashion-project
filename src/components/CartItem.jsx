@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useCartStore } from '../store/useCartStore';
 import "./sass/CartItem.scss";
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CartItem = ({ product, onOpenPopup }) => {
-  const { code } = useParams();
+  // const { code } = useParams();
 
   const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
@@ -45,7 +45,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                     </div>
                     <div className='op-change'>
                       <button onClick={onOpenPopup}>옵션변경</button>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -54,7 +54,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                   <span>/</span>
                   <span>{(item.price * 0.8).toLocaleString()}원</span>
                   <Link to='/pay'>바로구매</Link>
-                  <span><button className='btn xsmall secondary' onClick={handleOpChange}>옵션변경</button></span>
+                  <span><button className='btn xsmall secondary' onClick={onOpenPopup}>옵션변경</button></span>
                   <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>
 
