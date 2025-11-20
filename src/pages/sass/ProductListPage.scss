@@ -4,61 +4,68 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
-  max-width: 1720px;
+  max-width: 100%;
   margin: 0 auto;
   .product-filter-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // height: 74px;
-    padding-top: 20px;
-    border-top: 1px solid black;
     .product-filter-top-l {
       font-size: 2rem;
     }
     .product-filter-top-filter {
-      // background: red;
-      padding: 10px 20px;
-      font-size: 20px;
       position: relative;
+      padding: 10px 0;
+      min-width: 100px;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
       .product-filter-top-r {
         ul {
-          width: 100%;
-          background: white;
-          border: 1px solid #bababa;
-          position: absolute;
           display: none;
+          width: 100%;
+          position: absolute;
           flex-direction: row;
           gap: 10px;
-          border-radius: 2px;
-          padding: 10px;
-          top: 40px;
+          padding: 12px 0;
+          top: 32px;
           left: 0px;
+          border: 1px solid #bababa;
+          border-radius: 2px;
+          background: white;
+        
           &.active {
             display: block;
           }
           li {
+            font-size: 14px;
             line-height: 2;
+            padding: 0 12px;
+            &:hover{
+              
+              background-color: g.$sub-color1;
+            }
           }
         }
       }
     }
   }
   .product-filter-bot {
-    border: 1px solid #bababa;
+    border: 1px solid g.$sub-color2;
     padding: 20px;
-    // height: 170px;
     .product-filter-bot-t {
       display: flex;
       flex-direction: row;
-      gap: 25px;
-      // padding-bottom: 10px;
+      gap: 24px;
       font-size: 14px;
       color: #838383;
       border-bottom: 1px solid #838383;
       li {
-        padding: 0px 14px 10px 14px;
-        // background: red;
+        cursor: pointer;
+        padding-bottom: 8px;
+        min-width: 100px;
+        text-align: center;
+
         &.active {
           color: black;
           border-bottom: 1px solid black;
@@ -66,26 +73,27 @@
       }
     }
     .product-filter-bot-b {
-      height: 124px;
+      min-height: 40px;
       padding-top: 14px;
       .brand-label,
       .country-label {
         display: flex;
-        gap: 14px;
+        gap: 24px;
         flex-wrap: wrap;
         align-items: center;
         > label {
           display: flex;
           flex-direction: row-reverse;
-          gap: 4px;
+          gap: 8px;
+          align-items: center;
           font-size: 14px;
         }
       }
     }
     .price-label {
       display: flex;
-      flex-direction: column;
-      gap: 14px;
+      align-items: center;
+      gap: 80px;
       .price-tag-t {
         display: flex;
         flex-direction: row;
@@ -95,6 +103,7 @@
             font-size: 14px;
             display: flex;
             flex-direction: row-reverse;
+            align-items: center;
             gap: 4px;
           }
         }
@@ -107,7 +116,7 @@
         input {
           width: 100px;
           background: none;
-          border: 1px solid #bababa;
+          border: 1px solid g.$sub-color2;
           border-radius: 2px;
         }
       }
