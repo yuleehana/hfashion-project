@@ -17,7 +17,7 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   const handleToggle = (code) => {
     // setIsActive(!isActive)
-    // setIsActive(code)
+    setIsActive(isActive)
     onCheckCart(code)
   }
 

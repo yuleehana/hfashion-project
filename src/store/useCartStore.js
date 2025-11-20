@@ -70,6 +70,8 @@ export const useCartStore = create(
       },
 
 
+      // checked: false,
+
       // 체크박스 토글
       onCheckCart: (code) => {
         const carts = get().cartItems;
@@ -79,7 +81,7 @@ export const useCartStore = create(
         );
 
         set({ cartItems: updateCart });
-        console.log(updateCart);
+        // console.log(updateCart);
 
       },
 

@@ -40,7 +40,7 @@ const CartPo = () => {
 
           <div className='cartPo-btn'>
             <Link to='/pay'
-            >{(totalPrice * 0.8).toLocaleString()}원 구매하기 / {onCheckCart.length}개</Link>
+            >{(totalPrice * 0.8).toLocaleString()}원 구매하기 / {onCheckCart}개</Link>
           </div>
           {/* onclick={cartItems.length === 0 ? alert('장바구니에 담긴 상품이 없습니다.') : ''} */}
         </div>
