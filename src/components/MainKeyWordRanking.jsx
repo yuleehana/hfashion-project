@@ -90,7 +90,9 @@ const MainKeyWordRanking = () => {
             <div className="kwr-sub-img-wrap">
               <div className="showing-khsn">
                 <div className="top-item">
-                  <p className='khsn-title'>추워진 날씨</p>
+                  <p className='khsn-title'>
+                    {menuRankProduct[liMenu].title}
+                  </p>
                   <p className='khsn-item'>옷장의 계절을 바꿀 타이밍</p>
                 </div>
                 <button type="button"
@@ -103,7 +105,7 @@ const MainKeyWordRanking = () => {
               {menuRankProduct[liMenu].rank.slice(0,3).map((it) => {
                 const originalPrice = Number(it.price);
                 const salePrice = Math.round(originalPrice * 0.8);
-                
+
                 return(
                   <div className='kwr-sub-img'
                     key={it.id} style={{backgroundImage:`url(${it.img})`}}
