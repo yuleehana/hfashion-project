@@ -1,15 +1,15 @@
 import React from 'react'
 import BrandListPage from './BrandListPage'
 import './sass/SubMain.scss'
-import SubMainBestSeller from '../components/SubMainBestSeller';
+import SubMainBrandBestSeller from '../components/SubMainBrandBestSeller';
 
 
 const TargetBrands = [
-    'ROUGELOUNGE',
-    'TOMMY HILFIGER WOMEN',
     'TOMMY HILFIGER MEN',
-    'TOMMY Shoes',
     'TOMMY JEANS',
+    'TOMMY HILFIGER WOMEN',
+    'ROUGELOUNGE',
+    'TOMMY Shoes',
     'SJYP',
 ];
 
@@ -18,7 +18,7 @@ const BrandDefault = () => {
         <div className='sub-main'>
             <h2 className='sub-main-title'>BRAND’S SHOP</h2>
             <h3>BEST SELLER</h3>
-            <SubMainBestSeller brand={TargetBrands} />
+            <SubMainBrandBestSeller brand={TargetBrands} />
             <h3>BRAND</h3>
             <BrandListPage brand={TargetBrands} />
         </div>
