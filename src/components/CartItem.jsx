@@ -6,24 +6,26 @@ import { Link, useParams } from 'react-router-dom';
 const CartItem = ({ product, onOpenPopup }) => {
   const { code } = useParams();
 
-  const { cartItems, onRemoveCart, totalPrice } = useCartStore();
+  const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
   // 카트 상품 색상
-  const [cartItem, setCartItem] = useState(cartItems);
+  // const [cartItem, setCartItem] = useState(cartItems);
 
 
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
 
-  const handleToggle = () => {
-    setIsActive(!isActive)
+  const handleToggle = (code) => {
+    // setIsActive(!isActive)
+    // setIsActive(code)
+    onCheckCart(code)
   }
 
-  const handleOpChange = () => {
-    const item = cartItem.find((i) => i.code === product.code)
-    console.log(item);
-    // const item = cartItems.find((i) => i.code === code)
-  }
+  // const handleOpChange = () => {
+  //   const item = cartItem.find((i) => i.code === cartItems.code && i.color === cartItems.color && i.size === cartItems.size);
+  //   console.log(item);
+
+  // }
 
   return (
     <div className='cart-item-list-wrap'>
@@ -51,11 +53,16 @@ const CartItem = ({ product, onOpenPopup }) => {
                       <p>{(totalPrice * 0.8).toLocaleString()}원</p>
                     </div>
                     <div className='op-change'>
+                      <button onClick={onOpenPopup}>옵션변경</button>
                       
                     </div>
                   </div>
                 </div>
                 <div className='item-right'>
+                  <span>수량 : {item.count}</span>
+                  <span>/</span>
+                  <span>{(item.price * 0.8).toLocaleString()}원</span>
+                  <Link to='/pay'>바로구매</Link>
                   <span><button className='btn xsmall secondary' onClick={handleOpChange}>옵션변경</button></span>
                   <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>

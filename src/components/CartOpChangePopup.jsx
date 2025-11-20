@@ -1,21 +1,22 @@
 import React from 'react'
 import { useCartStore } from '../store/useCartStore'
+import "./sass/CartOpChangePopup.scss";
 
-const CartOpChangePopup = ({onClose}) => {
+const CartOpChangePopup = ({ onClose }) => {
   const { cartItems } = useCartStore();
 
 
   return (
-    <div className='cart-op-change-wrap'>
-      <div className='cart-op-popup'>
+    <div className='cart-op-change-wrap' onClick={onClose}>
+      <div className='cart-op-popup' onClick={(e) => e.preventDefault()}>
         <div className='op-popup-title'>
-          <h2>옵션변경</h2>
+          <h4>옵션변경</h4>
         </div>
 
         <div className='op-popup-middle'>
           <div className='op-popup-item'>
             <div className='op-img-box'>
-              <img src="" alt="" />
+              {/* <img src="" alt="" /> */}
             </div>
             <div className='op-text-box'>
               <span className='op-brand'></span>
