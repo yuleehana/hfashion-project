@@ -100,12 +100,13 @@
             color: g.$main-color2;
             margin-bottom: 20px;
           }
-
         }
       }
 
       .no-recent {
         font-size: 1.4rem;
+        line-height:17px; //인기검색어 가디건이랑 높이 맞추기
+
       }
 
       ul {
