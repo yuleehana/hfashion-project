@@ -8,7 +8,9 @@
     &:has(>h2.section-title) {
         padding-top: 40px;
     }
-
+    .tab-ver1{
+        position: unset;
+    }
     h2.section-title {
         text-align: center;
     }
