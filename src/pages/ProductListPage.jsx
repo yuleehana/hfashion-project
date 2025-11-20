@@ -113,8 +113,8 @@ const ProductListPage = ({ category }) => {
   // 신상품순 정렬 메서드
   const sortByNewest = () => {
     const sortedItems = [...items].sort((a, b) => {
-      const dateA = Number(a.date.replace('.', ''));
-      const dateB = Number(b.date.replace('.', ''));
+      const dateA = Number(String(a.date).replace(/\./g, ''));
+      const dateB = Number(String(b.date).replace(/\./g, ''));
       return dateB - dateA;
     });
     setFilterName('신상품순');
@@ -161,7 +161,7 @@ const ProductListPage = ({ category }) => {
           <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
             {itemBrands.map((brand) => (
               <>
-                <label htmlFor="brand" onClick={() => handleBrand(brand)} key={brand}>
+                <label onClick={() => handleBrand(brand)} key={brand}>
                   {brand}
                   <input type="radio" name="brand" />
                 </label>
@@ -171,7 +171,7 @@ const ProductListPage = ({ category }) => {
           <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
             {itemMades.map((i) => (
               <>
-                <label htmlFor="country" onClick={() => handleCountry(i)}>
+                <label onClick={() => handleCountry(i)}>
                   {i}
                   <input type="radio" name="product-detail-country" />
                 </label>
@@ -182,7 +182,7 @@ const ProductListPage = ({ category }) => {
             <div className="price-tag-t">
               {priceRange.map((p) => (
                 <p>
-                  <label htmlFor="product-detail-price" onClick={() => handlePrice(p.value)}>
+                  <label onClick={() => handlePrice(p.value)}>
                     {p.name}
                     <input type="radio" className="product-detail-price" name="list-price" />
                   </label>
