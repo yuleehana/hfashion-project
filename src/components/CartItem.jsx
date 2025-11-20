@@ -7,7 +7,7 @@ const CartItem = ({ product, onOpenPopup }) => {
   // const { code } = useParams();
 
   const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
-
+  console.log(cartItems);
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
 
