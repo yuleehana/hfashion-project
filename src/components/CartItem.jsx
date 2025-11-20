@@ -44,16 +44,10 @@ const CartItem = ({ product, onOpenPopup }) => {
                       <p>{(item.price * 0.8).toLocaleString()}원</p>
                     </div>
                     <div className='op-change'>
-                      <button onClick={onOpenPopup}>옵션변경</button>
-
                     </div>
                   </div>
                 </div>
                 <div className='item-right'>
-                  <span>수량 : {item.count}</span>
-                  <span>/</span>
-                  <span>{(item.price * 0.8).toLocaleString()}원</span>
-                  <Link to='/pay'>바로구매</Link>
                   <span><button className='btn xsmall secondary' onClick={onOpenPopup}>옵션변경</button></span>
                   <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>
