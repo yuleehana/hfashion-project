@@ -12,7 +12,7 @@ import ProductNoticeInfo from '../components/ProductNoticeInfo';
 import Tab from '../components/Tab';
 import Delivery from '../components/Delivery';
 import DetailPageReview from '../components/DetailPageReview';
-import ProdctQNA from '../components/ProdctQNA';
+import ProductQNA from '../components/ProductQNA';
 import CartPopup from '../components/CartPopup';
 
 
@@ -74,7 +74,7 @@ const ProductDetail = () => {
           {activeTab === 'review' && <DetailPageReview product={product} />}
           {activeTab === 'qna' && (
             <section>
-              <ProdctQNA />
+              <ProductQNA />
               <Delivery />
             </section>
           )}
