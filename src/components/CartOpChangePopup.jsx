@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCartStore } from '../store/useCartStore'
 
-const CartOpChangePopup = () => {
+const CartOpChangePopup = ({onClose}) => {
   const { cartItems } = useCartStore();
 
 
@@ -37,7 +37,7 @@ const CartOpChangePopup = () => {
 
 
         <div className='op-popup-button'>
-          <button>취소</button>
+          <button onClick={onClose}>취소</button>
           <button>변경</button>
         </div>
       </div>
