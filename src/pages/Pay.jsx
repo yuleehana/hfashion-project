@@ -1,5 +1,6 @@
 import React from 'react'
 import CartPo from '../components/CartPo'
+import "./sass/Pay.scss";
 
 const Pay = () => {
   return (
