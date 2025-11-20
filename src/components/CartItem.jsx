@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 const CartItem = ({ product, onOpenPopup }) => {
   const { code } = useParams();
 
-  const { cartItems, onRemoveCart, totalPrice } = useCartStore();
+  const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
   // 카트 상품 색상
   // const [cartItem, setCartItem] = useState(cartItems);
@@ -15,8 +15,10 @@ const CartItem = ({ product, onOpenPopup }) => {
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
 
-  const handleToggle = () => {
-    setIsActive(!isActive)
+  const handleToggle = (code) => {
+    // setIsActive(!isActive)
+    // setIsActive(code)
+    onCheckCart(code)
   }
 
   // const handleOpChange = () => {
@@ -35,7 +37,8 @@ const CartItem = ({ product, onOpenPopup }) => {
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}>
+                  <button onClick={() => handleToggle(item.code)}
+                    className={`checkbox ${isActive ? "active" : ""}`}>
                   </button>
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
@@ -55,7 +58,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                 <div className='item-right'>
                   <span>수량 : {item.count}</span>
                   <span>/</span>
-                  <span>{(totalPrice * 0.8).toLocaleString()}원</span>
+                  <span>{(item.price * 0.8).toLocaleString()}원</span>
                   <Link to='/pay'>바로구매</Link>
                 </div>
 

@@ -85,6 +85,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       size: selectSize,
       count: count,
       color: selectColor,
+      checked: false,
     };
 
     let aa = cartItems.find((c) => c.code === productCart.code && c.size === productCart.size && c.color === productCart.color);
