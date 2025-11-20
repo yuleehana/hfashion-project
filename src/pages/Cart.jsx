@@ -19,7 +19,7 @@ const Cart = () => {
 
 
   return (
-    <div className='sub-page cart'>
+    <div className='sub-page'>
       <div className='inner cart'>
 
         <div className='cart-inner-top'>
