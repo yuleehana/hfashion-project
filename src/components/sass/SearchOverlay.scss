@@ -25,7 +25,7 @@
 
   .search-container {
     margin: 100px auto;
-    width: 600px;
+    width: 800px;
     text-align: center;
     position: relative;
 
@@ -50,14 +50,13 @@
     }
 
     .clear-btn {
-      position: fixed;
-      top: 13%;
-      left: 600px;
-      transform: translateY(-13%);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 40px;
       width: 24px;
       height: 24px;
       background: g.$sub-color3;
-      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -85,88 +84,107 @@
           font-size: 2rem;
         }
 
-        ul {
+        .recent-keywords-del {
           display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 4px;
-          width: 100%;
-          max-width: 200px;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 120px; // 원하는 만큼 띄우기
 
-          li {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+          button {
+            text-decoration: underline;
+            color: g.$main-color2;
+            margin-bottom: 20px;
+          }
 
-            .keyword-button {
-              // 최근 검색어 버튼
-              font-size: 1.4rem;
-              color: g.$main-color2;
-              padding: 6px 10px;
-              border-radius: 4px;
-              border: none;
-              cursor: pointer;
-              text-align: left;
+        }
+      }
+
+      .no-recent {
+        font-size: 1.4rem;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+        max-width: 200px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 10px;
+
+          .keyword-button {
+            // 최근 검색어 버튼
+            font-size: 1.4rem;
+            color: g.$main-color2;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+          }
+
+          .delete-btn {
+            // 삭제 버튼
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            padding: 0;
+            background: g.$sub-color3;
+
+            img {
+              width: 14px;
+              height: 14px;
+              object-fit: contain;
             }
+          }
 
-            .delete-btn {
-              // 삭제 버튼
-              width: 20px;
-              height: 20px;
-              cursor: pointer;
-              padding: 0;
+          button.popular {
+            // 인기 검색어 버튼 (li 내부 button)
+            font-size: 1.4rem;
+            color: g.$main-color2;
+            padding: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
 
-              img {
-                width: 14px;
-                height: 14px;
-                object-fit: contain;
-              }
-            }
-
-            button.popular {
-              // 인기 검색어 버튼 (li 내부 button)
-              font-size: 1.4rem;
-              color: g.$main-color2;
-              padding: 14px;
-              border-radius: 4px;
-              cursor: pointer;
-              text-align: left;
-
-              span.rank {
-                font-family: "Times New Roman";
-                padding-right: 8px;
-              }
+            span.rank {
+              font-family: "Times New Roman";
+              padding-right: 8px;
             }
           }
         }
       }
     }
+  }
 
-    .search-preview {
-      // display: grid;
-      // grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      // gap: 12px;
-      // padding: 10px 0;
-      display: flex;
-      flex-direction: column; // 한 줄에 하나씩 세로 정렬
-      gap: 8px; // 아이템 간 간격
-      padding: 10px 0;
+  .search-preview {
+    // display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    // gap: 12px;
+    // padding: 10px 0;
+    display: flex;
+    flex-direction: column; // 한 줄에 하나씩 세로 정렬
+    gap: 8px; // 아이템 간 간격
+    padding: 10px 0;
 
-      li {
-        font-size: 1.4rem;
-        color: g.$main-color2;
-        white-space: nowrap; // 길어도 한 줄
-        overflow: hidden; // 넘치면 숨김
-        text-overflow: ellipsis;
-      }
+    li {
+      font-size: 1.4rem;
+      color: g.$main-color2;
+      white-space: nowrap; // 길어도 한 줄
+      overflow: hidden; // 넘치면 숨김
+      text-overflow: ellipsis;
     }
-
   }
 
-  .no-result {
-    padding: 20px;
-    text-align: center;
-    color: g.$main-color2;
-    font-size: 1.4rem;
-  }
+}
+
+.no-result {
+  padding: 20px;
+  text-align: center;
+  color: g.$main-color2;
+  font-size: 1.4rem;
 }
