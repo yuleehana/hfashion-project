@@ -65,7 +65,6 @@ function App() {
   }, [onFetchItem]);
 
   const initAuth = useAuthStore((state) => state.initAuth);
-
   useEffect(() => {
     initAuth();
   }, []);

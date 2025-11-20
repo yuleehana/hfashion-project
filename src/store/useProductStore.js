@@ -3,19 +3,20 @@ import { persist } from 'zustand/middleware';
 import { products } from '../data/products.js';
 
 export const useProductStore = create(
-  persist( // 새로고침하면 화면 내용 사라짐 해결 코드
+  // loacalStorage에 넣는 명령어
+  persist(
     (set, get) => ({
-      items: [], 
+      items: [],
 
       onFetchItem: () => {
         const allItems = get().items || [];
-        
+
         // * items 배열이 비어있는 경우에만 products 데이터를 set 함
         // * persist가 데이터를 로드하기 전에 호출되든, 로드 후 호출되든,
         // * 데이터가 없으면 products로 채워지도록 확실하게 보장
-        if (allItems.length === 0) { 
-            set({ items: products });
-        }
+        // if (allItems.length === 0) {
+        set({ items: products });
+        // }
       },
 
       // 메서드
@@ -77,9 +78,8 @@ export const useProductStore = create(
         const endIndex = startIndex + count;
         return ratedItems.slice(startIndex, endIndex);
       },
-
     }),
-    
+    //로컬스토리지에 저장할 방이름
     {
       name: 'product-storage', // 새로고침용
     }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useCartStore } from '../store/useCartStore';
-import "./sass/CartItem.scss";
+import './sass/CartItem.scss';
 import { Link } from 'react-router-dom';
 
 const CartItem = ({ product, onOpenPopup }) => {
@@ -8,35 +8,33 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
 
-
   // 체크btn active
   const [isActive, setIsActive] = useState(false);
 
   const handleToggle = (code) => {
     // setIsActive(!isActive)
-    setIsActive(isActive)
-    onCheckCart(code)
-  }
+    setIsActive(isActive);
+    onCheckCart(code);
+  };
 
   return (
-    <div className='cart-item-list-wrap'>
-      <ul className='cart-item-list'>
+    <div className="cart-item-list-wrap">
+      <ul className="cart-item-list">
         {cartItems.map((item, id) => (
           <>
-            <li key={id} className='cart-item'>
-              <div className='cart-item-inner'>
-
-                <div className='item-left'>
+            <li key={id} className="cart-item">
+              <div className="cart-item-inner">
+                <div className="item-left">
                   {/* <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}></button> */}
-                  <input type='checkbox' onClick={handleToggle} />
-                  <div className='item-img-box'>
+                  <input type="checkbox" onClick={() => handleToggle(item.code)} />
+                  <div className="item-img-box">
                     <img src={item.thumbImg} alt={item.code} />
                   </div>
-                  <div className='item-text-box'>
-                    <div className='item-desc'>
-                      <span className='item-brand'>{item.brand}</span>
-                      <span className='item-title'>{item.title}</span>
-                      <span className='item-op'>
+                  <div className="item-text-box">
+                    <div className="item-desc">
+                      <span className="item-brand">{item.brand}</span>
+                      <span className="item-title">{item.title}</span>
+                      <span className="item-op">
                         <span>색상 : {item.color}</span>
                         <span>사이즈 : {item.size}</span>
                         <span>수량 : {item.count}</span>
@@ -52,12 +50,14 @@ const CartItem = ({ product, onOpenPopup }) => {
                   <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>
 
-                <span className='del-icon'
+                <span
+                  className="del-icon"
                   onClick={(e) => {
                     e.stopPropagation();
                     onRemoveCart(item.code, item.size, item.color);
-                    alert('장바구니에서 제거되었습니다.')
-                  }}>
+                    alert('장바구니에서 제거되었습니다.');
+                  }}
+                >
                   <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
                 </span>
               </div>
@@ -66,7 +66,7 @@ const CartItem = ({ product, onOpenPopup }) => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;
