@@ -11,6 +11,7 @@
     }
     .ranking-item-wrap{
       width: 100%;
+      // height: 420px;
 
       .ranking-item{
         button{
@@ -31,7 +32,17 @@
           display: flex;
           gap: 6px;
           flex:1;
-          
+
+          &.rank-list{
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+          }
+          &.rank-list.active{
+            opacity: 1;
+            max-height: 170px;
+          }
           .rank-item{
             width: 114px;
             height: 170px;

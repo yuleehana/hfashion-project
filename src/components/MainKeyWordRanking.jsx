@@ -8,8 +8,6 @@ const MainKeyWordRanking = () => {
   const [liMenu, setLiMenu] = useState(0);
   const navigate = useNavigate();
 
-  
-
   const handleHover = (index) => {
     if (liMenu === index) return; // 같은 메뉴 누르면 그대로 유지
     setLiMenu(index);
@@ -43,18 +41,16 @@ const MainKeyWordRanking = () => {
                 >
                   <span>{item.id}</span>{item.title}
                 </button>
-                {liMenu === index && (
-                  <ul>
-                    {item.rank.map((it,id) => (
-                      <li key={id} style={{backgroundImage:`url(${it.img})`}}
-                        onClick={() => handleRankClick(it.code)}
-                        className='rank-item'
-                      >
-                        <p className='brand-title'>{it.brand}</p>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <ul className={`rank-list ${liMenu === index ? "active" : ""}`}>
+                  {item.rank.map((it,id) => (
+                    <li key={id} style={{backgroundImage:`url(${it.img})`}}
+                      onClick={() => handleRankClick(it.code)}
+                      className='rank-item'
+                    >
+                      <p className='brand-title'>{it.brand}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
