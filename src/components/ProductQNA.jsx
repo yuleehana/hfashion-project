@@ -27,9 +27,9 @@ const ProductQNA = () => {
                 <img src="/images/icon-lock.svg" alt="lock" />
               </div>
             </div>
-            <div className="qna-list-door">
+            <button className="qna-list-door">
               <img src="/images/arrow-down-icon.svg" alt="door" />
-            </div>
+            </button>
           </div>
         </div>
       </div>
