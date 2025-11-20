@@ -26,6 +26,11 @@ const MainKeyWordRanking = () => {
     navigate(`/product-detail/${code}`);
   }
 
+  //가격, 할인가격=======================================================================
+  //rightMainData의 price
+  const originalPriceMain = Number(menuRankProduct[liMenu].rightMainData[0].price);
+  const salePriceMain = Math.round(originalPriceMain * 0.8); // 20% 할인
+
   return (
     <section className="KWR-wrap">
       <div className="main-sec-inner">
@@ -66,12 +71,18 @@ const MainKeyWordRanking = () => {
             >
               <div className="kwr-main-text-wrap">
                 <div className="kwr-main-text">
-                  <p className="item-brand">
-                    {menuRankProduct[liMenu].rightMainData[0].brand}
-                  </p>
                   <p className="item-title">
                     {menuRankProduct[liMenu].rightMainData[0].title}
                   </p>
+                  <div className="price-item">
+                    <p className='sale-price'>
+                      {salePriceMain.toLocaleString()}원
+                    </p>
+                    <p className="original-price">
+                      {originalPriceMain.toLocaleString()}원
+                    </p>
+                    <p className='sale-num'>20%</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,19 +100,32 @@ const MainKeyWordRanking = () => {
                   더보기
                 </button>
               </div>
-              {menuRankProduct[liMenu].rank.slice(0,3).map((it) => (
-                <div className='kwr-sub-img'
-                  key={it.id} style={{backgroundImage:`url(${it.img})`}}
-                  onClick={() => handleRankClick(it.code)}
-                >
-                  <div className='kwr-sub-text-wrap'>
-                    <div className='kwr-sub-text'>
-                      <p className="brand">{it.brand}</p>
-                      <p className="title">{it.title}</p>
+              {menuRankProduct[liMenu].rank.slice(0,3).map((it) => {
+                const originalPrice = Number(it.price);
+                const salePrice = Math.round(originalPrice * 0.8);
+                
+                return(
+                  <div className='kwr-sub-img'
+                    key={it.id} style={{backgroundImage:`url(${it.img})`}}
+                    onClick={() => handleRankClick(it.code)}
+                  >
+                    <div className='kwr-sub-text-wrap'>
+                      <div className='kwr-sub-text'>
+                        <p className="title">{it.title}</p>
+                        <div className="price-item">
+                          <p className="sale-price">
+                            {salePrice.toLocaleString()}
+                          </p>
+                          <p className="original-price">
+                            {originalPrice.toLocaleString()}
+                          </p>
+                          <p className='sale-num'>20%</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
