@@ -180,7 +180,6 @@
 
     .btn-count {
       @include g.myFlex($gap: 0, $jc: flex-start);
-
       button,
       span {
         text-align: center;
@@ -193,7 +192,6 @@
 
       button {
         width: 28px;
-
         &.minus {
           background-image: url('../../../public/images/icon/icon-minus.png');
         }

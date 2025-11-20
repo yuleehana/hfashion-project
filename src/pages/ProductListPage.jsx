@@ -129,76 +129,78 @@ const ProductListPage = ({ category }) => {
 
   return (
     <div className="product-list-wrap">
-      <div className="product-filter-top">
-        <p className="product-filter-top-l">Filter</p>
-        {/* <p>{rightFilte ? sortOptions[0].name}</p> */}
-        <p className="product-filter-top-filter" onClick={() => setRightFilter(!rightFilter)}>
-          {filterName}
-          <div className="product-filter-top-r ">
-            <ul className={rightFilter == true ? 'active' : ' '}>
-              {sortOptions.map((sortOption, id) => (
-                <li key={id} onClick={sortOption.handler}>
-                  {sortOption.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </p>
-      </div>
-      <div className="product-filter-bot">
-        <ul className="product-filter-bot-t">
-          <li className={activeFilter === 0 ? 'active' : ''} onClick={() => setActiveFilter(0)}>
-            브랜드
-          </li>
-          <li className={activeFilter === 1 ? 'active' : ''} onClick={() => setActiveFilter(1)}>
-            제조국
-          </li>
-          <li className={activeFilter === 2 ? 'active' : ''} onClick={() => setActiveFilter(2)}>
-            가격
-          </li>
-        </ul>
-        <ul className="product-filter-bot-b">
-          <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
-            {itemBrands.map((brand) => (
-              <>
-                <label onClick={() => handleBrand(brand)} key={brand}>
-                  {brand}
-                  <input type="radio" name="brand" />
-                </label>
-              </>
-            ))}
-          </li>
-          <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
-            {itemMades.map((i) => (
-              <>
-                <label onClick={() => handleCountry(i)}>
-                  {i}
-                  <input type="radio" name="product-detail-country" />
-                </label>
-              </>
-            ))}
-          </li>
-          <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
-            <div className="price-tag-t">
-              {priceRange.map((p) => (
-                <p>
-                  <label onClick={() => handlePrice(p.value)}>
-                    {p.name}
-                    <input type="radio" className="product-detail-price" name="list-price" />
+      <div>
+        <div className="product-filter-top">
+          <p className="product-filter-top-l">Filter</p>
+          {/* <p>{rightFilte ? sortOptions[0].name}</p> */}
+          <p className="product-filter-top-filter" onClick={() => setRightFilter(!rightFilter)}>
+            {filterName}
+            <div className="product-filter-top-r ">
+              <ul className={rightFilter == true ? 'active' : ' '}>
+                {sortOptions.map((sortOption, id) => (
+                  <li key={id} onClick={sortOption.handler}>
+                    {sortOption.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </p>
+        </div>
+        <div className="product-filter-bot">
+          <ul className="product-filter-bot-t">
+            <li className={activeFilter === 0 ? 'active' : ''} onClick={() => setActiveFilter(0)}>
+              브랜드
+            </li>
+            <li className={activeFilter === 1 ? 'active' : ''} onClick={() => setActiveFilter(1)}>
+              제조국
+            </li>
+            <li className={activeFilter === 2 ? 'active' : ''} onClick={() => setActiveFilter(2)}>
+              가격
+            </li>
+          </ul>
+          <ul className="product-filter-bot-b">
+            <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
+              {itemBrands.map((brand) => (
+                <>
+                  <label onClick={() => handleBrand(brand)} key={brand}>
+                    {brand}
+                    <input type="radio" name="brand" />
                   </label>
-                </p>
+                </>
               ))}
-            </div>
-            <div className="price-tag-b">
-              직접입력 <input type="text" value={filterPrice} onChange={rememberP} />
-              -
-              <input type="text" value={filterPrice2} onChange={rememberP2} />
-              <button className="btn small outline" type="button" onClick={checkPrice}>
-                적용
-              </button>
-            </div>
-          </li>
-        </ul>
+            </li>
+            <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
+              {itemMades.map((i) => (
+                <>
+                  <label onClick={() => handleCountry(i)}>
+                    {i}
+                    <input type="radio" name="product-detail-country" />
+                  </label>
+                </>
+              ))}
+            </li>
+            <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
+              <div className="price-tag-t">
+                {priceRange.map((p) => (
+                  <p>
+                    <label onClick={() => handlePrice(p.value)}>
+                      {p.name}
+                      <input type="radio" className="product-detail-price" name="list-price" />
+                    </label>
+                  </p>
+                ))}
+              </div>
+              <div className="price-tag-b">
+                직접입력 <input className='xsmall' type="text" value={filterPrice} onChange={rememberP} />
+                -
+                <input className='xsmall' type="text" value={filterPrice2} onChange={rememberP2} />
+                <button className="btn xsmall primary" type="button" onClick={checkPrice}>
+                  적용
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <ul className="sub-goods-list">

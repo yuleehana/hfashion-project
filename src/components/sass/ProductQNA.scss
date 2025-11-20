@@ -1,0 +1,61 @@
+.qna-header{
+
+  h3{
+    font-size: 24px;
+  }
+  .header-text{
+    font-size: 14px;
+    color: #838383;
+  }
+}
+.qna-list-wrap{
+  .qna-list-box{
+    height: 132px;
+
+    .qna-list{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid red;
+      height: 100%;
+
+      .number-list{
+        display: block;
+        max-width: 104px;
+        top: 50%;
+      }
+      .list-item{
+        .top-item{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 40px;
+        }
+        .item-qna-title{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 16px;
+
+          .qna-title{
+            font-size: 20px;
+            font-weight: 600;
+            color: #838383;
+          }
+          img{
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      .qna-list-door{
+        display: block;
+
+        img{
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
