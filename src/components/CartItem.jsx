@@ -21,11 +21,10 @@ const CartItem = ({ product, onOpenPopup }) => {
     onCheckCart(code)
   }
 
-  // const handleOpChange = () => {
-  //   const item = cartItem.find((i) => i.code === cartItems.code && i.color === cartItems.color && i.size === cartItems.size);
-  //   console.log(item);
+  const handleOpChange = () => {
+    
 
-  // }
+  }
 
   return (
     <div className='cart-item-list-wrap'>
@@ -50,7 +49,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                         <span>사이즈 : {item.size}</span>
                         <span>수량 : {item.count}</span>
                       </span>
-                      <p>{(totalPrice * 0.8).toLocaleString()}원</p>
+                      <p>{(item.price * 0.8).toLocaleString()}원</p>
                     </div>
                     <div className='op-change'>
                       <button onClick={onOpenPopup}>옵션변경</button>
