@@ -1,6 +1,5 @@
 import React from 'react'
 import "./sass/MainBestReview.scss";
-import "./sass/ReviewCard.scss";
 import { useProductStore } from '../store/useProductStore.js';
 import ReviewCard from './ReviewCard.jsx';
 

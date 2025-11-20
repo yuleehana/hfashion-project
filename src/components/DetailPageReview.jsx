@@ -1,8 +1,6 @@
 import React from 'react'
 import ReviewCard from './ReviewCard';
 import "./sass/DetailPageReview.scss";
-import "./sass/ReviewCard.scss";
-
 
 const DetailPageReview = ({product}) => {
   const reviewCount = 2;
