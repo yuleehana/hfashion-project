@@ -8,103 +8,14 @@
 }
 
 .search-title {
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 30px;
 }
 
-/* ProductList와 동일한 카드 그리드 */
-.search-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px 24px;   // 세로 40px, 가로 24px — ProductList 기준
-}
-
-/* 각 카드 박스 */
-.search-card-wrapper {
-  cursor: pointer;
-
-  /* ProductList 카드 구조 그대로 */
-  .img-box {
-    position: relative;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      display: block;
-    }
-
-    /* 찜 버튼 (ProductCard.scss 동일) */
-    > .favorite {
-      position: absolute;
-      right: 12px;
-      top: 12px;
-      width: 28px;
-      height: 28px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 28px;
-      background-image: url('../../../public/images/icon/icon-heart-grey.svg');
-
-      &.active {
-        background-image: url('../../../public/images/icon/icon-heart-black.svg');
-      }
-    }
-
-    /* 랭킹 뱃지 */
-    > .best-rank {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 28px;
-      height: 28px;
-      font-size: 1.6rem;
-      line-height: 28px;
-      text-align: center;
-      background-color: g.$main-color1;
-      color: g.$main-color2;
-    }
-  }
-
-  /* 텍스트 영역 ProductList와 동일 */
-  .text-box {
-    margin-top: 10px;
-
-    .brand {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 4px;
-    }
-
-    .title {
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .price {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      .sale-price {
-        font-weight: 700;
-      }
-
-      del {
-        color: #aaa;
-      }
-
-      .sale {
-        color: g.$main-color1;
-        font-weight: 700;
-      }
-    }
-  }
-}
-
 .no-result {
   margin-top: 40px;
-  font-size: 18px;
-  color: #666;
+  font-size: 1.8rem;
+  color: g.$main-color2;
+  text-align: center;
 }

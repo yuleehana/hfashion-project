@@ -50,7 +50,7 @@ const menus = [
   {
     key: 'golf',
     label: '골프',
-    submenu: [
+    submenu: [  
       { key: 'golf-women-outer', label: '여성아우터' },
       { key: 'golf-man-outer', label: '남성아우터' },
       { key: 'golf-women-pants', label: '여성바지' },
