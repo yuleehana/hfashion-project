@@ -74,17 +74,18 @@
     .search-suggestions {
       display: flex;
       justify-content: space-evenly;
-      gap: 20px;
       margin-top: 50px;
 
       .popular-keywords{
         max-width: 200px;
+        width: 100%;
       }
       .recent-keywords,
       .popular-keywords {
         p {
           margin-bottom: 20px;
           font-size: 2rem;
+          text-align: start;
         }
 
         .recent-keywords-del {
