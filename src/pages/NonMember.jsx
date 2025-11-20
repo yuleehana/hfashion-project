@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './sass/NonMember.scss';
 import OrderForm from '../components/OrderForm';
+import CartPo from '../components/CartPo';
 
 const NonMember = () => {
   //사이즈중복방지를위한 변수
@@ -81,7 +82,7 @@ const NonMember = () => {
             </div>
           </div>
           <div className="sub-inner-right">
-            <OrderForm />
+            <CartPo />
           </div>
         </div>
       </div>
