@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import { useCartStore } from '../store/useCartStore';
 import "./sass/CartItem.scss";
+import { Link } from 'react-router-dom';
 
-const CartItem = () => {
-  const { cartItems, onRemoveCart, totalPrice } = useCartStore();
+const CartItem = ({ product, onOpenPopup }) => {
+  // const { code } = useParams();
+
+  const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
+
 
   // 체크btn active
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false);
 
-
-  const handleToggle = () => {
-    setIsActive(!isActive)
+  const handleToggle = (code) => {
+    // setIsActive(!isActive)
+    setIsActive(isActive)
+    onCheckCart(code)
   }
 
   return (
@@ -19,12 +24,11 @@ const CartItem = () => {
         {cartItems.map((item, id) => (
           <>
             <li key={id} className='cart-item'>
-
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}>
-                  </button>
+                  {/* <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}></button> */}
+                  <input type='checkbox' onClick={handleToggle} />
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
                   </div>
@@ -32,19 +36,26 @@ const CartItem = () => {
                     <div className='item-desc'>
                       <span className='item-brand'>{item.brand}</span>
                       <span className='item-title'>{item.title}</span>
-                      <span className='item-op'>색상 : {item.color}/사이즈 : {item.size}</span>
+                      <span className='item-op'>
+                        <span>색상 : {item.color}</span>
+                        <span>사이즈 : {item.size}</span>
+                        <span>수량 : {item.count}</span>
+                      </span>
+                      <p>{(item.price * 0.8).toLocaleString()}원</p>
                     </div>
                     <div className='op-change'>
-                      <span>옵션변경</span>
+                      <button onClick={onOpenPopup}>옵션변경</button>
+
                     </div>
                   </div>
                 </div>
-
                 <div className='item-right'>
                   <span>수량 : {item.count}</span>
                   <span>/</span>
-                  <span>{(totalPrice * 0.8).toLocaleString()}원</span>
-                  <button>바로구매</button>
+                  <span>{(item.price * 0.8).toLocaleString()}원</span>
+                  <Link to='/pay'>바로구매</Link>
+                  <span><button className='btn xsmall secondary' onClick={onOpenPopup}>옵션변경</button></span>
+                  <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>
 
                 <span className='del-icon'
@@ -55,11 +66,8 @@ const CartItem = () => {
                   }}>
                   <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
                 </span>
-
               </div>
-
             </li>
-            <hr></hr>
           </>
         ))}
       </ul>

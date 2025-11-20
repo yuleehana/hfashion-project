@@ -11,6 +11,32 @@ const colors = ['pink', 'sky', 'white', 'black'];
 
 const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { code } = useParams();
+
+  // ===== 공유하기 (URL 복사) =====
+  const handleShare = async () => {
+    const url = window.location.href;
+
+    try {
+      // 최신 브라우저용
+      await navigator.clipboard.writeText(url);
+      alert('현재 페이지 주소가 복사되었습니다.');
+    } catch (err) {
+      // 구형 브라우저용 폴백
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        alert('현재 페이지 주소가 복사되었습니다.');
+      } catch (err) {
+        alert('URL 복사에 실패했습니다. 직접 복사해 주세요.');
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+  };
+
   // 전역변수 불러오기
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
@@ -28,12 +54,11 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const [count, setCount] = useState(1);
 
 
-
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
-      
+
     }
     setSelectSize("")
     setSelectColor("");
@@ -60,11 +85,12 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       size: selectSize,
       count: count,
       color: selectColor,
+      checked: false,
     };
 
     let aa = cartItems.find((c) => c.code === productCart.code && c.size === productCart.size && c.color === productCart.color);
 
-    console.log(cartItems, aa,productCart)
+    console.log(cartItems, aa, productCart)
 
     if (!aa) {
       onAddToCart(productCart);
@@ -92,11 +118,19 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
           <div className="item-brand-favorite">
             <p className="brand">{product.brand}</p>
             <p className="favorite">
+              {/* 좋아요 */}
               <span className='favo'>
                 <i>10</i>
                 <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
               </span>
-              <span className='share'><img src="/images/icon/icon-share.svg" alt="공유하기" /></span>
+              {/* 공유하기 */}
+              <span
+                className='share'
+                onClick={handleShare}
+                role="button"
+              >
+                <img src="/images/icon/icon-share.svg" alt="공유하기" />
+              </span>
             </p>
           </div>
 

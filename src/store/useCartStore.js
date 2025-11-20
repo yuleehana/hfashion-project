@@ -52,7 +52,7 @@ export const useCartStore = create(
       onRemoveCart: (code, size, color) => {
         const cart = get().cartItems;
 
-        const updateCart = cart.filter((c) => c.code === code && !(c.size === size && c.color === color));
+        const updateCart = cart.filter((c) => !(c.code === code && c.size === size && c.color === color));
 
         let total = 0;
 
@@ -66,6 +66,31 @@ export const useCartStore = create(
           cartCount: updateCart.length,
           totalPrice: total
         });
+
+      },
+
+
+      // checked: false,
+
+      // 체크박스 토글
+      onCheckCart: (code) => {
+        const carts = get().cartItems;
+
+        const updateCart = carts.map((cart) =>
+          cart.code === code ? { ...cart, checked: !cart.checked } : cart
+        );
+
+        set({ cartItems: updateCart });
+        // console.log(updateCart);
+
+      },
+
+
+      // cart-op-change 팝업
+      onAddToPopup: () => {
+        const cart = get().cartItems;
+
+        const updateCart = cart.filter()
 
       },
 

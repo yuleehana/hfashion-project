@@ -11,16 +11,16 @@
     }
     .ranking-item-wrap{
       width: 100%;
+      // height: 420px;
 
       .ranking-item{
         button{
           display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
-          border-bottom: 1px solid #000;
+          align-items: center;
+          border-bottom: 1px solid #C2C2C2;
           width: 100%;
           gap: 40px;
-          padding-bottom: 30px;
+          padding: 30px;
           font-size: 16px;
 
           span{
@@ -32,7 +32,17 @@
           display: flex;
           gap: 6px;
           flex:1;
-          
+
+          &.rank-list{
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s;
+          }
+          &.rank-list.active{
+            opacity: 1;
+            max-height: 170px;
+          }
           .rank-item{
             width: 114px;
             height: 170px;
@@ -49,6 +59,8 @@
               font-size: 12px;
               text-align: center;
               color: #fff;
+              padding-bottom: 12px;
+              background-color: rgba(0,0,0,0.2);
             }
           }
         }
@@ -82,16 +94,33 @@
         }
 
         .kwr-main-text{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
 
-          .item-brand{
-            font-size: 18px;
-            color: #fff;
-            margin-bottom: 20px;
-          }
           .item-title{
             font-size: 20px;
-            font-weight: 500;
             color: #fff;
+          }
+          .price-item{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .sale-price{
+              font-size: 18px;
+              color: #fff;
+            }
+            .original-price{
+              font-size: 16px;
+              color: #545454;
+              text-decoration-line: line-through;
+            }
+            .sale-num{
+              font-size: 16px;
+              color: #EEBE81;
+            }
           }
         }
       }
@@ -101,6 +130,47 @@
       display: grid;
       grid-template-columns: repeat(2,1fr);
       gap: 20px 30px;
+
+      .showing-khsn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .top-item{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+
+          .khsn-title{
+            width: 100%;
+            text-align: start;
+            font-size: 20px;
+          }
+          .khsn-item{
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+          }
+        }
+        .more-btn{
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 10px;
+          font-size: 14px;
+
+          &::after{
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-image: url("../../../public/images/arrow-right-thin.svg");
+            background-size: cover;
+          }
+        }
+      }
 
       .kwr-sub-img{
         background-size: cover;
@@ -121,19 +191,35 @@
             transition: 0.5s;
           }
           .kwr-sub-text{
-            .brand{
-              font-size: 18px;
-              color: #fff;
-              word-break: keep-all;
-              text-align: center;
-              margin-bottom: 20px;
-            }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            
             .title{
-              font-size: 20px;
-              font-weight: 500;
+              font-size: 18px;
               word-break: keep-all;
               text-align: center;
               color: #fff;
+            }
+            .price-item{
+              display: flex;
+              align-items: center;
+              gap: 6px;
+
+              .sale-price{
+                font-size: 16px;
+                color: #fff;
+              }
+              .original-price{
+                font-size: 14px;
+                color: #545454;
+                text-decoration-line: line-through;
+              }
+              .sale-num{
+                font-size: 14px;
+                color: #EEBE81;
+              }
             }
           }
         }

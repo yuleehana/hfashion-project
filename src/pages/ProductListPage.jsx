@@ -20,7 +20,7 @@ const ProductListPage = ({ category }) => {
   const [filterPrice2, setFilterPrice2] = useState(null);
 
   // 2. 커스텀 훅 호출! 모든 페이지네이션 로직이 캡슐화됨
-  const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(items, 10);
+  const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(items, 40);
   // (전체 목록, 페이지당 개수) 전달
 
   //allitems에서 브랜드추출

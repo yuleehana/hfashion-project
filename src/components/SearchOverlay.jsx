@@ -29,6 +29,15 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
   const handleClear = () => setKeyword("");
 
+    // 인기 검색어 클릭 시 최근 검색어에 추가하는 함수
+  const handlePopularKeywordClick = (kw) => {
+    // 인기 검색어를 클릭하면 최근 검색어에 추가, 중복 제거 후 9개로 제한
+    const newRecent = [kw, ...recentKeywords.filter((r) => r !== kw)].slice(0, 9);
+    setRecentKeywords(newRecent);
+    navigate(`/search?q=${kw}`);
+    onClose();
+  };
+
   return (
     <div className="search-overlay">
       <button className="close-btn" onClick={onClose}>
@@ -101,7 +110,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                 </ul>
               </div>
 
-              {/* 인기 검색어 */}
+                    {/* 인기 검색어 */}
               <div className="popular-keywords">
                 <p>인기 검색어</p>
                 <ul>
@@ -110,10 +119,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                       <button
                         type="button"
                         className="popular"
-                        onClick={() => {
-                          navigate(`/search?q=${kw}`);
-                          onClose();
-                        }}
+                        onClick={() => handlePopularKeywordClick(kw)} // 클릭 시 인기 검색어를 최근 검색어에 추가
                       >
                         <span className="rank">{i + 1}</span>
                         {kw}
@@ -122,7 +128,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   ))}
                 </ul>
               </div>
-
             </div>
           )}
         </form>

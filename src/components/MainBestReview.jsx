@@ -1,6 +1,5 @@
 import React from 'react'
 import "./sass/MainBestReview.scss";
-import { products } from "../data/products.js";
 import { useProductStore } from '../store/useProductStore.js';
 
 export function ReviewCard({ ranking }) {
@@ -16,7 +15,9 @@ export function ReviewCard({ ranking }) {
         <div className='review-item-box'>
           <div className="item-top">
             <p className="brand-name">{ranking.brand}</p>
-            <p className="review-text">넉넉하게 잘 맞아요~소매가 리뷰에서 듣던 대로 길어요부드럽고 깔끔해서 마음에 들어요</p>
+            <p className="review-text">
+              넉넉하게 잘 맞아요~소매가 리뷰에서 듣던 대로 길어요부드럽고 깔끔해서 마음에 들어요
+            </p>
           </div>
           <div className="item-bottom">
             <p className="product-name">{ranking.title}</p>

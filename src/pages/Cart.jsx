@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartPo from '../components/CartPo';
 import CartItem from '../components/CartItem';
 import "./sass/Cart.scss";
 import { useCartStore } from '../store/useCartStore';
 import CartNone from '../components/CartNone';
-// import { useProductStore } from '../store/useProductStore';
+import CartOpChangePopup from '../components/CartOpChangePopup';
 
 const Cart = () => {
   const { cartItems } = useCartStore();
 
+  // op-change 팝업 열기
+  const [showPopup, setShowPopup] = useState(false);  
+
+
   return (
-    <div className='sub-page cart'>
+    <div className='sub-page'>
       <div className='inner cart'>
 
         <div className='cart-inner-top'>
@@ -20,7 +24,7 @@ const Cart = () => {
 
           <div className='cart-inner-content'>
             <div className='cart-inner-left'>
-              {cartItems.length === 0 ? <CartNone /> : <CartItem />}
+              {cartItems.length === 0 ? <CartNone /> : <CartItem onOpenPopup={() => setShowPopup(true)}/>}
             </div>
             <div className='cart-inner-right'>
               <CartPo />
@@ -30,9 +34,11 @@ const Cart = () => {
 
         <div className='cart-inner-bottom'>
           <div className='other-item-wrap'>
-            
+
           </div>
         </div>
+
+        {showPopup && <CartOpChangePopup onClose={() => setShowPopup(false)} />}
 
       </div>
     </div>
