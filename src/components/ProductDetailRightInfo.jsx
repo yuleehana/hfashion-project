@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
 import { useCartStore } from '../store/useCartStore';
+import { useAuthStore } from '../store/authstore';
+import Pay from '../pages/Pay';
+import NonMember from '../pages/NonMember';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];
@@ -41,6 +44,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
   const { onAddToCart, cartItems } = useCartStore();
+  const { user } = useAuthStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState('');
@@ -192,7 +196,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
           <button className="btn middle primary" onClick={handleAddToCart}>
             장바구니
           </button>
-          <Link className="btn middle secondary" to="/pay">
+          <Link className="btn middle secondary" to={user ? '/pay' : '/nonmember'}>
             바로구매
           </Link>
         </div>

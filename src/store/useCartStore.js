@@ -87,6 +87,30 @@ export const useCartStore = create(
         const updateCart = cart.filter();
       },
 
+
+      onOptionChange: (color, size, code, count) => {
+        const { cartItems } = get()
+
+        const opItems = cartItems.map((item) => {
+          if (item.code === code) {
+            return {
+              ...item,
+              color,
+              size,
+              count
+            }
+          }
+          return item
+        })
+
+        set({
+          cartItems: opItems
+        })
+      },
+
+
+
+
       // 수량 변경
       // onPlusCount: (id) => {
       //   const cart = get().cartItems;
