@@ -1,6 +1,8 @@
 import React from 'react'
-import { ReviewCard } from "./MainBestReview";
+import ReviewCard from './ReviewCard';
 import "./sass/DetailPageReview.scss";
+import "./sass/ReviewCard.scss";
+
 
 const DetailPageReview = ({product}) => {
   const reviewCount = 2;
@@ -10,7 +12,9 @@ const DetailPageReview = ({product}) => {
     <section>
       <div className="section-title">
         <h3>리뷰</h3>
-        <p className='best-review'>포토/동영상 리뷰 1,000M, 텍스트 리뷰 300M, 첫리뷰 2,000M를 드립니다.</p>
+        <p className='best-review'>
+          포토/동영상 리뷰 1,000M, 텍스트 리뷰 300M, 첫리뷰 2,000M를 드립니다.
+        </p>
       </div>
       <dl className='best-review like-btn'>
         <dt>아주 좋아요</dt><dd>29</dd>
@@ -21,7 +25,9 @@ const DetailPageReview = ({product}) => {
       </dl>
       <ul className="review-box-list">
         {reviewCards.map((item, index) => (
-          <ReviewCard key={index} ranking={item} />
+          <li key={index}>
+            <ReviewCard item={item} />
+          </li>
         ))}
       </ul>
     </section>
