@@ -42,6 +42,12 @@ const ProductListPage = ({ category }) => {
   //필터팝업변수
   const [activeFilter, setActiveFilter] = useState(0);
 
+  //오른쪽 필터 팝업변수
+  const [rightFilter, setRightFilter] = useState(false);
+
+  //선택된 필터가 뭔지 보여줄 변수
+  const [filterName, setFilterName] = useState('신상품순');
+
   //------------------------------------------------------------------------------
   //메서드
   //브랜드 선택 메서드
@@ -93,12 +99,14 @@ const ProductListPage = ({ category }) => {
   // 가격 낮은순 정렬 메서드
   const sortByPriceAsc = () => {
     const sortedItems = [...items].sort((a, b) => a.price * 0.8 - b.price * 0.8);
+    setFilterName('낮은가격순');
     setItems(sortedItems);
   };
 
   // 가격 높은순 정렬 메서드
   const sortByPriceDesc = () => {
     const sortedItems = [...items].sort((a, b) => b.price * 0.8 - a.price * 0.8);
+    setFilterName('높은가격순');
     setItems(sortedItems);
   };
 
@@ -109,6 +117,7 @@ const ProductListPage = ({ category }) => {
       const dateB = Number(b.date.replace('.', ''));
       return dateB - dateA;
     });
+    setFilterName('신상품순');
     setItems(sortedItems);
   };
 
@@ -122,19 +131,31 @@ const ProductListPage = ({ category }) => {
     <div className="product-list-wrap">
       <div className="product-filter-top">
         <p className="product-filter-top-l">Filter</p>
-        <ul className="product-filter-top-r">
-          {sortOptions.map((sortOption) => (
-            <li key={sortOption.name} onClick={sortOption.handler}>
-              {sortOption.name}
-            </li>
-          ))}
-        </ul>
+        {/* <p>{rightFilte ? sortOptions[0].name}</p> */}
+        <p className="product-filter-top-filter" onClick={() => setRightFilter(!rightFilter)}>
+          {filterName}
+          <div className="product-filter-top-r ">
+            <ul className={rightFilter == true ? 'active' : ' '}>
+              {sortOptions.map((sortOption, id) => (
+                <li key={id} onClick={sortOption.handler}>
+                  {sortOption.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </p>
       </div>
       <div className="product-filter-bot">
         <ul className="product-filter-bot-t">
-          <li onClick={() => setActiveFilter(0)}>브랜드</li>
-          <li onClick={() => setActiveFilter(1)}>제조국</li>
-          <li onClick={() => setActiveFilter(2)}>가격</li>
+          <li className={activeFilter === 0 ? 'active' : ''} onClick={() => setActiveFilter(0)}>
+            브랜드
+          </li>
+          <li className={activeFilter === 1 ? 'active' : ''} onClick={() => setActiveFilter(1)}>
+            제조국
+          </li>
+          <li className={activeFilter === 2 ? 'active' : ''} onClick={() => setActiveFilter(2)}>
+            가격
+          </li>
         </ul>
         <ul className="product-filter-bot-b">
           <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
