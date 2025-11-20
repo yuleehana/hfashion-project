@@ -96,7 +96,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
-            onChange={handleInputChange}
+            onChange={handleInputChange}  className="search-input"
           />
 
           {/* 실시간 검색 미리보기 */}
