@@ -31,12 +31,11 @@ const CartItem = ({ product, onOpenPopup }) => {
         {cartItems.map((item, id) => (
           <>
             <li key={id} className='cart-item'>
-
               <div className='cart-item-inner'>
 
                 <div className='item-left'>
-                  <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}>
-                  </button>
+                  {/* <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}></button> */}
+                  <input type='checkbox' onClick={handleToggle} />
                   <div className='item-img-box'>
                     <img src={item.thumbImg} alt={item.code} />
                   </div>
@@ -44,19 +43,21 @@ const CartItem = ({ product, onOpenPopup }) => {
                     <div className='item-desc'>
                       <span className='item-brand'>{item.brand}</span>
                       <span className='item-title'>{item.title}</span>
-                      <span className='item-op'>색상 : {item.color}/사이즈 : {item.size}</span>
+                      <span className='item-op'>
+                        <span>색상 : {item.color}</span>
+                        <span>사이즈 : {item.size}</span>
+                        <span>수량 : {item.count}</span>
+                      </span>
+                      <p>{(totalPrice * 0.8).toLocaleString()}원</p>
                     </div>
                     <div className='op-change'>
-                      <button onClick={handleOpChange}>옵션변경</button>
+                      
                     </div>
                   </div>
                 </div>
-
                 <div className='item-right'>
-                  <span>수량 : {item.count}</span>
-                  <span>/</span>
-                  <span>{(totalPrice * 0.8).toLocaleString()}원</span>
-                  <Link to='/pay'>바로구매</Link>
+                  <span><button className='btn xsmall secondary' onClick={handleOpChange}>옵션변경</button></span>
+                  <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
                 </div>
 
                 <span className='del-icon'
@@ -67,11 +68,8 @@ const CartItem = ({ product, onOpenPopup }) => {
                   }}>
                   <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
                 </span>
-
               </div>
-
             </li>
-            <hr></hr>
           </>
         ))}
       </ul>

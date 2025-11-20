@@ -5,10 +5,12 @@
     text-align: center;
     padding: 0 24px;
     color: g.$main-color2;
+    display: inline-block;
 
     &.xsmall {
+        line-height: 24px;
         height: 24px;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     &.small {
@@ -47,16 +49,49 @@
     }
 }
 
-input {
+input[type="text"] {
     border: 1px solid #f2f2f2;
     background: #f2f2f2;
     font-size: 1.6rem;
     padding: 0 20px;
     color: g.$sub-color3;
+
     &:focus {
         border: 1px solid g.$main-color1;
     }
-    &::placeholder{
+
+    &::placeholder {
         color: g.$sub-color2;
     }
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none; /* 크롬, 사파리 등 호환 */
+  appearance: none;
+  /* 커스텀 디자인 */
+  width: 16px;
+  height: 16px;
+  border: 1px solid g.$sub-color2;
+  border-radius: 2px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 체크되었을 때*/
+input[type="checkbox"]:checked {
+  background-color: g.$main-color1;
+  border:1px solid g.$main-color1;
+}
+
+/* 체크 표시(✔) */
+input[type="checkbox"]:checked::after {
+  content: '✔';
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
 }
