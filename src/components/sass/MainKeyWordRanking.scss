@@ -15,12 +15,11 @@
       .ranking-item{
         button{
           display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
-          border-bottom: 1px solid #000;
+          align-items: center;
+          border-bottom: 1px solid #C2C2C2;
           width: 100%;
           gap: 40px;
-          padding-bottom: 30px;
+          padding: 30px;
           font-size: 16px;
 
           span{
@@ -101,6 +100,47 @@
       display: grid;
       grid-template-columns: repeat(2,1fr);
       gap: 20px 30px;
+
+      .showing-khsn{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .top-item{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+
+          .khsn-title{
+            width: 100%;
+            text-align: start;
+            font-size: 20px;
+          }
+          .khsn-item{
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+          }
+        }
+        .more-btn{
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 10px;
+          font-size: 14px;
+
+          &::after{
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-image: url("../../../public/images/arrow-right-thin.svg");
+            background-size: cover;
+          }
+        }
+      }
 
       .kwr-sub-img{
         background-size: cover;

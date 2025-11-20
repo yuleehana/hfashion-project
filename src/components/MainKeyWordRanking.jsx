@@ -253,10 +253,15 @@ const MainKeyWordRanking = () => {
             <div className="kwr-sub-img-wrap">
               <div className="showing-khsn">
                 <div className="top-item">
-                  <p>제목글</p>
-                  <p>옷장의 계절을 바꿀 타이밍</p>
+                  <p className='khsn-title'>추워진 날씨</p>
+                  <p className='khsn-item'>옷장의 계절을 바꿀 타이밍</p>
                 </div>
-                <button>더보기</button>
+                <button type="button"
+                  onClick={() => handleClick(liMenu)}
+                  className='more-btn'
+                >
+                  더보기
+                </button>
               </div>
               {menuRankProduct[liMenu].rank.slice(0,3).map((it) => (
                 <div className='kwr-sub-img'

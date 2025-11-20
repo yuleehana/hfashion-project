@@ -1,4 +1,5 @@
 import React from 'react'
+import CartPo from '../components/CartPo'
 
 const Pay = () => {
   return (
@@ -13,15 +14,74 @@ const Pay = () => {
 
           <div className='pay-inner-left'>
             <div className='user-info-wrap'>
-
+              <div className='user-info'>
+                <span>주문자 정보</span>
+                <input type="text"
+                  name='user'
+                  placeholder='이름'
+                  required />
+              </div>
             </div>
 
             <div className='address-wrap'>
+              <div className='address-top'>
+                <span>배송지</span>
+                <div className='address-btn'>
+                  <button>주문자와 동일</button>
+                  <button>배송지 선택</button>
+                </div>
+              </div>
+              <hr />
+              <div className='address-bottom'>
+                <div className='address-input'>
+                  <span>수신자명 (필수)</span>
+                  <input type="text"
+                    name='displayName'
+                    placeholder='상품을 받으실 분의 이름을 입력해주세요.'
+                  />
+                </div>
+                <div className='address-input'>
+                  <span>휴대폰번호(필수)</span>
+                  <input type="tel"
+                    name='phone'
+                    placeholder='휴대폰 번호를 입력해주세요.'
+                    required />
+                </div>
+                <div className='address-input'>
+                  <span>배송지 주소</span>
+                  <div className='input-top'>
+                    <input type="text"
+                      name='address'
+                      placeholder='상품을 받으실 분의 주소를 입력해주세요.'
+                      required />
+                    <button>주소검색</button>
+                  </div>
+                  <div className='input-bottom'>
+                    <input type="text"
+                      name='address2'
+                      placeholder='상세주소를 입력해주세요'
+                      required />
+                  </div>
+                  <div className='address-input'>
+                    <span>배송 요청사항</span>
+                    <input type="text"
+                      name='request'
+                      placeholder='배송기사에게 전달되는 메시지입니다. 선택해주세요' />
+                  </div>
+                </div>
 
+              </div>
             </div>
 
             <div className='item-wrap'>
-
+              <div className='item-top'>
+                <span>주문상품</span>
+                <button><img src="" alt="" /></button>
+              </div>
+              <hr />
+              <div className='item-bottom'>
+                {/* 컴포넌트 */}
+              </div>
             </div>
 
             <div className='coupon-wrap'>
@@ -30,7 +90,7 @@ const Pay = () => {
           </div>
 
           <div className='pay-inner-right'>
-            
+            <CartPo/>
           </div>
 
         </div>
