@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import { useProductStore } from "../store/useProductStore";
 import "./sass/Search.scss";
 import "../pages/sass/ProductListPage.scss"; // ProductListPage 스타일
@@ -48,8 +48,13 @@ const Search = () => {
                 // 할인율 계산
                 const discount = getDiscountPercent(item.originalPrice, item.salePrice);
                 return (
+                  // <li key={item.code}>
+                  //   <ProductCard sendItem={item} />  {/* ProductCard 컴포넌트로 상품 렌더링 */}
+                  // </li>
                   <li key={item.code}>
-                    <ProductCard sendItem={item} />  {/* ProductCard 컴포넌트로 상품 렌더링 */}
+                    <Link to={`/product-detail/${item.code}`}>
+                      <ProductCard sendItem={item} />
+                    </Link>
                   </li>
                 );
               })}

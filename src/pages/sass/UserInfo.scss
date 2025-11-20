@@ -1,40 +1,49 @@
-.content-inner{
+.content-inner {
+  &:has(>.user-info-left) {
+    padding-top: 4rem;
+  }
+
   display: flex;
   justify-content: space-between;
   gap: 44px;
+  padding-top: 4rem;
+  padding: 0 2rem;
 
-  .user-info-left{
+  .user-info-left {
     width: 270px;
   }
-  .user-info-right{
+
+  .user-info-right {
     width: 100%;
     border: 1px solid #bababa;
     padding: 62px 78px;
-    .section{
+
+    .section {
       width: 100%;
       margin-bottom: 54px;
 
-      .section-title{
-        
+      .section-title {
+
         font-size: 26px;
         width: 100%;
         margin-bottom: 34px;
       }
-      .favor-list-wrap{
+
+      .favor-list-wrap {
         width: 100%;
 
-        .favor-list-box{
+        .favor-list-box {
           display: flex;
           justify-content: space-between;
           gap: 34px;
 
-          .inlist-box{
+          .inlist-box {
             display: flex;
             justify-content: space-between;
             gap: 10px;
             width: 100%;
 
-            >.list-box{
+            >.list-box {
               padding: 18px;
             }
           }
@@ -43,7 +52,8 @@
     }
   }
 }
-.list-box{
+
+.list-box {
   background-color: #838383;
   padding: 18px 40px;
   display: flex;
@@ -54,22 +64,23 @@
   width: 100%;
   border-radius: 2px;
 
-  .list-name{
+  .list-name {
     font-size: 16px;
     color: #fff;
   }
-  p{
+
+  p {
     font-size: 26px;
     color: #fff;
   }
 }
 
-.orders-product-table{
-  .orders-product-list{
+.orders-product-table {
+  .orders-product-list {
     padding: 0 8px;
   }
 
-  .product-btn-list{
+  .product-btn-list {
     margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
@@ -77,13 +88,13 @@
     background-color: #F8F3F0;
     padding: 24px 0;
 
-    p{
+    p {
       font-size: 16px;
       color: #bababa;
     }
 
-    .button-wrap{
-      button{
+    .button-wrap {
+      button {
         font-size: 14px;
         text-decoration: underline;
       }
@@ -91,23 +102,24 @@
   }
 }
 
-.user-information{
+.user-information {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
-  .information-box{
+  .information-box {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
-    .info-th{
+    .info-th {
       width: 140px;
       padding: 10px;
       font-size: 16px;
     }
-    .info-td{
+
+    .info-td {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -117,7 +129,8 @@
     }
   }
 }
-.user-info-right>.btn-wrap{
+
+.user-info-right>.btn-wrap {
   display: flex;
   justify-content: flex-end;
 }

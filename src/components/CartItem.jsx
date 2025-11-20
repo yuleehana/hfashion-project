@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
 import { useCartStore } from '../store/useCartStore';
 import "./sass/CartItem.scss";
+import { Link, useParams } from 'react-router-dom';
 
-const CartItem = () => {
+const CartItem = ({ product, onOpenPopup }) => {
+  const { code } = useParams();
+
   const { cartItems, onRemoveCart, totalPrice } = useCartStore();
 
-  // 체크btn active
-  const [isActive, setIsActive] = useState(false)
+  // 카트 상품 색상
+  const [cartItem, setCartItem] = useState(cartItems);
 
+
+  // 체크btn active
+  const [isActive, setIsActive] = useState(false);
 
   const handleToggle = () => {
     setIsActive(!isActive)
+  }
+
+  const handleOpChange = () => {
+    const item = cartItem.find((i) => i.code === product.code)
+    console.log(item);
+    // const item = cartItems.find((i) => i.code === code)
   }
 
   return (
@@ -35,7 +47,7 @@ const CartItem = () => {
                       <span className='item-op'>색상 : {item.color}/사이즈 : {item.size}</span>
                     </div>
                     <div className='op-change'>
-                      <span>옵션변경</span>
+                      <button onClick={handleOpChange}>옵션변경</button>
                     </div>
                   </div>
                 </div>
@@ -44,7 +56,7 @@ const CartItem = () => {
                   <span>수량 : {item.count}</span>
                   <span>/</span>
                   <span>{(totalPrice * 0.8).toLocaleString()}원</span>
-                  <button>바로구매</button>
+                  <Link to='/pay'>바로구매</Link>
                 </div>
 
                 <span className='del-icon'

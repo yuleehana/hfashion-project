@@ -4,6 +4,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 1720px;
 }
 .category-page-title {
   color: g.$main-color1;
