@@ -71,7 +71,7 @@ const ProductDetail = () => {
               <ProdctActualSize />
             </section>
           )}
-          {activeTab === 'review' && <DetailPageReview />}
+          {activeTab === 'review' && <DetailPageReview product={product} />}
           {activeTab === 'qna' && (
             <section>
               <ProdctQNA />

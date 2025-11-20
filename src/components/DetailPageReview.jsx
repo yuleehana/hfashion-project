@@ -1,12 +1,10 @@
 import React from 'react'
 import { ReviewCard } from "./MainBestReview";
-import { useProductStore } from '../store/useProductStore';
 import "./sass/DetailPageReview.scss";
 
-const DetailPageReview = () => {
-  const { items } = useProductStore();
-  const top3 = [...items].filter((p) => p.rating === 5).slice(0, 2)
-  console.log(top3)
+const DetailPageReview = ({product}) => {
+  const reviewCount = 2;
+  const reviewCards = Array(reviewCount).fill(product);
 
   return (
     <section>
@@ -22,9 +20,9 @@ const DetailPageReview = () => {
         <dt>별로예요</dt><dd>0</dd>
       </dl>
       <ul className="review-box-list">
-        {top3.map(p => {
-          return <ReviewCard ranking={p} />
-        })}
+        {reviewCards.map((item, index) => (
+          <ReviewCard key={index} ranking={item} />
+        ))}
       </ul>
     </section>
   )
