@@ -25,7 +25,7 @@ const BrandListPage = ({ brand }) => {
     currentPage,
     totalPages,
     handlePageChange
-  } = usePagination(allItems, 10, brand);
+  } = usePagination(allItems, 40, brand);
 
   return (
     <div className='sub-page'>

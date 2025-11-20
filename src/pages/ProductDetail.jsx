@@ -18,7 +18,8 @@ import CartPopup from '../components/CartPopup';
 
 const ProductDetail = () => {
   const { code } = useParams();
-  console.log(code);
+  // console.log(code);
+
   const [product, setProduct] = useState(null);
 
   // 팝업창을 보이고 숨길 변수
