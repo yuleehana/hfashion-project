@@ -9,7 +9,7 @@ const CartItem = ({ product, onOpenPopup }) => {
   const { cartItems, onRemoveCart, totalPrice } = useCartStore();
 
   // 카트 상품 색상
-  const [cartItem, setCartItem] = useState(cartItems);
+  // const [cartItem, setCartItem] = useState(cartItems);
 
 
   // 체크btn active
@@ -19,11 +19,11 @@ const CartItem = ({ product, onOpenPopup }) => {
     setIsActive(!isActive)
   }
 
-  const handleOpChange = () => {
-    const item = cartItem.find((i) => i.code === product.code)
-    console.log(item);
-    // const item = cartItems.find((i) => i.code === code)
-  }
+  // const handleOpChange = () => {
+  //   const item = cartItem.find((i) => i.code === cartItems.code && i.color === cartItems.color && i.size === cartItems.size);
+  //   console.log(item);
+
+  // }
 
   return (
     <div className='cart-item-list-wrap'>
@@ -47,7 +47,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                       <span className='item-op'>색상 : {item.color}/사이즈 : {item.size}</span>
                     </div>
                     <div className='op-change'>
-                      <button onClick={handleOpChange}>옵션변경</button>
+                      <button onClick={onOpenPopup}>옵션변경</button>
                     </div>
                   </div>
                 </div>

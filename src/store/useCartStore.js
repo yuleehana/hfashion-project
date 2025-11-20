@@ -71,6 +71,17 @@ export const useCartStore = create(
 
 
 
+
+      // cart-op-change 팝업
+      onAddToPopup: () => {
+        const cart = get().cartItems;
+
+        const updateCart = cart.filter()
+
+      },
+
+
+
       // 수량 변경
       // onPlusCount: (id) => {
       //   const cart = get().cartItems;
