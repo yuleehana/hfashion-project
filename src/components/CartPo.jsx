@@ -1,29 +1,36 @@
-import React from 'react'
-import { useCartStore } from '../store/useCartStore'
-import "./sass/CartPo.scss"
+import React, { useState } from 'react';
+import { useCartStore } from '../store/useCartStore';
+import './sass/CartPo.scss';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 
 const CartPo = () => {
+  const { totalPrice, checkedTotalPrice, cartItems } = useCartStore();
 
-  const { totalPrice, cartItems, onCheckCart } = useCartStore();
+  const [totalCheck, setTotalCheck] = useState(true);
+
+  console.log('전체카트아이템 항목', cartItems);
+  console.log('체크된항목', checkedTotalPrice);
+
   const { user } = useAuthStore();
 
-  return (
-    <div className='cartPo-wrap'>
-      <div className='cartPo-inner'>
+  // 선택된 상품 개수
+  const checkedCount = cartItems.filter((item) => item.checked).length;
 
-        <div className='cartPo-inner-top'>
+  return (
+    <div className="cartPo-wrap">
+      <div className="cartPo-inner">
+        <div className="cartPo-inner-top">
           <p>결제 금액</p>
 
-          <div className='cartPo-pay-list'>
+          <div className="cartPo-pay-list">
             <div className="cartPo-pay item">
               <span>상품금액</span>
-              <span>{(totalPrice).toLocaleString()}</span>
+              <span>{checkedTotalPrice}</span>
             </div>
             <div className="cartPo-pay dis">
               <span>할인금액</span>
-              <span >-{((totalPrice) - (totalPrice * 0.8)).toLocaleString()}</span>
+              <span>-{checkedTotalPrice * 0.2}</span>
             </div>
             <div className="cartPo-pay del">
               <span>배송비</span>
@@ -32,24 +39,23 @@ const CartPo = () => {
           </div>
         </div>
 
-        <hr></hr>
+        <hr />
 
-        <div className='cartPo-inner-bottom'>
-          <div className='cartPo-pay-total'>
+        <div className="cartPo-inner-bottom">
+          <div className="cartPo-pay-total">
             <span>총 결제금액</span>
-            <span>{(totalPrice * 0.8).toLocaleString()}</span>
+            {checkedTotalPrice * 0.8}
           </div>
 
-          <div className='cartPo-btn'>
-            <Link to={user ? '/pay' : '/nonmember'}
-            >{(totalPrice * 0.8).toLocaleString()}원 구매하기 / {onCheckCart}개</Link>
+          <div className="cartPo-btn">
+            <Link to={user ? '/pay' : '/nonmember'}>
+              {(checkedTotalPrice * 0.8).toLocaleString()}원 구매하기
+            </Link>
           </div>
-          {/* onclick={cartItems.length === 0 ? alert('장바구니에 담긴 상품이 없습니다.') : ''} */}
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartPo
+export default CartPo;
