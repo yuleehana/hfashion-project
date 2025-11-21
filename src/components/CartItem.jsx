@@ -19,6 +19,16 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   return (
     <div className="cart-item-list-wrap">
+      <div className="del-box">
+        <label className="del-total">
+          <input type="checkbox" />
+          <span>전체</span>
+        </label>
+        <div className="del-button">
+          <button className="btn grey xsmall">선택 삭제</button>
+          <button className="btn grey xsmall">전체 삭제</button>
+        </div>
+      </div>
       <ul className="cart-item-list">
         {cartItems.map((item, id) => (
           <>
@@ -39,11 +49,11 @@ const CartItem = ({ product, onOpenPopup }) => {
                         <span>사이즈 : {item.size}</span>
                         <span>수량 : {item.count}</span>
                       </span>
-                      <p>{(item.price * 0.8 * item.count).toLocaleString()}원</p>
                     </div>
-                    <div className="op-change"></div>
+                    {/* <div className="op-change"></div> */}
                   </div>
                 </div>
+                <p>{(item.price * 0.8 * item.count).toLocaleString()}원</p>
                 <div className="item-right">
                   <span>
                     <button

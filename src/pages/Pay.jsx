@@ -1,104 +1,106 @@
-import React from 'react'
-import CartPo from '../components/CartPo'
+import React from "react";
+import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
+import PayItem from "../components/PayItem";
 
 const Pay = () => {
   return (
-    <div className='sub-page pay'>
-      <div className='inner pay'>
-
-        <div className='pay-inner-top'>
-          <h2 className='sub-page-title pay'>주문서</h2>
+    <div className="sub-page pay">
+      <div className="inner pay">
+        <div className="pay-inner-top">
+          <h2 className="sub-page-title pay">주문서</h2>
         </div>
 
-        <div className='pay-inner-bottom'>
-
-          <div className='pay-inner-left'>
-            <div className='user-info-wrap'>
-              <div className='user-info'>
+        <div className="pay-inner-bottom">
+          <div className="pay-inner-left">
+            <div className="user-info-wrap">
+              <div className="user-info">
                 <span>주문자 정보</span>
-                <input type="text"
-                  name='user'
-                  placeholder='이름'
-                  required />
+                <input type="text" name="user" placeholder="이름" required />
               </div>
             </div>
 
-            <div className='address-wrap'>
-              <div className='address-top'>
+            <div className="address-wrap">
+              <div className="address-top">
                 <span>배송지</span>
-                <div className='address-btn'>
-                  <button className='btn xsmall grey'>주문자와 동일</button>
-                  <button className='btn xsmall grey'>배송지 선택</button>
+                <div className="address-btn">
+                  <button className="btn xsmall grey">주문자와 동일</button>
+                  <button className="btn xsmall grey">배송지 선택</button>
                 </div>
               </div>
               <hr />
-              <div className='address-bottom'>
-                <div className='address-input'>
+              <div className="address-bottom">
+                <div className="address-input">
                   <span>수신자명 (필수)</span>
-                  <input type="text"
-                    name='displayName'
-                    placeholder='상품을 받으실 분의 이름을 입력해주세요.'
+                  <input
+                    type="text"
+                    name="displayName"
+                    placeholder="상품을 받으실 분의 이름을 입력해주세요."
                   />
                 </div>
-                <div className='address-input'>
+                <div className="address-input">
                   <span>휴대폰번호(필수)</span>
-                  <input type="tel"
-                    name='phone'
-                    placeholder='휴대폰 번호를 입력해주세요.'
-                    required />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="휴대폰 번호를 입력해주세요."
+                    required
+                  />
                 </div>
-                <div className='address-input delivery'>
+                <div className="address-input delivery">
                   <span>
                     <span>배송지 주소</span>
-                    <button className='btn xsmall primary'>주소검색</button>
+                    <button className="btn xsmall primary">주소검색</button>
                   </span>
                   <div>
-                    <input type="text"
-                      name='address'
-                      placeholder='상품을 받으실 분의 주소를 입력해주세요.'
-                      required />
-                    <input type="text"
-                      name='address2'
-                      placeholder='상세주소를 입력해주세요'
-                      required />
+                    <input
+                      type="text"
+                      name="address"
+                      placeholder="상품을 받으실 분의 주소를 입력해주세요."
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="address2"
+                      placeholder="상세주소를 입력해주세요"
+                      required
+                    />
                   </div>
                 </div>
-                <div className='address-input'>
+                <div className="address-input">
                   <span>배송 요청사항</span>
-                  <input type="text"
-                    name='request'
-                    placeholder='배송기사에게 전달되는 메시지입니다. 선택해주세요' />
+                  <input
+                    type="text"
+                    name="request"
+                    placeholder="배송기사에게 전달되는 메시지입니다. 선택해주세요"
+                  />
                 </div>
-
               </div>
             </div>
 
-            <div className='item-wrap'>
-              <div className='item-top'>
+            <div className="item-wrap">
+              <div className="item-top">
                 <span>주문상품</span>
-                <button><img src="" alt="" /></button>
+                <button>
+                  <img src="" alt="" />
+                </button>
               </div>
               <hr />
-              <div className='item-bottom'>
-                {/* 컴포넌트 */}
+              <div className="item-bottom">
+                <PayItem />
               </div>
             </div>
 
-            <div className='coupon-wrap'>
-
-            </div>
+            <div className="coupon-wrap"></div>
           </div>
 
-          <div className='pay-inner-right'>
+          <div className="pay-inner-right">
             <CartPo />
           </div>
-
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Pay
+export default Pay;
