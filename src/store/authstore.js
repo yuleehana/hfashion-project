@@ -37,7 +37,6 @@ export const useAuthStore = create((set) => ({
         phone,
         address,
         address2,
-        password
       });
 
       set({
