@@ -25,9 +25,9 @@
         justify-content: space-between;
 
         .pay-inner-left {
-          border: 1px solid g.$sub-color2;
+          // border: 1px solid g.$sub-color2;
           width: 70%;
-          padding: 2.4rem 4rem;
+          // padding: 2.4rem 4rem;
           display: flex;
           flex-direction: column;
           gap: 5rem;
@@ -126,11 +126,51 @@
           .item-wrap {
             border: 1px solid g.$sub-color2;
             padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
           }
 
           .coupon-wrap {
             border: 1px solid g.$sub-color2;
             padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+
+          .payment-wrap {
+            border: 1px solid g.$sub-color2;
+            padding: 3rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            .payment-top {}
+
+            .payment-bottom {
+              display: flex;
+              justify-content: space-between;
+              gap: 4rem;
+
+              button {
+                font-size: 1.4rem;
+                font-weight: 400;
+                color: g.$main-color1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid g.$sub-color2;
+                background-color: g.$main-color2;
+                padding: 1rem 0;
+                width: 100%;
+
+                &.active {
+                  background: g.$main-color1;
+                  color: g.$main-color2;
+                }
+              }
+            }
           }
         }
 
