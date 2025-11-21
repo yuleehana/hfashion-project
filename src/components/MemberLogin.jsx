@@ -51,7 +51,7 @@ const MemberLogin = () => {
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="idTag">
-                <p className='rememberId'>아이디 저장</p>
+                <label className='rememberId'><input type="checkbox" /> 아이디 저장</label>
                 <p className='findIdPw'>
                     <span className='findId'>
                         <Link>아이디 찾기</Link>
@@ -63,8 +63,13 @@ const MemberLogin = () => {
             </div>
             <div className="button-grid-wrap">
                 <button type='submit' onSubmit={onLogin}>로그인하기</button>
-                <button onClick={handleGoogleLogin}>구글 로그인</button>
-                <button>카카오 로그인</button>
+                <button type='button' onClick={handleGoogleLogin}>구글 로그인</button>
+                <button
+                    type="button"
+                    onClick={() => window.open('https://www.hfashionmall.com/public/member/login')}
+                >
+                    H FASHION 회원
+                </button>
             </div>
 
         </form>
