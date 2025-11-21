@@ -1,3 +1,5 @@
+@use '../../App.scss' as g;
+
 .cart-op-change-wrap {
   position: fixed;
   background: rgba(0, 0, 0, 0.4);
@@ -20,5 +22,113 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+}
+.op-color-change {
+  button {
+    border-radius: 10px;
+    width: 2rem;
+    height: 2rem;
+
+    &.active {
+      background-image: url('../../../public/images/icon/icon-color-check.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &.active.white {
+      background-image: url('../../../public/images/icon/icon-color-check-white.png');
+    }
+
+    &.pink {
+      background-color: pink;
+    }
+
+    &.sky {
+      background-color: skyblue;
+    }
+
+    &.white {
+      background-color: white;
+      border: 1px solid g.$sub-color2;
+    }
+
+    &.black {
+      background-color: black;
+    }
+  }
+}
+
+.op-size-change {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  p {
+    color: g.$sub-color2;
+    font-size: 1.4rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    li {
+      button {
+        min-width: 32px;
+        min-height: 24px;
+        line-height: 2.4rem;
+        color: g.$sub-color2;
+        border: 1px solid g.$sub-color2;
+        border-radius: 2px;
+        background: g.$main-color2;
+        font-size: 1.2rem;
+
+        &:disabled {
+          background: g.$sub-color1;
+          text-decoration: line-through;
+        }
+
+        &.active {
+          color: g.$main-color2;
+          background: g.$main-color1;
+          border-color: g.$main-color1;
+        }
+      }
+    }
+  }
+}
+
+.op-count-change {
+  @include g.myFlex($gap: 0, $jc: flex-start);
+  button,
+  span {
+    text-align: center;
+    display: inline-block;
+    height: 28px;
+    background-color: g.$main-color2;
+    border: 1px solid g.$sub-color2;
+    line-height: 28px;
+  }
+
+  button {
+    width: 28px;
+    &.minus {
+      background-image: url('../../../public/images/icon/icon-minus.png');
+    }
+
+    &.plus {
+      background-image: url('../../../public/images/icon/icon-plus.png');
+    }
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  span {
+    border-left: none;
+    border-right: none;
+    width: 40px;
   }
 }

@@ -39,15 +39,28 @@ const CartItem = ({ product, onOpenPopup }) => {
                         <span>사이즈 : {item.size}</span>
                         <span>수량 : {item.count}</span>
                       </span>
-                      <p>{(item.price * 0.8).toLocaleString()}원</p>
+                      <p>{(item.price * 0.8 * item.count).toLocaleString()}원</p>
                     </div>
-                    <div className='op-change'>
-                    </div>
+                    <div className="op-change"></div>
                   </div>
                 </div>
-                <div className='item-right'>
-                  <span><button className='btn xsmall secondary' onClick={onOpenPopup}>옵션변경</button></span>
-                  <span><Link className='btn xsmall primary' to='/pay'>바로구매</Link></span>
+                <div className="item-right">
+                  <span>
+                    <button
+                      className="btn xsmall secondary"
+                      onClick={() => {
+                        console.log('선택된아이템 : ', item);
+                        onOpenPopup(item);
+                      }}
+                    >
+                      옵션변경
+                    </button>
+                  </span>
+                  <span>
+                    <Link className="btn xsmall primary" to="/pay">
+                      바로구매
+                    </Link>
+                  </span>
                 </div>
 
                 <span

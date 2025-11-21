@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import { create } from 'zustand';
 import { auth, googleProvider, db } from '../firebase/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, Firestore, getDoc, setDoc } from 'firebase/firestore';
 
 export const useAuthStore = create((set) => ({
   // 변수
@@ -40,9 +40,64 @@ export const useAuthStore = create((set) => ({
       });
 
       set({
-        user: { uid: user.uid, id, displayName, email, phone, address, address2 },
+        user: { id, displayName, email, phone, address, address2 },
       });
       alert('회원가입 성공');
+    } catch (err) {
+      alert(err.message);
+    }
+  },
+
+  //비회원 주문자 변수
+  nuser: null,
+
+  onNMember: async ({ oname, ophone, oemail, opassword, opasswordcheck }) => {
+    try {
+      //비회원정보를 firestore에 저장
+      await setDoc(doc(db, 'nuser', ophone), {
+        oname,
+        ophone,
+        oemail,
+        opassword,
+        opasswordcheck,
+      });
+      set({
+        nuser: { oname, ophone, oemail, opassword, opasswordcheck },
+      });
+
+      console.log('nuser데이터정보', {
+        oname,
+        ophone,
+        oemail,
+        opassword,
+        opasswordcheck,
+      });
+    } catch (err) {
+      alert(err.message);
+    }
+  },
+
+  naddress: null,
+  onNAddress: async ({ nname, nphone, naddress, naddress2, nrequest }) => {
+    try {
+      await setDoc(doc(db, 'naddress', nname), {
+        nname,
+        nphone,
+        naddress,
+        naddress2,
+        nrequest,
+      });
+      set({
+        naddress: { nname, nphone, naddress, naddress2, nrequest },
+      });
+
+      console.log('nuser주소정보', {
+        nname,
+        nphone,
+        naddress,
+        naddress2,
+        nrequest,
+      });
     } catch (err) {
       alert(err.message);
     }
