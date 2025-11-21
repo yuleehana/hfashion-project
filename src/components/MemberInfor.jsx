@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/authstore";
 import UserInfoLeftMenu from "./UserInfoLeftMenu";
-import "../pages/sass/UserInfo.scss";
+import "./sass/MemberInfor.scss";
 import "./sass/button-normal.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -17,13 +17,15 @@ const MemberInfor = () => {
     return (
       <div className="sub-page">
         <div className="content-inner">
-          <p>로그인이 필요한 서비스입니다</p>
-          <button
-            className="btn middle primary"
-            onClick={() => navigate("/login")}
-          >
-            로그인 페이지로 이동
-          </button>
+          <div className="go-login">
+            <p>로그인이 필요한 서비스입니다</p>
+            <button
+              className="btn middle primary"
+              onClick={() => navigate("/login")}
+            >
+              로그인 페이지로 이동
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -59,9 +61,16 @@ const MemberInfor = () => {
               </div>
               <div className="information-box">
                 <p className="info-th">비밀번호</p>
-                <p className="info-td">
-                  <button className="btn small outline">비밀번호 변경</button>
-                </p>
+                <div className="info-td">
+                  <p className="password">
+                    {showPassword ? user.password : maskdePassword}
+                  </p>
+                  <button className="btn small outline"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "숨기기" : "비밀번호 확인"}
+                  </button>
+                </div>
               </div>
               <div className="information-box">
                 <p className="info-th">휴대폰 번호</p>
@@ -74,14 +83,10 @@ const MemberInfor = () => {
               <div className="information-box">
                 <p className="info-th">주소</p>
                 <p className="info-td">
-                  {user.address}
-                  {user.address2}
+                  {user.address}{"  "}{user.address2}
                 </p>
               </div>
             </div>
-          </div>
-          <div className="btn-wrap">
-            <button className="btn large primary">회원정보 수정</button>
           </div>
         </div>
       </div>

@@ -116,10 +116,10 @@ const MainKeyWordRanking = () => {
                         <p className="title">{it.title}</p>
                         <div className="price-item">
                           <p className="sale-price">
-                            {salePrice.toLocaleString()}
+                            {salePrice.toLocaleString()}원
                           </p>
                           <p className="original-price">
-                            {originalPrice.toLocaleString()}
+                            {originalPrice.toLocaleString()}원
                           </p>
                           <p className='sale-num'>20%</p>
                         </div>

@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
 import PayItem from "../components/PayItem";
 
+const payMethods = ["신용카드", "간편결제", "무통장입금"];
+
 const Pay = () => {
+  const [selectPay, setSelectPay] = useState("");
+
   return (
     <div className="sub-page pay">
       <div className="inner pay">
@@ -82,7 +86,10 @@ const Pay = () => {
               <div className="item-top">
                 <span>주문상품</span>
                 <button>
-                  <img src="" alt="" />
+                  <img
+                    src="../../images/arrow-down-white.svg"
+                    alt="상품 더 보기"
+                  />
                 </button>
               </div>
               <hr />
@@ -91,7 +98,41 @@ const Pay = () => {
               </div>
             </div>
 
-            <div className="coupon-wrap"></div>
+            <div className="coupon-wrap">
+              <div className="coupon-top">
+                <span>할인정보</span>
+              </div>
+              <hr />
+              <div className="coupon-bottom">
+                <div className="coupon">
+                  <span>쿠폰 선택</span>
+                </div>
+                <div className="Hpoint">
+                  <span>H.point Pay</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="payment-wrap">
+              <div className="payment-top">
+                <span>결제수단</span>
+              </div>
+              <hr />
+              <div className="payment-bottom">
+                {payMethods.map((pay, id) => (
+                  <button
+                    key={id}
+                    className={selectPay === pay ? "active" : ""}
+                    onClick={() => setSelectPay(pay)}
+                  >
+                    {pay}
+                  </button>
+                ))}
+              </div>
+              <div className="payment-components">
+                
+              </div>
+            </div>
           </div>
 
           <div className="pay-inner-right">
