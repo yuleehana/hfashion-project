@@ -1,0 +1,29 @@
+@use '../../App.scss' as g;
+
+.breadcrumbs {
+  max-width: 1720px;
+  width: 100%;
+
+  margin: 0 auto;
+  font-size: 14px;
+  color: g.$sub-color2;
+  padding: 8px 20px;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 300;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    margin: 0 4px;
+  }
+
+  .current {
+    font-weight: 600;
+  }
+}
