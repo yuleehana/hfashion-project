@@ -36,6 +36,13 @@ const breadcrumbNameMap = {
   '/brand/brand-rouge': '루즈앤라운지',
   '/brand/brand-sjyp': 'SJYP',
   '/brand/brand-tommy': '타미힐피거',
+
+  '/cart': '장바구니',
+  '/userinfo': '마이페이지',
+  '/picklist': '찜 리스트',
+  '/pay': '주문서',
+  '/login': '로그인',
+  '/join': '회원가입',
 };
 
 const Breadcrumbs = () => {
