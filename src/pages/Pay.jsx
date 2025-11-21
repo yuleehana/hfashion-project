@@ -7,9 +7,17 @@ import PayMethod from "../components/PayMethod";
 const payMethods = ["신용카드", "간편결제", "무통장입금"];
 
 const Pay = () => {
+  // 결제수단을 저장할 변수
+  // const [pay, setPay] = useState("");
+
   const [selectPay, setSelectPay] = useState("");
 
-  const [showDepth, setShowDepth] = useState('false');
+  const [showDepth, setShowDepth] = useState("false");
+
+  const handleOpenDepth = () => {
+    // setSelectPay('active');
+    setShowDepth(true);
+  };
 
   return (
     <div className="sub-page pay">
@@ -134,7 +142,7 @@ const Pay = () => {
                   ))}
                 </div>
                 <div className="payment-components">
-                  <PayMethod />
+                  <PayMethod onOpen={showDepth}/>
                 </div>
               </div>
             </div>

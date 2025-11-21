@@ -18,7 +18,7 @@ const methods2 = ["카카오페이", "토스페이", "네이버페이"];
 
 const methods3 = ["입금은행 선택", "입금자명"];
 
-const PayMethod = () => {
+const PayMethod = ({onOpen}) => {
   return (
     <ul className="pay-method-wrap">
       <li className="pay-method">
@@ -29,7 +29,9 @@ const PayMethod = () => {
 
         <ul className="methodDepth1">
           {methods1Depth1.map((card) => (
-            <li key={card.key}>{card.label}</li>
+            <li key={card.key}>
+              <button>{card.label}</button>
+            </li>
           ))}
         </ul>
       </li>
@@ -41,7 +43,9 @@ const PayMethod = () => {
 
         <ul className="methodDepth1">
           {methods1Depth2.map((c) => (
-            <li key={c.key}>{c.label}</li>
+            <li key={c.key}>
+              <button>{c.label}</button>
+            </li>
           ))}
         </ul>
       </li>
