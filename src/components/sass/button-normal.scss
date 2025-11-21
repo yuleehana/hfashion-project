@@ -10,7 +10,7 @@
     &.xsmall {
         padding:0 12px;
         min-width: 60px;
-        line-height: 24px;
+        line-height: 22px;
         height: 24px;
         font-size: 14px;
     }
@@ -44,7 +44,11 @@
         color: g.$main-color1;
         border: 1px solid g.$main-color1;
     }
-
+    &.grey {
+        color: g.$main-color2;
+        background-color: g.$sub-color3;
+        border: 1px solid g.$sub-color3;
+    }
     &.wFull {
         width: 100%;
         display: block;

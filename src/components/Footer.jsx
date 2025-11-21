@@ -53,13 +53,24 @@ const Footer = () => {
             <div className="sns-list">
               <ul>
                 <li>
-                  <img src="/images/sns-facebook-icon.svg" alt="" />
+                  <Link
+                    to='https://www.facebook.com/Hfashionmall'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ><img src="/images/sns-facebook-icon.svg" alt="facebook" /></Link>
+
                 </li>
                 <li>
-                  <img src="/images/sns-insta-icon.svg" alt="" />
+                  <Link to='https://www.instagram.com/hfashion_official/'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ><img src="/images/sns-insta-icon.svg" alt="insta" /></Link>
                 </li>
                 <li>
-                  <img src="/images/sns-naver-icon.svg" alt="" />
+                  <Link to='https://blog.naver.com/h_edit'
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ><img src="/images/sns-naver-icon.svg" alt="naver" /></Link>
                 </li>
               </ul>
             </div>

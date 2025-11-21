@@ -177,8 +177,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
         </div>
 
         <div className="item-info">
-          <p>색상:{selectColor}, 사이즈:{selectSize}</p>
-
+          <p>색상 : {selectColor} <span className='division'>|</span> 사이즈 : {selectSize}</p>
           {/* 수량 선택 */}
           <p className="btn-count">
             <button className="minus" onClick={() => setCount((c) => Math.max(1, c - 1))}></button>

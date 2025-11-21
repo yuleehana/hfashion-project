@@ -74,19 +74,6 @@
               .address-btn {
                 display: flex;
                 gap: 1rem;
-
-                button {
-                  display: flex;
-                  // height: 30px;
-                  padding: 0.8rem 2.5rem;
-                  justify-content: center;
-                  align-items: center;
-                  border-radius: 2px;
-                  background-color: g.$sub-color4;
-                  color: g.$main-color2;
-                  font-size: 1.2rem;
-                  font-weight: 400;
-                }
               }
             }
 
