@@ -16,6 +16,7 @@ const ProductQNA = () => {
           상품에 대한 배송, 교환, 취소등의 자세한 문의 사항은 고객센터  1:1문의를 이용하여 주시기 바랍니다.
         </p>
       </div>
+      
       <div className='qna-list-wrap'>
         <div className="qna-list-box">
           <div className="qna-list">
@@ -30,7 +31,6 @@ const ProductQNA = () => {
               </div>
               <div className="item-qna-title">
                 <p className="qna-title">상품 관련 문의입니다.</p>
-                <img src="/images/icon-lock.svg" alt="lock" />
               </div>
             </div>
             <button className="qna-list-door"
@@ -75,8 +75,10 @@ const ProductQNA = () => {
                 <p className="answer-wait">답변대기</p>
               </div>
               <div className="item-qna-title">
+                <img src="/images/icon-lock.svg" alt="lock"
+                  className='lock-img'
+                />
                 <p className="qna-title">상품 관련 문의입니다.</p>
-                <img src="/images/icon-lock.svg" alt="lock" />
               </div>
             </div>
             <button className="qna-list-door">

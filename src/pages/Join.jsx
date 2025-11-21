@@ -71,7 +71,7 @@ const Join = () => {
             <span className="id-input-tag">
               <input
                 type="text"
-                name="uid"
+                name="id"
                 placeholder="아이디를 입력해주세요"
                 onChange={handleChange}
                 required
