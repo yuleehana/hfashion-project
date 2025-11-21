@@ -25,8 +25,8 @@ const Cart = () => {
           <div className="cart-inner-title">
             <h2 className="sub-page-title cart">장바구니</h2>
           </div>
-
           <div className="cart-inner-content">
+
             <div className="cart-inner-left">
               {cartItems.length === 0 ? (
                 <CartNone />
@@ -34,19 +34,11 @@ const Cart = () => {
                 <CartItem onOpenPopup={handleOpenPopup} />
               )}
             </div>
+
             <div className="cart-inner-right">
               <CartPo />
-              <div className="del-box">
-                <label className="del-total">
-                  <input type="checkbox" />
-                  <span>전체</span>
-                </label>
-                <div className="del-button">
-                  <button className="btn grey xsmall">선택 삭제</button>
-                  <button className="btn grey xsmall">전체 삭제</button>
-                </div>
-              </div>
             </div>
+
           </div>
 
           <div className="cart-inner-bottom">
