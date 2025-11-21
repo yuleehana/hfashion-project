@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./sass/SearchOverlay.scss";
 import { useProductStore } from "../store/useProductStore.js";
 
 const popularKeywords = ["가디건", "점퍼", "백팩", "스니커즈", "스커트", "티셔츠", "로퍼", "셔츠", "모자"];
+
 
 const SearchOverlay = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -13,13 +14,21 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const [keyword, setKeyword] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [recentKeywords, setRecentKeywords] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(-1); 
 
-  // 최초 로딩 시 스토어에서 상품 가져오기
+  const inputRef = useRef(null);
+
   useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    // 여기 함수 이름이 실제로는 onFetchItems 일 수도 있음 (store 확인 한번!)
     store.onFetchItem();
   }, []);
 
-  // 실시간 검색 필터링
   useEffect(() => {
     if (keyword.trim() && products.length > 0) {
       const filtered = products
@@ -28,8 +37,10 @@ const SearchOverlay = ({ isOpen, onClose }) => {
         )
         .slice(0, 12);
       setFilteredItems(filtered);
+      setActiveIndex(-1); // 검색어 바뀔 때 선택 초기화
     } else {
       setFilteredItems([]);
+      setActiveIndex(-1);
     }
   }, [keyword, products]);
 
@@ -49,7 +60,36 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  // 최근 검색어 최대 10개 + 15자 이상 말줄임(...)
+  // ⭐ 핵심: ↑↓ + Enter 처리
+  const handleKeyDown = (e) => {
+    if (!filteredItems.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActiveIndex((prev) =>
+        prev < filteredItems.length - 1 ? prev + 1 : 0
+      );
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActiveIndex((prev) =>
+        prev > 0 ? prev - 1 : filteredItems.length - 1
+      );
+    }
+
+    if (e.key === "Enter" && activeIndex >= 0) {
+      e.preventDefault();
+      const item = filteredItems[activeIndex];
+      if (!item) return;
+
+      addRecentKeyword(item.title || item.name);
+      navigate(`/product-detail/${item.code}`);
+      setKeyword("");
+      onClose();
+    }
+  };
+
   const addRecentKeyword = (item) => {
     const fullText = typeof item === "string" ? item : item.title || item.name;
     const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
@@ -59,27 +99,24 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     }
   };
 
-  // 인기 검색어 클릭
   const handlePopularKeywordClick = (kw) => {
     addRecentKeyword(kw);
     navigate(`/search?q=${kw}`);
     onClose();
   };
 
-  //하이라이트 단어
   const highlightText = (text, keyword) => {
     if (!keyword) return text;
-
-    const regex = new RegExp(`(${keyword})`, "gi"); // 대소문자 구분 없이 검색
-    const parts = text.split(regex); // 검색어 기준으로 문자열 분리
+    const regex = new RegExp(`(${keyword})`, "gi");
+    const parts = text.split(regex);
 
     return parts.map((part, i) =>
-      regex.test(part) ? (
-        <span key={i} style={{ color: "#EEBE81" }}>
+      part.toLowerCase() === keyword.toLowerCase() ? (
+        <mark key={i} style={{ color: "#EEBE81" }}>
           {part}
-        </span>
+        </mark>
       ) : (
-        part
+        <span key={i}>{part}</span>
       )
     );
   };
@@ -93,22 +130,25 @@ const SearchOverlay = ({ isOpen, onClose }) => {
       <div className="search-input-box">
         <form onSubmit={handleSubmit} className="search-container">
           <input
+            ref={inputRef}
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
-            onChange={handleInputChange}  className="search-input"
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            className="search-input"
           />
 
-          {/* 실시간 검색 미리보기 */}
           {keyword && filteredItems.length > 0 && (
             <ul className="search-preview">
-              {filteredItems.map(item => (
+              {filteredItems.map((item, index) => (
                 <li
                   key={item.id}
+                  className={index === activeIndex ? "active" : ""} // ⭐ 추가
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
-                    setKeyword("");  // 검색어 초기화
+                    setKeyword("");
                     onClose();
                   }}
                 >
@@ -130,6 +170,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
           {!keyword && (
             <div className="search-suggestions">
+              {/* 아래쪽은 그대로 사용 */}
               {/* 최근검색어 */}
               <div className="recent-keywords">
                 <div className="recent-keywords-del">

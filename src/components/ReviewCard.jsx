@@ -1,11 +1,18 @@
 import React from 'react'
 import "./sass/ReviewCard.scss";
 
-const ReviewCard = ({item}) => {
+const ReviewCard = ({item, index = 0}) => {
+  //detail > slide > thumbImg 순으로 사용
+  const imageList = (item.slide && item.slide.length > 0)
+      ? item.slide : [item.thumbImg];
+
+  //index에 따라 다른 이미지 선택 (이미지 개수보다 많으면 %로 반복)
+  const imgSrc = imageList[index % imageList.length];
+
   return (
     <div className='review-card'>
       <div className="img-box">
-        <img src={item.thumbImg} alt={item.title} />
+        <img src={imgSrc} alt={item.title} />
       </div>
 
       <div className="review-item-box">

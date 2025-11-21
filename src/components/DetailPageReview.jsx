@@ -4,7 +4,6 @@ import "./sass/DetailPageReview.scss";
 
 const DetailPageReview = ({product}) => {
   const reviewCount = 2;
-  const reviewCards = Array(reviewCount).fill(product);
 
   return (
     <section>
@@ -22,9 +21,9 @@ const DetailPageReview = ({product}) => {
         <dt>별로예요</dt><dd>0</dd>
       </dl>
       <ul className="review-box-list">
-        {reviewCards.map((item, index) => (
+        {Array.from({length: reviewCount}).map((_, index) => (
           <li key={index}>
-            <ReviewCard item={item} />
+            <ReviewCard item={product} index={index} />
           </li>
         ))}
       </ul>

@@ -24,8 +24,6 @@ const UserInfo = () => {
 
   return (
     <div className="sub-page">
-      
-      
       <div className="content-inner">
         <div className="user-info-left">
           <UserInfoLeftMenu />
@@ -33,9 +31,6 @@ const UserInfo = () => {
 
         <div className="user-info-right">
           <div className="content-profile-point section">
-            {/* <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            <button onClick={handleLogout}>로그아웃</button> */}
             <div className="user-idname-box section-title">
               {`${user.email}(${user.displayName})님, 환영합니다!`}
             </div>

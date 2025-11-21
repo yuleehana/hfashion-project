@@ -57,6 +57,7 @@ import Picklist from './pages/Picklist';
 import ScrollToTop from './components/ScrollToTop';
 import NotFoundMyPage from './components/NotFoundMyPage';
 import MemberInfor from './components/MemberInfor';
+import Breadcrumbs from './components/Breadcrumbs';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -73,6 +74,7 @@ function App() {
     <div className="App">
       <Header />
       <ScrollToTop />
+      <Breadcrumbs />{/* 로케이션 공통 */}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/product-detail/:code" element={<ProductDetail />} />
