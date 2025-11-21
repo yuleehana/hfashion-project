@@ -48,27 +48,27 @@ const Pay = () => {
                     placeholder='휴대폰 번호를 입력해주세요.'
                     required />
                 </div>
-                <div className='address-input'>
-                  <span>배송지 주소</span>
-                  <div className='input-top'>
+                <div className='address-input delivery'>
+                  <span>
+                    <span>배송지 주소</span>
+                    <button className='btn xsmall primary'>주소검색</button>
+                  </span>
+                  <div>
                     <input type="text"
                       name='address'
                       placeholder='상품을 받으실 분의 주소를 입력해주세요.'
                       required />
-                    <button>주소검색</button>
-                  </div>
-                  <div className='input-bottom'>
                     <input type="text"
                       name='address2'
                       placeholder='상세주소를 입력해주세요'
                       required />
                   </div>
-                  <div className='address-input'>
-                    <span>배송 요청사항</span>
-                    <input type="text"
-                      name='request'
-                      placeholder='배송기사에게 전달되는 메시지입니다. 선택해주세요' />
-                  </div>
+                </div>
+                <div className='address-input'>
+                  <span>배송 요청사항</span>
+                  <input type="text"
+                    name='request'
+                    placeholder='배송기사에게 전달되는 메시지입니다. 선택해주세요' />
                 </div>
 
               </div>
@@ -91,7 +91,7 @@ const Pay = () => {
           </div>
 
           <div className='pay-inner-right'>
-            <CartPo/>
+            <CartPo />
           </div>
 
         </div>

@@ -3,7 +3,7 @@ import { useCartStore } from '../store/useCartStore'
 import "./sass/CartOpChangePopup.scss";
 
 const CartOpChangePopup = ({ onClose }) => {
-  const { cartItems } = useCartStore();
+  const { cartItems, onPlusCount, onMinusCount } = useCartStore();
 
 
   return (
@@ -31,7 +31,9 @@ const CartOpChangePopup = ({ onClose }) => {
             </div>
 
             <div className='op-count-change'>
-
+              <button>-</button>
+              <span></span>
+              <button>+</button>
             </div>
           </div>
         </div>

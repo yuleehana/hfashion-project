@@ -5,8 +5,11 @@
   .inner {
 
     &.pay {
+      font-size: 1.6rem;
+      padding: 4rem 20px 0;
       display: flex;
       flex-direction: column;
+      gap: 2rem;
 
       .pay-inner-top {
 
@@ -24,25 +27,27 @@
         .pay-inner-left {
           border: 1px solid g.$sub-color2;
           width: 70%;
-          padding: 2.5rem 5rem;
+          padding: 2.4rem 4rem;
           display: flex;
           flex-direction: column;
           gap: 5rem;
 
           .user-info-wrap {
             border: 1px solid g.$sub-color2;
-            padding: 3rem 4rem;
 
             .user-info {
-              background: g.$sub-color1;
+              // background: g.$sub-color1;
               display: flex;
               align-items: center;
-              padding: 2rem;
+              padding: 2rem 4rem;
               gap: 4rem;
 
-              span {
-                font-size: 1.4rem;
-                font-weight: 600;
+              input {
+                flex: 1;
+              }
+
+              >span {
+                min-width: 90px;
                 color: g.$sub-color3;
               }
             }
@@ -81,6 +86,51 @@
                   color: g.$main-color2;
                   font-size: 1.2rem;
                   font-weight: 400;
+                }
+              }
+            }
+
+            .address-bottom {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              .address-input {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex: 1;
+
+                input {
+                  flex: 1;
+                }
+
+                span {
+                  color: g.$sub-color3;
+
+                  min-width: 120px;
+                }
+
+                &.delivery {
+                  align-items: flex-start;
+
+                  button {
+                    width: 76px;
+                  }
+
+                  >span {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    padding-top: 5px;
+                  }
+
+                  >div {
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1;
+                    gap: 8px;
+                  }
                 }
               }
             }
