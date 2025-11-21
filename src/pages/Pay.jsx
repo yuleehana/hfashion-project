@@ -2,13 +2,32 @@ import React, { useState } from "react";
 import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
 import PayItem from "../components/PayItem";
-import PayMethod from "../components/PayMethod";
+import {
+  paymethodsCard,
+  paymethodsBank,
+  paymethodsPay,
+} from "../data/paymethod";
 
-const payMethods = ["신용카드", "간편결제", "무통장입금"];
+const payMethods = ["신용카드", "간편결제", "무통장 입금"];
 
 const Pay = () => {
   // 결제수단을 저장할 변수
-  // const [pay, setPay] = useState("");
+  const PayMethodComponent = () => {
+    return (
+      <div>
+        {paymethodsCard.map((item) => (
+          <div key={item.id}>
+            <button>{item.tile}</button>
+            <ul>
+              {item.payDepth.map((method) => (
+                <li key={method.id}>{method.name}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   const [selectPay, setSelectPay] = useState("");
 
@@ -131,19 +150,29 @@ const Pay = () => {
               <hr />
               <div className="payment-bottom">
                 <div className="payment">
-                  {payMethods.map((pay, id) => (
+                  <div className="payment-btn-wrap">
+                    {payMethods.map((pay, id) => (
+                      <button
+                        key={id}
+                        className={selectPay === pay ? "active" : ""}
+                        onClick={() => setSelectPay(pay)}
+                      >
+                        {pay}
+                      </button>
+                    ))}
+                    
+                  </div>
+                </div>
+
+                {/* <div className="payment-components">
+                  {paymethodsCard.map((card, index) => (
                     <button
-                      key={id}
-                      className={selectPay === pay ? "active" : ""}
-                      onClick={() => setSelectPay(pay)}
-                    >
-                      {pay}
+                      key={index}
+                      className="">
+                      {card}
                     </button>
                   ))}
-                </div>
-                <div className="payment-components">
-                  <PayMethod onOpen={showDepth}/>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

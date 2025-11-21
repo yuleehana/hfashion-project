@@ -17,6 +17,7 @@ const methods1Depth2 = [
 const methods2 = ["카카오페이", "토스페이", "네이버페이"];
 
 const methods3 = ["입금은행 선택", "입금자명"];
+// 국민은행, 신한은행, 하나은행, 기업은행, 농협은행
 
 const PayMethod = ({onOpen}) => {
   return (
