@@ -52,7 +52,7 @@ const Breadcrumbs = () => {
   // /men/man-pants => ['men','man-pants']
   const pathnames = pathname.split('/').filter((x) => x);
 
-  // ⭐ 홈 + 상품 상세 페이지에서는 브레드크럼 숨김
+  // 홈 + 상품 상세 페이지에서는 브레드크럼 숨김
   if (pathname === '/' || pathname.startsWith('/product-detail')) {
     return null;
   }
@@ -72,9 +72,7 @@ const Breadcrumbs = () => {
 
   return (
     <nav className="breadcrumbs" aria-label="Breadcrumb">
-      {/* HOME 링크 제거 → 텍스트만 */}
       <span className="current-home">HOME</span>
-
       {crumbs.map((crumb) => (
         <span key={crumb.to}>
           <span className="separator">{'>'}</span>
