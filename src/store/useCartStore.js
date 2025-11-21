@@ -113,6 +113,24 @@ export const useCartStore = create(
         });
       },
 
+      //
+      updateCartOptions: (code, newSize, newColor, newCount) => {
+        const updateCart = get().cartItems.map((item) => {
+          if (item.code === code) {
+            const newPrice = item.price * 0.8 * newCount;
+            return {
+              ...item,
+              size: newSize,
+              color: newColor,
+              count: newCount,
+              totalPrice: newPrice,
+            };
+          }
+          return item;
+        });
+        set({ cartItems: updateCart });
+      },
+
       // 수량 변경
       onPlusCount: (code, size, color) => {
         const cart = get().cartItems;

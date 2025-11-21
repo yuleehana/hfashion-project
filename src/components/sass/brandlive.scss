@@ -65,12 +65,14 @@
     }
   }
   .main-new {
-    height: 600px;
+    height: 95%;
     width: 500px;
     img {
+      background: red;
       max-width: none !important;
       object-fit: cover;
-      width: 100%;
+      // width: 100%;
+      // background-position: -10px;
     }
   }
 }
