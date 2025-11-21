@@ -37,12 +37,3 @@ $sub-color5: #2C2C2C;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 }
-
-
-.App {
-    &:has(main) {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
-}

@@ -8,6 +8,9 @@ main {
     margin: 0 auto;
     max-width: 1720px;
     width: 100%;
+    >h2{
+      margin-top: 4rem;
+    }
 }
 .category-page-title {
   color: g.$main-color1;
