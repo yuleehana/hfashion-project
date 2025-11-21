@@ -11,29 +11,7 @@
 
       .cart-inner-content {
         display: flex;
-        // flex-direction: column;
-        >div{
-          display: flex;
-          justify-content: space-between;
-        }
-        .del-box{
-          @include g.myFlex();
-          padding: 0 0 8px 20px;
-          width: 70%;
-          line-height:20px;
-          align-items: center;
-          font-size: 1.6rem;
-          color: g.$sub-color3;
-          .del-total{
-            display: flex;
-            align-items: center;
-            gap: 16px;
-          }
-          .del-button{
-            display: flex;
-            gap: 4px;
-          }
-        }
+        
       }
 
       .cart-inner-top {
@@ -47,10 +25,8 @@
             color: g.$main-color1;
             font-size: 4rem;
             font-weight: 500;
-
           }
         }
-
         .cart-inner-content {
           display: flex;
           justify-content: space-between;
@@ -58,7 +34,7 @@
           .cart-inner-left {
             border: 1px solid g.$sub-color2;
             width: 70%;
-            padding: 4rem 2rem 4rem;
+            padding: 4rem;
           }
 
           .cart-inner-right {

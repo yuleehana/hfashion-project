@@ -1,17 +1,33 @@
 @use "../../App.scss" as g;
 
 .cart-item-list-wrap {
+  .del-box {
+    @include g.myFlex();
+    padding-bottom:12px ;
+    line-height: 20px;
+    align-items: center;
+    font-size: 1.6rem;
+    color: g.$sub-color3;
+    border-bottom:1px solid g.$sub-color2 ;
+
+    .del-total {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .del-button {
+      display: flex;
+      gap: 4px;
+    }
+  }
 
   .cart-item-list {
     display: flex;
     flex-direction: column;
 
     li {
-      &:first-child {
-
-        padding-top: 0;
-      }
-
+      padding: 20px 0;
       &:last-child {
         border-bottom: none;
         padding-bottom: 0;
@@ -56,7 +72,7 @@
                 gap: 20px;
                 color: g.$sub-color4;
                 font-size: 14px;
-               
+
               }
 
               >.item-brand {
