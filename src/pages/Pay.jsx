@@ -28,8 +28,8 @@ const Pay = () => {
               <div className='address-top'>
                 <span>배송지</span>
                 <div className='address-btn'>
-                  <button>주문자와 동일</button>
-                  <button>배송지 선택</button>
+                  <button className='btn xsmall grey'>주문자와 동일</button>
+                  <button className='btn xsmall grey'>배송지 선택</button>
                 </div>
               </div>
               <hr />

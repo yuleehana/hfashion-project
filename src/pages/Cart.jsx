@@ -21,21 +21,36 @@ const Cart = () => {
           </div>
 
           <div className="cart-inner-content">
-            <div className="cart-inner-left">
-              {cartItems.length === 0 ? (
-                <CartNone />
-              ) : (
-                <CartItem onOpenPopup={() => setShowPopup(true)} />
-              )}
+            <div className="del-box">
+              <label className="del-total">
+                <input type="checkbox" />
+                <span>전체</span>
+              </label>
+              <div className="del-button">
+                <button className="btn grey xsmall">선택 삭제</button>
+                <button className="btn grey xsmall">전체 삭제</button>
+              </div>
             </div>
-            <div className="cart-inner-right">
-              <CartPo />
+            <div>
+              <div className="cart-inner-left">
+                {cartItems.length === 0 ? (
+                  <CartNone />
+                ) : (
+                  <CartItem onOpenPopup={() => setShowPopup(true)} />
+                )}
+              </div>
+              <div className="cart-inner-right">
+                <CartPo />
+              </div>
             </div>
           </div>
         </div>
 
         <div className="cart-inner-bottom">
-          <div className="other-item-wrap"></div>
+          <div className="other-item-wrap">
+
+
+          </div>
         </div>
 
         {showPopup && <CartOpChangePopup onClose={() => setShowPopup(false)} />}
