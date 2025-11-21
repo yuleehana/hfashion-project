@@ -6,15 +6,28 @@ import { Link } from 'react-router-dom';
 const CartItem = ({ product, onOpenPopup }) => {
   // const { code } = useParams();
 
-  const { cartItems, onRemoveCart, onCheckCart } = useCartStore();
+  const { cartItems, onRemoveCart, onCheckCart, resetCart } = useCartStore();
   console.log(cartItems);
   // 체크btn active
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+
+  const filteredCart = cartItems.filter((c) => c.checked);
+
+  const [isChecked, setIsChecked] = useState(true);
 
   const handleToggle = (code) => {
-    // setIsActive(!isActive)
-    setIsActive(isActive);
+    // console.log('1121', code);
+    setIsActive(!isActive);
     onCheckCart(code);
+    console.log('카트아이템', cartItems);
+  };
+
+  //선택삭제
+
+  // 전체삭제
+  const resetCartList = () => {
+    console.log(cartItems);
+    resetCart();
   };
 
   return (
@@ -25,8 +38,23 @@ const CartItem = ({ product, onOpenPopup }) => {
           <span>전체</span>
         </label>
         <div className="del-button">
-          <button className="btn grey xsmall">선택 삭제</button>
-          <button className="btn grey xsmall">전체 삭제</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className="btn grey xsmall"
+          >
+            선택 삭제
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              resetCartList();
+            }}
+            className="btn grey xsmall"
+          >
+            전체 삭제
+          </button>
         </div>
       </div>
       <ul className="cart-item-list">
@@ -35,8 +63,11 @@ const CartItem = ({ product, onOpenPopup }) => {
             <li key={id} className="cart-item">
               <div className="cart-item-inner">
                 <div className="item-left">
-                  {/* <button onClick={handleToggle} className={`checkbox ${isActive ? "active" : ""}`}></button> */}
-                  <input type="checkbox" onClick={() => handleToggle(item.code)} />
+                  <input
+                    type="checkbox"
+                    checked={item.checked}
+                    onClick={(e) => handleToggle(item.code)}
+                  />
                   <div className="item-img-box">
                     <img src={item.thumbImg} alt={item.code} />
                   </div>

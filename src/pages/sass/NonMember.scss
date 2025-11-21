@@ -100,18 +100,6 @@
                   input {
                     flex: 1;
                   }
-
-                  button {
-                    width: 100px;
-                    border: 1px solid black;
-                    background: white;
-                    cursor: pointer;
-
-                    &:hover {
-                      background: g.$main-color1;
-                      color: #fff;
-                    }
-                  }
                 }
               }
             }
@@ -138,12 +126,6 @@
           color: g.$main-color1;
         }
       }
-    }
-
-    input {
-      text-indent: 10px;
-      color: g.$main-color1;
-      background: g.$main-color2;
     }
   }
 }
