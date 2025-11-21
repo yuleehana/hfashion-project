@@ -24,9 +24,8 @@ const UserInfo = () => {
 
   return (
     <div className="sub-page">
-      {/* <div className="channel-wrap">
-        <div className="channel"></div>
-      </div> 존재 이유 모름 일단 삭제 KIM */}
+      
+      
       <div className="content-inner">
         <div className="user-info-left">
           <UserInfoLeftMenu />
