@@ -108,6 +108,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
+                    setKeyword("");  // 검색어 초기화
                     onClose();
                   }}
                 >
