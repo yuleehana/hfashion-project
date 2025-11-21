@@ -107,7 +107,21 @@ export const useAuthStore = create((set) => ({
   onLogin: async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      set({ user: userCredential.user });
+      const fbUser = userCredential.user;
+
+      const userRef = doc(db, "users", fbUser.uid);
+      const userDoc = await getDoc(userRef);
+
+      if(userDoc.exists()){
+        set({
+          user: {
+            uid: fbUser.uid,
+            ...userDoc.data()
+          }
+        })
+      }
+
+      // set({ user: userCredential.user });
       alert('로그인 성공!');
     } catch (err) {
       alert(err.message);

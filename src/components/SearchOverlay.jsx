@@ -36,7 +36,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleInputChange = (e) => setKeyword(e.target.value);
-
   const handleClear = () => setKeyword("");
 
   const handleSubmit = (e) => {
@@ -50,16 +49,39 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  const addRecentKeyword = (kw) => {
-    if (!recentKeywords.includes(kw)) {
-      setRecentKeywords([kw, ...recentKeywords].slice(0, 10)); // 최대 10개
+  // 최근 검색어 최대 10개 + 15자 이상 말줄임(...)
+  const addRecentKeyword = (item) => {
+    const fullText = typeof item === "string" ? item : item.title || item.name;
+    const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
+
+    if (!recentKeywords.includes(keywordText)) {
+      setRecentKeywords([keywordText, ...recentKeywords].slice(0, 10));
     }
   };
 
+  // 인기 검색어 클릭
   const handlePopularKeywordClick = (kw) => {
     addRecentKeyword(kw);
     navigate(`/search?q=${kw}`);
     onClose();
+  };
+
+  //하이라이트 단어
+  const highlightText = (text, keyword) => {
+    if (!keyword) return text;
+
+    const regex = new RegExp(`(${keyword})`, "gi"); // 대소문자 구분 없이 검색
+    const parts = text.split(regex); // 검색어 기준으로 문자열 분리
+
+    return parts.map((part, i) =>
+      regex.test(part) ? (
+        <span key={i} style={{ color: "#EEBE81" }}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
   };
 
   return (
@@ -74,7 +96,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
-            onChange={handleInputChange}
+            onChange={handleInputChange}  className="search-input"
           />
 
           {/* 실시간 검색 미리보기 */}
@@ -86,10 +108,11 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
+                    setKeyword("");  // 검색어 초기화
                     onClose();
                   }}
                 >
-                  {item.title || item.name}
+                  {highlightText(item.title || item.name, keyword)}
                 </li>
               ))}
             </ul>

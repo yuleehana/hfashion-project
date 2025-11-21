@@ -43,6 +43,7 @@
           height: 2rem;
           background-position: center;
           background-repeat: no-repeat;
+          background-size: 2rem;
           background-image: url('../../../public/images/icon/icon-heart-grey.svg');
 
           &.active {
@@ -174,12 +175,20 @@
   .item-info {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
-    color: g.$main-color1;
+    gap: 1.2rem;
+    color: g.$sub-color3;
     font-size: 1.4rem;
+
+    .division {
+      font-size: 8px;
+      vertical-align: middle;
+      padding: 0 4px;
+      color: g.$sub-color2;
+    }
 
     .btn-count {
       @include g.myFlex($gap: 0, $jc: flex-start);
+
       button,
       span {
         text-align: center;
@@ -192,6 +201,7 @@
 
       button {
         width: 28px;
+
         &.minus {
           background-image: url('../../../public/images/icon/icon-minus.png');
         }

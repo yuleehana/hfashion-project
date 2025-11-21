@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
 import { useCartStore } from '../store/useCartStore';
+import { useAuthStore } from '../store/authstore';
+import Pay from '../pages/Pay';
+import NonMember from '../pages/NonMember';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];
@@ -41,6 +44,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
   const { onAddToCart, cartItems } = useCartStore();
+  const { user } = useAuthStore();
 
   // 상품을 저장할 변수
   const [item, setItem] = useState('');
@@ -140,7 +144,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             <strong>{(product.price * 0.8).toLocaleString()}원</strong>
             <del>{product.price.toLocaleString()}</del>
             <span>20%</span>
-            <button>쿠폰 다운로드</button>
+            <button className='btn xsmall outline'>쿠폰 다운로드</button>
           </div>
         </div>
 
@@ -173,8 +177,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
         </div>
 
         <div className="item-info">
-          <p>색상:{selectColor}, 사이즈:{selectSize}</p>
-
+          <p>색상 : {selectColor} <span className='division'>|</span> 사이즈 : {selectSize}</p>
           {/* 수량 선택 */}
           <p className="btn-count">
             <button className="minus" onClick={() => setCount((c) => Math.max(1, c - 1))}></button>
@@ -192,7 +195,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
           <button className="btn middle primary" onClick={handleAddToCart}>
             장바구니
           </button>
-          <Link className="btn middle secondary" to="/pay">
+          <Link className="btn middle secondary" to={user ? '/pay' : '/nonmember'}>
             바로구매
           </Link>
         </div>

@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export const useCartStore = create(
   persist(
@@ -17,15 +17,21 @@ export const useCartStore = create(
 
         // 중복 아이템 체크
         const existing = cart.find(
-          (c) => c.code === item.code && c.size === item.size && c.color === item.color
+          (c) =>
+            c.code === item.code &&
+            c.size === item.size &&
+            c.color === item.color
         );
 
         let updateCart;
         if (existing) {
           updateCart = cart.filter(
-            (c) => c.code === item.code && c.size === item.size && c.color === item.color
+            (c) =>
+              c.code === item.code &&
+              c.size === item.size &&
+              c.color === item.color
           );
-          alert('이미 장바구니에 담긴 상품입니다');
+          alert("이미 장바구니에 담긴 상품입니다");
         } else {
           updateCart = [...cart, { ...item }];
         }
@@ -81,10 +87,30 @@ export const useCartStore = create(
       },
 
       // cart-op-change 팝업
-      onAddToPopup: () => {
+      onOptionPopup: (color, size, code, count) => {
         const cart = get().cartItems;
 
-        const updateCart = cart.filter();
+        const updateCart = cart.filter((item) => (item.code === code && item.color === color && item.size === size && item.count === count));
+      },
+
+      onOptionChange: (color, size, code, count) => {
+        const { cartItems } = get();
+
+        const opItems = cartItems.map((item) => {
+          if (item.code === code) {
+            return {
+              ...item,
+              color,
+              size,
+              count,
+            };
+          }
+          return item;
+        });
+
+        set({
+          cartItems: opItems,
+        });
       },
 
       //
@@ -106,25 +132,45 @@ export const useCartStore = create(
       },
 
       // 수량 변경
-      // onPlusCount: (id) => {
-      //   const cart = get().cartItems;
-      //   const updateCart = cart.map((item) =>
-      //     item.id === id ? { ...item, count: item.count + 1 } : item
-      //   );
-      //   let total = 0;
-      //   updateCart.forEach((item) => {
-      //     total += item.price * item.count;
-      //   });
+      onPlusCount: (code, size, color) => {
+        const cart = get().cartItems;
+        const updateCart = cart.map((item) =>
+          item.code === code && item.size === size && item.color === color
+            ? { ...item, count: item.count + 1 }
+            : item
+        );
+        let total = 0;
+        updateCart.forEach((item) => {
+          total += item.price * item.count;
+        });
 
-      //   set({
-      //     cartItems: updateCart,
-      //     totalPrice: total,
-      //   });
-      // },
+        set({
+          cartItems: updateCart,
+          totalPrice: total,
+        });
+      },
+
+      onMinusCount: (code, size, color) => {
+        const cart = get().cartItems;
+        const updateCart = cart.map((item) =>
+          item.code === code && item.size === size && item.color === color
+            ? { ...item, count: Math.max(1, item.count - 1) }
+            : item
+        );
+        let total = 0;
+        updateCart.forEach((item) => {
+          total += item.price * item.count;
+        });
+
+        set({
+          cartItems: updateCart,
+          totalPrice: total,
+        });
+      },
 
       resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
     }),
 
-    { name: 'cart-storage' }
+    { name: "cart-storage" }
   )
 );
