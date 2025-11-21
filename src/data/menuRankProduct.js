@@ -88,18 +88,18 @@ export const menuRankProduct = [
     ], rank:[
       {
         id: 1,
-        code:"P4W4D3116GUB1",
-        img: '/images/products/P4W4D3116GUB1/thumbnail.jpg',
-        brand: 'Calvin Klein Accessories',
-        title:"남성 볼드 로고 나일론 슬링백",
-        price: 99000
+        code:"P8ZHP3A3A01",
+        img: '/images/products/P8ZHP3A3A01/thumbnail.jpg',
+        brand: 'GUESS',
+        title:"아미타_AMITA 스웨이드 배색 호보백",
+        price: 219000
       }, {
         id: 2,
-        code:"P4W4D3155GUB1",
-        img: '/images/products/P4W4D3155GUB1/thumbnail.jpg',
-        brand: 'Calvin Klein Accessories',
-        title:"남성 레이스드 로고 라운드 백팩",
-        price: 219000
+        code:"POYWI2550536498001",
+        img: '/images/products/POYWI2550536498001/thumbnail.jpg',
+        brand: 'BOSS',
+        title:"시그니처 오피스 브리프케이스",
+        price: 312000
       }, {
         id: 3,
         code:"POYSP2550535706001",
