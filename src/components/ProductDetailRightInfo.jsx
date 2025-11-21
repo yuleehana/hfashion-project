@@ -6,8 +6,6 @@ import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
 import { useCartStore } from '../store/useCartStore';
 import { useAuthStore } from '../store/authstore';
-import Pay from '../pages/Pay';
-import NonMember from '../pages/NonMember';
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];

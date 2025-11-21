@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
 import PayItem from "../components/PayItem";
+import PayMethod from "../components/PayMethod";
 
 const payMethods = ["신용카드", "간편결제", "무통장입금"];
 
 const Pay = () => {
   const [selectPay, setSelectPay] = useState("");
+
+  const [showDepth, setShowDepth] = useState('false');
 
   return (
     <div className="sub-page pay">
@@ -119,18 +122,20 @@ const Pay = () => {
               </div>
               <hr />
               <div className="payment-bottom">
-                {payMethods.map((pay, id) => (
-                  <button
-                    key={id}
-                    className={selectPay === pay ? "active" : ""}
-                    onClick={() => setSelectPay(pay)}
-                  >
-                    {pay}
-                  </button>
-                ))}
-              </div>
-              <div className="payment-components">
-                
+                <div className="payment">
+                  {payMethods.map((pay, id) => (
+                    <button
+                      key={id}
+                      className={selectPay === pay ? "active" : ""}
+                      onClick={() => setSelectPay(pay)}
+                    >
+                      {pay}
+                    </button>
+                  ))}
+                </div>
+                <div className="payment-components">
+                  <PayMethod />
+                </div>
               </div>
             </div>
           </div>
