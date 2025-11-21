@@ -75,9 +75,9 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
     return parts.map((part, i) =>
       regex.test(part) ? (
-        <span key={i} style={{ color: "#EEBE81" }}>
+        <mark key={i} style={{ color: "#EEBE81" }}>
           {part}
-        </span>
+        </mark>
       ) : (
         part
       )
