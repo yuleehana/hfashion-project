@@ -46,18 +46,6 @@ const Cart = () => {
                   <button className="btn grey xsmall">전체 삭제</button>
                 </div>
               </div>
-              <div>
-                <div className="cart-inner-left">
-                  {cartItems.length === 0 ? (
-                    <CartNone />
-                  ) : (
-                    <CartItem onOpenPopup={() => setShowPopup(true)} />
-                  )}
-                </div>
-                <div className="cart-inner-right">
-                  <CartPo />
-                </div>
-              </div>
             </div>
           </div>
 
