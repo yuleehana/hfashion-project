@@ -3,8 +3,7 @@ import "./sass/ReviewCard.scss";
 
 const ReviewCard = ({item, index = 0}) => {
   //detail > slide > thumbImg 순으로 사용
-  const imageList = (item.detail && item.detail.length > 0)
-    ? item.detail : (item.slide && item.slide.length > 0)
+  const imageList = (item.slide && item.slide.length > 0)
       ? item.slide : [item.thumbImg];
 
   //index에 따라 다른 이미지 선택 (이미지 개수보다 많으면 %로 반복)
