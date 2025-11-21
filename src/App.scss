@@ -31,6 +31,11 @@ $sub-color5: #2C2C2C;
     display: grid;
     gap: $gap;
     grid-template-columns: repeat(5, minmax(240px, 1fr));
+
+    @media (max-width: 1320px) {
+        // auto-fit을 사용하면 공간이 부족할 때 자동으로 줄바꿈이 일어납니다.
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 }
 
 
@@ -41,4 +46,3 @@ $sub-color5: #2C2C2C;
         gap: 40px;
     }
 }
-

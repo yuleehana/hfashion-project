@@ -65,8 +65,6 @@
               }
             }
           }
-
-
         }
 
         .item-right {
@@ -76,9 +74,9 @@
         }
 
         .del-icon {
+          cursor: pointer;
           width: 2rem;
           height: 2rem;
-
         }
       }
     }

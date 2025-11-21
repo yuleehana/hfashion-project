@@ -24,15 +24,9 @@ const Picklist = () => {
         <div className="user-info-right user-pick-wrap">
           <div className="user-info-right-inner">
             <div className="user-info-right-title">
-              <p className="user-info-right-icon-box">
-                <span className="pick-heart-icon"></span>
-              </p>
-              <p className="user-info-right-text-box">
-                <strong>찜 리스트</strong>
-                <span>전체 {pickLists.length}</span>
-              </p>
+              <h3>찜 리스트</h3>
+              <p>전체 {pickLists.length}</p>
             </div>
-            <hr />
             <div className="user-picklist-card-wrap">
               {pickLists.map((p) => (
                 <ul className="user-picklist-card" onClick={() => handleMoveDetail(p.code)}>
@@ -54,8 +48,8 @@ const Picklist = () => {
                       </p>
                       <p className="picklist-name">{p.title}</p>
                       <p className="card-text3">
-                        <span className="picklist-price">{p.price * 0.8}</span>
-                        <span className="picklist-originPrice">₩{p.price.toLocaleString()}</span>
+                        <span className="picklist-price">{(p.price * 0.8).toLocaleString()}원</span>
+                        <span className="picklist-originPrice">{p.price.toLocaleString()}</span>
                       </p>
                     </div>
                   </li>
