@@ -24,7 +24,30 @@
       font-size: 14px;
       text-align: center;
       cursor: pointer;
+      display: flex;
+      gap: 4px;
 
+      &.active::after {
+        content: '';
+        width: 18px;
+        height: 12px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(../../../public/images/arrow-down-icon.svg);
+        rotate: 0deg;
+      }
+      &::after {
+        transition: 0.3s;
+        content: '';
+        width: 18px;
+        height: 12px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(../../../public/images/arrow-down-icon.svg);
+        rotate: -180deg;
+      }
       .product-filter-top-r {
         ul {
           display: none;
@@ -49,7 +72,6 @@
             padding: 0 12px;
 
             &:hover {
-
               background-color: g.$sub-color1;
             }
           }
@@ -94,7 +116,7 @@
         flex-wrap: wrap;
         align-items: center;
 
-        >label {
+        > label {
           display: flex;
           flex-direction: row-reverse;
           gap: 8px;
@@ -153,7 +175,7 @@
   }
 
   li {
-    >a {
+    > a {
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -221,7 +243,6 @@
     }
   }
 }
-
 
 @media screen and (max-width: 1000px) {
   .product-list-wrap .product-filter-bot .price-label {
