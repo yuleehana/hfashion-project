@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 const CartItem = ({ product, onOpenPopup }) => {
   // const { code } = useParams();
 
-  const { cartItems, onRemoveCart, onCheckCart, resetCart } = useCartStore();
+  const { cartItems, onRemoveCart, onCheckCart, resetCart, onCheckAll, onRemoveChecked } =
+    useCartStore();
   console.log(cartItems);
   // 체크btn active
   const [isActive, setIsActive] = useState(true);
@@ -24,6 +25,8 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   //선택삭제
 
+  const isAllChecked = cartItems.length > 0 && cartItems.every((item) => item.checked);
+
   // 전체삭제
   const resetCartList = () => {
     console.log(cartItems);
@@ -34,12 +37,17 @@ const CartItem = ({ product, onOpenPopup }) => {
     <div className="cart-item-list-wrap">
       <div className="del-box">
         <label className="del-total">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={isAllChecked}
+            onChange={(e) => onCheckAll(e.target.checked)}
+          />
           <span>전체</span>
         </label>
         <div className="del-button">
           <button
             onClick={(e) => {
+              onRemoveChecked();
               e.preventDefault();
             }}
             className="btn grey xsmall"
@@ -66,7 +74,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                   <input
                     type="checkbox"
                     checked={item.checked}
-                    onClick={(e) => handleToggle(item.code)}
+                    onChange={(e) => handleToggle(item.code)}
                   />
                   <div className="item-img-box">
                     <img src={item.thumbImg} alt={item.code} />
