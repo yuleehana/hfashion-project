@@ -17,7 +17,6 @@ const payMethods = [
 const Pay = () => {
   const renderDepth = () => {
     switch (selectedMethod) {
-
       case "card":
         return paymethodsCard.map((item) => (
           <div key={item.id}>
@@ -42,9 +41,14 @@ const Pay = () => {
             <ul>
               <button>{item.title}</button>
 
-              {/* {item.payDepth.map((depth) => (
-                <li key={depth.id}>{depth.label}</li>
-              ))} */}
+              {item.payDepth && (
+                <ul className="bank-options">
+                  {item.payDepth.map((depth) => (
+                    <li key={depth.id}>{depth.label}</li>
+                  ))}
+                </ul>
+              )}
+              
             </ul>
           </div>
         ));
@@ -52,7 +56,6 @@ const Pay = () => {
         return null;
     }
   };
-
 
   // const [selectPay, setSelectPay] = useState("");
 
