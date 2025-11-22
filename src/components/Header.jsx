@@ -19,22 +19,22 @@ const menus = [
   },
   {
     key: 'women',
-    label: '여자',
+    label: '여성',
     submenu: [
       { key: 'women-shirt', label: '셔츠/블라우스' },
       { key: 'women-pants', label: '팬츠' },
       { key: 'women-skirt', label: '스커트' },
-      { key: 'women-shoes', label: '신발' },
+      { key: 'women-shoes', label: '슈즈' },
     ],
   },
   {
     key: 'men',
-    label: '남자',
+    label: '남성',
     submenu: [
       { key: 'man-pants', label: '팬츠' },
       { key: 'man-shirt', label: '셔츠' },
       { key: 'man-outer', label: '아우터' },
-      { key: 'man-shoes', label: '신발' },
+      { key: 'man-shoes', label: '슈즈' },
     ],
   },
   {
@@ -53,8 +53,8 @@ const menus = [
     submenu: [  
       { key: 'golf-women-outer', label: '여성아우터' },
       { key: 'golf-man-outer', label: '남성아우터' },
-      { key: 'golf-women-pants', label: '여성바지' },
-      { key: 'golf-man-pants', label: '남성바지' },
+      { key: 'golf-women-pants', label: '여성팬츠/스커트' },
+      { key: 'golf-man-pants', label: '남성팬츠' },
       { key: 'golf-acc', label: '골프악세사리' },
     ],
   },

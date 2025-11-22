@@ -6550,7 +6550,7 @@ export const products = [
     thumbImg: '/images/products/E12F9WSC052WBR/thumbnail.jpg',
   },
   {
-    category: 'golf cateman top',
+    category: 'golf man top',
     rating: 2,
     made: '중국',
     date: '2025.10',
@@ -6576,7 +6576,7 @@ export const products = [
     thumbImg: '/images/products/PKETMJPO3301-101/thumbnail.jpg',
   },
   {
-    category: 'golf cateman top',
+    category: 'golf man top',
     rating: 2,
     made: '중국',
     date: '2025.10',
