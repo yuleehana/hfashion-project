@@ -30,6 +30,7 @@ const Pay = () => {
         [id]: value,
       },
     }));
+    setOpenDepth(!openDepth)
   };
 
   useEffect(() => {
@@ -41,10 +42,8 @@ const Pay = () => {
 
     if (selectPay === "card") {
       list = paymethodsCard;
-      console.log(list)
-    } 
-    
-    else if (selectPay === "pay") {
+      console.log(list);
+    } else if (selectPay === "pay") {
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -64,18 +63,15 @@ const Pay = () => {
           </label>
         </div>
       ));
-    }
-    
-    else if (selectPay === "bank") {
+    } else if (selectPay === "bank") {
       list = paymethodsBank;
     }
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-        {/* ---- 드롭다운 구조 ---- */}
+
         {"payDepth" in item ? (
           <div className="dropdown-wrapper">
-            {/* 버튼(현재 선택값 → 없으면 기본 label/title) */}
             <button
               className="dropdown-btn"
               onClick={() =>
@@ -85,7 +81,6 @@ const Pay = () => {
               {selectValue[selectPay][item.id] || item.label || item.title}
             </button>
 
-            {/* dropdown 리스트 */}
             {openDepth === item.id && (
               <ul className="dropdown-list">
                 {item.payDepth.map((depth) => (
@@ -103,9 +98,8 @@ const Pay = () => {
             )}
           </div>
         ) : (
-          /* ---- input 구조 ---- */
           <div className="input-wrapper">
-            <label>{item.label}</label>
+            <label></label>
             <input
               type="text"
               placeholder={item.label}

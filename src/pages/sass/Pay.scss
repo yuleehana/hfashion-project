@@ -188,8 +188,11 @@
                 gap: 3rem;
 
                 .depth-item {
-                  // display: flex;
-                  // align-items: center;
+                  width: 100%;
+
+                  .dropdown-list{
+                    cursor: pointer;
+                  }
 
                   &.card{
                     width: 100%;
@@ -222,6 +225,15 @@
                     li {
                       line-height: 4rem;
                     }
+                  }
+                }
+
+                .radio-pay-item{
+
+                  .radio-label{
+                    display: flex;
+                    align-content: center;
+                    gap: 1rem;
                   }
                 }
               }
