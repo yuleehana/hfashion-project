@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useProductStore } from '../store/useProductStore';
 import ProductCard from '../components/ProductCard';
 import { Link } from 'react-router-dom';
@@ -63,11 +63,23 @@ const BrandListPage = ({ brand }) => {
     .map((item) => item.made)
     .filter((m, id, all) => all.indexOf(m) === id);
 
+  const filterRef = useRef(null);
+
   // 메서드 --------------------------------------------------------------------------
+
+  const handleClickOutside = (event) => {
+    if (filterRef.current && !filterRef.current.contains(event.target)) {
+      setRightFilter(false);
+    }
+  };
 
   /** 최초 로딩 시 상품 불러오기 */
   useEffect(() => {
     onFetchItem();
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, [onFetchItem]);
 
   //가격 선택 메서드
@@ -171,7 +183,11 @@ const BrandListPage = ({ brand }) => {
           <div className="product-filter-top">
             <p className="product-filter-top-l">Filter</p>
             {/* <p>{rightFilter ? sortOptions[0].name}</p> */}
-            <p className="product-filter-top-filter" onClick={() => setRightFilter(!rightFilter)}>
+            <p
+              className={`product-filter-top-filter ${rightFilter ? 'active' : ''}`}
+              onClick={() => setRightFilter(!rightFilter)}
+              ref={filterRef}
+            >
               {filterName}
               <div className="product-filter-top-r ">
                 <ul className={rightFilter == true ? 'active' : ' '}>
@@ -207,7 +223,10 @@ const BrandListPage = ({ brand }) => {
                   </>
                 ))}
               </li>
-              <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
+              <li
+                className="country-label"
+                style={{ display: activeFilter === 1 ? 'flex' : 'none' }}
+              >
                 {itemMades.map((i) => (
                   <>
                     <label onClick={() => handleCountry(i)}>
@@ -229,9 +248,15 @@ const BrandListPage = ({ brand }) => {
                   ))}
                 </div>
                 <div className="price-tag-b">
-                  직접입력 <input className='xsmall' type="text" value={filterPrice} onChange={rememberP} />
+                  직접입력{' '}
+                  <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
                   -
-                  <input className='xsmall' type="text" value={filterPrice2} onChange={rememberP2} />
+                  <input
+                    className="xsmall"
+                    type="text"
+                    value={filterPrice2}
+                    onChange={rememberP2}
+                  />
                   <button className="btn xsmall primary" type="button" onClick={checkPrice}>
                     적용
                   </button>
