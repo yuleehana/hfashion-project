@@ -19,7 +19,7 @@ const menus = [
   },
   {
     key: 'women',
-    label: '여자',
+    label: '여성',
     submenu: [
       { key: 'women-shirt', label: '셔츠/블라우스' },
       { key: 'women-pants', label: '팬츠' },
@@ -29,7 +29,7 @@ const menus = [
   },
   {
     key: 'men',
-    label: '남자',
+    label: '남성',
     submenu: [
       { key: 'man-pants', label: '팬츠' },
       { key: 'man-shirt', label: '셔츠' },
