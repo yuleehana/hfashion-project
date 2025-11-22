@@ -16,7 +16,11 @@ const BrandLiveProduct = ({ thumbImg, id, title, price, code }) => {
           <div className="sub-new-img ">
             <img src={thumbImg} alt={id} />
             <span
-              onClick={() => onAddWishList({ thumbImg, title, price, code })}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onAddWishList({ thumbImg, title, price, code });
+              }}
               className={`heart ${isActive ? 'active' : ''}`}
             ></span>
           </div>
