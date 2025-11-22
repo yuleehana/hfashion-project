@@ -8,35 +8,62 @@ import {
   paymethodsPay,
 } from "../data/paymethod";
 
-const payMethods = ["신용카드", "간편결제", "무통장 입금"];
+const payMethods = [
+  { id: 1, paymethod: "card", title: "신용카드" },
+  { id: 2, paymethod: "pay", title: "간편결제" },
+  { id: 3, paymethod: "bank", title: "무통장입금" },
+];
 
 const Pay = () => {
-  // 결제수단을 저장할 변수
-  const PayMethodComponent = () => {
-    return (
-      <div>
-        {paymethodsCard.map((item) => (
+  const renderDepth = () => {
+    switch (selectedMethod) {
+
+      case "card":
+        return paymethodsCard.map((item) => (
           <div key={item.id}>
-            <button>{item.tile}</button>
             <ul>
-              {item.payDepth.map((method) => (
-                <li key={method.id}>{method.name}</li>
+              <button>{item.title}</button>
+
+              {item.payDepth.map((depth) => (
+                <li key={depth.id}>{depth.label}</li>
               ))}
             </ul>
           </div>
-        ))}
-      </div>
-    );
+        ));
+
+      case "pay":
+        return paymethodsPay.map((item) => (
+          <div key={item.id}>{item.label}</div>
+        ));
+
+      case "bank":
+        return paymethodsBank.map((item) => (
+          <div key={item.id}>
+            <ul>
+              <button>{item.title}</button>
+
+              {/* {item.payDepth.map((depth) => (
+                <li key={depth.id}>{depth.label}</li>
+              ))} */}
+            </ul>
+          </div>
+        ));
+      default:
+        return null;
+    }
   };
 
-  const [selectPay, setSelectPay] = useState("");
 
-  const [showDepth, setShowDepth] = useState("false");
+  // const [selectPay, setSelectPay] = useState("");
 
-  const handleOpenDepth = () => {
-    // setSelectPay('active');
-    setShowDepth(true);
-  };
+  // const [showDepth, setShowDepth] = useState("false");
+
+  const [selectedMethod, setSelectedMethod] = useState("card");
+
+  // const handleOpenDepth = () => {
+  //   setSelectPay();
+  //   setShowDepth(true);
+  // };
 
   return (
     <div className="sub-page pay">
@@ -149,30 +176,21 @@ const Pay = () => {
               </div>
               <hr />
               <div className="payment-bottom">
-                <div className="payment">
-                  <div className="payment-btn-wrap">
-                    {payMethods.map((pay, id) => (
-                      <button
-                        key={id}
-                        className={selectPay === pay ? "active" : ""}
-                        onClick={() => setSelectPay(pay)}
-                      >
-                        {pay}
-                      </button>
-                    ))}
-                    
-                  </div>
-                </div>
-
-                {/* <div className="payment-components">
-                  {paymethodsCard.map((card, index) => (
+                <div className="pay-method-buttons">
+                  {payMethods.map((method) => (
                     <button
-                      key={index}
-                      className="">
-                      {card}
+                      key={method.id}
+                      className={
+                        selectedMethod === method.paymethod ? "active" : ""
+                      }
+                      onClick={() => setSelectedMethod(method.paymethod)}
+                    >
+                      {method.title}
                     </button>
                   ))}
-                </div> */}
+                </div>
+
+                <div className="pay-method-depth">{renderDepth()}</div>
               </div>
             </div>
           </div>

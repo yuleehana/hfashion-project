@@ -26,11 +26,11 @@ const CartPo = () => {
           <div className="cartPo-pay-list">
             <div className="cartPo-pay item">
               <span>상품금액</span>
-              <span>{checkedTotalPrice}</span>
+              <span>{checkedTotalPrice.toLocaleString()}</span>
             </div>
             <div className="cartPo-pay dis">
               <span>할인금액</span>
-              <span>-{checkedTotalPrice * 0.2}</span>
+              <span>-{(checkedTotalPrice * 0.2).toLocaleString()}</span>
             </div>
             <div className="cartPo-pay del">
               <span>배송비</span>
@@ -44,7 +44,7 @@ const CartPo = () => {
         <div className="cartPo-inner-bottom">
           <div className="cartPo-pay-total">
             <span>총 결제금액</span>
-            {checkedTotalPrice * 0.8}
+            {(checkedTotalPrice * 0.8).toLocaleString()}
           </div>
 
           <div className="cartPo-btn">

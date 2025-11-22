@@ -146,7 +146,11 @@
             flex-direction: column;
             gap: 2rem;
 
-            .payment-top {}
+            .payment-top {
+              font-size: 2rem;
+              font-weight: 500;
+              color: g.$sub-color3;
+            }
 
             .payment-bottom {
               display: flex;
