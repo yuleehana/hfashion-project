@@ -19,10 +19,13 @@ const Pay = () => {
     switch (selectedMethod) {
       case "card":
         return paymethodsCard.map((item) => (
-          <div key={item.id}>
-            <ul>
+          <div key={item.id} className="pay-method card">
+            <div className="card-btn-wrap">
               <button>{item.title}</button>
+              {/* <img src="../../images/arrow-down-white.svg" alt="" /> */}
+            </div>
 
+            <ul>
               {item.payDepth.map((depth) => (
                 <li key={depth.id}>{depth.label}</li>
               ))}
@@ -32,24 +35,30 @@ const Pay = () => {
 
       case "pay":
         return paymethodsPay.map((item) => (
-          <div key={item.id}>{item.label}</div>
+          <div key={item.id} className="pay-method pay">
+            {item.label}
+          </div>
         ));
 
       case "bank":
         return paymethodsBank.map((item) => (
-          <div key={item.id}>
-            <ul>
-              <button>{item.title}</button>
-
-              {item.payDepth && (
-                <ul className="bank-options">
+          <div key={item.id} className="pay-method bank">
+            {item.payDepth ? (
+              <>
+                <button>{item.label}</button>
+                <ul>
                   {item.payDepth.map((depth) => (
-                    <li key={depth.id}>{depth.label}</li>
+                    <li>{depth.label}</li>
                   ))}
                 </ul>
-              )}
-              
-            </ul>
+              </>
+            ) : (
+              <input
+                type="text"
+                placeholder={item.label}
+                className="bank-input"
+              />
+            )}
           </div>
         ));
       default:
@@ -57,16 +66,7 @@ const Pay = () => {
     }
   };
 
-  // const [selectPay, setSelectPay] = useState("");
-
-  // const [showDepth, setShowDepth] = useState("false");
-
   const [selectedMethod, setSelectedMethod] = useState("card");
-
-  // const handleOpenDepth = () => {
-  //   setSelectPay();
-  //   setShowDepth(true);
-  // };
 
   return (
     <div className="sub-page pay">
