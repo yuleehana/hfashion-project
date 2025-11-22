@@ -11,7 +11,7 @@ const BrandLiveProduct = ({ thumbImg, id, title, price, code }) => {
 
   return (
     <>
-      <Link className="sub-new-wrap">
+      <Link to={`/product-detail/${code}`} className="sub-new-wrap">
         <div className="sub-new">
           <div className="sub-new-img ">
             <img src={thumbImg} alt={id} />

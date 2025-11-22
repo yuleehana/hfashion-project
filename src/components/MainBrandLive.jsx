@@ -4,7 +4,12 @@ import './sass/brandlive.scss';
 
 const brandData = [
   [
-    { id: 1, thumbImg: '/images/products/RA2F9ABG136KBK/thumbnail.jpg' },
+    {
+      id: 1,
+      thumbImg: '/images/products/RA2F9ABG136KBK/thumbnail.jpg',
+      brand: 'brand-rouge',
+      brandTitle: 'Rouge&Rounge',
+    },
     {
       id: 2,
       code: 'RA2F7ABG024WDB',
@@ -34,7 +39,12 @@ const brandData = [
     },
   ],
   [
-    { id: 1, thumbImg: '/images/products/T12F6WPC030MT1AEH/thumbnail.jpg' },
+    {
+      id: 1,
+      thumbImg: '/images/products/T12F6WPC030MT1AEH/thumbnail.jpg',
+      brand: 'brand-tommy',
+      brandTitle: 'Tommy',
+    },
     {
       id: 2,
       code: 'T12F7QOT723ML1AEG',
@@ -64,7 +74,12 @@ const brandData = [
     },
   ],
   [
-    { id: 1, thumbImg: '/images/products/PW2E9WPC802NBS/thumbnail.jpg' },
+    {
+      id: 1,
+      thumbImg: '/images/products/PW2E9WPC802NBS/thumbnail.jpg',
+      brand: 'brand-sjyp',
+      brandTitle: 'SJYP',
+    },
     {
       id: 2,
       code: 'PW2F3WPC804WOW',
@@ -132,6 +147,7 @@ const MainBrandLive = () => {
             <BrandLiveProducts
               key={index}
               mainNew={bData.find((b) => b.id === 1).thumbImg}
+              mainBrand={bData.find((b) => b.id === 1).brand}
               brand={bData}
             />
           ))}

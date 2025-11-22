@@ -1,8 +1,12 @@
 import React from 'react';
 import BrandLiveProduct from './BrandLiveProduct';
+import { useNavigate } from 'react-router-dom';
 
 const BrandLiveProducts = ({ mainNew, brand }) => {
   const sData = brand.filter((b) => b.id !== 1);
+  const mData = brand.filter((b) => b.id == 1);
+  const navigte = useNavigate();
+
   return (
     <div className="brand-live-wrap">
       <div className="brand-live-wrap-left">
@@ -19,9 +23,14 @@ const BrandLiveProducts = ({ mainNew, brand }) => {
           ))}
         </div>
       </div>
-      <div className="main-new">
-        <img src={mainNew} alt="메인new이미지" />
-      </div>
+      {mData.map((m, id) => (
+        <div className="main-new" key={id} onClick={() => navigte(`/brand/${m.brand}`)}>
+          <img src={m.thumbImg} alt="메인new이미지" />
+          <div className="text-overlay">
+            <h3>{m.brandTitle}</h3>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
