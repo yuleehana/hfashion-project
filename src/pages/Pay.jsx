@@ -7,6 +7,7 @@ import {
   paymethodsBank,
   paymethodsPay,
 } from "../data/paymethod";
+import { useAuthStore } from "../store/authstore";
 
 const payMethods = [
   { id: 1, paymethod: "card", title: "신용카드" },
@@ -15,6 +16,10 @@ const payMethods = [
 ];
 
 const Pay = () => {
+
+  const {user} = useAuthStore();
+  console.log(user)
+
   const renderDepth = () => {
     switch (selectedMethod) {
       case "card":
@@ -80,7 +85,8 @@ const Pay = () => {
             <div className="user-info-wrap">
               <div className="user-info">
                 <span>주문자 정보</span>
-                <input type="text" name="user" placeholder="이름" required />
+                <span>{user.email}</span>
+                {/* <input type="text" name="user" placeholder="이름" required /> */}
               </div>
             </div>
 
