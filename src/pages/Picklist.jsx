@@ -47,10 +47,10 @@ const Picklist = () => {
                         ></span>
                       </p>
                       <p className="picklist-name">{p.title}</p>
-                      <p className="card-text3">
+                      <div className="card-text3">
                         <span className="picklist-price">{(p.price * 0.8).toLocaleString()}원</span>
-                        <span className="picklist-originPrice">{p.price.toLocaleString()}</span>
-                      </p>
+                        <span className="picklist-originPrice">{p.price.toLocaleString()}원</span>
+                      </div>
                     </div>
                   </li>
                 </ul>

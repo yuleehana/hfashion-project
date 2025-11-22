@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { usePickStore } from '../store/usePickStore';
 
-const BrandLiveProduct = ({ img, id, title, price }) => {
+const BrandLiveProduct = ({ thumbImg, id, title, price, code }) => {
+  //찜리스트 전역변수
+  const { pickLists, onAddWishList } = usePickStore();
+
+  //active변수
+  const isActive = pickLists.some((p) => p.code === code);
+
   return (
     <>
       <Link className="sub-new-wrap">
         <div className="sub-new">
-          <div className="sub-new-img">
-            <img src={img} alt={id} />
+          <div className="sub-new-img ">
+            <img src={thumbImg} alt={id} />
+            <span
+              onClick={() => onAddWishList({ thumbImg, title, price, code })}
+              className={`heart ${isActive ? 'active' : ''}`}
+            ></span>
           </div>
           <div className="sub-new-textbox">
             <p className="sub-new-title">{title}</p>

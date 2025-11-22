@@ -9,7 +9,13 @@ const BrandLiveProducts = ({ mainNew, brand }) => {
         <p>New</p>
         <div className="brand-live-wrap-left-img">
           {sData.map((s) => (
-            <BrandLiveProduct img={s.img} id={s.id} title={s.title} price={s.price} />
+            <BrandLiveProduct
+              thumbImg={s.thumbImg}
+              id={s.id}
+              title={s.title}
+              price={s.price}
+              code={s.code}
+            />
           ))}
         </div>
       </div>
