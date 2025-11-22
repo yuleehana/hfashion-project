@@ -7,6 +7,7 @@ import {
   paymethodsBank,
   paymethodsPay,
 } from "../data/paymethod";
+import { useAuthStore } from "../store/authstore";
 
 const payMethods = [
   { id: 1, paymethod: "card", title: "신용카드" },
@@ -15,15 +16,21 @@ const payMethods = [
 ];
 
 const Pay = () => {
+
+  const {user} = useAuthStore();
+  console.log(user)
+
   const renderDepth = () => {
     switch (selectedMethod) {
-
       case "card":
         return paymethodsCard.map((item) => (
-          <div key={item.id}>
-            <ul>
+          <div key={item.id} className="pay-method card">
+            <div className="card-btn-wrap">
               <button>{item.title}</button>
+              {/* <img src="../../images/arrow-down-white.svg" alt="" /> */}
+            </div>
 
+            <ul>
               {item.payDepth.map((depth) => (
                 <li key={depth.id}>{depth.label}</li>
               ))}
@@ -33,19 +40,30 @@ const Pay = () => {
 
       case "pay":
         return paymethodsPay.map((item) => (
-          <div key={item.id}>{item.label}</div>
+          <div key={item.id} className="pay-method pay">
+            {item.label}
+          </div>
         ));
 
       case "bank":
         return paymethodsBank.map((item) => (
-          <div key={item.id}>
-            <ul>
-              <button>{item.title}</button>
-
-              {/* {item.payDepth.map((depth) => (
-                <li key={depth.id}>{depth.label}</li>
-              ))} */}
-            </ul>
+          <div key={item.id} className="pay-method bank">
+            {item.payDepth ? (
+              <>
+                <button>{item.label}</button>
+                <ul>
+                  {item.payDepth.map((depth) => (
+                    <li>{depth.label}</li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <input
+                type="text"
+                placeholder={item.label}
+                className="bank-input"
+              />
+            )}
           </div>
         ));
       default:
@@ -53,17 +71,7 @@ const Pay = () => {
     }
   };
 
-
-  // const [selectPay, setSelectPay] = useState("");
-
-  // const [showDepth, setShowDepth] = useState("false");
-
   const [selectedMethod, setSelectedMethod] = useState("card");
-
-  // const handleOpenDepth = () => {
-  //   setSelectPay();
-  //   setShowDepth(true);
-  // };
 
   return (
     <div className="sub-page pay">
@@ -77,7 +85,8 @@ const Pay = () => {
             <div className="user-info-wrap">
               <div className="user-info">
                 <span>주문자 정보</span>
-                <input type="text" name="user" placeholder="이름" required />
+                <span>{user.email}</span>
+                {/* <input type="text" name="user" placeholder="이름" required /> */}
               </div>
             </div>
 

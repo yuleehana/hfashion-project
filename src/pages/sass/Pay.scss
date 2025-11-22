@@ -153,11 +153,12 @@
             }
 
             .payment-bottom {
+
               display: flex;
               flex-direction: column;
               gap: 1.5rem;
 
-              .payment {
+              .pay-method-buttons {
                 display: flex;
                 justify-content: space-between;
                 gap: 3rem;
@@ -181,7 +182,49 @@
                 }
               }
 
+              .pay-method-depth {
+                display: flex;
+                justify-content: space-between;
+                gap: 3rem;
 
+                .pay-method {
+                  // display: flex;
+                  // align-items: center;
+
+                  &.card{
+                    width: 100%;
+                  }
+
+                  button {
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    color: g.$main-color1;
+                    display: flex;
+                    // align-items: center;
+                    // justify-content: center;
+                    border: 1px solid g.$sub-color2;
+                    background-color: g.$main-color2;
+                    padding: 1.5rem 2.5rem;
+                    width: 100%;
+
+
+                  }
+
+                  ul {
+                    // display: none;
+                    padding: 1.5rem 2.5rem;
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    color: g.$main-color1;
+                    border: 1px solid g.$sub-color2;
+                    border-top: none;
+
+                    li {
+                      line-height: 4rem;
+                    }
+                  }
+                }
+              }
             }
           }
         }

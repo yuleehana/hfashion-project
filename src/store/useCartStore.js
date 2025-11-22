@@ -70,6 +70,43 @@ export const useCartStore = create(
         });
       },
 
+      //전체 토글
+      onCheckAll: (checked) => {
+        const cart = get().cartItems;
+
+        // 체크 상태 모두 변경
+        const updatedCart = cart.map((item) => ({
+          ...item,
+          checked: checked,
+        }));
+
+        // 체크된 아이템 기준으로 총 가격 계산
+        const checkedTotal = checked
+          ? updatedCart.reduce((acc, item) => acc + item.price * item.count, 0)
+          : 0;
+
+        // store 업데이트
+        set({
+          cartItems: updatedCart,
+          checkedTotalPrice: checkedTotal,
+        });
+      },
+
+      //선택살제토글
+      onRemoveChecked: () => {
+        const cart = get().cartItems;
+
+        const updateCart = cart.filter((c) => !c.checked);
+
+        const checkedTotal = updateCart
+          .filter((p) => p.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
+        set({
+          cartItems: updateCart,
+          checkedTotalPrice: checkedTotal,
+        });
+      },
+
       // 옵션 변경
       updateCartOptions: (code, size, color, count) => {
         const newCart = get().cartItems.map((item) =>
