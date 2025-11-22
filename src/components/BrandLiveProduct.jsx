@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 
-const BrandLiveProduct = ({ thumbImg, id, title, price, code }) => {
+const BrandLiveProduct = ({ thumbImg, id, title, price, code, brand }) => {
   //찜리스트 전역변수
   const { pickLists, onAddWishList } = usePickStore();
 
@@ -25,10 +25,14 @@ const BrandLiveProduct = ({ thumbImg, id, title, price, code }) => {
             ></span>
           </div>
           <div className="sub-new-textbox">
+            <div className="sub-new-brand">{brand}</div>
             <p className="sub-new-title">{title}</p>
             <p className="sub-new-text">
-              <span className="sub-new-price">{price.toLocaleString()}</span>
-              <span className="sub-new-saleprice">{price * 0.8}</span>
+              <div className="sub-new-text-r">
+                <span className="sub-new-price">{price.toLocaleString()}</span>
+                <span className="sub-new-saleprice">{price * 0.8}</span>
+              </div>
+
               <span className="sub-new-sale">20%</span>
             </p>
           </div>

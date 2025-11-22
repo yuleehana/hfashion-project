@@ -19,6 +19,7 @@ const BrandLiveProducts = ({ mainNew, brand }) => {
               title={s.title}
               price={s.price}
               code={s.code}
+              brand={s.brandTitle}
             />
           ))}
         </div>

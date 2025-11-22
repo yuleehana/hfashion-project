@@ -3,7 +3,7 @@
   .sub-new {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
     width: 250px;
     height: 450px;
     // background: red;
@@ -31,23 +31,43 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      .sub-new-brand {
+        font-size: 1.2rem;
+        color: #bababa;
+        font-weight: 300;
+      }
+      .sub-new-title {
+        line-height: 1.4;
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #000000;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
       .sub-new-text {
         display: flex;
+        justify-content: space-between;
         gap: 8px;
         align-items: end;
-        .sub-new-price {
-          font-size: 18px;
-          font-weight: 400;
+        .sub-new-text-r {
+          display: flex;
+          gap: 8px;
+          align-items: end;
+          .sub-new-price {
+            font-size: 20px;
+            // font-weight: 400;
+          }
+          .sub-new-saleprice {
+            font-size: 1.6rme;
+            color: rgba($color: #000000, $alpha: 0.3);
+            text-decoration: line-through;
+          }
         }
-        .sub-new-saleprice,
         .sub-new-sale {
-          font-size: 16px;
-        }
-        .sub-new-saleprice {
-          color: rgba($color: #000000, $alpha: 0.3);
-          text-decoration: line-through;
-        }
-        .sub-new-sale {
+          font-size: 1.6rem;
           color: #eebe81;
         }
       }

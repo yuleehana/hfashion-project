@@ -18,6 +18,7 @@ const brandData = [
       price: 378000,
       originPrice: '',
       sale: '20%',
+      brandTitle: 'Rouge&Rounge',
     },
     {
       id: 3,
@@ -27,6 +28,7 @@ const brandData = [
       price: 328000,
       originPrice: '',
       sale: '20%',
+      brandTitle: 'Rouge&Rounge',
     },
     {
       id: 4,
@@ -36,6 +38,7 @@ const brandData = [
       price: 278000,
       originPrice: '',
       sale: '20%',
+      brandTitle: 'Rouge&Rounge',
     },
   ],
   [
@@ -43,7 +46,7 @@ const brandData = [
       id: 1,
       thumbImg: '/images/products/T12F6WPC030MT1AEH/thumbnail.jpg',
       brand: 'brand-tommy',
-      brandTitle: 'Tommy',
+      brandTitle: 'Tommy Jeans',
     },
     {
       id: 2,
@@ -53,6 +56,7 @@ const brandData = [
       price: 659000,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'Tommy Jeans',
     },
     {
       id: 3,
@@ -62,6 +66,7 @@ const brandData = [
       price: 399000,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'Tommy Jeans',
     },
     {
       id: 4,
@@ -71,6 +76,7 @@ const brandData = [
       price: 229000,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'Tommy Jeans',
     },
   ],
   [
@@ -88,6 +94,7 @@ const brandData = [
       price: 94000,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'SJYP',
     },
     {
       id: 3,
@@ -97,6 +104,7 @@ const brandData = [
       price: 118000,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'SJYP',
     },
     {
       id: 4,
@@ -106,6 +114,7 @@ const brandData = [
       price: 71700,
       originPrice: '',
       sale: ' 20%',
+      brandTitle: 'SJYP',
     },
   ],
 ];
