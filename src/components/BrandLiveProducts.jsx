@@ -28,6 +28,7 @@ const BrandLiveProducts = ({ mainNew, brand }) => {
           <img src={m.thumbImg} alt="메인new이미지" />
           <div className="text-overlay">
             <h3>{m.brandTitle}</h3>
+            <p>브랜드 바로가기</p>
           </div>
         </div>
       ))}
