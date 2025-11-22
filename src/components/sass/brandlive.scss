@@ -79,7 +79,9 @@
       gap: 20px;
     }
   }
+  overflow: hidden;
   .main-new {
+    transition: 0.5s;
     position: relative;
     height: 100%;
     width: 500px;
@@ -91,6 +93,7 @@
       object-fit: cover;
       cursor: pointer;
       transition: 0.3s;
+      overflow: hidden;
       // width: 100%;
       // background-position: -10px;
     }
@@ -135,12 +138,15 @@
       text-align: center;
       h3 {
         font-family: 'Times New Roman';
-        font-size: 40px;
+        font-size: 25px;
       }
     }
 
     &:hover .text-overlay {
       opacity: 1;
+    }
+    &:hover {
+      scale: 1.1;
     }
   }
 }
