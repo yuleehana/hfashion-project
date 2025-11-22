@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
 import PayItem from "../components/PayItem";
@@ -7,71 +7,116 @@ import {
   paymethodsBank,
   paymethodsPay,
 } from "../data/paymethod";
-import { useAuthStore } from "../store/authstore";
-
-const payMethods = [
-  { id: 1, paymethod: "card", title: "신용카드" },
-  { id: 2, paymethod: "pay", title: "간편결제" },
-  { id: 3, paymethod: "bank", title: "무통장입금" },
-];
+// import { useAuthStore } from "../store/authstore";
 
 const Pay = () => {
+  const [selectPay, setSelectPay] = useState("card");
 
-  const {user} = useAuthStore();
-  console.log(user)
+  // 클릭시 아래 depth가 열리도록
+  const [openDepth, setOpenDepth] = useState(null);
 
-  const renderDepth = () => {
-    switch (selectedMethod) {
-      case "card":
-        return paymethodsCard.map((item) => (
-          <div key={item.id} className="pay-method card">
-            <div className="card-btn-wrap">
-              <button>{item.title}</button>
-              {/* <img src="../../images/arrow-down-white.svg" alt="" /> */}
-            </div>
+  // 선택한 값 저장
+  const [selectValue, setSelectValue] = useState({
+    card: [],
+    pay: [],
+    bank: [],
+  });
 
-            <ul>
-              {item.payDepth.map((depth) => (
-                <li key={depth.id}>{depth.label}</li>
-              ))}
-            </ul>
-          </div>
-        ));
-
-      case "pay":
-        return paymethodsPay.map((item) => (
-          <div key={item.id} className="pay-method pay">
-            {item.label}
-          </div>
-        ));
-
-      case "bank":
-        return paymethodsBank.map((item) => (
-          <div key={item.id} className="pay-method bank">
-            {item.payDepth ? (
-              <>
-                <button>{item.label}</button>
-                <ul>
-                  {item.payDepth.map((depth) => (
-                    <li>{depth.label}</li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <input
-                type="text"
-                placeholder={item.label}
-                className="bank-input"
-              />
-            )}
-          </div>
-        ));
-      default:
-        return null;
-    }
+  const handleSelect = (method, id, value) => {
+    setSelectValue((v) => ({
+      ...v,
+      [method]: {
+        ...v[method],
+        [id]: value,
+      },
+    }));
   };
 
-  const [selectedMethod, setSelectedMethod] = useState("card");
+  useEffect(() => {
+    setOpenDepth(null);
+  }, [selectPay]);
+
+  const renderDepth = () => {
+    let list = [];
+
+    if (selectPay === "card") {
+      list = paymethodsCard;
+      console.log(list)
+    } 
+    
+    else if (selectPay === "pay") {
+      return paymethodsPay.map((item) => (
+        <div key={item.id} className="radio-pay-item">
+          <label className="radio-label">
+            <input
+              type="radio"
+              name="simple-pay"
+              value={item.label}
+              checked={selectValue.pay?.selected === item.label}
+              onChange={() =>
+                setSelectValue((prev) => ({
+                  ...prev,
+                  pay: { selected: item.label },
+                }))
+              }
+            />
+            {item.label}
+          </label>
+        </div>
+      ));
+    }
+    
+    else if (selectPay === "bank") {
+      list = paymethodsBank;
+    }
+
+    return list.map((item) => (
+      <div key={item.id} className="depth-item">
+        {/* ---- 드롭다운 구조 ---- */}
+        {"payDepth" in item ? (
+          <div className="dropdown-wrapper">
+            {/* 버튼(현재 선택값 → 없으면 기본 label/title) */}
+            <button
+              className="dropdown-btn"
+              onClick={() =>
+                setOpenDepth(openDepth === item.id ? null : item.id)
+              }
+            >
+              {selectValue[selectPay][item.id] || item.label || item.title}
+            </button>
+
+            {/* dropdown 리스트 */}
+            {openDepth === item.id && (
+              <ul className="dropdown-list">
+                {item.payDepth.map((depth) => (
+                  <li
+                    key={depth.id}
+                    className="dropdown-option"
+                    onClick={() =>
+                      handleSelect(selectPay, item.id, depth.label)
+                    }
+                  >
+                    {depth.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ) : (
+          /* ---- input 구조 ---- */
+          <div className="input-wrapper">
+            <label>{item.label}</label>
+            <input
+              type="text"
+              placeholder={item.label}
+              className="input-box"
+              onChange={(e) => handleSelect(selectPay, item.id, e.target.value)}
+            />
+          </div>
+        )}
+      </div>
+    ));
+  };
 
   return (
     <div className="sub-page pay">
@@ -85,7 +130,7 @@ const Pay = () => {
             <div className="user-info-wrap">
               <div className="user-info">
                 <span>주문자 정보</span>
-                <span>{user.email}</span>
+                <span></span>
                 {/* <input type="text" name="user" placeholder="이름" required /> */}
               </div>
             </div>
@@ -185,18 +230,27 @@ const Pay = () => {
               </div>
               <hr />
               <div className="payment-bottom">
-                <div className="pay-method-buttons">
-                  {payMethods.map((method) => (
-                    <button
-                      key={method.id}
-                      className={
-                        selectedMethod === method.paymethod ? "active" : ""
-                      }
-                      onClick={() => setSelectedMethod(method.paymethod)}
-                    >
-                      {method.title}
-                    </button>
-                  ))}
+                <div className="pay-method-btns">
+                  <button
+                    className={selectPay === "card" ? "active" : ""}
+                    onClick={() => setSelectPay("card")}
+                  >
+                    신용카드
+                  </button>
+
+                  <button
+                    className={selectPay === "pay" ? "active" : ""}
+                    onClick={() => setSelectPay("pay")}
+                  >
+                    간편결제
+                  </button>
+
+                  <button
+                    className={selectPay === "bank" ? "active" : ""}
+                    onClick={() => setSelectPay("bank")}
+                  >
+                    무통장입금
+                  </button>
                 </div>
 
                 <div className="pay-method-depth">{renderDepth()}</div>
