@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useProductStore } from '../store/useProductStore';
 import ProductCard from '../components/ProductCard';
 import { Link } from 'react-router-dom';
@@ -45,12 +45,31 @@ const ProductListPage = ({ category }) => {
   //오른쪽 필터 팝업변수
   const [rightFilter, setRightFilter] = useState(false);
 
+  //드롭박스 위치를 확인하변수
+  //클릭위치를 확인하기
+  const filterRef = useRef(null);
+
   //선택된 필터가 뭔지 보여줄 변수
   const [filterName, setFilterName] = useState('신상품순');
 
   //------------------------------------------------------------------------------
   //메서드
   //브랜드 선택 메서드
+
+  const handleClickOutside = (event) => {
+    if (filterRef.current && !filterRef.current.contains(event.target)) {
+      setRightFilter(false);
+    }
+  };
+
+  //documnnt 호출시 이벤트 감지시작
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   const handleBrand = (brand) => {
     const match = allItems.filter((item) => item.brand === brand);
     setItems(match);
@@ -133,7 +152,11 @@ const ProductListPage = ({ category }) => {
         <div className="product-filter-top">
           <p className="product-filter-top-l">Filter</p>
           {/* <p>{rightFilte ? sortOptions[0].name}</p> */}
-          <p className="product-filter-top-filter" onClick={() => setRightFilter(!rightFilter)}>
+          <p
+            className={`product-filter-top-filter ${rightFilter ? 'active' : ''}`}
+            onClick={() => setRightFilter(!rightFilter)}
+            ref={filterRef}
+          >
             {filterName}
             <div className="product-filter-top-r ">
               <ul className={rightFilter == true ? 'active' : ' '}>
@@ -191,9 +214,10 @@ const ProductListPage = ({ category }) => {
                 ))}
               </div>
               <div className="price-tag-b">
-                직접입력 <input className='xsmall' type="text" value={filterPrice} onChange={rememberP} />
+                직접입력{' '}
+                <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
                 -
-                <input className='xsmall' type="text" value={filterPrice2} onChange={rememberP2} />
+                <input className="xsmall" type="text" value={filterPrice2} onChange={rememberP2} />
                 <button className="btn xsmall primary" type="button" onClick={checkPrice}>
                   적용
                 </button>

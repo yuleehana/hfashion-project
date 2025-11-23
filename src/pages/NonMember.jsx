@@ -146,7 +146,9 @@ const NonMember = () => {
                     <div>
                       <div className="add-inf-inner-top">
                         <input type="text" name="naddress" onChange={(e) => handleNonAddress(e)} />
-                        <button type="button">주소검색</button>
+                        <button type="button" className="btn middle outline">
+                          주소검색
+                        </button>
                       </div>
                       <input type="text" name="naddress2" onChange={(e) => handleNonAddress(e)} />
                     </div>

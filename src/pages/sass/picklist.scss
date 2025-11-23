@@ -14,7 +14,7 @@
         font-weight: 400;
       }
 
-      >p {
+      > p {
         font-size: 1.4rem;
         color: g.$sub-color3;
       }
@@ -76,15 +76,25 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          > div {
+            display: flex;
+            gap: 8px;
+            align-items: end;
+            .picklist-price {
+              color: g.$main-color1;
+              font-size: 2rem;
+            }
 
-          .picklist-price {
-            font-size: 20px;
+            .picklist-originPrice {
+              font-size: 1.4rem;
+              color: g.$sub-color2;
+              text-decoration: line-through;
+            }
           }
 
-          .picklist-originPrice {
-            font-size: 16px;
-            color: #eebe81;
-            text-decoration: line-through;
+          .picklist-sale {
+            font-size: 1.6rem;
+            color: g.$percent-color;
           }
         }
       }

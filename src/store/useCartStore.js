@@ -1,176 +1,173 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const useCartStore = create(
   persist(
     (set, get) => ({
-      // 카트에 담을 아이템 배열과 개수
       cartItems: [],
-      cartCount: 0,
-
-      // 총 금액
       totalPrice: 0,
+      checkedTotalPrice: 0,
 
-      // 카트에 상품 추가 메서드
+      // 장바구니에 상품 추가
       onAddToCart: (item) => {
         const cart = get().cartItems;
 
-        // 중복 아이템 체크
-        const existing = cart.find(
-          (c) =>
-            c.code === item.code &&
-            c.size === item.size &&
-            c.color === item.color
+        const exists = cart.find(
+          (c) => c.code === item.code && c.size === item.size && c.color === item.color
         );
 
-        let updateCart;
-        if (existing) {
-          updateCart = cart.filter(
-            (c) =>
-              c.code === item.code &&
-              c.size === item.size &&
-              c.color === item.color
-          );
-          alert("이미 장바구니에 담긴 상품입니다");
-        } else {
-          updateCart = [...cart, { ...item }];
+        if (exists) {
+          alert('이미 장바구니에 담긴 상품입니다.');
+          return;
         }
 
-        // 총 구매 금액
-        let total = 0;
-        // 총 금액 구하기
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+        const newCart = [...cart, { ...item, checked: true }];
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
 
         set({
-          cartItems: updateCart,
-          cartCount: updateCart.length,
+          cartItems: newCart,
           totalPrice: total,
+          checkedTotalPrice: checkedTotal,
         });
       },
 
-      // 카트에서 아이템 제거
+      // 삭제
       onRemoveCart: (code, size, color) => {
-        const cart = get().cartItems;
-
-        const updateCart = cart.filter(
+        const newCart = get().cartItems.filter(
           (c) => !(c.code === code && c.size === size && c.color === color)
         );
 
-        let total = 0;
-
-        // 총 금액 구하기
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
 
         set({
-          cartItems: updateCart,
-          cartCount: updateCart.length,
+          cartItems: newCart,
           totalPrice: total,
+          checkedTotalPrice: checkedTotal,
         });
       },
 
-      // checked: false,
-
-      // 체크박스 토글
+      // 체크 토글
       onCheckCart: (code) => {
-        const carts = get().cartItems;
-
-        const updateCart = carts.map((cart) =>
-          cart.code === code ? { ...cart, checked: !cart.checked } : cart
+        const newCart = get().cartItems.map((item) =>
+          item.code === code ? { ...item, checked: !item.checked } : item
         );
 
-        set({ cartItems: updateCart });
-        console.log(updateCart);
-      },
-
-      // cart-op-change 팝업
-      onOptionPopup: (color, size, code, count) => {
-        const cart = get().cartItems;
-
-        const updateCart = cart.filter((item) => (item.code === code && item.color === color && item.size === size && item.count === count));
-      },
-
-      onOptionChange: (color, size, code, count) => {
-        const { cartItems } = get();
-
-        const opItems = cartItems.map((item) => {
-          if (item.code === code) {
-            return {
-              ...item,
-              color,
-              size,
-              count,
-            };
-          }
-          return item;
-        });
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
 
         set({
-          cartItems: opItems,
+          cartItems: newCart,
+          totalPrice: total,
+          checkedTotalPrice: checkedTotal,
         });
       },
 
-      //
-      updateCartOptions: (code, newSize, newColor, newCount) => {
-        const updateCart = get().cartItems.map((item) => {
-          if (item.code === code) {
-            const newPrice = item.price * 0.8 * newCount;
-            return {
-              ...item,
-              size: newSize,
-              color: newColor,
-              count: newCount,
-              totalPrice: newPrice,
-            };
-          }
-          return item;
-        });
-        set({ cartItems: updateCart });
-      },
-
-      // 수량 변경
-      onPlusCount: (code, size, color) => {
+      //전체 토글
+      onCheckAll: (checked) => {
         const cart = get().cartItems;
-        const updateCart = cart.map((item) =>
+
+        // 체크 상태 모두 변경
+        const updatedCart = cart.map((item) => ({
+          ...item,
+          checked: checked,
+        }));
+
+        // 체크된 아이템 기준으로 총 가격 계산
+        const checkedTotal = checked
+          ? updatedCart.reduce((acc, item) => acc + item.price * item.count, 0)
+          : 0;
+
+        // store 업데이트
+        set({
+          cartItems: updatedCart,
+          checkedTotalPrice: checkedTotal,
+        });
+      },
+
+      //선택살제토글
+      onRemoveChecked: () => {
+        const cart = get().cartItems;
+
+        const updateCart = cart.filter((c) => !c.checked);
+
+        const checkedTotal = updateCart
+          .filter((p) => p.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
+        set({
+          cartItems: updateCart,
+          checkedTotalPrice: checkedTotal,
+        });
+      },
+
+      // 옵션 변경
+      updateCartOptions: (code, size, color, count) => {
+        const newCart = get().cartItems.map((item) =>
+          item.code === code ? { ...item, size, color, count } : item
+        );
+
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
+
+        set({
+          cartItems: newCart,
+          totalPrice: total,
+          checkedTotalPrice: checkedTotal,
+        });
+      },
+
+      // 수량 증가
+      onPlusCount: (code, size, color) => {
+        const newCart = get().cartItems.map((item) =>
           item.code === code && item.size === size && item.color === color
             ? { ...item, count: item.count + 1 }
             : item
         );
-        let total = 0;
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
 
         set({
-          cartItems: updateCart,
+          cartItems: newCart,
           totalPrice: total,
+          checkedTotalPrice: checkedTotal,
         });
       },
 
+      // 수량 감소
       onMinusCount: (code, size, color) => {
-        const cart = get().cartItems;
-        const updateCart = cart.map((item) =>
+        const newCart = get().cartItems.map((item) =>
           item.code === code && item.size === size && item.color === color
             ? { ...item, count: Math.max(1, item.count - 1) }
             : item
         );
-        let total = 0;
-        updateCart.forEach((item) => {
-          total += item.price * item.count;
-        });
+
+        const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
+        const checkedTotal = newCart
+          .filter((i) => i.checked)
+          .reduce((acc, i) => acc + i.price * i.count, 0);
 
         set({
-          cartItems: updateCart,
+          cartItems: newCart,
           totalPrice: total,
+          checkedTotalPrice: checkedTotal,
         });
       },
 
-      resetCart: () => set({ cartItems: [], totalPrice: 0, cartCount: 0 }),
+      // 초기화
+      resetCart: () => set({ cartItems: [], totalPrice: 0, checkedTotalPrice: 0 }),
     }),
-
-    { name: "cart-storage" }
+    { name: 'cart-storage' }
   )
 );

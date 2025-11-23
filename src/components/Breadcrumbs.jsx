@@ -72,14 +72,14 @@ const Breadcrumbs = () => {
 
   return (
     <nav className="breadcrumbs" aria-label="Breadcrumb">
-      <span className="current-home">HOME</span>
+      <span className="current-home">HOME </span>
       {crumbs.map((crumb) => (
         <span key={crumb.to}>
           <span className="separator">{'>'}</span>
           {crumb.isLast ? (
             <span className="current">{crumb.label}</span>
           ) : (
-            <Link to={crumb.to}>{crumb.label}</Link>
+            <Link to={crumb.to} > {crumb.label} </Link>
           )}
         </span>
       ))}

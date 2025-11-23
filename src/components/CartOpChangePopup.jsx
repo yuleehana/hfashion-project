@@ -16,16 +16,18 @@ const CartOpChangePopup = ({ onClose, item }) => {
   // 수량 체크 변수
   const [count, setCount] = useState(item.count);
 
+  const [price, setPrice] = useState(item.price);
+
   //상태변수 ------------------------------------------
 
   //카트아이템 저장된변수
-  const { cartItems, totalPrice, updateCartOptions } = useCartStore();
+  const { cartItems, totalPrice, updateCartOptions, onPlusPrice } = useCartStore();
 
   //메서드 ---------------------------------------------
   // 사이즈 누르면 caritems에 값을 바꾸고,
   const handleItemSize = (size) => {
     setSelectSize(size);
-    console.log(cartItems);
+    console.log('개수', count);
     console.log(size);
   };
 
@@ -84,7 +86,7 @@ const CartOpChangePopup = ({ onClose, item }) => {
               <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
             </p>
           </div>
-          <div>가격 : {(item.price * 0.8 * count).toLocaleString()}원 </div>
+          <div>가격 : {(price * 0.8 * count).toLocaleString()}원 </div>
         </div>
 
         <div className="op-popup-button" style={{ display: 'flex', gap: '20px' }}>

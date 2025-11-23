@@ -48,6 +48,8 @@ const Login = () => {
             {/* 추후 삭제될 내용입니다 */}
             <h1>이메일 : yuleehana@naver.com</h1>
             <h1>비밀번호 : zhddl0815</h1>
+            <h1>이메일 : abc@naver.com</h1>
+            <h1>비밀번호 : qwer1234</h1>
           </div>
         </div>
       </div>
