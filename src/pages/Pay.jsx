@@ -7,6 +7,7 @@ import {
   paymethodsPay,
 } from "../data/paymethod";
 import PayPo from "../components/PayPo";
+import PayResultPopup from "../components/PayResultPopup";
 
 const Pay = () => {
   const [selectPay, setSelectPay] = useState("card");
@@ -19,6 +20,13 @@ const Pay = () => {
     pay: [],
     bank: [],
   });
+
+  // open popup
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  }
 
   const handleSelect = (method, id, value) => {
     setSelectValue((v) => ({
@@ -252,8 +260,12 @@ const Pay = () => {
           </div>
 
           <div className="pay-inner-right">
-            <PayPo />
+            <PayPo onOpenPopup={handleOpenPopup}/>
           </div>
+
+          {showPopup && (
+            <PayResultPopup onClose={() => setShowPopup(false)}/>
+          )}
         </div>
       </div>
     </div>

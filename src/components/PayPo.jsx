@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./sass/PayPo.scss";
 import { useCartStore } from "../store/useCartStore";
 
-const PayPo = () => {
+const PayPo = ({ onOpenPopup }) => {
   const { totalPrice, checkedTotalPrice, cartItems } = useCartStore();
 
   return (
@@ -37,7 +37,9 @@ const PayPo = () => {
           </div>
 
           <div className="payPo-btn">
-            <Link>{(checkedTotalPrice * 0.8).toLocaleString()}원 구매하기</Link>
+            <Link onClick={onOpenPopup}>
+              {(checkedTotalPrice * 0.8).toLocaleString()}원 구매하기
+            </Link>
           </div>
         </div>
       </div>
