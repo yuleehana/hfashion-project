@@ -190,13 +190,20 @@
                 .depth-item {
                   width: 100%;
 
-                  .dropdown-list{
+                  .input-wrapper {
+
+                    input {
+                      width: 100%;
+                    }
+                  }
+
+                  .dropdown-list {
                     cursor: pointer;
                   }
 
-                  &.card{
-                    width: 100%;
-                  }
+                  // &.card{
+                  //   width: 100%;
+                  // }
 
                   button {
                     font-size: 1.4rem;
@@ -207,15 +214,14 @@
                     // justify-content: center;
                     border: 1px solid g.$sub-color2;
                     background-color: g.$main-color2;
-                    padding: 1.5rem 2.5rem;
+                    padding: 1rem 2rem;
                     width: 100%;
 
 
                   }
 
                   ul {
-                    // display: none;
-                    padding: 1.5rem 2.5rem;
+                    padding: 1rem 2rem;
                     font-size: 1.4rem;
                     font-weight: 400;
                     color: g.$main-color1;
@@ -228,13 +234,13 @@
                   }
                 }
 
-                .radio-pay-item{
+                .radio-pay-item {
 
-                  .radio-label{
+                  .radio-label {
                     display: flex;
                     align-content: center;
                     gap: 1rem;
-                    
+
                   }
                 }
               }

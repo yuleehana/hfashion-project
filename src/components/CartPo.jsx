@@ -9,8 +9,8 @@ const CartPo = () => {
 
   const [totalCheck, setTotalCheck] = useState(true);
 
-  console.log('전체카트아이템 항목', cartItems);
-  console.log('체크된항목', checkedTotalPrice);
+  // console.log('전체카트아이템 항목', cartItems);
+  // console.log('체크된항목', checkedTotalPrice);
 
   const { user } = useAuthStore();
 
