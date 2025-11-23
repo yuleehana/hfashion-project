@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './sass/NonMember.scss';
-import { useAuthStore } from '../store/authstore';
 import PayItem from '../components/PayItem';
 import NonCartPo from '../components/NonCartPo';
 import { useCartStore } from '../store/useCartStore';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/authstore';
 
 const NonMember = () => {
   const { onNMember, onNAddress, setNoncart } = useAuthStore();

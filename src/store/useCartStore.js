@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const useCartStore = create(
   persist(
@@ -13,14 +13,11 @@ export const useCartStore = create(
         const cart = get().cartItems;
 
         const exists = cart.find(
-          (c) =>
-            c.code === item.code &&
-            c.size === item.size &&
-            c.color === item.color
+          (c) => c.code === item.code && c.size === item.size && c.color === item.color
         );
 
         if (exists) {
-          alert("이미 장바구니에 담긴 상품입니다.");
+          alert('이미 장바구니에 담긴 상품입니다.');
           return;
         }
 
@@ -168,18 +165,9 @@ export const useCartStore = create(
         });
       },
 
-      payMethod: [],
-
-      onCheckMethod: (value) => {
-        const selectValue = get().payMethod.map((method) =>
-          method.value === value ? {} : {}
-        );
-      },
-
       // 초기화
-      resetCart: () =>
-        set({ cartItems: [], totalPrice: 0, checkedTotalPrice: 0 }),
+      resetCart: () => set({ cartItems: [], totalPrice: 0, checkedTotalPrice: 0 }),
     }),
-    { name: "cart-storage" }
+    { name: 'cart-storage' }
   )
 );

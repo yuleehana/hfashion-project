@@ -59,7 +59,7 @@ import NotFoundMyPage from './components/NotFoundMyPage';
 import MemberInfor from './components/MemberInfor';
 import Breadcrumbs from './components/Breadcrumbs';
 import NonPay from './pages/NonPay';
-import NonMemberOrderSheet from './store/NonMemberOrderSheet';
+import NonMemberOrderSheet from './pages/NonMemberOrderSheet';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);

@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { useProductStore } from "../store/useProductStore";
-import "./sass/ProductDetailRightInfo.scss";
-import { Link, useParams } from "react-router-dom";
-import { usePickStore } from "../store/usePickStore";
-import "./sass/button-normal.scss";
-import { useCartStore } from "../store/useCartStore";
-import { useAuthStore } from "../store/authstore";
+import { useEffect, useState } from 'react';
+import { useProductStore } from '../store/useProductStore';
+import './sass/ProductDetailRightInfo.scss';
+import { Link, useParams } from 'react-router-dom';
+import { usePickStore } from '../store/usePickStore';
+import './sass/button-normal.scss';
+import { useCartStore } from '../store/useCartStore';
+import { useAuthStore } from '../store/authstore';
 
-const sizes = ["XS", "S", "M", "L", "XL"];
-const colors = ["pink", "sky", "white", "black"];
+const sizes = ['XS', 'S', 'M', 'L', 'XL'];
+const colors = ['pink', 'sky', 'white', 'black'];
 
 const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { code } = useParams();
@@ -20,18 +20,18 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
     try {
       // 최신 브라우저용
       await navigator.clipboard.writeText(url);
-      alert("현재 페이지 주소가 복사되었습니다.");
+      alert('현재 페이지 주소가 복사되었습니다.');
     } catch (err) {
       // 구형 브라우저용 폴백
-      const textarea = document.createElement("textarea");
+      const textarea = document.createElement('textarea');
       textarea.value = url;
       document.body.appendChild(textarea);
       textarea.select();
 
       try {
-        alert("현재 페이지 주소가 복사되었습니다.");
+        alert('현재 페이지 주소가 복사되었습니다.');
       } catch (err) {
-        alert("URL 복사에 실패했습니다. 직접 복사해 주세요.");
+        alert('URL 복사에 실패했습니다. 직접 복사해 주세요.');
       } finally {
         document.body.removeChild(textarea);
       }
@@ -45,17 +45,17 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { user } = useAuthStore();
 
   // 상품을 저장할 변수
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState('');
 
   // 선택한 사이즈 체크
-  const [selectSize, setSelectSize] = useState("");
+  const [selectSize, setSelectSize] = useState('');
   // 선택 색상 체크
-  const [selectColor, setSelectColor] = useState("");
+  const [selectColor, setSelectColor] = useState('');
 
   // 수량 체크 변수
   const [count, setCount] = useState(1);
 
-  const [coupon, setCoupon] = ("");
+  const [coupon, setCoupon] = '';
 
   // [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 위한 새로운 상태를 추가
   const [likeCount, setLikeCount] = useState(11);
@@ -65,8 +65,8 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
     if (items.length === 0) {
       onFetchItem();
     }
-    setSelectSize("");
-    setSelectColor("");
+    setSelectSize('');
+    setSelectColor('');
     setCount(1);
   }, [code]);
 
@@ -81,7 +81,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   // 장바구니 메서드
   const handleAddToCart = () => {
     if (!selectSize) {
-      alert("사이즈를 선택해주세요");
+      alert('사이즈를 선택해주세요');
       return;
     }
 
@@ -95,9 +95,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
 
     let aa = cartItems.find(
       (c) =>
-        c.code === productCart.code &&
-        c.size === productCart.size &&
-        c.color === productCart.color
+        c.code === productCart.code && c.size === productCart.size && c.color === productCart.color
     );
 
     console.log(cartItems, aa, productCart);
@@ -109,7 +107,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       onAddToCart(productCart);
     }
   };
-
 
   // [KIM: Add 좋아요 개수 증감 11-23] 찜리스트 메서드
   const handleAddToPick = () => {
@@ -123,7 +120,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       setLikeCount((prevCount) => prevCount + 1);
     }
   };
-
 
   const currentProductCode = item?.code || product?.code;
   const isPicked = pickLists.some((pick) => pick.code === currentProductCode);
@@ -139,10 +135,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
               <span className="favo">
                 {/* [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 likeCount 상태로 연결 */}
                 <i>{likeCount}</i>
-                <span
-                  className={isPicked ? "active" : ""}
-                  onClick={handleAddToPick}
-                ></span>
+                <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
               </span>
               {/* 공유하기 */}
               <span className="share" onClick={handleShare} role="button">
@@ -157,7 +150,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             <strong>{(product.price * 0.8).toLocaleString()}원</strong>
             <del>{product.price.toLocaleString()}</del>
             <span>20%</span>
-            <button className="btn xsmall outline" >쿠폰 다운로드</button>
+            <button className="btn xsmall outline">쿠폰 다운로드</button>
           </div>
         </div>
 
@@ -166,7 +159,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             {colors.map((color, id) => (
               <button
                 key={id}
-                className={`${color} ${selectColor === color ? "active" : ""}`}
+                className={`${color} ${selectColor === color ? 'active' : ''}`}
                 onClick={() => setSelectColor(color)}
               ></button>
             ))}
@@ -178,7 +171,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
               {sizes.map((size, id) => (
                 <li key={id}>
                   <button
-                    className={selectSize === size ? "active" : ""}
+                    className={selectSize === size ? 'active' : ''}
                     onClick={() => setSelectSize(size)}
                   >
                     {size}
@@ -191,28 +184,19 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
 
         <div className="item-info">
           <p>
-            색상 : {selectColor} <span className="division">|</span> 사이즈 :{" "}
-            {selectSize}
+            색상 : {selectColor} <span className="division">|</span> 사이즈 : {selectSize}
           </p>
           {/* 수량 선택 */}
           <p className="btn-count">
-            <button
-              className="minus"
-              onClick={() => setCount((c) => Math.max(1, c - 1))}
-            ></button>
+            <button className="minus" onClick={() => setCount((c) => Math.max(1, c - 1))}></button>
             <span>{count}</span>
-            <button
-              className="plus"
-              onClick={() => setCount((c) => c + 1)}
-            ></button>
+            <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
           </p>
         </div>
 
         <div className="item-total">
           <span className="text">합계</span>
-          <span className="num">
-            {(product.price * 0.8 * `${count}`).toLocaleString()}
-          </span>
+          <span className="num">{(product.price * 0.8 * `${count}`).toLocaleString()}</span>
         </div>
 
         <div className="cart-btn">
@@ -220,8 +204,9 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             장바구니
           </button>
           <Link
+            onClick={handleAddToCart}
             className="btn middle secondary"
-            to={user ? "/pay" : "/nonmember"}
+            to={user ? '/pay' : '/nonmember'}
           >
             바로구매
           </Link>
@@ -233,11 +218,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
               {
                 // product.rating 개수만큼 렌더링
                 Array.from({ length: product.rating }, (_, index) => (
-                  <img
-                    key={index}
-                    src="/images/icon-star-black.svg"
-                    alt="star-filled"
-                  />
+                  <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
                 ))
               }
               {Array.from({ length: 5 - product.rating }, (_, index) => (
