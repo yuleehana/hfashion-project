@@ -141,7 +141,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             <strong>{(product.price * 0.8).toLocaleString()}원</strong>
             <del>{product.price.toLocaleString()}</del>
             <span>20%</span>
-            <button className="btn xsmall outline" onClick={alert('신규 회원 쿠폰이 발급되었습니다!')}>쿠폰 다운로드</button>
+            <button className="btn xsmall outline" >쿠폰 다운로드</button>
           </div>
         </div>
 

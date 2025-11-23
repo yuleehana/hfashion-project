@@ -12,7 +12,6 @@ import {
 const Pay = () => {
   const [selectPay, setSelectPay] = useState("card");
 
-  // 클릭시 아래 depth가 열리도록
   const [openDepth, setOpenDepth] = useState(null);
 
   // 선택한 값 저장
@@ -44,25 +43,26 @@ const Pay = () => {
       list = paymethodsCard;
       console.log(list);
     } else if (selectPay === "pay") {
-      return paymethodsPay.map((item) => (
-        <div key={item.id} className="radio-pay-item">
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="simple-pay"
-              value={item.label}
-              checked={selectValue.pay?.selected === item.label}
-              onChange={() =>
-                setSelectValue((prev) => ({
-                  ...prev,
-                  pay: { selected: item.label },
-                }))
-              }
-            />
-            {item.label}
-          </label>
-        </div>
-      ));
+      list = paymethodsPay;
+      // return paymethodsPay.map((item) => (
+      //   <div key={item.id} className="radio-pay-item">
+      //     <label className="radio-label">
+      //       <input
+      //         type="radio"
+      //         name="simple-pay"
+      //         value={item.label}
+      //         checked={selectValue.pay?.selected === item.label}
+      //         onChange={() =>
+      //           setSelectValue((prev) => ({
+      //             ...prev,
+      //             pay: { selected: item.label },
+      //           }))
+      //         }
+      //       />
+      //       {item.label}
+      //     </label>
+      //   </div>
+      // ));
     } else if (selectPay === "bank") {
       list = paymethodsBank;
     }
