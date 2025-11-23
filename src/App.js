@@ -58,6 +58,8 @@ import ScrollToTop from './components/ScrollToTop';
 import NotFoundMyPage from './components/NotFoundMyPage';
 import MemberInfor from './components/MemberInfor';
 import Breadcrumbs from './components/Breadcrumbs';
+import NonPay from './pages/NonPay';
+import NonMemberOrderSheet from './store/NonMemberOrderSheet';
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -74,7 +76,8 @@ function App() {
     <div className="App">
       <Header />
       <ScrollToTop />
-      <Breadcrumbs />{/* 로케이션 공통 */}
+      <Breadcrumbs />
+      {/* 로케이션 공통 */}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/product-detail/:code" element={<ProductDetail />} />
@@ -130,6 +133,8 @@ function App() {
         <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
+        <Route path="/nonpay" element={<NonPay />} />
+        <Route path="/nonmemberordersheet" element={<NonMemberOrderSheet />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/brandlive" element={<MainBrandLive />} />
       </Routes>

@@ -3,7 +3,7 @@
 .sub-page {
   .nonmember-inner {
     margin: 130px auto 280px;
-    max-width: 1700px;
+    max-width: 170rem;
     background: rgba(255, 0, 0, 0.1);
 
     .sub-page-title {
@@ -14,17 +14,15 @@
 
     .nonmember-wrap {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
-      gap: 70px;
 
       .sub-inner-left {
         border: 1px solid #ccc;
-        width: 100%;
+        width: 70%;
         .sub-inner-left-top {
           display: flex;
-          justify-content: space-between;
           padding: 40px;
+          margin-bottom: 20px;
 
           // 공통: 주문자 정보 & 배송지 정보
           .sub-order-inf,
@@ -105,25 +103,100 @@
             }
           }
         }
-      }
-
-      .order-item {
-        p {
-          font-size: 18px;
-          font-weight: 500;
-          text-align: center;
-          color: g.$main-color1;
+        > p {
+          padding-left: 40px;
+          font-size: 16px;
+          color: g.$sub-color3;
+          // border-bottom: 1px solid g.$sub-color2;
+        }
+        .sub-inner-left-bottom {
+          border-top: 1px solid #bababa;
+          margin: 30px 40px 40px 40px;
+          // padding-top: 30px;
+          // background: red;
+          .pay-item-list-wrap {
+          }
         }
       }
 
-      .sub-inner-right {
-        // position: absolute;
-        right: 0;
+      .cartPo-wrap {
+        justify-content: flex-end;
+        border: 1px solid #bababa;
+        margin-right: 0;
+        height: 30%;
+        width: 25%;
+        // border: 1px solid black;
+        padding: 4rem;
 
-        p {
-          font-size: 18px;
-          font-weight: 500;
-          color: g.$main-color1;
+        .cartPo-inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 2.5rem;
+
+          .cartPo-inner-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2.5rem;
+
+            p {
+              color: g.$main-color1;
+              font-size: 2rem;
+              font-weight: 400;
+            }
+
+            .cartPo-pay-list {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+
+              .cartPo-pay {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.6rem;
+                font-weight: 400;
+
+                &.dis {
+                  color: g.$percent-color;
+                }
+
+                &.del {
+                  color: g.$sub-color3;
+                  font-size: 1.4rem;
+                }
+              }
+            }
+          }
+
+          .cartPo-inner-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+
+            .cartPo-pay-total {
+              font-size: 1.6rem;
+              font-weight: 500;
+              display: flex;
+              justify-content: space-between;
+            }
+
+            .cartPo-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              a {
+                display: block;
+                padding: 2rem;
+                width: 100%;
+                background-color: g.$main-color1;
+                color: g.$main-color2;
+                font-size: 2rem;
+                font-weight: 400;
+              }
+            }
+          }
         }
       }
     }
