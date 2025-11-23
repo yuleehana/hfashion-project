@@ -5,6 +5,7 @@ import MainCategoryNew from '../components/MainCategoryNew'
 import MainBrandLive from '../components/MainBrandLive'
 import MainBestReview from '../components/MainBestReview'
 import './sass/Main.scss'
+import Magazine from '../components/Magazine'
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
             <div className="main-content inner">
                 <MainKeyWordRanking />
                 <MainCategoryNew />
+                <Magazine />
                 <MainBrandLive />
                 <MainBestReview />
             </div>
