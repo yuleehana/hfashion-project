@@ -57,6 +57,9 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
 
   const [coupon, setCoupon] = ("");
 
+  // [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 위한 새로운 상태를 추가
+  const [likeCount, setLikeCount] = useState(11);
+
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
@@ -66,6 +69,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
     setSelectColor("");
     setCount(1);
   }, [code]);
+
   // 제품 다시 불러오기
   useEffect(() => {
     if (!code || items.length === 0) return;
@@ -106,10 +110,21 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
     }
   };
 
-  // 찜리스트 메서드
+
+  // [KIM: Add 좋아요 개수 증감 11-23] 찜리스트 메서드
   const handleAddToPick = () => {
     onAddWishList(item);
+    // 좋아요 개수 증감 로직 추가 (isPicked 값에 따라 증감)
+    if (isPicked) {
+      // 현재 찜 상태가 활성화(true)이면 -> 해제하는 동작이므로 숫자를 감소
+      setLikeCount((prevCount) => prevCount - 1);
+    } else {
+      // 현재 찜 상태가 비활성화(false)이면 -> 활성화하는 동작이므로 숫자를 증가
+      setLikeCount((prevCount) => prevCount + 1);
+    }
   };
+
+
   const currentProductCode = item?.code || product?.code;
   const isPicked = pickLists.some((pick) => pick.code === currentProductCode);
 
@@ -122,7 +137,8 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             <p className="favorite">
               {/* 좋아요 */}
               <span className="favo">
-                <i>10</i>
+                {/* [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 likeCount 상태로 연결 */}
+                <i>{likeCount}</i>
                 <span
                   className={isPicked ? "active" : ""}
                   onClick={handleAddToPick}
