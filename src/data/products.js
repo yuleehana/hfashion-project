@@ -3836,6 +3836,32 @@ export const products = [
     ],
     thumbImg: '/images/products/T32F7NEW45TWT11BK/thumbnail.jpg',
   },
+  { // 상품추가 11/23 클레어 와이드 핏 데님 팬츠 추가
+    category: 'catewomen pants',
+    rating: 4,
+    made: '이집트',
+    date: '2025.10',
+    brand: 'TOMMY JEANS',
+    code: 'T32F6NEW31TWT11AB',
+    title: '클레어 와이드 핏 데님 팬츠',
+    price: 180900,
+    color: ['DENIM LIGHT'],
+    desc: [],
+    detail: [
+      '/images/products/T32F6NEW31TWT11AB/detail/1418042180862069.jpg',
+      '/images/products/T32F6NEW31TWT11AB/detail/1418043879037180.jpg'],
+    slide: [
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_1_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_2_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_3_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_4_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_5_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_6_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_7_ORGINL_1750755310823.jpg',
+      '/images/products/T32F6NEW31TWT11AB/slide/GM0125061729782_8_ORGINL_1750755310823.jpg',
+    ],
+    thumbImg: '/images/products/T32F6NEW31TWT11AB/thumbnail.jpg'
+  },
   {
     category: 'catewomen pants',
     rating: 5,
