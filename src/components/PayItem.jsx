@@ -9,7 +9,7 @@ const PayItem = () => {
     <div className="pay-item-list-wrap">
       <ul className="pay-item-list">
         {cartItems.map((item, id) => (
-          <>
+          // <>
             <li key={id} className="pay-item">
               <div className="pay-item-inner">
 
@@ -42,7 +42,7 @@ const PayItem = () => {
 
               </div>
             </li>
-          </>
+          // </>
         ))}
       </ul>
     </div>

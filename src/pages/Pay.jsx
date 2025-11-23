@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CartPo from "../components/CartPo";
 import "./sass/Pay.scss";
 import PayItem from "../components/PayItem";
 import {
@@ -7,12 +6,11 @@ import {
   paymethodsBank,
   paymethodsPay,
 } from "../data/paymethod";
-// import { useAuthStore } from "../store/authstore";
+import PayPo from "../components/PayPo";
 
 const Pay = () => {
   const [selectPay, setSelectPay] = useState("card");
 
-  // 클릭시 아래 depth가 열리도록
   const [openDepth, setOpenDepth] = useState(null);
 
   // 선택한 값 저장
@@ -30,7 +28,7 @@ const Pay = () => {
         [id]: value,
       },
     }));
-    setOpenDepth(!openDepth)
+    setOpenDepth(!openDepth);
   };
 
   useEffect(() => {
@@ -42,8 +40,9 @@ const Pay = () => {
 
     if (selectPay === "card") {
       list = paymethodsCard;
-      console.log(list);
+      // console.log(list);
     } else if (selectPay === "pay") {
+      // list = paymethodsPay;
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -69,7 +68,6 @@ const Pay = () => {
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-
         {"payDepth" in item ? (
           <div className="dropdown-wrapper">
             <button
@@ -99,8 +97,9 @@ const Pay = () => {
           </div>
         ) : (
           <div className="input-wrapper">
-            <label></label>
+            {/* <label></label> */}
             <input
+              id="select-bank"
               type="text"
               placeholder={item.label}
               className="input-box"
@@ -253,7 +252,7 @@ const Pay = () => {
           </div>
 
           <div className="pay-inner-right">
-            <CartPo />
+            <PayPo />
           </div>
         </div>
       </div>

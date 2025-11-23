@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authstore';
 import "./sass/MemberLogin.scss"
@@ -9,16 +9,44 @@ const MemberLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    // [KIM add save id 11-23] 아이디 저장 체크박스 상태를 관리하는 state를 추가 
+    const [rememberId, setRememberId] = useState(false);
 
     // 전역
     const { onLogin, onGoogleLogin } = useAuthStore();
     const navigate = useNavigate();
+
+    // [KIM add save id 11-23] 저장된 체크 상태를 확인
+    useEffect(() => {
+        const savedEmail = localStorage.getItem('savedEmail');
+        if (savedEmail) {
+            setEmail(savedEmail); // 저장된 이메일이 있다면 불러오기
+            setRememberId(true);  // 저장된 이메일이 있다면 체크 상태로 설정
+        }
+    }, []);
+
+    // [KIM add save id 11-23] 체크박스 상태 변경 핸들러 추가
+    const handleRememberIdChange = (e) => {
+        const isChecked = e.target.checked;
+        setRememberId(isChecked);
+
+        if (!isChecked) {
+            // 체크가 해제되는 즉시 저장된 이메일을 삭제.
+            // 새로고침 시 이메일이 로드되지 않아 체크 상태로 돌아가지 않음
+            localStorage.removeItem('savedEmail');
+        }
+    };
 
 
     // 메서드
     // 일반 로그인
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // [KIM add save id 11-23] 체크되어 있는 경우에만 저장
+        if (rememberId) {
+            localStorage.setItem('savedEmail', email);
+        }
 
         await onLogin(email, password);
 
@@ -32,9 +60,6 @@ const MemberLogin = () => {
         await onGoogleLogin();
         navigate('/');
     };
-
-
-
 
     return (
         <form className='login-wrap' onSubmit={handleSubmit}>
@@ -51,7 +76,17 @@ const MemberLogin = () => {
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
             <div className="idTag">
-                <label className='rememberId'><input type="checkbox" /> 아이디 저장</label>
+
+                {/*[KIM add save id 11-23] */}
+                <label className='rememberId'>
+                    <input
+                        type="checkbox"
+                        checked={rememberId}
+                        onChange={handleRememberIdChange}
+                    />
+                    아이디 저장
+                </label>
+
                 <p className='findIdPw'>
                     <span className='findId'>
                         <Link>아이디 찾기</Link>
@@ -71,7 +106,6 @@ const MemberLogin = () => {
                     H FASHION 회원
                 </button>
             </div>
-
         </form>
     )
 }
