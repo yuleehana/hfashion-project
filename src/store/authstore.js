@@ -48,6 +48,25 @@ export const useAuthStore = create((set) => ({
     }
   },
 
+  //비회원 상품리스트
+  nonCart: {
+    items: [],
+    totalPrice: 0,
+  },
+
+  setNoncart: (data) =>
+    set({
+      nonCart: {
+        items: data.items || [],
+        totalPrice: data.totalPrice || 0,
+      },
+    }),
+
+  clearNonCart: () =>
+    set({
+      nonCart: { items: [], totalPrice: 0 },
+    }),
+
   //비회원 주문자 변수
   nuser: null,
 
@@ -109,16 +128,16 @@ export const useAuthStore = create((set) => ({
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const fbUser = userCredential.user;
 
-      const userRef = doc(db, "users", fbUser.uid);
+      const userRef = doc(db, 'users', fbUser.uid);
       const userDoc = await getDoc(userRef);
 
-      if(userDoc.exists()){
+      if (userDoc.exists()) {
         set({
           user: {
             uid: fbUser.uid,
-            ...userDoc.data()
-          }
-        })
+            ...userDoc.data(),
+          },
+        });
       }
 
       // set({ user: userCredential.user });

@@ -1,0 +1,19 @@
+.non-popup-wrap {
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40% 20%;
+  .non-popup-inner {
+    position: absolute;
+    background: white;
+    transform: translate(0, -50%);
+    width: 60%;
+    height: 800px;
+  }
+}

@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import './sass/NonMember.scss';
-import OrderForm from '../components/OrderForm';
-import CartPo from '../components/CartPo';
+import PayItem from '../components/PayItem';
+import NonCartPo from '../components/NonCartPo';
+import { useCartStore } from '../store/useCartStore';
+import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 
 const NonMember = () => {
-  const { onNMember, onNAddress } = useAuthStore();
+  const { onNMember, onNAddress, setNoncart } = useAuthStore();
+
+  const { checkedTotalPrice, cartItems } = useCartStore();
+
+  const checkedList = cartItems.filter((c) => c.checked);
+  const navigate = useNavigate();
 
   //비회원 data저장내용
+
   //주문자 정보
   const [nonFormDat, setNonFormData] = useState({
     oname: '',
@@ -43,12 +51,18 @@ const NonMember = () => {
     setNonAddress(updateAddress);
   };
   console.log(nonAddress);
+  console.log('체크된 아이템', checkedList);
 
   //주문자정보 저장 메서드
-  const handelsubmit = (e) => {
-    e.preventDefault();
-    onNMember(nonFormDat);
-    onNAddress(nonAddress);
+  const handelsubmit = async () => {
+    // e.preventDefault();
+    await onNMember(nonFormDat);
+    await onNAddress(nonAddress);
+    setNoncart({
+      items: checkedList,
+      totalPrice: checkedTotalPrice,
+    });
+    navigate('/nonpay');
   };
 
   return (
@@ -112,9 +126,9 @@ const NonMember = () => {
                   </label>
 
                   <div>
-                    <button type="button" onClick={handelsubmit}>
+                    {/* <button type="button" onClick={handelsubmit}>
                       주문자정보저장
-                    </button>
+                    </button> */}
                   </div>
                 </form>
               </div>
@@ -164,21 +178,19 @@ const NonMember = () => {
                     />
                   </label>
                   <div>
-                    <button type="button" onClick={handelsubmit}>
+                    {/* <button type="button" onClick={handelsubmit}>
                       배송지정보저장
-                    </button>
+                    </button> */}
                   </div>
                 </form>
               </div>
             </div>
+            <p>주문상품</p>
             <div className="sub-inner-left-bottom">
-              {/* 주문 상품 컴포넌트 */}
-              <p>주문 상품 컴포넌트</p>
+              <PayItem />
             </div>
           </div>
-          <div className="sub-inner-right">
-            <CartPo />
-          </div>
+          <NonCartPo sendNonData={handelsubmit} pirce={checkedTotalPrice} />
         </div>
       </div>
     </div>
