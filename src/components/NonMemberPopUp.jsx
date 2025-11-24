@@ -35,49 +35,53 @@ const NonMemberPopUp = ({ data, onClose }) => {
     <div className="non-popup-wrap">
       <div className="non-popup-inner">
         <div className="non-popup-title">
-          <h2>비회원 주문 / 배송조회</h2>
-          <p>주문 내역을 확인하고 배송상태를 확인하세요!</p>
-          <p onClick={onClose}>x</p>
+          <div className="non-popup-title-l">
+            <h2>비회원 주문 / 배송조회</h2>
+            <p>주문 내역을 확인하고 배송상태를 확인하세요!</p>
+          </div>
+          <p onClick={onClose}>
+            <img src="/public/images/close-icon-black.svg" alt="X" />
+          </p>
         </div>
         <div className="non-popup-delivery">
           <div className="delivery delivery1">
             <span className="delivery-box delivery1-box"></span>
-            <span>{statusCounts[0]}</span>
-            <span>결제완료</span>
+            <span className="delivery-count">{statusCounts[0]}</span>
+            <span className="delivery-status">결제완료</span>
           </div>
           <div className="delivery delivery2">
             <span className="delivery-box delivery2-box"></span>
-            <span>{statusCounts[1]}</span>
-            <span>배송준비</span>
+            <span className="delivery-count">{statusCounts[1]}</span>
+            <span className="delivery-status">배송준비</span>
           </div>
           <div className="delivery delivery3">
             <span className="delivery-box delivery3-box"></span>
-            <span>{statusCounts[2]}</span>
-            <span>배송중</span>
+            <span className="delivery-count">{statusCounts[2]}</span>
+            <span className="delivery-status">배송중</span>
           </div>
           <div className="delivery delivery4">
             <span className="delivery-box delivery4-box"></span>
-            <span>{statusCounts[3]}</span>
-            <span>배송완료</span>
+            <span className="delivery-count">{statusCounts[3]}</span>
+            <span className="delivery-status">배송완료</span>
           </div>
         </div>
         <div className="non-popup-item-wrap">
           {items.map((d) => (
             <div className="non-popup-item">
               <div className="non-popup-item-t">
-                <span>주문번호 : {d.code}</span>
-                <span>{STATUS[d.status]}</span>
+                <span className="order-code">주문번호 : {d.code}</span>
+                <span className="order-status">{STATUS[d.status]}</span>
               </div>
               <div className="non-popup-item-b">
                 <div className="non-popup-item-b-r">
                   <img src={d.thumbImg} alt={d.title} />
                 </div>
                 <div className="non-popup-item-b-l">
-                  <span>{d.title}</span>
-                  <span>
+                  <span className="popup-item-title">{d.title}</span>
+                  <span className="popup-item-color">
                     색상 : {d.color} | 수량 : {d.count}
                   </span>
-                  <span>{(d.price * 0.8).toLocaleString()}원</span>
+                  <span className="popup-item-price">{(d.price * 0.8).toLocaleString()}원</span>
                 </div>
               </div>
             </div>
