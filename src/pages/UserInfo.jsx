@@ -154,7 +154,7 @@ const UserInfo = () => {
 
             <ul className="order-list">
               <li><BuyProductList /></li>
-              <li><BuyProductList /></li>
+              {/* <li><BuyProductList /></li> */}
             </ul>
 
             <div className="order-button-box">

@@ -31,13 +31,15 @@ const PayResultPopup = ({ onClose }) => {
 
   // 주문내역 저장하기
   const handlePaymentSuccess = () => {
+    if (!itemFirstValue) return;
+
     const orderItem = {
-      date: { today },
-      code: "",
-      thumbnail: "",
-      brand: "",
-      productName: "",
-      price: "",
+      date: today,
+      code: itemFirstValue.code,
+      thumbImg: itemFirstValue.thumbImg,
+      brand: itemFirstValue.brand,
+      title: itemFirstValue.title,
+      price: checkedTotalPrice,
     };
 
     addOrder(orderItem);
@@ -89,7 +91,10 @@ const PayResultPopup = ({ onClose }) => {
             <Link
               to="/userinfo"
               className="pay-detail"
-              onClick={handlePayFinish}
+              onClick={() => {
+                handlePaymentSuccess();
+                handlePayFinish();
+              }}
             >
               <button>주문 상세 내역 보기</button>
             </Link>
