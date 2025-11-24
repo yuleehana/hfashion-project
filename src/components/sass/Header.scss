@@ -111,6 +111,7 @@ header {
         }
 
         .inner-right {
+
             .gnb-list {
                 @include global.myFlex($gap: 40px);
                 line-height: 2.4rem;
@@ -118,15 +119,34 @@ header {
                 color: global.$main-color2;
                 font-size: 1.4rem;
 
-                a {
-                    display: block;
-                    color: inherit;
-                }
-
-                img {
+                .search-button {
                     width: 24px;
                     height: 24px;
                 }
+
+                a {
+                    display: block;
+                    color: inherit;
+
+                    img {
+                        width: 26px;
+                        height: 26px;
+                    }
+                }
+
+                .cart-count-icon {
+                    position: relative;
+                    .cart-count {
+                        position: absolute;
+                        display: block;
+                        width: 15px;
+                        height: 15px;
+                        font-size: 1.2rem;
+                        transform: translate(60%, -145%);
+                    }
+                }
+
+
             }
         }
     }

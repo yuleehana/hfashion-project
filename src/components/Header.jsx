@@ -63,7 +63,7 @@ const menus = [
 const Header = () => {
   const { user, onLogout } = useAuthStore();
   const { resetPcikList } = usePickStore();
-  const {resetCart} = useCartStore();
+  const {resetCart, cartItems} = useCartStore();
 
   const navigate = useNavigate();
   //   현재 경로
@@ -168,8 +168,9 @@ const Header = () => {
               </>
             )}
             <li>
-              <Link to="/cart">
+              <Link to="/cart" className='cart-count-icon'>
                 <img src="/images/cart-icon2-white.svg" alt="장바구니아이콘" />
+                <span className='cart-count'>{cartItems.length}</span>
               </Link>
             </li>
           </ul>
