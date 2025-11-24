@@ -7,6 +7,7 @@ import "./sass/PayResultPopup.scss";
 const PayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
   const { today } = usePayStore();
+  const addOrder = usePayStore((state) => state.addOrder);
   const navigate = useNavigate();
 
   // cartItems [0]
@@ -26,6 +27,20 @@ const PayResultPopup = ({ onClose }) => {
   const handlePayFinish = () => {
     onRemoveChecked();
     navigate("/userinfo");
+  };
+
+  // 주문내역 저장하기
+  const handlePaymentSuccess = () => {
+    const orderItem = {
+      date: { today },
+      code: "",
+      thumbnail: "",
+      brand: "",
+      productName: "",
+      price: "",
+    };
+
+    addOrder(orderItem);
   };
 
   return (
