@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CartPo from '../components/CartPo';
 import './sass/Pay.scss';
 import PayItem from '../components/PayItem';
 import { paymethodsCard, paymethodsBank, paymethodsPay } from '../data/paymethod';

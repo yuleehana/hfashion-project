@@ -8,13 +8,31 @@ import {
 } from "../data/paymethod";
 import PayPo from "../components/PayPo";
 import PayResultPopup from "../components/PayResultPopup";
+import { useAuthStore } from "../store/authstore";
+import { usePayStore } from "../store/usePayStore";
 
 const Pay = () => {
+  const { user } = useAuthStore();
+  const { receiverInfo, setReceiverInfo } = usePayStore();
+
+  // 유저 정보 가지고오기
+  const handleUserInfo = () => {
+    setReceiverInfo({
+      displayName: user.displayName,
+      phone: user.phone,
+      address: user.address,
+      address2: user.address2,
+      request: "",
+    });
+  };
+
+  // 결제수단 선택
   const [selectPay, setSelectPay] = useState("card");
 
+  // 결제수단 뎁스 오픈
   const [openDepth, setOpenDepth] = useState(null);
 
-  // 선택한 값 저장
+  // 선택한 결제수단 값 저장
   const [selectValue, setSelectValue] = useState({
     card: [],
     pay: [],
@@ -26,7 +44,7 @@ const Pay = () => {
 
   const handleOpenPopup = () => {
     setShowPopup(true);
-  }
+  };
 
   const handleSelect = (method, id, value) => {
     setSelectValue((v) => ({
@@ -131,8 +149,7 @@ const Pay = () => {
             <div className="user-info-wrap">
               <div className="user-info">
                 <span>주문자 정보</span>
-                <span></span>
-                {/* <input type="text" name="user" placeholder="이름" required /> */}
+                <span>{user?.displayName || null}</span>
               </div>
             </div>
 
@@ -140,7 +157,7 @@ const Pay = () => {
               <div className="address-top">
                 <span>배송지</span>
                 <div className="address-btn">
-                  <button className="btn xsmall grey">주문자와 동일</button>
+                  <button className="btn xsmall grey" onClick={handleUserInfo}>주문자와 동일</button>
                   <button className="btn xsmall grey">배송지 선택</button>
                 </div>
               </div>
@@ -152,6 +169,13 @@ const Pay = () => {
                     type="text"
                     name="displayName"
                     placeholder="상품을 받으실 분의 이름을 입력해주세요."
+                    value={receiverInfo.displayName}
+                    onChange={(e) =>
+                      setReceiverInfo({
+                        ...receiverInfo,
+                        displayName: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="address-input">
@@ -161,6 +185,13 @@ const Pay = () => {
                     name="phone"
                     placeholder="휴대폰 번호를 입력해주세요."
                     required
+                    value={receiverInfo.phone}
+                    onChange={(e) =>
+                      setReceiverInfo({
+                        ...receiverInfo,
+                        phone: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="address-input delivery">
@@ -174,12 +205,26 @@ const Pay = () => {
                       name="address"
                       placeholder="상품을 받으실 분의 주소를 입력해주세요."
                       required
+                      value={receiverInfo.address}
+                      onChange={(e) =>
+                        setReceiverInfo({
+                          ...receiverInfo,
+                          address: e.target.value,
+                        })
+                      }
                     />
                     <input
                       type="text"
                       name="address2"
                       placeholder="상세주소를 입력해주세요"
                       required
+                      value={receiverInfo.address2}
+                      onChange={(e) =>
+                        setReceiverInfo({
+                          ...receiverInfo,
+                          address2: e.target.value,
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -188,7 +233,7 @@ const Pay = () => {
                   <input
                     type="text"
                     name="request"
-                    placeholder="배송기사에게 전달되는 메시지입니다. 선택해주세요"
+                    placeholder="배송기사에게 전달되는 메시지입니다."
                   />
                 </div>
               </div>
@@ -260,12 +305,10 @@ const Pay = () => {
           </div>
 
           <div className="pay-inner-right">
-            <PayPo onOpenPopup={handleOpenPopup}/>
+            <PayPo onOpenPopup={handleOpenPopup} />
           </div>
 
-          {showPopup && (
-            <PayResultPopup onClose={() => setShowPopup(false)}/>
-          )}
+          {showPopup && <PayResultPopup onClose={() => setShowPopup(false)} />}
         </div>
       </div>
     </div>

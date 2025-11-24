@@ -46,7 +46,7 @@ const Login = () => {
             <Link className='btn middle primary wFull' to="/join">지금 회원가입하러 가기</Link>
             {/* <Link className='btn middle outline wFull' to="/join">지금 회원가입하러 가기</Link> */}
             {/* 추후 삭제될 내용입니다 */}
-            <h1>이메일 : yuleehana@naver.com</h1>
+            <h1>이메일 : aaaa@gmail.com</h1>
             <h1>비밀번호 : zhddl0815</h1>
             <h1>이메일 : abc@naver.com</h1>
             <h1>비밀번호 : qwer1234</h1>
