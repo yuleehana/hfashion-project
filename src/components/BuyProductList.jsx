@@ -3,8 +3,7 @@ import "./sass/BuyProductList.scss";
 import { usePayStore } from "../store/usePayStore";
 
 const BuyProductList = () => {
-  const orders = usePayStore((state) => state.orders);
-
+const {orders} = usePayStore();
   // 팝업에 표시되는 아이템명 자르기
   const truncateWords = (text, maxWords) => {
     if (!text) return "";
@@ -37,11 +36,11 @@ const BuyProductList = () => {
             <div className="product-item">
               <p className="brand-name">{order.brand}</p>
               <p className="product-name">
-                {truncateWords(order.title, 3)}
-                {orders.length > 1 && ` 외 ${orders.length - 1}건`}
+                {truncateWords(order.title, 5)}
+                {orders.length > 1 ? `외 ${orders.length - 1}건` : ""}
               </p>
 
-              <button >상세정보</button>
+              <button>상세정보</button>
             </div>
           </div>
 

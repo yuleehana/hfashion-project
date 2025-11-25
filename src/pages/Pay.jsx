@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './sass/Pay.scss';
-import PayItem from '../components/PayItem';
-import { paymethodsCard, paymethodsBank, paymethodsPay } from '../data/paymethod';
-import PayPo from '../components/PayPo';
-import PayResultPopup from '../components/PayResultPopup';
-import { useAuthStore } from '../store/authstore';
-import { usePayStore } from '../store/usePayStore';
+import React, { useEffect, useState } from "react";
+import "./sass/Pay.scss";
+import PayItem from "../components/PayItem";
+import {
+  paymethodsCard,
+  paymethodsBank,
+  paymethodsPay,
+} from "../data/paymethod";
+import PayPo from "../components/PayPo";
+import PayResultPopup from "../components/PayResultPopup";
+import { useAuthStore } from "../store/authstore";
+import { usePayStore } from "../store/usePayStore";
 
 const Pay = () => {
   const { user } = useAuthStore();
@@ -18,12 +22,12 @@ const Pay = () => {
       phone: user.phone,
       address: user.address,
       address2: user.address2,
-      request: '',
+      request: "",
     });
   };
 
   // 결제수단 선택
-  const [selectPay, setSelectPay] = useState('card');
+  const [selectPay, setSelectPay] = useState("card");
 
   // 결제수단 뎁스 오픈
   const [openDepth, setOpenDepth] = useState(null);
@@ -60,10 +64,10 @@ const Pay = () => {
   const renderDepth = () => {
     let list = [];
 
-    if (selectPay === 'card') {
+    if (selectPay === "card") {
       list = paymethodsCard;
       // console.log(list);
-    } else if (selectPay === 'pay') {
+    } else if (selectPay === "pay") {
       // list = paymethodsPay;
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
@@ -84,17 +88,19 @@ const Pay = () => {
           </label>
         </div>
       ));
-    } else if (selectPay === 'bank') {
+    } else if (selectPay === "bank") {
       list = paymethodsBank;
     }
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-        {'payDepth' in item ? (
+        {"payDepth" in item ? (
           <div className="dropdown-wrapper">
             <button
               className="dropdown-btn"
-              onClick={() => setOpenDepth(openDepth === item.id ? null : item.id)}
+              onClick={() =>
+                setOpenDepth(openDepth === item.id ? null : item.id)
+              }
             >
               {selectValue[selectPay][item.id] || item.label || item.title}
             </button>
@@ -105,7 +111,9 @@ const Pay = () => {
                   <li
                     key={depth.id}
                     className="dropdown-option"
-                    onClick={() => handleSelect(selectPay, item.id, depth.label)}
+                    onClick={() =>
+                      handleSelect(selectPay, item.id, depth.label)
+                    }
                   >
                     {depth.label}
                   </li>
@@ -236,9 +244,6 @@ const Pay = () => {
             <div className="item-wrap">
               <div className="item-top">
                 <span>주문상품</span>
-                <button>
-                  <img src="../../images/arrow-down-white.svg" alt="상품 더 보기" />
-                </button>
               </div>
               <hr />
               <div className="item-bottom">
@@ -269,22 +274,22 @@ const Pay = () => {
               <div className="payment-bottom">
                 <div className="pay-method-btns">
                   <button
-                    className={selectPay === 'card' ? 'active' : ''}
-                    onClick={() => setSelectPay('card')}
+                    className={selectPay === "card" ? "active" : ""}
+                    onClick={() => setSelectPay("card")}
                   >
                     신용카드
                   </button>
 
                   <button
-                    className={selectPay === 'pay' ? 'active' : ''}
-                    onClick={() => setSelectPay('pay')}
+                    className={selectPay === "pay" ? "active" : ""}
+                    onClick={() => setSelectPay("pay")}
                   >
                     간편결제
                   </button>
 
                   <button
-                    className={selectPay === 'bank' ? 'active' : ''}
-                    onClick={() => setSelectPay('bank')}
+                    className={selectPay === "bank" ? "active" : ""}
+                    onClick={() => setSelectPay("bank")}
                   >
                     무통장입금
                   </button>
