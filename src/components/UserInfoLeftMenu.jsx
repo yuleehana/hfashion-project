@@ -8,7 +8,7 @@ const UserInfoLeftMenu = () => {
 
     const menuList = [
     { title: '쇼핑 정보', link: '', list: [
-      {name:"주문/배송", link:"/userinfo/:notfoundmypage"},
+      {name:"주문/배송", link:"/userinfo/memberdelivery"},
       {name:"취소 / 교환 / 반품", link:"/userinfo/:notfoundmypage"},
       {name:"대량 주문", link:"/userinfo/:notfoundmypage"},
       {name:"찜 리스트", link:"/picklist"}
