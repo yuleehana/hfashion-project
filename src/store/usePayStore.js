@@ -23,7 +23,7 @@ export const usePayStore = create(
       // orders 배열에 주문 내역 추가
       addOrder: (order) =>
         set((state) => ({
-          orders: [...state.orders, ...order],
+          orders: [...state.orders, order],
         })),
 
       // 초기화

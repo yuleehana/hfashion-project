@@ -10,10 +10,17 @@ import PayPo from "../components/PayPo";
 import PayResultPopup from "../components/PayResultPopup";
 import { useAuthStore } from "../store/authstore";
 import { usePayStore } from "../store/usePayStore";
+import { useCartStore } from "../store/useCartStore";
 
 const Pay = () => {
   const { user } = useAuthStore();
   const { receiverInfo, setReceiverInfo } = usePayStore();
+  const { orders, addOrder, today } = usePayStore();
+  const { cartItems, checkedTotalPrice } = useCartStore();
+
+  // cartItems [0]
+  const filteredCart = cartItems.filter((c) => c.checked);
+  const itemFirstValue = filteredCart[0] || null;
 
   // 유저 정보 가지고오기
   const handleUserInfo = () => {
@@ -24,6 +31,27 @@ const Pay = () => {
       address2: user.address2,
       request: "",
     });
+  };
+
+  // 주문내역 저장하기
+  const handlePaymentSuccess = () => {
+    if (!itemFirstValue) return;
+
+    const orderItem = {
+      date: today,
+      code: itemFirstValue.code,
+      products: filteredCart.map((item) => ({
+        thumbImg: item.thumbImg,
+        brand: item.brand,
+        title: item.title,
+      })),
+      reward: Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString(),
+      price: checkedTotalPrice,
+    };
+
+    addOrder(orderItem);
+    setShowPopup(true);
+    console.log(orders);
   };
 
   // 결제수단 선택
@@ -41,10 +69,6 @@ const Pay = () => {
 
   // open popup
   const [showPopup, setShowPopup] = useState(false);
-
-  const handleOpenPopup = () => {
-    setShowPopup(true);
-  };
 
   const handleSelect = (method, id, value) => {
     setSelectValue((v) => ({
@@ -301,7 +325,7 @@ const Pay = () => {
           </div>
 
           <div className="pay-inner-right">
-            <PayPo onOpenPopup={handleOpenPopup} />
+            <PayPo onOpenPopup={handlePaymentSuccess} />
           </div>
 
           {showPopup && <PayResultPopup onClose={() => setShowPopup(false)} />}

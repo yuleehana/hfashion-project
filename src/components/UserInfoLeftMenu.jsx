@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './sass/UserInfoLeftMenu.scss';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./sass/UserInfoLeftMenu.scss";
 
 const UserInfoLeftMenu = () => {
   // const [liOpen, setLiOpen] = useState(null);
   const navigate = useNavigate();
 
-    const menuList = [
-    { title: '쇼핑 정보', link: '', list: [
-      {name:"주문/배송", link:"/userinfo/memberdelivery"},
-      {name:"찜 리스트", link:"/picklist"}
-    ] },
+  const menuList = [
     {
-      title: '회원정보',
-      link:"/userinfo/memberinfor",
+      title: "쇼핑 정보",
+      link: "",
+      list: [
+        { name: "주문/배송", link: "/userinfo/memberdelivery" },
+        { name: "찜 리스트", link: "/picklist" },
+      ],
+    },
+    {
+      title: "회원정보",
+      link: "/userinfo/memberinfor",
       list: [],
     },
   ];
 
-  const handleNavigate = (index) => {    
+  const handleNavigate = (index) => {
     const pathname = menuList[index].link;
     if (pathname) navigate(pathname);
   };
@@ -29,13 +33,13 @@ const UserInfoLeftMenu = () => {
       {menuList.map((item, index) => (
         <div key={index} className="menu-list">
           <button onClick={() => handleNavigate(index)}>{item.title}</button>
-            <ul>
-              {item.list.map((one, id) => (
-                <li key={id}>
-                  <Link to={one.link}>{one.name}</Link>
-                </li>
-              ))}
-            </ul>
+          <ul>
+            {item.list.map((one, id) => (
+              <li key={id}>
+                <Link to={one.link}>{one.name}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
