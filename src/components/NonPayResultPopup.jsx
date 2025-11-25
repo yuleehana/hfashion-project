@@ -4,8 +4,8 @@ import { useCartStore } from '../store/useCartStore';
 import { usePayStore } from '../store/usePayStore';
 import './sass/PayResultPopup.scss';
 
-const PayResultPopup = ({ onClose }) => {
-  const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
+const NonPayResultPopup = ({ onClose }) => {
+  const { checkedTotalPrice, cartItems, onRemoveChecked, resetCart } = useCartStore();
   const { today } = usePayStore();
   const addOrder = usePayStore((state) => state.addOrder);
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const PayResultPopup = ({ onClose }) => {
 
   const handlePayFinish = () => {
     onRemoveChecked();
-    navigate('/userinfo');
+    resetCart();
   };
 
   // 주문내역 저장하기
@@ -84,10 +84,10 @@ const PayResultPopup = ({ onClose }) => {
             </div>
           </div>
           <div className="pay-result-btn">
-            <Link to="/userinfo" className="pay-detail" onClick={handlePayFinish}>
-              <button>주문 상세 내역 보기</button>
+            <Link to={'/login'} className="pay-detail" onClick={handlePayFinish}>
+              <button>비회원 주문내역 보러가기</button>
             </Link>
-            <Link to="/" className="to-main">
+            <Link to="/" className="to-main" onClick={handlePayFinish}>
               <button>메인 화면 가기</button>
             </Link>
           </div>
@@ -97,4 +97,4 @@ const PayResultPopup = ({ onClose }) => {
   );
 };
 
-export default PayResultPopup;
+export default NonPayResultPopup;

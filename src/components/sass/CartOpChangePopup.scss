@@ -13,15 +13,31 @@
   line-height: 1.6;
 
   .cart-op-popup {
+    width: 500px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    padding: 40px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    .op-popup-middle {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      .op-popup-change {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+    .op-popup-button {
+      button {
+        width: 45%;
+      }
+    }
   }
 }
 .op-color-change {
