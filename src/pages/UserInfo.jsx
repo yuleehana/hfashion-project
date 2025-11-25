@@ -1,13 +1,22 @@
-import React from 'react';
-import { useAuthStore } from '../store/authstore';
-import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
-import BuyProductList from '../components/BuyProductList';
-import './sass/UserInfo.scss';
+import React, { useEffect } from "react";
+import { useAuthStore } from "../store/authstore";
+import { useNavigate } from "react-router-dom";
+import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
+import BuyProductList from "../components/BuyProductList";
+import "./sass/UserInfo.scss";
 
 const UserInfo = () => {
   const { user } = useAuthStore();
+  const navigate = useNavigate(); // ← navigate 함수 선언
 
-  if (!user) return <p>로딩중...</p>;
+  // ← user가 없으면 메인 페이지로 이동하도록 useEffect 추가
+  useEffect(() => {
+    if (!user) {
+      navigate("/"); // "/" 는 메인 페이지 경로에 맞게 변경
+    }
+  }, [user, navigate]);
+
+  if (!user) return null; // 로딩 대신 화면 표시 안 함
 
   return (
     <div className="sub-page">
@@ -19,7 +28,6 @@ const UserInfo = () => {
 
         {/* RIGHT CONTENT */}
         <div className="user-info-right">
-
           {/* PROFILE SECTION */}
           <div className="profile-section">
             <div className="username">
@@ -55,8 +63,9 @@ const UserInfo = () => {
             <h2 className="section-title">최근 주문</h2>
 
             <ul className="order-list">
-              <li><BuyProductList /></li>
-              {/* <li><BuyProductList /></li> */}
+              <li>
+                <BuyProductList />
+              </li>
             </ul>
 
             <div className="order-button-box">
@@ -65,7 +74,6 @@ const UserInfo = () => {
               <button>취소/교환/반품 0건</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
