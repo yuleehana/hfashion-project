@@ -1,22 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthStore } from "../store/authstore";
-import { useNavigate } from "react-router-dom";
 import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
 import BuyProductList from "../components/BuyProductList";
 import "./sass/UserInfo.scss";
+import { Navigate } from "react-router-dom";
 
 const UserInfo = () => {
   const { user } = useAuthStore();
   const navigate = useNavigate(); // ← navigate 함수 선언
 
-  // ← user가 없으면 메인 페이지로 이동하도록 useEffect 추가
-  useEffect(() => {
-    if (!user) {
-      navigate("/"); // "/" 는 메인 페이지 경로에 맞게 변경
-    }
-  }, [user, navigate]);
-
-  if (!user) return null; // 로딩 대신 화면 표시 안 함
+  // if (!user) return <p>로딩중...</p>
+  // 영원 로딩은 안될 문제라 아래 코드로 수정했습니다. KIM:11-25
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="sub-page">
@@ -66,6 +63,7 @@ const UserInfo = () => {
               <li>
                 <BuyProductList />
               </li>
+              {/* <li><BuyProductList /></li> */}
             </ul>
 
             <div className="order-button-box">
