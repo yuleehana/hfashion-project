@@ -16,8 +16,8 @@ const ProductListPage = ({ category }) => {
   const [items, setItems] = useState(allItems);
 
   //가격을 담을변수
-  const [filterPrice, setFilterPrice] = useState(null);
-  const [filterPrice2, setFilterPrice2] = useState(null);
+  const [filterPrice, setFilterPrice] = useState("");
+  const [filterPrice2, setFilterPrice2] = useState("");
 
   // 2. 커스텀 훅 호출! 모든 페이지네이션 로직이 캡슐화됨
   const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(items, 40);
@@ -98,18 +98,16 @@ const ProductListPage = ({ category }) => {
   };
   //input1 저장메서드
   const rememberP = (e) => {
-    setFilterPrice(Number(e.target.value));
-    console.log(filterPrice);
+    setFilterPrice(e.target.value);
   };
   //input2 저장메서드
   const rememberP2 = (e) => {
-    setFilterPrice2(Number(e.target.value));
-    console.log(filterPrice2);
+    setFilterPrice2(e.target.value);
   };
   //input1이상 input2이하의 제품을 골라내는 메서드
   const checkPrice = () => {
     const priceFinalItem = allItems.filter(
-      (i) => filterPrice <= i.price * 0.8 && filterPrice2 >= i.price * 0.8
+      (i) => Number(filterPrice) <= i.price * 0.8 && Number(filterPrice2) >= i.price * 0.8
     );
     setItems(priceFinalItem);
   };
@@ -152,14 +150,14 @@ const ProductListPage = ({ category }) => {
         <div className="product-filter-top">
           <p className="product-filter-top-l">Filter</p>
           {/* <p>{rightFilte ? sortOptions[0].name}</p> */}
-          <p
+          <div
             className={`product-filter-top-filter ${rightFilter ? 'active' : ''}`}
             onClick={() => setRightFilter(!rightFilter)}
             ref={filterRef}
           >
             {filterName}
             <div className="product-filter-top-r ">
-              <ul className={rightFilter == true ? 'active' : ' '}>
+              <ul className={rightFilter === true ? 'active' : ' '}>
                 {sortOptions.map((sortOption, id) => (
                   <li key={id} onClick={sortOption.handler}>
                     {sortOption.name}
@@ -167,7 +165,7 @@ const ProductListPage = ({ category }) => {
                 ))}
               </ul>
             </div>
-          </p>
+          </div>
         </div>
         <div className="product-filter-bot">
           <ul className="product-filter-bot-t">
@@ -184,28 +182,24 @@ const ProductListPage = ({ category }) => {
           <ul className="product-filter-bot-b">
             <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
               {itemBrands.map((brand) => (
-                <>
-                  <label onClick={() => handleBrand(brand)} key={brand}>
-                    {brand}
-                    <input type="radio" name="brand" />
-                  </label>
-                </>
+                <label onClick={() => handleBrand(brand)} key={brand}>
+                  {brand}
+                  <input type="radio" name="brand" />
+                </label>
               ))}
             </li>
             <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
-              {itemMades.map((i) => (
-                <>
-                  <label onClick={() => handleCountry(i)}>
-                    {i}
-                    <input type="radio" name="product-detail-country" />
-                  </label>
-                </>
+              {itemMades.map((made) => (
+                <label key={made} onClick={() => handleCountry(made)}>
+                  {made}
+                  <input type="radio" name="product-detail-country" />
+                </label>
               ))}
             </li>
             <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
               <div className="price-tag-t">
                 {priceRange.map((p) => (
-                  <p>
+                  <p key={p.value}>
                     <label onClick={() => handlePrice(p.value)}>
                       {p.name}
                       <input type="radio" className="product-detail-price" name="list-price" />
@@ -228,15 +222,17 @@ const ProductListPage = ({ category }) => {
       </div>
 
       <ul className="sub-goods-list">
-        {currentItems.map((item) => (
-          <li key={item.code}>
-            <Link to={`/product-detail/${item.code}`}>
-              <ProductCard sendItem={item} />
-            </Link>
-          </li>
-        ))}
-        {/* 상품이 없을 때 */}
-        {currentItems.length === 0 && <li className="no-items">해당 브랜드의 상품이 없습니다.</li>}
+        {currentItems.length > 0 ? (
+          currentItems.map((item) => (
+            <li key={item.code}>
+              <Link to={`/product-detail/${item.code}`}>
+                <ProductCard sendItem={item} />
+              </Link>
+            </li>
+            ))
+          ) : (
+            <li className='no-items'>해당 브랜드의 상품이 없습니다</li>
+        )}
       </ul>
       <Pagination
         currentPage={currentPage}

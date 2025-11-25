@@ -33,8 +33,8 @@ const BrandListPage = ({ brand }) => {
   const [filterName, setFilterName] = useState('신 상품순');
 
   //가격을 담을변수
-  const [filterPrice, setFilterPrice] = useState(null);
-  const [filterPrice2, setFilterPrice2] = useState(null);
+  const [filterPrice, setFilterPrice] = useState(0);
+  const [filterPrice2, setFilterPrice2] = useState(0);
 
   const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(
     items,
@@ -113,11 +113,13 @@ const BrandListPage = ({ brand }) => {
   //input1 저장메서드
   const rememberP = (e) => {
     setFilterPrice(Number(e.target.value));
+    console.log(filterPrice);
   };
 
   //input2 저장메서드
   const rememberP2 = (e) => {
     setFilterPrice2(Number(e.target.value));
+    console.log(filterPrice2);
   };
 
   // p~p2사이의 제품을 골라내는 메서드
@@ -173,7 +175,6 @@ const BrandListPage = ({ brand }) => {
   };
 
   console.log(itemBrands);
-  console.log(itemBrands);
 
   // 출력 ------------------------------------------------------------------------------
   return (
@@ -183,22 +184,22 @@ const BrandListPage = ({ brand }) => {
           <div className="product-filter-top">
             <p className="product-filter-top-l">Filter</p>
             {/* <p>{rightFilter ? sortOptions[0].name}</p> */}
-            <p
+            <div
               className={`product-filter-top-filter ${rightFilter ? 'active' : ''}`}
               onClick={() => setRightFilter(!rightFilter)}
               ref={filterRef}
             >
               {filterName}
               <div className="product-filter-top-r ">
-                <ul className={rightFilter == true ? 'active' : ' '}>
-                  {sortOptions.map((sortOption, id) => (
-                    <li key={id} onClick={sortOption.handler}>
+                <ul className={rightFilter === true ? 'active' : ' '}>
+                  {sortOptions.map((sortOption, idx) => (
+                    <li key={idx} onClick={sortOption.handler}>
                       {sortOption.name}
                     </li>
                   ))}
                 </ul>
               </div>
-            </p>
+            </div>
           </div>
           <div className="product-filter-bot">
             <ul className="product-filter-bot-t">
@@ -215,12 +216,10 @@ const BrandListPage = ({ brand }) => {
             <ul className="product-filter-bot-b">
               <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
                 {itemBrands.map((brand) => (
-                  <>
-                    <label onClick={() => handleBrand(brand)} key={brand}>
-                      {brand}
-                      <input type="radio" name="brand" />
-                    </label>
-                  </>
+                  <label onClick={() => handleBrand(brand)} key={brand}>
+                    {brand}
+                    <input type="radio" name="brand" />
+                  </label>
                 ))}
               </li>
               <li
@@ -228,23 +227,19 @@ const BrandListPage = ({ brand }) => {
                 style={{ display: activeFilter === 1 ? 'flex' : 'none' }}
               >
                 {itemMades.map((i) => (
-                  <>
-                    <label onClick={() => handleCountry(i)}>
-                      {i}
-                      <input type="radio" name="product-detail-country" />
-                    </label>
-                  </>
+                  <label onClick={() => handleCountry(i)} key={i}>
+                    {i}
+                    <input type="radio" name="product-detail-country" />
+                  </label>
                 ))}
               </li>
               <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
                 <div className="price-tag-t">
-                  {priceRange.map((p) => (
-                    <p>
-                      <label onClick={() => handlePrice(p.value)}>
-                        {p.name}
-                        <input type="radio" className="product-detail-price" name="list-price" />
-                      </label>
-                    </p>
+                  {priceRange.map((p, id) => (
+                    <label onClick={() => handlePrice(p.value)} key={id}>
+                      {p.name}
+                      <input type="radio" className="product-detail-price" name="list-price" />
+                    </label>
                   ))}
                 </div>
                 <div className="price-tag-b">
