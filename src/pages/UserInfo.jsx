@@ -3,7 +3,7 @@ import { useAuthStore } from "../store/authstore";
 import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
 import BuyProductList from "../components/BuyProductList";
 import "./sass/UserInfo.scss";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const UserInfo = () => {
   const { user } = useAuthStore();
