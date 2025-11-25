@@ -66,8 +66,8 @@ const NonMemberPopUp = ({ data, onClose }) => {
           </div>
         </div>
         <div className="non-popup-item-wrap">
-          {items.map((d) => (
-            <div className="non-popup-item">
+          {items.map((d, index) => (
+            <div className="non-popup-item" key={index}>
               <div className="non-popup-item-t">
                 <span className="order-code">주문번호 : {d.code}</span>
                 <span className="order-status">{STATUS[d.status]}</span>

@@ -7,6 +7,7 @@ import { Navigate } from "react-router-dom";
 
 const UserInfo = () => {
   const { user } = useAuthStore();
+  const navigate = useNavigate(); // ← navigate 함수 선언
 
   // if (!user) return <p>로딩중...</p>
   // 영원 로딩은 안될 문제라 아래 코드로 수정했습니다. KIM:11-25

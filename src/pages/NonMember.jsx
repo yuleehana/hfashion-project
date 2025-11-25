@@ -56,8 +56,31 @@ const NonMember = () => {
   //주문자정보 저장 메서드
   const handelsubmit = async () => {
     // e.preventDefault();
+    if (!nonFormDat.oname.trim()) {
+      return alert('주문자 이름이 없습니다.');
+    } else if (!nonFormDat.ophone.trim()) {
+      return alert('주문자 전화번호가 없습니다.');
+    } else if (!nonFormDat.oemail.trim()) {
+      return alert('주문자 이메일이 없습니다.');
+    } else if (!nonFormDat.opassword.trim()) {
+      return alert('주문 비밀번호가 없습니다.');
+    } else if (!nonFormDat.opasswordcheck.trim()) {
+      return alert('주문 비밀번호가 없습니다.');
+    } else if (!nonAddress.nname) {
+      return alert('수령자 이름이 없습니다.');
+    } else if (!nonAddress.nphone) {
+      return alert('수령자 전화번호가 없습니다.');
+    } else if (!nonAddress.naddress) {
+      return alert('발송 주소가 없습니다.');
+    } else if (!nonAddress.naddress2) {
+      return alert('발송 주소가 없습니다.');
+    } else if (!nonAddress.nrequest) {
+      return alert('발송 요청사항이 없습니다.');
+    }
+
     await onNMember(nonFormDat);
     await onNAddress(nonAddress);
+
     setNoncart({
       items: checkedList,
       totalPrice: checkedTotalPrice,
