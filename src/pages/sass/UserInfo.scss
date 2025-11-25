@@ -129,6 +129,7 @@
 //     }
 //   }
 // }
+@use "../../App.scss" as g;
 
 .content-inner {
   display: flex;
@@ -150,7 +151,7 @@
       margin-bottom: 60px;
 
       .username {
-        font-size: 26px;
+        font-size: 2.6rem;
         margin-bottom: 34px;
       }
 
@@ -161,23 +162,23 @@
         gap: 20px;
 
         .summary-box {
-          background: #111;
-          padding: 30px 24px;
-          border-radius: 4px;
-          color: #fff;
+          background: g.$main-color1;
+          padding: 20px;
+          color: g.$main-color2;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           height: 140px;
 
           .box-label {
-            font-size: 14px;
-            opacity: 0.7;
+            font-size: 1.6rem;
+            color: g.$main-color2;
           }
 
           .box-value {
-            font-size: 28px;
-            font-weight: 600;
+            font-size: 2.8rem;
+            font-weight: 500;
+            text-align: right;
           }
         }
       }
@@ -188,7 +189,7 @@
       width: 100%;
 
       .section-title {
-        font-size: 26px;
+        font-size: 2.6rem;
         margin-bottom: 30px;
       }
 
@@ -203,12 +204,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #f8f3f0;
+        background: g.$main-color2;
         padding: 24px 0;
         gap: 30px;
 
         button {
-          font-size: 14px;
+          font-size: 1.4rem;
           text-decoration: underline;
           background: none;
           border: none;
@@ -217,7 +218,7 @@
 
         p {
           color: #bababa;
-          font-size: 16px;
+          font-size: 1.6rem;
         }
       }
     }
