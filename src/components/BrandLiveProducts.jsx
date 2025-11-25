@@ -14,6 +14,7 @@ const BrandLiveProducts = ({ mainNew, brand }) => {
         <div className="brand-live-wrap-left-img">
           {sData.map((s) => (
             <BrandLiveProduct
+              key={s.code || s.id}
               thumbImg={s.thumbImg}
               id={s.id}
               title={s.title}
