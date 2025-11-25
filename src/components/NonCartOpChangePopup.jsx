@@ -40,10 +40,17 @@ const CartOpChangePopup = ({ onClose, item }) => {
     <div className="cart-op-change-wrap">
       <div className="cart-op-popup" onClick={(e) => e.preventDefault()}>
         <div className="op-popup-title">
-          <h2>옵션변경</h2>
+          <h4>옵션변경</h4>
         </div>
 
         <div className="op-popup-middle">
+          <div className="op-popup-item">
+            <div className="op-text-box">
+              <span className="op-brand"></span>
+              <span className="op-title"></span>
+            </div>
+          </div>
+
           <div className="op-popup-change">
             <div className="op-size-change">
               <p>사이즈 선택 </p>
@@ -79,14 +86,14 @@ const CartOpChangePopup = ({ onClose, item }) => {
               <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
             </p>
           </div>
-          <div className="op-change-price">가격 : {(price * 0.8 * count).toLocaleString()}원 </div>
+          <div>가격 : {(price * 0.8 * count).toLocaleString()}원 </div>
         </div>
 
         <div className="op-popup-button" style={{ display: 'flex', gap: '20px' }}>
-          <button className="btn middle secondary" type="button" onClick={onClose}>
+          <button type="button" onClick={onClose}>
             취소
           </button>
-          <button className="btn middle primary " type="button" onClick={handleUpdate}>
+          <button type="button" onClick={handleUpdate}>
             변경
           </button>
         </div>

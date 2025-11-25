@@ -5,12 +5,22 @@ import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 import Paybutton from './Paybutton';
 
-const NonCartPo = ({ sendNonData, to, price }) => {
+const NonCartPo = ({ sendNonData, to, price, onOpenPopup }) => {
   const { totalPrice, checkedTotalPrice, cartItems, checkedList } = useCartStore();
 
-  const { onNMember, onNAddress } = useAuthStore();
+  const handleClick = async () => {
+    // 옵션: 팝업 먼저 열기
+    if (typeof onOpenPopup === 'function') onOpenPopup();
 
-  const [totalCheck, setTotalCheck] = useState(true);
+    // DB 저장은 비동기라 try/catch 권장
+    if (typeof sendNonData === 'function') {
+      try {
+        await sendNonData();
+      } catch (err) {
+        console.error('save error', err);
+      }
+    }
+  };
 
   console.log('전체카트아이템 항목', cartItems);
   console.log('체크된항목', checkedTotalPrice);
@@ -51,7 +61,7 @@ const NonCartPo = ({ sendNonData, to, price }) => {
           </div>
 
           <div className="cartPo-btn">
-            <Paybutton onClick={sendNonData} to={to} price={checkedTotalPrice * 0.8} />
+            <Paybutton onClick={handleClick} to={to} price={checkedTotalPrice * 0.8} />
           </div>
         </div>
       </div>

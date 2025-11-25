@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
+import NonPayResultPopup from '../components/NonPayResultPopup';
 
 const payMethods = [
   { id: 1, paymethod: 'card', title: '신용카드' },
@@ -18,7 +19,13 @@ const payMethods = [
 const NonPay = () => {
   const { checkedTotalPrice, resetCart } = useCartStore();
   const { nuser, naddress, nonCart } = useAuthStore();
+  const [selectPay, setSelectPay] = useState('card');
+
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  };
 
   const saveNonpay = async () => {
     const ophone = nuser.ophone;
@@ -31,8 +38,8 @@ const NonPay = () => {
     });
 
     console.log('비회원 장바구니', nonCart);
-    navigate('/nonmemberordersheet');
-    resetCart();
+    // navigate('/nonmemberordersheet');
+    // resetCart();
     alert('비회원 주문이 완료되었습니다.');
   };
 
@@ -163,16 +170,27 @@ const NonPay = () => {
               </div>
               <hr />
               <div className="payment-bottom">
-                <div className="pay-method-buttons">
-                  {payMethods.map((method) => (
-                    <button
-                      key={method.id}
-                      className={selectedMethod === method.paymethod ? 'active' : ''}
-                      onClick={() => setSelectedMethod(method.paymethod)}
-                    >
-                      {method.title}
-                    </button>
-                  ))}
+                <div className="pay-method-btns">
+                  <button
+                    className={selectPay === 'card' ? 'active' : ''}
+                    onClick={() => setSelectPay('card')}
+                  >
+                    신용카드
+                  </button>
+
+                  <button
+                    className={selectPay === 'pay' ? 'active' : ''}
+                    onClick={() => setSelectPay('pay')}
+                  >
+                    간편결제
+                  </button>
+
+                  <button
+                    className={selectPay === 'bank' ? 'active' : ''}
+                    onClick={() => setSelectPay('bank')}
+                  >
+                    무통장입금
+                  </button>
                 </div>
 
                 <div className="pay-method-depth">{renderDepth()}</div>
@@ -181,8 +199,14 @@ const NonPay = () => {
           </div>
 
           <div className="pay-inner-right">
-            <NonCartPo sendNonData={saveNonpay} pirce={checkedTotalPrice} />
+            <NonCartPo
+              onOpenPopup={handleOpenPopup}
+              sendNonData={saveNonpay}
+              pirce={checkedTotalPrice}
+            />
           </div>
+
+          {showPopup && <NonPayResultPopup onClose={() => setShowPopup(false)} />}
         </div>
       </div>
     </div>
