@@ -15,7 +15,6 @@ import DetailPageReview from '../components/DetailPageReview';
 import ProductQNA from '../components/ProductQNA';
 import CartPopup from '../components/CartPopup';
 
-
 const ProductDetail = () => {
   const { code } = useParams();
   // console.log(code);
@@ -24,7 +23,6 @@ const ProductDetail = () => {
 
   // 팝업창을 보이고 숨길 변수
   const [showPopup, setShowPopup] = useState(false);
-  
 
   // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');
@@ -32,7 +30,6 @@ const ProductDetail = () => {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
-
 
   // 컴포넌트가 처음 렌더링되거나 code가 변경될 때 상품 찾기
   useEffect(() => {
@@ -80,15 +77,12 @@ const ProductDetail = () => {
           )}
         </div>
         <div className="detail-right" style={{ backgroundImage: 'url(``)' }}>
-          <ProductDetailRightInfo product={product}
-            onOpenPopup={() => setShowPopup(true)}
-          />
+          <ProductDetailRightInfo product={product} onOpenPopup={() => setShowPopup(true)} />
         </div>
       </div>
 
       {showPopup && <CartPopup onClose={() => setShowPopup(false)} />}
     </div>
-
   );
 };
 

@@ -1,16 +1,15 @@
-import React from 'react'
-import "./sass/ReviewCard.scss";
+import React from 'react';
+import './sass/ReviewCard.scss';
 
-const ReviewCard = ({item, index = 0}) => {
+const ReviewCard = ({ item, index = 0 }) => {
   //detail > slide > thumbImg 순으로 사용
-  const imageList = (item.slide && item.slide.length > 0)
-      ? item.slide : [item.thumbImg];
+  const imageList = item.slide && item.slide.length > 0 ? item.slide : [item.thumbImg];
 
   //index에 따라 다른 이미지 선택 (이미지 개수보다 많으면 %로 반복)
   const imgSrc = imageList[index % imageList.length];
 
   return (
-    <div className='review-card'>
+    <div className="review-card">
       <div className="img-box">
         <img src={imgSrc} alt={item.title} />
       </div>
@@ -27,10 +26,16 @@ const ReviewCard = ({item, index = 0}) => {
           <div className="rating-box">
             <span>평점</span>
             <div className="stars">
-              {[1,2,3,4,5].map((num) => (
-                <img key={num} src={num <= item.rating ?
-                    "/images/icon-star-black.svg" : "/images/icon-star-white.svg"
-                  } alt="star" className='star-icon' 
+              {[1, 2, 3, 4, 5].map((num) => (
+                <img
+                  key={num}
+                  src={
+                    num <= item.rating
+                      ? '/images/icon-star-black.svg'
+                      : '/images/icon-star-white.svg'
+                  }
+                  alt="star"
+                  className="star-icon"
                 />
               ))}
             </div>
@@ -38,7 +43,7 @@ const ReviewCard = ({item, index = 0}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ReviewCard
+export default ReviewCard;

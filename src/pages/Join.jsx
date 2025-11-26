@@ -25,16 +25,18 @@ const Join = () => {
   const [passwordTouched, setPasswordTouched] = useState(false);
 
   const setUser = useAuthStore((state) => state.setUser);
-  const { onMember } = useAuthStore();
+  const { onMember, user } = useAuthStore();
 
   //주소 모달열림상태
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const [rememberAddress, setRememberAddress] = useState('');
 
   //주소 검색완료시 -> 검색한 데이타를 firebase user방안에넣는 메서드
   //address방으로 그대로 들어가니깐 구조에 문제 없음
   const handleComplete = (data) => {
     const fullAddress = data.address;
     setFormData({ ...formData, address: fullAddress });
+    setRememberAddress(fullAddress);
     setIsPostcodeOpen(false);
   };
 
@@ -69,6 +71,9 @@ const Join = () => {
       }
     }
   };
+
+  console.log('선택한 주소', rememberAddress);
+  console.log('사용자 정보', user);
 
   return (
     <div className="sub-page">
@@ -161,11 +166,12 @@ const Join = () => {
                   name="address"
                   placeholder="주소를 검색해주세요"
                   onChange={handleChange}
+                  value={rememberAddress}
                 />
                 <button
                   className="btn middle outline"
                   type="button"
-                  onClick={(_) => setIsPostcodeOpen(true)}
+                  onClick={() => setIsPostcodeOpen(true)}
                 >
                   주소검색
                 </button>

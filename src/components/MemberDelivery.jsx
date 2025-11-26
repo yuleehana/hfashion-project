@@ -1,20 +1,18 @@
-import React from "react";
-import { usePayStore } from "../store/usePayStore";
-import { Link } from "react-router-dom";
-import "./sass/MemberDelivery.scss";
+import React from 'react';
+import { usePayStore } from '../store/usePayStore';
+import { Link } from 'react-router-dom';
+import './sass/MemberDelivery.scss';
 
-const delStatus = ["결제완료", "배송준비", "배송중", "배송완료"];
+const delStatus = ['결제완료', '배송준비', '배송중', '배송완료'];
 
 const MemberDelivery = () => {
-  const { orders, receiverInfo } = usePayStore();
+  const { orders } = usePayStore();
 
   const truncateWords = (text, maxWords) => {
-    if (!text) return "";
+    if (!text) return '';
 
-    const words = text.split(" ");
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + " ..."
-      : text;
+    const words = text.split(' ');
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
   };
 
   return (
@@ -69,7 +67,7 @@ const MemberDelivery = () => {
                                 {truncateWords(firstProduct.title, 5)}
                                 {order.products.length > 1
                                   ? ` 외 ${order.products.length - 1}건`
-                                  : ""}
+                                  : ''}
                               </span>
                             </div>
                             <div className="del-item-price">

@@ -18,11 +18,9 @@ const Pay = () => {
   const { orders, addOrder, today } = usePayStore();
   const { cartItems, checkedTotalPrice } = useCartStore();
 
-  // cartItems [0]
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
 
-  // 유저 정보 가지고오기
   const handleUserInfo = () => {
     setReceiverInfo({
       displayName: user.displayName,
@@ -33,7 +31,6 @@ const Pay = () => {
     });
   };
 
-  // 주문내역 저장하기
   const handlePaymentSuccess = () => {
     if (!itemFirstValue) return;
 
@@ -54,20 +51,16 @@ const Pay = () => {
     console.log(orders);
   };
 
-  // 결제수단 선택
   const [selectPay, setSelectPay] = useState("card");
 
-  // 결제수단 뎁스 오픈
   const [openDepth, setOpenDepth] = useState(null);
 
-  // 선택한 결제수단 값 저장
   const [selectValue, setSelectValue] = useState({
     card: [],
     pay: [],
     bank: [],
   });
 
-  // open popup
   const [showPopup, setShowPopup] = useState(false);
 
   const handleSelect = (method, id, value) => {
@@ -90,9 +83,7 @@ const Pay = () => {
 
     if (selectPay === "card") {
       list = paymethodsCard;
-      // console.log(list);
     } else if (selectPay === "pay") {
-      // list = paymethodsPay;
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -121,16 +112,27 @@ const Pay = () => {
         {"payDepth" in item ? (
           <div className="dropdown-wrapper">
             <button
-              className="dropdown-btn"
+              className={`dropdown-btn ${
+                openDepth === item.id ? "active" : ""
+              }`}
               onClick={() =>
                 setOpenDepth(openDepth === item.id ? null : item.id)
               }
             >
-              {selectValue[selectPay][item.id] || item.label || item.title}
+              <span>
+                {selectValue[selectPay][item.id] || item.label || item.title}
+              </span>
+              <span className="button-icon">
+                <img src="../images/arrow-down-white.svg" alt="" />
+              </span>
             </button>
 
             {openDepth === item.id && (
-              <ul className="dropdown-list">
+              <ul
+                className={`dropdown-list ${
+                  openDepth === item.id ? "active" : ""
+                }`}
+              >
                 {item.payDepth.map((depth) => (
                   <li
                     key={depth.id}
@@ -147,7 +149,6 @@ const Pay = () => {
           </div>
         ) : (
           <div className="input-wrapper">
-            {/* <label></label> */}
             <input
               id="select-bank"
               type="text"
@@ -272,21 +273,6 @@ const Pay = () => {
               <hr />
               <div className="item-bottom">
                 <PayItem />
-              </div>
-            </div>
-
-            <div className="coupon-wrap">
-              <div className="coupon-top">
-                <span>할인정보</span>
-              </div>
-              <hr />
-              <div className="coupon-bottom">
-                <div className="coupon">
-                  <span>쿠폰 선택</span>
-                </div>
-                <div className="Hpoint">
-                  <span>H.point Pay</span>
-                </div>
               </div>
             </div>
 

@@ -16,6 +16,7 @@ const Magazine = () => {
     <section className="magazine">
       <h2 className="magazine-title">MAGAZINE</h2>
       <div className="container">
+      <div className="container">
         <div className="magazine-wrap">
           <div className="magazine-left">
             <div className="magazine-main-img">
@@ -25,9 +26,11 @@ const Magazine = () => {
             <div className="magazine-side-imgs">
               <div className="magazine-side-img-top">
                 <img src={img2} alt="sub_model_top" />
+                <img src={img2} alt="sub_model_top" />
               </div>
 
               <div className="magazine-side-img-bottom">
+                <img src={img3} alt="sub_model_bottom" />
                 <img src={img3} alt="sub_model_bottom" />
               </div>
             </div>
@@ -67,11 +70,16 @@ const Magazine = () => {
               <div className="magazine-desc-left">
                 <strong>Easy pick, everyday cute. </strong>
                 <br />
+                <strong>Easy pick, everyday cute. </strong>
+                <br />
                 대충 입어도 예쁜 게 포인트. <br />
                 스타일링 고민? 이 셔츠로 끝.
               </div>
 
               <div className="magazine-desc-right">
+                LOVELY
+                <br />
+                Essentials
                 LOVELY
                 <br />
                 Essentials
@@ -85,3 +93,4 @@ const Magazine = () => {
 };
 
 export default Magazine;
+

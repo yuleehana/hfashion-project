@@ -16,8 +16,8 @@ const ProductListPage = ({ category }) => {
   const [items, setItems] = useState(allItems);
 
   //가격을 담을변수
-  const [filterPrice, setFilterPrice] = useState("");
-  const [filterPrice2, setFilterPrice2] = useState("");
+  const [filterPrice, setFilterPrice] = useState('');
+  const [filterPrice2, setFilterPrice2] = useState('');
 
   // 2. 커스텀 훅 호출! 모든 페이지네이션 로직이 캡슐화됨
   const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(items, 40);
@@ -229,9 +229,9 @@ const ProductListPage = ({ category }) => {
                 <ProductCard sendItem={item} />
               </Link>
             </li>
-            ))
-          ) : (
-            <li className='no-items'>해당 브랜드의 상품이 없습니다</li>
+          ))
+        ) : (
+          <li className="no-items">해당 브랜드의 상품이 없습니다</li>
         )}
       </ul>
       <Pagination

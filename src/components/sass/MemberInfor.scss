@@ -1,17 +1,19 @@
+@use "../../App.scss" as g;
+
 .content-inner {
   .user-info-right {
     width: 100%;
-    border: 1px solid #bababa;
-    padding: 62px 78px;
+    border: 1px solid g.$sub-color2;
+    // padding: 62px 78px;
 
     .section {
       width: 100%;
       margin-bottom: 54px;
 
       .section-title {
-        font-size: 26px;
-        width: 100%;
-        margin-bottom: 34px;
+        // font-size: 26px;
+        // width: 100%;
+        // margin-bottom: 34px;
       }
 
       .user-information {

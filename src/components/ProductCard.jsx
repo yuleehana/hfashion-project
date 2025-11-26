@@ -8,7 +8,6 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
 
   //전역변수 -> 찜추가 메서드, 찜리스트
   const { onAddWishList, pickLists } = usePickStore();
-  
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
@@ -34,9 +33,11 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
           <span className="best-rank">{rank}</span>
         ) : (
           // * isBestSeller가 false일 때 표시할 찜하기(하트) 버튼
-          <span className={`favorite ${isPick ? 'active' : ''}`} onClick={handleFavoriteClick}></span>
+          <span
+            className={`favorite ${isPick ? 'active' : ''}`}
+            onClick={handleFavoriteClick}
+          ></span>
         )}
-
       </div>
       <div className="text-box">
         <p className="brand">{sendItem.brand}</p>

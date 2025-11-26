@@ -4,7 +4,6 @@ import ProductCard from './ProductCard';
 import { Link } from 'react-router-dom';
 
 const SubMainBestSeller = ({ category }) => {
-
   const { onFetchRatedItems } = useProductStore();
   const bestSellerItems = onFetchRatedItems(category, 5, 3, 5);
 
