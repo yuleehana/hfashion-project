@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 
 const BrandLiveProduct = ({ thumbImg, id, title, price, code, brand }) => {
-  //찜리스트 전역변수
   const { pickLists, onAddWishList } = usePickStore();
 
-  //active변수
   const isActive = pickLists.some((p) => p.code === code);
 
   return (

@@ -1,13 +1,12 @@
-import React, { useState } from 'react'; // 검색창 오픈 상태용 useState 추가 11/18
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 import './sass/Header.scss';
 import { usePickStore } from '../store/usePickStore';
-import SearchOverlay from './SearchOverlay'; // 오버레이 검색창 컴포넌트 11/18
+import SearchOverlay from './SearchOverlay';
 import { useCartStore } from '../store/useCartStore';
 import { usePayStore } from '../store/usePayStore';
 
-// mainmenu
 const menus = [
   {
     key: 'brand',
@@ -68,14 +67,11 @@ const Header = () => {
   const { resetOrder } = usePayStore();
 
   const navigate = useNavigate();
-  //   현재 경로
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // 검색창 열림 상태 관리 11/18
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // 메서드
   const handleLogout = () => {
     resetPcikList();
     resetCart();
@@ -85,21 +81,13 @@ const Header = () => {
 
     navigate('/');
   };
-
-  // 1단계 메뉴 활성화 상태를 확인하는 함수
   const isMainMenuActive = (menuKey) => {
-    // 메뉴의 기본 경로 ('/brand', '/women' 등)를 구성
     const menuPath = `/${menuKey}`;
 
-    // 현재 경로가 메뉴 경로와 정확히 일치하거나, 메뉴 경로로 시작하는지 확인
-    // 예: '/women' 또는 '/women/women-shirt' 모두 '/women'으로 시작하므로 활성 처리
     return currentPath === menuPath || currentPath.startsWith(`${menuPath}/`);
   };
-
-  // 2단계 서브 메뉴 활성화 상태를 확인하는 함수
   const isSubMenuActive = (menuKey, subKey) => {
     const subPath = `/${menuKey}/${subKey}`;
-    // 현재 경로가 서브 메뉴 경로와 정확히 일치하는지 확인
     return currentPath === subPath;
   };
 
@@ -116,7 +104,6 @@ const Header = () => {
             <nav>
               <ul className="main-menu">
                 {menus.map((menu) => (
-                  // 메인 메뉴에 active
                   <li key={menu.key} className={isMainMenuActive(menu.key) ? 'active' : ''}>
                     <Link to={`/${menu.key}`}>{menu.label}</Link>
                     {menu.submenu && menu.submenu.length > 0 && (
@@ -124,7 +111,6 @@ const Header = () => {
                         {menu.submenu.map((sub, index) => (
                           <li
                             key={`${sub.key}-${sub.key || index}`}
-                            // 서브 메뉴에 active
                             className={isSubMenuActive(menu.key, sub.key) ? 'active' : ''}
                           >
                             <Link to={`/${menu.key}/${sub.key || ''}`}>{sub.label}</Link>
@@ -140,13 +126,9 @@ const Header = () => {
           <div className="inner-right">
             <ul className="gnb-list">
               <li>
-                {/* 검색 아이콘 클릭 시 오버레이 열기 11/18*/}
                 <button onClick={() => setIsSearchOpen(true)} className="search-button">
                   <img src="/images/search-icon-white.svg" alt="검색아이콘" />
                 </button>
-                {/* <Link to="/search">
-                <img src="/images/search-icon-white.svg" alt="검색아이콘" />
-              </Link> */}
               </li>
               {user ? (
                 <>
@@ -181,7 +163,6 @@ const Header = () => {
         </div>
       </header>
 
-      {/*  검색 오버레이 컴포넌트 렌더링 */}
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );

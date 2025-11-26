@@ -208,7 +208,7 @@ const ProductListPage = ({ category }) => {
                 ))}
               </div>
               <div className="price-tag-b">
-                직접입력{' '}
+                직접입력
                 <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
                 -
                 <input className="xsmall" type="text" value={filterPrice2} onChange={rememberP2} />
