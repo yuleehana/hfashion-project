@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCartStore } from "../store/useCartStore";
 import { usePayStore } from "../store/usePayStore";
 import "./sass/PayResultPopup.scss";
+import { useAuthStore } from "../store/authstore";
 
 const NonPayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked, resetCart } =
     useCartStore();
   const { today } = usePayStore();
   const addOrder = usePayStore((state) => state.addOrder);
+  const { nonCart } = useAuthStore();
   const navigate = useNavigate();
 
   // cartItems [0]
@@ -70,7 +72,9 @@ const NonPayResultPopup = ({ onClose }) => {
                 <span>주문상품</span>
                 <span>
                   {truncateWords(itemFirstValue?.title, 3)}
-                  {}
+                  {nonCart.items.length > 1
+                    ? ` 외 ${nonCart.items.length - 1}건`
+                    : ""}
                 </span>
               </div>
             </div>
