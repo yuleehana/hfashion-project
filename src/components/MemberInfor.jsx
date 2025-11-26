@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useAuthStore } from "../store/authstore";
-import UserInfoLeftMenu from "./UserInfoLeftMenu";
-import "./sass/MemberInfor.scss";
-import "./sass/button-normal.scss";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useAuthStore } from '../store/authstore';
+import UserInfoLeftMenu from './UserInfoLeftMenu';
+import './sass/MemberInfor.scss';
+import './sass/button-normal.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MemberInfor = () => {
   const { user } = useAuthStore();
@@ -19,10 +19,7 @@ const MemberInfor = () => {
         <div className="content-inner">
           <div className="go-login">
             <p>로그인이 필요한 서비스입니다</p>
-            <button
-              className="btn middle primary"
-              onClick={() => navigate("/login")}
-            >
+            <button className="btn middle primary" onClick={() => navigate('/login')}>
               로그인 페이지로 이동
             </button>
           </div>
@@ -32,9 +29,7 @@ const MemberInfor = () => {
   }
 
   //별(*)로 변환 (비밀번호 길이만큼)
-  const maskdePassword = user.password
-    ? "*".repeat(user.password.length)
-    : "********";
+  const maskdePassword = user.password ? '*'.repeat(user.password.length) : '********';
 
   //2. user가 있을 때만 정보 렌더링
   return (
@@ -62,13 +57,12 @@ const MemberInfor = () => {
               <div className="information-box">
                 <p className="info-th">비밀번호</p>
                 <div className="info-td">
-                  <p className="password">
-                    {showPassword ? user.password : maskdePassword}
-                  </p>
-                  <button className="btn small outline"
+                  <p className="password">{showPassword ? user.password : maskdePassword}</p>
+                  <button
+                    className="btn small outline"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? "숨기기" : "비밀번호 확인"}
+                    {showPassword ? '숨기기' : '비밀번호 확인'}
                   </button>
                 </div>
               </div>
@@ -83,7 +77,9 @@ const MemberInfor = () => {
               <div className="information-box">
                 <p className="info-th">주소</p>
                 <p className="info-td">
-                  {user.address}{"  "}{user.address2}
+                  {user.address}
+                  {'  '}
+                  {user.address2}
                 </p>
               </div>
             </div>

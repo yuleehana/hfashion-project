@@ -1,7 +1,7 @@
-import React from "react";
-import UserInfoLeftMenu from "./UserInfoLeftMenu";
-import NotFound from "../pages/NotFound";
-import MemberDelivery from "./MemberDelivery";
+import React from 'react';
+import UserInfoLeftMenu from './UserInfoLeftMenu';
+import NotFound from '../pages/NotFound';
+import MemberDelivery from './MemberDelivery';
 
 const NotFoundMyPage = () => {
   return (

@@ -1,20 +1,29 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./sass/SearchOverlay.scss";
-import { useProductStore } from "../store/useProductStore.js";
+import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './sass/SearchOverlay.scss';
+import { useProductStore } from '../store/useProductStore.js';
 
-const popularKeywords = ["가디건", "점퍼", "백팩", "스니커즈", "스커트", "티셔츠", "로퍼", "셔츠", "모자"];
-
+const popularKeywords = [
+  '가디건',
+  '점퍼',
+  '백팩',
+  '스니커즈',
+  '스커트',
+  '티셔츠',
+  '로퍼',
+  '셔츠',
+  '모자',
+];
 
 const SearchOverlay = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const store = useProductStore();
   const products = store.items || [];
 
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
   const [recentKeywords, setRecentKeywords] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(-1); 
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const inputRef = useRef(null);
 
@@ -32,9 +41,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (keyword.trim() && products.length > 0) {
       const filtered = products
-        .filter(item =>
-          (item.title || "").toLowerCase().includes(keyword.toLowerCase())
-        )
+        .filter((item) => (item.title || '').toLowerCase().includes(keyword.toLowerCase()))
         .slice(0, 12);
       setFilteredItems(filtered);
       setActiveIndex(-1); // 검색어 바뀔 때 선택 초기화
@@ -47,7 +54,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleInputChange = (e) => setKeyword(e.target.value);
-  const handleClear = () => setKeyword("");
+  const handleClear = () => setKeyword('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +62,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     if (!trimmed) return;
 
     addRecentKeyword(trimmed);
-    setKeyword("");
+    setKeyword('');
     navigate(`/search?q=${trimmed}`);
     onClose();
   };
@@ -64,35 +71,31 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const handleKeyDown = (e) => {
     if (!filteredItems.length) return;
 
-    if (e.key === "ArrowDown") {
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setActiveIndex((prev) =>
-        prev < filteredItems.length - 1 ? prev + 1 : 0
-      );
+      setActiveIndex((prev) => (prev < filteredItems.length - 1 ? prev + 1 : 0));
     }
 
-    if (e.key === "ArrowUp") {
+    if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setActiveIndex((prev) =>
-        prev > 0 ? prev - 1 : filteredItems.length - 1
-      );
+      setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredItems.length - 1));
     }
 
-    if (e.key === "Enter" && activeIndex >= 0) {
+    if (e.key === 'Enter' && activeIndex >= 0) {
       e.preventDefault();
       const item = filteredItems[activeIndex];
       if (!item) return;
 
       addRecentKeyword(item.title || item.name);
       navigate(`/product-detail/${item.code}`);
-      setKeyword("");
+      setKeyword('');
       onClose();
     }
   };
 
   const addRecentKeyword = (item) => {
-    const fullText = typeof item === "string" ? item : item.title || item.name;
-    const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
+    const fullText = typeof item === 'string' ? item : item.title || item.name;
+    const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + '...' : fullText;
 
     if (!recentKeywords.includes(keywordText)) {
       setRecentKeywords([keywordText, ...recentKeywords].slice(0, 10));
@@ -107,12 +110,12 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
   const highlightText = (text, keyword) => {
     if (!keyword) return text;
-    const regex = new RegExp(`(${keyword})`, "gi");
+    const regex = new RegExp(`(${keyword})`, 'gi');
     const parts = text.split(regex);
 
     return parts.map((part, i) =>
       part.toLowerCase() === keyword.toLowerCase() ? (
-        <mark key={i} style={{ color: "#EEBE81" }}>
+        <mark key={i} style={{ color: '#EEBE81' }}>
           {part}
         </mark>
       ) : (
@@ -144,11 +147,11 @@ const SearchOverlay = ({ isOpen, onClose }) => {
               {filteredItems.map((item, index) => (
                 <li
                   key={item.id}
-                  className={index === activeIndex ? "active" : ""} // ⭐ 추가
+                  className={index === activeIndex ? 'active' : ''} // ⭐ 추가
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
-                    setKeyword("");
+                    setKeyword('');
                     onClose();
                   }}
                 >
@@ -188,7 +191,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   {recentKeywords.length === 0 ? (
                     <li className="no-recent">최근 검색어가 없습니다.</li>
                   ) : (
-                    recentKeywords.map(kw => (
+                    recentKeywords.map((kw) => (
                       <li key={kw}>
                         <button
                           type="button"
@@ -203,9 +206,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                         <button
                           type="button"
                           className="delete-btn"
-                          onClick={() =>
-                            setRecentKeywords(recentKeywords.filter(r => r !== kw))
-                          }
+                          onClick={() => setRecentKeywords(recentKeywords.filter((r) => r !== kw))}
                         >
                           <img src="/images/close-icon-white.svg" alt="삭제" />
                         </button>

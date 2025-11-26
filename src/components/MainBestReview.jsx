@@ -1,8 +1,7 @@
-import React from 'react'
-import "./sass/MainBestReview.scss";
+import React from 'react';
+import './sass/MainBestReview.scss';
 import { useProductStore } from '../store/useProductStore.js';
 import ReviewCard from './ReviewCard.jsx';
-
 
 const MainBestReview = () => {
   const { items } = useProductStore();
@@ -17,29 +16,31 @@ const MainBestReview = () => {
     .map((cat) => filtered.find((p) => p.category === cat)) // 해당 카테고리에서 첫번째 상품만
     .filter(Boolean) // null 제거
     .slice(0, 3);
-  
+
   return (
     <section>
       <h2>BEST REVIEW</h2>
-      <div className='container'>
+      <div className="container">
         <div className="review-box-list">
           <ul className="review-box">
             {result.map((p) => {
               const thumbImgOnlyItem = {
-                ...p, detail: [], slide: []
+                ...p,
+                detail: [],
+                slide: [],
               };
 
               return(
                 <li key={p.code} className='red-card'>
                   <ReviewCard item={thumbImgOnlyItem} />
                 </li>
-              )
+              );
             })}
           </ul>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default MainBestReview
+export default MainBestReview;

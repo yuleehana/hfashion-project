@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./sass/PayPo.scss";
-import { useCartStore } from "../store/useCartStore";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './sass/PayPo.scss';
+import { useCartStore } from '../store/useCartStore';
 
 const PayPo = ({ onOpenPopup }) => {
   const { totalPrice, checkedTotalPrice, cartItems } = useCartStore();
