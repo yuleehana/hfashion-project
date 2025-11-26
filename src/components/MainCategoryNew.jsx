@@ -1,12 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { useProductStore } from '../store/useProductStore'
+import React, { useEffect, useMemo, useState } from 'react';
+import { useProductStore } from '../store/useProductStore';
 import { usePickStore } from '../store/usePickStore';
-import './sass/MainCategoryNew.scss'
+import './sass/MainCategoryNew.scss';
 import { Link } from 'react-router-dom';
 
-
 const VISIBLE_COUNT = 4; // 한 화면에 보이는 상품 개수
-
 
 const MainCategoryNew = () => {
   const { items, onFetchItem } = useProductStore();
@@ -23,16 +21,16 @@ const MainCategoryNew = () => {
   const filteredItems = useMemo(() => {
     switch (activeTab) {
       case 'WOMEN':
-        return items.filter(item => item.category.includes('women skirt'));
+        return items.filter((item) => item.category.includes('women skirt'));
 
       case 'MEN':
-        return items.filter(item => item.category.includes('man outer'));
+        return items.filter((item) => item.category.includes('man outer'));
 
       case 'BAG_ACC':
-        return items.filter(item => item.category.includes('sundries women bag'));
+        return items.filter((item) => item.category.includes('sundries women bag'));
 
       case 'GOLF':
-        return items.filter(item => item.category.includes('golf etc'));
+        return items.filter((item) => item.category.includes('golf etc'));
 
       default:
         return items;
@@ -41,10 +39,7 @@ const MainCategoryNew = () => {
 
   // 슬라이드 관련
   const maxIndex = Math.max(0, filteredItems.length - VISIBLE_COUNT);
-  const visibleItems = filteredItems.slice(
-    startIndex,
-    startIndex + VISIBLE_COUNT
-  );
+  const visibleItems = filteredItems.slice(startIndex, startIndex + VISIBLE_COUNT);
 
   const handlePrev = () => {
     setStartIndex((prev) => Math.max(0, prev - 1));
@@ -65,7 +60,7 @@ const MainCategoryNew = () => {
     e.stopPropagation();
 
     // 이미 찜된 상품이면 추가하지 않음
-    const isAlreadyPicked = pickLists.some(p => p.code === item.code);
+    const isAlreadyPicked = pickLists.some((p) => p.code === item.code);
     if (isAlreadyPicked) {
       alert('이미 찜목록에 추가된 상품입니다.');
       return;
@@ -78,19 +73,18 @@ const MainCategoryNew = () => {
 
   //전체보기 버튼 링크
   const categoryPaths = {
-    WOMEN: "/women/women-skirt",
-    MEN: "/men/man-outer",
-    BAG_ACC: "/sundries/sundries-women-bag",
-    GOLF: "/golf/golf-acc"
+    WOMEN: '/women/women-skirt',
+    MEN: '/men/man-outer',
+    BAG_ACC: '/sundries/sundries-women-bag',
+    GOLF: '/golf/golf-acc',
   };
 
   return (
     <section>
       <h2>CATEGORY NEW</h2>
-      <div className='container'>
+      <div className="container">
         {/* 탭 */}
         <div className="categorynew-tabs">
-
           <button
             className={activeTab === 'WOMEN' ? 'active' : ''}
             onClick={() => handleChangeTab('WOMEN')}
@@ -105,29 +99,26 @@ const MainCategoryNew = () => {
           </button>
           <button
             className={activeTab === 'BAG_ACC' ? 'active' : ''}
-            onClick={() => handleChangeTab('BAG_ACC')}>
+            onClick={() => handleChangeTab('BAG_ACC')}
+          >
             BAG & ACC
           </button>
 
           <button
             className={activeTab === 'GOLF' ? 'active' : ''}
-            onClick={() => handleChangeTab('GOLF')}>
+            onClick={() => handleChangeTab('GOLF')}
+          >
             GOLF
           </button>
 
-          <Link to={categoryPaths[activeTab]} className='categorynew-tab-all'>
+          <Link to={categoryPaths[activeTab]} className="categorynew-tab-all">
             전체보기 <img src="/images/all-view-right-arrow.png" alt="전체보기" />
           </Link>
-
         </div>
 
         {/* 슬라이드 영역 */}
         <div className="categorynew-slider-wrapper">
-          <button
-            className="arrow-btn left"
-            onClick={handlePrev}
-            disabled={startIndex === 0}
-          >
+          <button className="arrow-btn left" onClick={handlePrev} disabled={startIndex === 0}>
             <img src="/images/button/btn-slide-prev.svg" alt="이전" />
           </button>
 
@@ -135,7 +126,7 @@ const MainCategoryNew = () => {
             {visibleItems.map((item) => (
               <Link
                 key={item.code}
-                to={`/product-detail/${item.code}`}   // ★ 상세 페이지로 이동
+                to={`/product-detail/${item.code}`} // ★ 상세 페이지로 이동
                 className="product-card"
               >
                 {/* 찜 버튼 (+) */}
@@ -143,10 +134,7 @@ const MainCategoryNew = () => {
                   className="categorynew-likebtn"
                   onClick={(e) => handleAddToWishlist(e, item)}
                 >
-                  <img
-                    src="/images/plusLike.svg"
-                    alt="찜하기"
-                  />
+                  <img src="/images/plusLike.svg" alt="찜하기" />
                 </button>
 
                 <div className="categorynew-product-img">
@@ -158,9 +146,7 @@ const MainCategoryNew = () => {
                   <p className="categorynew-name">{item.title}</p>
                   <p className="categorynew-price">
                     {/* 세일 가격 */}
-                    <span className="categorynew-sale-price">
-                      {item.price.toLocaleString()}원
-                    </span>
+                    <span className="categorynew-sale-price">{item.price.toLocaleString()}원</span>
 
                     {/*원래 가격*/}
                     <del className="categorynew-original-price">
@@ -169,9 +155,7 @@ const MainCategoryNew = () => {
                     </del>
 
                     {/*할인 퍼센트*/}
-                    <span className="categorynew-discount">
-                      20%
-                    </span>
+                    <span className="categorynew-discount">20%</span>
                   </p>
                 </div>
               </Link>
@@ -187,10 +171,8 @@ const MainCategoryNew = () => {
           </button>
         </div>
       </div>
-
-
     </section>
-  )
-}
+  );
+};
 
-export default MainCategoryNew
+export default MainCategoryNew;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useAuthStore } from "../store/authstore";
-import { Link, useNavigate } from "react-router-dom";
-import "./sass/Login.scss";
-import NoMemberLogin from "../components/NoMemberLogin";
-import MemberLogin from "../components/MemberLogin";
+import React, { useState } from 'react';
+import { useAuthStore } from '../store/authstore';
+import { Link, useNavigate } from 'react-router-dom';
+import './sass/Login.scss';
+import NoMemberLogin from '../components/NoMemberLogin';
+import MemberLogin from '../components/MemberLogin';
 
 const Login = () => {
   //로그인 상태변수
@@ -27,7 +27,7 @@ const Login = () => {
   //카카오 로그인
   const handleKakaoLogin = async () => {
     await onKakaoLogin(navigate);
-    console.log("카카오");
+    console.log('카카오');
     // Navigate("/");
   };
 
@@ -45,10 +45,10 @@ const Login = () => {
               </li>
             ))} */}
 
-            <li className={isLogin === true ? "active" : ""}>
+            <li className={isLogin === true ? 'active' : ''}>
               <Link onClick={handleSelect}>회원</Link>
             </li>
-            <li className={noMember === true ? "active" : ""}>
+            <li className={noMember === true ? 'active' : ''}>
               <Link onClick={handleSelect}>비회원</Link>
             </li>
           </ul>

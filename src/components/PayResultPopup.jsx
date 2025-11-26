@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCartStore } from "../store/useCartStore";
-import { usePayStore } from "../store/usePayStore";
-import "./sass/PayResultPopup.scss";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCartStore } from '../store/useCartStore';
+import { usePayStore } from '../store/usePayStore';
+import './sass/PayResultPopup.scss';
 
 const PayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
@@ -15,18 +15,16 @@ const PayResultPopup = ({ onClose }) => {
 
   // 팝업에 표시되는 아이템명 자르기
   const truncateWords = (text, maxWords) => {
-    if (!text) return "";
+    if (!text) return '';
 
-    const words = text.split(" ");
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + " ..."
-      : text;
+    const words = text.split(' ');
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
   };
   const lastOrder = orders[orders.length - 1];
 
   const handlePayFinish = () => {
     onRemoveChecked();
-    navigate("/userinfo");
+    navigate('/userinfo');
     if (!itemFirstValue) return;
     // const orderItem = {
     //   date: today,
@@ -70,9 +68,7 @@ const PayResultPopup = ({ onClose }) => {
                   <span>주문상품</span>
                   <span>
                     {truncateWords(lastOrder.products[0].title, 3)}
-                    {lastOrder.products.length > 1
-                      ? `외 ${lastOrder.products.length}`
-                      : ""}
+                    {lastOrder.products.length > 1 ? `외 ${lastOrder.products.length}` : ''}
                   </span>
                 </div>
               )}
@@ -86,9 +82,7 @@ const PayResultPopup = ({ onClose }) => {
 
               <div className="pay-result-bottom2 reward">
                 <span>리워드</span>
-                <span>
-                  {Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}
-                </span>
+                <span>{Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}</span>
               </div>
             </div>
           </div>

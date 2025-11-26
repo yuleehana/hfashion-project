@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const LifeStyle = () => {
-    return (
-        <div>LifeStyle</div>
-    )
-}
+  return <div>LifeStyle</div>;
+};
 
-export default LifeStyle
+export default LifeStyle;

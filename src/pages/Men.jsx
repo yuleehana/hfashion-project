@@ -1,10 +1,8 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const Men = () => {
-    return (
-        <Outlet />
-    )
-}
+  return <Outlet />;
+};
 
-export default Men
+export default Men;
