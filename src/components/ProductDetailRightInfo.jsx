@@ -10,7 +10,7 @@ import { useAuthStore } from '../store/authstore';
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['pink', 'sky', 'white', 'black'];
 
-const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
+const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   const { code } = useParams();
 
   const nav = useNavigate('');
@@ -116,6 +116,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const handlePay = () => {
     if (!selectColor) {
       alert('색상을 선택해주세요');
+
       return;
     } else if (!selectSize) {
       alert('사이즈를 선택해주세요');
@@ -130,19 +131,23 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       checked: false,
     };
 
-    console.log('11월 26일', cartItems);
     const bb = cartItems.find(
       (b) =>
         b.code === productCart.code && b.size === productCart.size && b.color === productCart.color
     );
 
     if (!bb) {
-      alert('주문서로이동합니다');
+      setTimeout(() => {
+        nav(user ? '/pay' : '/nonmember');
+      }, 3000);
       onAddToCart(productCart);
-      nav(user ? '/pay' : '/nonmember');
+      onOpenPay();
     } else {
+      setTimeout(() => {
+        nav(user ? '/pay' : '/nonmember');
+      }, 3000);
+      onOpenPay();
       alert('이미 장바구니에있는 상품입니다.');
-      nav(user ? '/pay' : '/nonmember');
     }
   };
 
@@ -242,9 +247,12 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             장바구니
           </button>
           <button
-            onClick={((e) => e.preventDefault(), handlePay)}
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              handlePay();
+            }}
             className="btn middle secondary"
-            to={user ? '/pay' : '/nonmember'}
           >
             바로구매
           </button>

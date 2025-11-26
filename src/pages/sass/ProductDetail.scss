@@ -1,4 +1,4 @@
-@use "../../App.scss" as g;
+@use '../../App.scss' as g;
 
 .product-detail-wrap {
   margin: 0 auto;
@@ -57,5 +57,50 @@
     top: 120px;
     min-width: 380px;
     width: 380px;
+  }
+}
+
+.back-overlay {
+  @include g.postBackStyle();
+}
+.overlay-text-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // height: 300px;
+  width: 500px;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  padding: 80px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  .over-title {
+    align-items: start;
+    font-size: 28px;
+    font-weight: 500;
+    color: #2c2c2c;
+  }
+  .over-middle {
+    font-size: 14px;
+    color: #545454;
+  }
+  .over-box {
+    width: 0;
+    height: 20px;
+    background: #eebe81;
+    transform: none;
+    animation: widthMax 3s linear;
+  }
+}
+
+@keyframes widthMax {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
