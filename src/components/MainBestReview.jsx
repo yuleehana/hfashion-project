@@ -20,7 +20,7 @@ const MainBestReview = () => {
 
   const scrollRef = useRef(null);
   const isDownRef = useRef(false);
-  const startRef = useRef(0);
+  const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
 
   const handleMouseDown = (e) => {
@@ -50,14 +50,21 @@ const MainBestReview = () => {
     if(!el || !isDownRef.current) return;
     e.preventDefault();
     const x = e.pageX - el.offsetLeft;
-    const walk = x
+    const walk = x - startXRef.current;
+    el.scrollLeft = scrollLeftRef.current - walk;
   }
   
   return (
     <section>
       <h2>BEST REVIEW</h2>
       <div className='container'>
-        <div className="review-box-list">
+        <div className="review-box-list"
+          ref={scrollRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+        >
           <ul className="review-box-list">
             {result.map((p) => {
               const thumbImgOnlyItem = {
