@@ -1,4 +1,4 @@
-@use "../../App.scss" as g;
+@use '../../App.scss' as g;
 
 .magazine {
   .magazine-wrap {
@@ -62,7 +62,7 @@
 
     .magazine-title {
       font-size: 7.2rem;
-      font-family: "Times New Roman";
+      font-family: 'Times New Roman';
       font-style: italic;
       align-self: flex-start;
       padding: 40px 0;
@@ -73,6 +73,7 @@
       display: flex;
       justify-content: space-around;
       width: 100%;
+      overflow: hidden;
 
       .product-item {
         display: flex;
@@ -93,7 +94,7 @@
         }
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -154,7 +155,7 @@
 
       .magazine-desc-right {
         font-size: 3rem;
-        font-family: "Times New Roman";
+        font-family: 'Times New Roman';
         font-weight: 300;
         text-align: right;
         align-self: flex-end;
