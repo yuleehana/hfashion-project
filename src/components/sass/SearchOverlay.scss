@@ -1,4 +1,4 @@
-@use '../../App.scss' as g;
+@use "../../App.scss" as g;
 
 .search-overlay {
   position: fixed;
@@ -45,7 +45,6 @@
         border: none;
         border-bottom: 1px solid g.$main-color2;
       }
-
     }
 
     .search-icon {
@@ -100,8 +99,8 @@
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          gap: 60px; // 최근검색어-전체삭제:간격 띄우기
-          position: relative; //.delete-btn 위치 기분
+          gap: 60px;
+          position: relative;
 
           button {
             text-decoration: underline;
@@ -113,8 +112,7 @@
 
       .no-recent {
         font-size: 1.4rem;
-        line-height: 17px; //인기검색어 가디건이랑 높이 맞추기
-
+        line-height: 17px;
       }
 
       ul {
@@ -124,16 +122,14 @@
         gap: 24px;
         width: 100%;
         max-width: 200px;
-        position: relative; //.delete-btn기준
+        position: relative;
 
         li {
           display: flex;
           align-items: center;
-          gap: 16px; // 검색어 - 검색어삭제 버튼 간격
-          // padding: 10px;패딩삭제
+          gap: 16px;
 
           .keyword-button {
-            // 최근 검색어 버튼
             font-size: 1.4rem;
             color: g.$main-color2;
             border-radius: 4px;
@@ -143,27 +139,23 @@
           }
 
           .delete-btn {
-            // 삭제 버튼
             width: 16px;
             height: 16px;
             cursor: pointer;
             background: g.$sub-color3;
             position: absolute;
-            right: 0; // 전체삭제 오른쪽이랑 맞추기
+            right: 0;
 
             img {
               width: 14px;
               height: 14px;
               object-fit: contain;
             }
-
           }
 
           button.popular {
-            // 인기 검색어 버튼 (li 내부 button)
             font-size: 1.4rem;
             color: g.$main-color2;
-            // padding: 14px;
             border-radius: 4px;
             cursor: pointer;
             text-align: left;
