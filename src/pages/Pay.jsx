@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import './sass/Pay.scss';
-import PayItem from '../components/PayItem';
-import { paymethodsCard, paymethodsBank, paymethodsPay } from '../data/paymethod';
-import PayPo from '../components/PayPo';
-import PayResultPopup from '../components/PayResultPopup';
-import { useAuthStore } from '../store/authstore';
-import { usePayStore } from '../store/usePayStore';
-import { useCartStore } from '../store/useCartStore';
+import React, { useEffect, useState } from "react";
+import "./sass/Pay.scss";
+import PayItem from "../components/PayItem";
+import {
+  paymethodsCard,
+  paymethodsBank,
+  paymethodsPay,
+} from "../data/paymethod";
+import PayPo from "../components/PayPo";
+import PayResultPopup from "../components/PayResultPopup";
+import { useAuthStore } from "../store/authstore";
+import { usePayStore } from "../store/usePayStore";
+import { useCartStore } from "../store/useCartStore";
 
 const Pay = () => {
   const { user } = useAuthStore();
@@ -14,22 +18,19 @@ const Pay = () => {
   const { orders, addOrder, today } = usePayStore();
   const { cartItems, checkedTotalPrice } = useCartStore();
 
-  // cartItems [0]
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
 
-  // 유저 정보 가지고오기
   const handleUserInfo = () => {
     setReceiverInfo({
       displayName: user.displayName,
       phone: user.phone,
       address: user.address,
       address2: user.address2,
-      request: '',
+      request: "",
     });
   };
 
-  // 주문내역 저장하기
   const handlePaymentSuccess = () => {
     if (!itemFirstValue) return;
 
@@ -50,20 +51,16 @@ const Pay = () => {
     console.log(orders);
   };
 
-  // 결제수단 선택
-  const [selectPay, setSelectPay] = useState('card');
+  const [selectPay, setSelectPay] = useState("card");
 
-  // 결제수단 뎁스 오픈
   const [openDepth, setOpenDepth] = useState(null);
 
-  // 선택한 결제수단 값 저장
   const [selectValue, setSelectValue] = useState({
     card: [],
     pay: [],
     bank: [],
   });
 
-  // open popup
   const [showPopup, setShowPopup] = useState(false);
 
   const handleSelect = (method, id, value) => {
@@ -84,11 +81,9 @@ const Pay = () => {
   const renderDepth = () => {
     let list = [];
 
-    if (selectPay === 'card') {
+    if (selectPay === "card") {
       list = paymethodsCard;
-      // console.log(list);
-    } else if (selectPay === 'pay') {
-      // list = paymethodsPay;
+    } else if (selectPay === "pay") {
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -108,13 +103,13 @@ const Pay = () => {
           </label>
         </div>
       ));
-    } else if (selectPay === 'bank') {
+    } else if (selectPay === "bank") {
       list = paymethodsBank;
     }
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-        {'payDepth' in item ? (
+        {"payDepth" in item ? (
           <div className="dropdown-wrapper">
             <button
               className={`dropdown-btn ${
@@ -142,7 +137,9 @@ const Pay = () => {
                   <li
                     key={depth.id}
                     className="dropdown-option"
-                    onClick={() => handleSelect(selectPay, item.id, depth.label)}
+                    onClick={() =>
+                      handleSelect(selectPay, item.id, depth.label)
+                    }
                   >
                     {depth.label}
                   </li>
@@ -152,7 +149,6 @@ const Pay = () => {
           </div>
         ) : (
           <div className="input-wrapper">
-            {/* <label></label> */}
             <input
               id="select-bank"
               type="text"
@@ -280,21 +276,6 @@ const Pay = () => {
               </div>
             </div>
 
-            {/* <div className="coupon-wrap">
-              <div className="coupon-top">
-                <span>할인정보</span>
-              </div>
-              <hr />
-              <div className="coupon-bottom">
-                <div className="coupon">
-                  <span>쿠폰 선택</span>
-                </div>
-                <div className="Hpoint">
-                  <span>H.point Pay</span>
-                </div>
-              </div>
-            </div> */}
-
             <div className="payment-wrap">
               <div className="payment-top">
                 <span>결제수단</span>
@@ -303,22 +284,22 @@ const Pay = () => {
               <div className="payment-bottom">
                 <div className="pay-method-btns">
                   <button
-                    className={selectPay === 'card' ? 'active' : ''}
-                    onClick={() => setSelectPay('card')}
+                    className={selectPay === "card" ? "active" : ""}
+                    onClick={() => setSelectPay("card")}
                   >
                     신용카드
                   </button>
 
                   <button
-                    className={selectPay === 'pay' ? 'active' : ''}
-                    onClick={() => setSelectPay('pay')}
+                    className={selectPay === "pay" ? "active" : ""}
+                    onClick={() => setSelectPay("pay")}
                   >
                     간편결제
                   </button>
 
                   <button
-                    className={selectPay === 'bank' ? 'active' : ''}
-                    onClick={() => setSelectPay('bank')}
+                    className={selectPay === "bank" ? "active" : ""}
+                    onClick={() => setSelectPay("bank")}
                   >
                     무통장입금
                   </button>

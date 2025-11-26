@@ -6,7 +6,7 @@ import './sass/MemberDelivery.scss';
 const delStatus = ['결제완료', '배송준비', '배송중', '배송완료'];
 
 const MemberDelivery = () => {
-  const { orders, receiverInfo } = usePayStore();
+  const { orders } = usePayStore();
 
   const truncateWords = (text, maxWords) => {
     if (!text) return '';
