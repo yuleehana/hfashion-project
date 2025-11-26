@@ -82,7 +82,7 @@
   gap: 80px;
   width: 100%;
   // border: 1px solid black;
-  padding: 0 116px;
+  padding: 0 200px;
   overflow: visible;
   .brand-live-wrap-left {
     display: flex;
@@ -99,7 +99,7 @@
       gap: 20px;
     }
   }
-  overflow: hidden;
+  // overflow: hidden;
   .main-new {
     transition: 0.5s;
     position: relative;
@@ -247,10 +247,11 @@
     }
   }
   .brand-live-section {
-    overflow: hidden;
+    // overflow: hidden;
     .container {
       .live-section-wrap {
         gap: 0px;
+        // overflow: ;
       }
     }
   }

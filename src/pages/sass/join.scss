@@ -89,11 +89,51 @@
           }
         }
       }
+      .join-policy-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        // justify-content: space-between;
+        .privacy-agree,
+        .service-agree {
+          width: 100%;
+          // background: red;
+          // padding: 0px 10px 10px 10px;
+          label {
+            font-size: 14px;
+            padding: 4px;
+            background: #f2f2f2;
+            display: flex;
+            gap: 8px;
+            flex-direction: row-reverse;
+            justify-content: start;
+            input {
+              display: inline-block;
+              width: 16px;
+              height: 16px;
+            }
+          }
+          p {
+            border: 1px solid #bababa;
+            padding: 8px;
+            // margin-top: 10px;
+            height: 80px;
+            overflow-y: scroll;
+          }
 
+          span {
+            font-size: 12px;
+
+            background: white;
+          }
+        }
+      }
       .join-button-wrap {
         border-top: 1px solid black;
         padding-top: 40px;
         display: flex;
+        flex-direction: column;
+        gap: 40px;
         justify-content: center;
         button {
           width: 100%;
@@ -101,4 +141,28 @@
       }
     }
   }
+}
+
+.postcode-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; // 필요에 따라 조절
+  height: 500px; // 필요에 따라 조절
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+
+.postcode-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
 }
