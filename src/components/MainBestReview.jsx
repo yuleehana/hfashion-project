@@ -22,7 +22,7 @@ const MainBestReview = () => {
       <h2>BEST REVIEW</h2>
       <div className="container">
         <div className="review-box-list">
-          <ul className="review-box-list">
+          <ul className="review-box">
             {result.map((p) => {
               const thumbImgOnlyItem = {
                 ...p,
@@ -30,8 +30,8 @@ const MainBestReview = () => {
                 slide: [],
               };
 
-              return (
-                <li key={p.code}>
+              return(
+                <li key={p.code} className='red-card'>
                   <ReviewCard item={thumbImgOnlyItem} />
                 </li>
               );
