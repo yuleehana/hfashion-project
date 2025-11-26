@@ -34,8 +34,10 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    store.onFetchItem();
-  }, []);
+    if (store.items.length === 0) {
+      store.onFetchItem();
+    }
+  }, [store]);
 
   useEffect(() => {
     if (keyword.trim() && products.length > 0) {
@@ -145,7 +147,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
               {filteredItems.map((item, index) => (
                 <li
                   key={item.id}
-                  className={index === activeIndex ? 'active' : ''} // ⭐ 추가
+                  className={index === activeIndex ? "active" : ""} // ⭐ 추가
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
