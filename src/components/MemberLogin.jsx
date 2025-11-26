@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/authstore';
-import './sass/MemberLogin.scss';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authstore";
+import "./sass/MemberLogin.scss";
 
 const MemberLogin = () => {
   // 변수
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // [KIM add save id 11-23] 아이디 저장 체크박스 상태를 관리하는 state를 추가
   const [rememberId, setRememberId] = useState(false);
@@ -17,7 +17,7 @@ const MemberLogin = () => {
 
   // [KIM add save id 11-23] 저장된 체크 상태를 확인
   useEffect(() => {
-    const savedEmail = localStorage.getItem('savedEmail');
+    const savedEmail = localStorage.getItem("savedEmail");
     if (savedEmail) {
       setEmail(savedEmail); // 저장된 이메일이 있다면 불러오기
       setRememberId(true); // 저장된 이메일이 있다면 체크 상태로 설정
@@ -32,9 +32,11 @@ const MemberLogin = () => {
     if (!isChecked) {
       // 체크가 해제되는 즉시 저장된 이메일을 삭제.
       // 새로고침 시 이메일이 로드되지 않아 체크 상태로 돌아가지 않음
-      localStorage.removeItem('savedEmail');
+      localStorage.removeItem("savedEmail");
     }
   };
+  //store 전역변수
+  const { onKakaoLogin } = useAuthStore();
 
   // 메서드
   // 일반 로그인
@@ -43,19 +45,24 @@ const MemberLogin = () => {
 
     // [KIM add save id 11-23] 체크되어 있는 경우에만 저장
     if (rememberId) {
-      localStorage.setItem('savedEmail', email);
+      localStorage.setItem("savedEmail", email);
     }
 
     await onLogin(email, password);
 
     // 로그인 후 메인으로 이동
-    navigate('/');
+    navigate("/");
   };
 
   // 구글 로그인
   const handleGoogleLogin = async (e) => {
     await onGoogleLogin();
-    navigate('/');
+    navigate("/");
+  };
+  //카카오 로그인
+  const handleKakaoLogin = async () => {
+    await onKakaoLogin(navigate);
+    console.log("카카오");
   };
 
   return (
@@ -79,7 +86,11 @@ const MemberLogin = () => {
       <div className="idTag">
         {/*[KIM add save id 11-23] */}
         <label className="rememberId">
-          <input type="checkbox" checked={rememberId} onChange={handleRememberIdChange} />
+          <input
+            type="checkbox"
+            checked={rememberId}
+            onChange={handleRememberIdChange}
+          />
           아이디 저장
         </label>
 
@@ -93,17 +104,22 @@ const MemberLogin = () => {
         </p>
       </div>
       <div className="button-grid-wrap">
-        <button type="submit" onSubmit={onLogin}>
+        <button type="submit" className="btn middle primary" onSubmit={onLogin}>
           로그인하기
         </button>
-        <button type="button" onClick={handleGoogleLogin}>
+        <button
+          type="button"
+          className="btn middle outline"
+          onClick={handleGoogleLogin}
+        >
           구글 로그인
         </button>
         <button
           type="button"
-          onClick={() => window.open('https://www.hfashionmall.com/public/member/login')}
+          className="btn middle outline kakao"
+          onClick={handleKakaoLogin}
         >
-          H FASHION 회원
+          Kakao 로그인
         </button>
       </div>
     </form>
