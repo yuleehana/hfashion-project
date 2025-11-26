@@ -59,9 +59,7 @@ const Breadcrumbs = () => {
 
   const crumbs = pathnames.map((value, index) => {
     const to = '/' + pathnames.slice(0, index + 1).join('/');
-    const baseTo = index === 0 && value === 'product-detail'
-      ? '/product-detail'
-      : to;
+    const baseTo = index === 0 && value === 'product-detail' ? '/product-detail' : to;
 
     return {
       to,
@@ -79,7 +77,7 @@ const Breadcrumbs = () => {
           {crumb.isLast ? (
             <span className="current">{crumb.label}</span>
           ) : (
-            <Link to={crumb.to} > {crumb.label} </Link>
+            <Link to={crumb.to}> {crumb.label} </Link>
           )}
         </span>
       ))}

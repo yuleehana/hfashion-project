@@ -30,9 +30,7 @@ const BrandLiveProduct = ({ thumbImg, id, title, price, code, brand }) => {
             <div className="sub-new-text">
               <div className="sub-new-text-r">
                 <span className="sub-new-price">{price.toLocaleString()}</span>
-                <span className="sub-new-saleprice">
-                  {(price * 0.8).toLocaleString()}
-                </span>
+                <span className="sub-new-saleprice">{(price * 0.8).toLocaleString()}</span>
               </div>
 
               <span className="sub-new-sale">20%</span>

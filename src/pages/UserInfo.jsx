@@ -1,9 +1,9 @@
-import React from "react";
-import { useAuthStore } from "../store/authstore";
-import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
-import BuyProductList from "../components/BuyProductList";
-import "./sass/UserInfo.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import React from 'react';
+import { useAuthStore } from '../store/authstore';
+import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
+import BuyProductList from '../components/BuyProductList';
+import './sass/UserInfo.scss';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const UserInfo = () => {
   const { user } = useAuthStore();
@@ -27,9 +27,7 @@ const UserInfo = () => {
         <div className="user-info-right">
           {/* PROFILE SECTION */}
           <div className="profile-section">
-            <div className="username">
-              {`${user.email}(${user.displayName})님, 환영합니다!`}
-            </div>
+            <div className="username">{`${user.email}(${user.displayName})님, 환영합니다!`}</div>
 
             {/* ---- 메인 4개 박스 ---- */}
             <div className="info-summary">
@@ -60,7 +58,9 @@ const UserInfo = () => {
             <h2 className="section-title">최근 주문</h2>
 
             <ul className="order-list">
-              <li><BuyProductList /></li>
+              <li>
+                <BuyProductList />
+              </li>
             </ul>
 
             <div className="order-button-box">

@@ -38,11 +38,7 @@ const SubMainBrandBestSeller = ({ brand }) => {
         bestSellerItems.map((item, idx) => (
           <li key={item.code}>
             <Link to={`/product-detail/${item.code}`}>
-              <ProductCard
-                sendItem={item}
-                isBestSeller={true}
-                rank={idx + 1}
-              />
+              <ProductCard sendItem={item} isBestSeller={true} rank={idx + 1} />
             </Link>
           </li>
         ))
