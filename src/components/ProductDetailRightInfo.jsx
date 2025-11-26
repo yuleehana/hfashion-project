@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore';
 import './sass/ProductDetailRightInfo.scss';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
 import { useCartStore } from '../store/useCartStore';
@@ -12,6 +12,8 @@ const colors = ['pink', 'sky', 'white', 'black'];
 
 const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
   const { code } = useParams();
+
+  const nav = useNavigate('');
 
   // ===== 공유하기 (URL 복사) =====
   const handleShare = async () => {
@@ -80,7 +82,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
 
   // 장바구니 메서드
   const handleAddToCart = () => {
-    if (!selectSize) {
+    if (!selectColor) {
+      alert('색상을 선택해주세요');
+      return;
+    } else if (!selectSize) {
       alert('사이즈를 선택해주세요');
       return;
     }
@@ -105,6 +110,39 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       onOpenPopup();
     } else {
       onAddToCart(productCart);
+    }
+  };
+
+  const handlePay = () => {
+    if (!selectColor) {
+      alert('색상을 선택해주세요');
+      return;
+    } else if (!selectSize) {
+      alert('사이즈를 선택해주세요');
+      return;
+    }
+
+    const productCart = {
+      ...item,
+      size: selectSize,
+      count: count,
+      color: selectColor,
+      checked: false,
+    };
+
+    console.log('11월 26일', cartItems);
+    const bb = cartItems.find(
+      (b) =>
+        b.code === productCart.code && b.size === productCart.size && b.color === productCart.color
+    );
+
+    if (!bb) {
+      alert('주문서로이동합니다');
+      onAddToCart(productCart);
+      nav(user ? '/pay' : '/nonmember');
+    } else {
+      alert('이미 장바구니에있는 상품입니다.');
+      nav(user ? '/pay' : '/nonmember');
     }
   };
 
@@ -203,13 +241,13 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
           <button className="btn middle primary" onClick={handleAddToCart}>
             장바구니
           </button>
-          <Link
-            onClick={handleAddToCart}
+          <button
+            onClick={((e) => e.preventDefault(), handlePay)}
             className="btn middle secondary"
             to={user ? '/pay' : '/nonmember'}
           >
             바로구매
-          </Link>
+          </button>
         </div>
 
         <div className="item-box">

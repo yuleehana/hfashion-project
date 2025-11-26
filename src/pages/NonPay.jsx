@@ -17,7 +17,7 @@ const payMethods = [
 ];
 
 const NonPay = () => {
-  const { checkedTotalPrice, resetCart } = useCartStore();
+  const { checkedTotalPrice } = useCartStore();
   const { nuser, naddress, nonCart } = useAuthStore();
   const [selectPay, setSelectPay] = useState('card');
 
