@@ -1,75 +1,86 @@
 @use "../../App.scss" as g;
 
-.buy-product-wrap{
+.buy-product-wrap {
   padding: 2rem;
   width: 100%;
 
-  .send-product-box{
+  .send-product-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    > div {
+      &:nth-of-type(1) {
+        width: 240px;
+      }
+      &:nth-of-type(2) {
+        flex: 1;
+      }
+      &:nth-of-type(3) {
+        min-width: 160px;
+        text-align: right;
+      }
+    }
 
-    .gap-box{
+    .gap-box {
       font-size: 40px;
       color: g.$sub-color1;
     }
 
-    .date-code-box{
+    .date-code-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 30px;
       gap: 10px;
 
-      .date{
+      .date {
         color: #838383;
         font-size: 14px;
       }
-      .code{
+      .code {
         font-size: 16px;
         font-weight: 700;
         color: #000;
       }
     }
-    .brand-name-box{
+    .brand-name-box {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       padding: 20px 30px;
       gap: 10px;
 
-      .img-box{
+      .img-box {
         height: 80px;
         width: 80px;
 
-        img{
-          object-fit:cover;
+        img {
+          object-fit: cover;
           width: 100%;
         }
       }
-      .product-item{
+      .product-item {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
         gap: 10px;
 
-        .brand-name{
+        .brand-name {
           font-size: 14px;
-          font-family: 'Times New Roman', Times, serif;
+          font-family: "Times New Roman", Times, serif;
           color: #838383;
         }
-        .product-name{
+        .product-name {
           font-size: 16px;
           color: #000;
         }
-        button{
+        button {
           display: flex;
           align-items: center;
           font-size: 14px;
           color: #bababa;
 
-          &::after{
+          &::after {
             content: "";
             background-image: url("../../../public/images/arrow-right-thin.svg");
             margin: 2px;
@@ -81,16 +92,17 @@
         }
       }
     }
-    .product-price-box{
-      padding: 20px 30px;
+    .product-price-box {
+      padding: 0 30px;
       display: flex;
+      justify-content: flex-end;
       gap: 10px;
 
-      .product-price{
+      .product-price {
         font-size: 16px;
         font-weight: 700;
       }
-      .unit{
+      .unit {
         font-size: 14px;
         color: #828282;
       }
