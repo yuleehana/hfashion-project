@@ -9,10 +9,7 @@ import {
 import { create } from "zustand";
 import { auth, googleProvider, db } from "../firebase/firebase";
 import {
-  // addDoc,
-  // collection,
   doc,
-  // Firestore,
   getDoc,
   setDoc,
 } from "firebase/firestore";

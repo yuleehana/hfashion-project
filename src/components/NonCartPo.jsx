@@ -6,7 +6,7 @@ import { useAuthStore } from '../store/authstore';
 import Paybutton from './Paybutton';
 
 const NonCartPo = ({ sendNonData, to, price, onOpenPopup }) => {
-  const { totalPrice, checkedTotalPrice, cartItems, checkedList } = useCartStore();
+  const { checkedTotalPrice, cartItems } = useCartStore();
 
   const handleClick = async () => {
     // 옵션: 팝업 먼저 열기

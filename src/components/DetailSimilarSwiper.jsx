@@ -9,7 +9,6 @@ import './sass/DetailSimilarSwiper.scss';
 const DetailSimilarSwiper = ({ category, product }) => {
   const { onItemsCategory } = useProductStore();
   const currentItems = onItemsCategory(category);
-  // 현재 상품과 같은 카테고리이지만 자기 자신은 제외
   const filteredItems = currentItems.filter((item) => item.category === product.category);
   console.log(filteredItems);
 

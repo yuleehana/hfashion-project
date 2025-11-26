@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 
 const BrandLiveProduct = ({ thumbImg, id, title, price, code, brand }) => {
-  //찜리스트 전역변수
   const { pickLists, onAddWishList } = usePickStore();
 
-  //active변수
   const isActive = pickLists.some((p) => p.code === code);
 
   return (
@@ -29,8 +27,8 @@ const BrandLiveProduct = ({ thumbImg, id, title, price, code, brand }) => {
             <p className="sub-new-title">{title}</p>
             <div className="sub-new-text">
               <div className="sub-new-text-r">
-                <span className="sub-new-price">{price.toLocaleString()}</span>
-                <span className="sub-new-saleprice">{(price * 0.8).toLocaleString()}</span>
+                <span className="sub-new-price">{price.toLocaleString()}원</span>
+                <span className="sub-new-saleprice">{(price * 0.8).toLocaleString()}원</span>
               </div>
 
               <span className="sub-new-sale">20%</span>

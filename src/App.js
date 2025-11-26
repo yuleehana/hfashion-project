@@ -59,7 +59,6 @@ import NotFoundMyPage from "./components/NotFoundMyPage";
 import MemberInfor from "./components/MemberInfor";
 import Breadcrumbs from "./components/Breadcrumbs";
 import NonPay from "./pages/NonPay";
-import NonMemberOrderSheet from "./pages/NonMemberOrderSheet";
 import MemberDelivery from "./pages/MemberDelivery";
 
 function App() {
@@ -136,7 +135,6 @@ function App() {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
         <Route path="/nonpay" element={<NonPay />} />
-        <Route path="/nonmemberordersheet" element={<NonMemberOrderSheet />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/brandlive" element={<MainBrandLive />} />
       </Routes>

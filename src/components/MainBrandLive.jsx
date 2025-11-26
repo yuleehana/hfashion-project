@@ -128,7 +128,6 @@ const MainBrandLive = () => {
     setActiveIndex(index);
   };
 
-  //메인이미지
   const mainNew = brandData.map((group) => group.find((v) => v.id === 1).thumbImg);
 
   return (
