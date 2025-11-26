@@ -5,16 +5,12 @@ import ReviewCard from './ReviewCard.jsx';
 
 const MainBestReview = () => {
   const { items } = useProductStore();
-
-  const targetCategories = ["cateman pants", "catewomen skirt", "sundries man etc"];
-
-  const filtered = items.filter((p) =>
-    targetCategories.includes(p.category) && p.rating === 5
-  );
+  const targetCategories = ['cateman pants', 'catewomen skirt', 'sundries man etc'];
+  const filtered = items.filter((p) => targetCategories.includes(p.category) && p.rating === 5);
 
   const result = targetCategories
-    .map((cat) => filtered.find((p) => p.category === cat)) // 해당 카테고리에서 첫번째 상품만
-    .filter(Boolean) // null 제거
+    .map((cat) => filtered.find((p) => p.category === cat))
+    .filter(Boolean)
     .slice(0, 3);
 
   return (
@@ -22,7 +18,7 @@ const MainBestReview = () => {
       <h2>BEST REVIEW</h2>
       <div className="container">
         <div className="review-box-list">
-          <ul className="review-box">
+          <ul className="review-box-list">
             {result.map((p) => {
               const thumbImgOnlyItem = {
                 ...p,
@@ -30,8 +26,8 @@ const MainBestReview = () => {
                 slide: [],
               };
 
-              return(
-                <li key={p.code} className='red-card'>
+              return (
+                <li key={p.code}>
                   <ReviewCard item={thumbImgOnlyItem} />
                 </li>
               );
