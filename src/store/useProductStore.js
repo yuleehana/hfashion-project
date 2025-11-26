@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { products } from '../data/products.js';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { products } from "../data/products.js";
 
 export const useProductStore = create(
   // loacalStorage에 넣는 명령어
@@ -9,14 +9,9 @@ export const useProductStore = create(
       items: [],
 
       onFetchItem: () => {
-        const allItems = get().items || [];
-
-        // * items 배열이 비어있는 경우에만 products 데이터를 set 함
-        // * persist가 데이터를 로드하기 전에 호출되든, 로드 후 호출되든,
-        // * 데이터가 없으면 products로 채워지도록 확실하게 보장
-        // if (allItems.length === 0) {
-        set({ items: products });
-        // }
+        if ((get().items || []).length === 0) {
+          set({ items: products });
+        }
       },
 
       // 메서드
@@ -25,7 +20,7 @@ export const useProductStore = create(
         const allItems = get().items || [];
 
         // 카테고리 값(cate)이 없거나 'all'이면 전체 상품 반환
-        if (!cate || cate === 'all') {
+        if (!cate || cate === "all") {
           return allItems;
         }
         // 필터링 로직 수정: 카테고리 이름에 'cate' 키워드가 포함되어 있는지 확인
@@ -44,7 +39,7 @@ export const useProductStore = create(
         const allItems = get().items || [];
 
         // brand가 없거나 'all'이면 전체 상품 반환
-        if (!brand || brand === 'all') {
+        if (!brand || brand === "all") {
           return allItems;
         }
 
@@ -54,7 +49,7 @@ export const useProductStore = create(
           return allItems.filter((item) => {
             // item.brand가 brand 배열에 포함되어 있는지 확인
             // 안전하게 item.brand가 유효한 문자열일 때만 확인합니다.
-            if (item.brand && typeof item.brand === 'string') {
+            if (item.brand && typeof item.brand === "string") {
               return brand.includes(item.brand);
             }
             return false;
@@ -81,7 +76,7 @@ export const useProductStore = create(
     }),
     //로컬스토리지에 저장할 방이름
     {
-      name: 'product-storage', // 새로고침용
+      name: "product-storage", // 새로고침용
     }
   )
 );
