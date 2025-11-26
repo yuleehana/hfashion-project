@@ -1,20 +1,29 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "./sass/SearchOverlay.scss";
 import { useProductStore } from "../store/useProductStore.js";
 
-const popularKeywords = ["가디건", "점퍼", "백팩", "스니커즈", "스커트", "티셔츠", "로퍼", "셔츠", "모자"];
-
+const popularKeywords = [
+  "가디건",
+  "점퍼",
+  "백팩",
+  "스니커즈",
+  "스커트",
+  "티셔츠",
+  "로퍼",
+  "셔츠",
+  "모자",
+];
 
 const SearchOverlay = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const store = useProductStore();
-  const products = store.items || [];
+  const products = useMemo(() => store.items ?? [], [store.items]);
 
   const [keyword, setKeyword] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [recentKeywords, setRecentKeywords] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(-1); 
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const inputRef = useRef(null);
 
@@ -25,19 +34,18 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    // 여기 함수 이름이 실제로는 onFetchItems 일 수도 있음 (store 확인 한번!)
     store.onFetchItem();
   }, []);
 
   useEffect(() => {
     if (keyword.trim() && products.length > 0) {
       const filtered = products
-        .filter(item =>
+        .filter((item) =>
           (item.title || "").toLowerCase().includes(keyword.toLowerCase())
         )
         .slice(0, 12);
       setFilteredItems(filtered);
-      setActiveIndex(-1); // 검색어 바뀔 때 선택 초기화
+      setActiveIndex(-1);
     } else {
       setFilteredItems([]);
       setActiveIndex(-1);
@@ -60,7 +68,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     onClose();
   };
 
-  // ⭐ 핵심: ↑↓ + Enter 처리
   const handleKeyDown = (e) => {
     if (!filteredItems.length) return;
 
@@ -92,7 +99,8 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
   const addRecentKeyword = (item) => {
     const fullText = typeof item === "string" ? item : item.title || item.name;
-    const keywordText = fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
+    const keywordText =
+      fullText.length > 15 ? fullText.slice(0, 15) + "..." : fullText;
 
     if (!recentKeywords.includes(keywordText)) {
       setRecentKeywords([keywordText, ...recentKeywords].slice(0, 10));
@@ -170,8 +178,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
           {!keyword && (
             <div className="search-suggestions">
-              {/* 아래쪽은 그대로 사용 */}
-              {/* 최근검색어 */}
               <div className="recent-keywords">
                 <div className="recent-keywords-del">
                   <p>최근 검색어</p>
@@ -188,7 +194,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   {recentKeywords.length === 0 ? (
                     <li className="no-recent">최근 검색어가 없습니다.</li>
                   ) : (
-                    recentKeywords.map(kw => (
+                    recentKeywords.map((kw) => (
                       <li key={kw}>
                         <button
                           type="button"
@@ -204,7 +210,9 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                           type="button"
                           className="delete-btn"
                           onClick={() =>
-                            setRecentKeywords(recentKeywords.filter(r => r !== kw))
+                            setRecentKeywords(
+                              recentKeywords.filter((r) => r !== kw)
+                            )
                           }
                         >
                           <img src="/images/close-icon-white.svg" alt="삭제" />
@@ -214,8 +222,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   )}
                 </ul>
               </div>
-
-              {/* 인기 검색어 */}
               <div className="popular-keywords">
                 <p>인기 검색어</p>
                 <ul>

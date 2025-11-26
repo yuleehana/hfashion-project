@@ -1,173 +1,155 @@
- @use '../../App.scss' as g;
+@use "../../App.scss" as g;
 
- // 카테고리 tab
- .categorynew-tabs {
-   display: flex;
-   justify-content: flex-start;
-   gap: 24px;
-   margin-bottom: 36px;
-   padding: 0 64px;
+.categorynew-tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-bottom: 36px;
+  padding: 0 64px;
 
-   button {
-     padding: 4px 0;
-     cursor: pointer;
-     color: g.$main-color1;
-     font-family: "Times New Roman";
-     font-size: 1.6rem;
+  button {
+    padding: 4px 0;
+    cursor: pointer;
+    color: g.$main-color1;
+    font-family: "Times New Roman";
+    font-size: 1.6rem;
 
-     &.active {
-       font-weight: bold;
-     }
-   }
+    &.active {
+      font-weight: bold;
+    }
+  }
 
-   //  전체보기 버튼 >
-   .categorynew-tab-all {
-     display: flex;
-     margin-left: auto; // 오른쪽 끝으로 보내기
-     font-size: 1.6rem;
-     align-items: center;
-     gap: 6px;
+  .categorynew-tab-all {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    gap: 6px;
 
-     img {
-       max-width: 14px;
-       height: auto;
-     }
-   }
- }
+    img {
+      max-width: 14px;
+      height: auto;
+    }
+  }
+}
 
- // 슬라이드영역
- .categorynew-slider-wrapper {
-   display: flex;
-   align-items: center;
-   column-gap: 30px;
-   // 화살표랑 상품리스트 간격
- }
+.categorynew-slider-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
 
- // 좌우 화살표 < >
- .arrow-btn {
-   width: 35px;
-   height: 35px;
-   cursor: pointer;
+.arrow-btn {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
 
- }
+.categorynew-product-list {
+  flex: 1;
+  display: flex;
+  gap: 10px;
 
- // 상품리스트
+  .product-card {
+    position: relative;
+    flex: 0 0 calc((100% - 30px) / 4);
+    cursor: pointer;
 
- .categorynew-product-list {
-   flex: 1; // 화살표 빼고 남은 영역을 전부 차지
-   display: flex;
-   gap: 10px;
+    .categorynew-likebtn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      z-index: 3;
 
-   .product-card {
-     position: relative;
-     flex: 0 0 calc((100% - 30px) / 4);
-     cursor: pointer;
+      width: 30px;
+      height: 30px;
 
-     .categorynew-likebtn {
-            position: absolute;
-            bottom: 14px;       
-            right: 14px;   
-            z-index: 3;
-            
-            width: 30px;
-            height: 30px;
-            
-            //초기 상태: 숨기기
-            opacity: 0; 
-            transition: opacity 0.3s ease; 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .categorynew-product-img {
+      position: relative;
+      width: 100%;
+      padding-top: 140%;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+    }
+
+    .categorynew-overlay-info {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      text-align: start;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      .categorynew-name {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: g.$main-color2;
+        max-width: 90%;
+        white-space: normal;
+        word-break: keep-all;
+      }
+
+      .categorynew-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+
+        .categorynew-sale-price {
+          font-size: 1.8rem;
+          color: g.$main-color2;
         }
 
-     /* 이미지 영역 */
-     .categorynew-product-img {
-       position: relative;
-       width: 100%;
-       padding-top: 140%; // 세로 비율 유지
-       overflow: hidden;
+        .categorynew-original-price {
+          font-size: 1.6rem;
+          color: g.$sub-color2;
+        }
 
-       img {
-         position: absolute;
-         inset: 0;
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-         transition: transform 0.5s ease;
-       }
+        .categorynew-discount {
+          font-size: 1.6rem;
+          color: g.$percent-color;
+        }
+      }
+    }
 
-       /* hover 시 어두워지는 오버레이 */
-       &::after {
-         content: "";
-         position: absolute;
-         inset: 0;
-         background: rgba(0, 0, 0, 0.5);
-         opacity: 0;
-         transition: opacity 0.5s ease;
-       }
-     }
+    &:hover {
+      .categorynew-product-img {
+        img {
+          transform: scale(1.05);
+        }
 
-     /* 상품 정보 (정중앙 위치 + 기본 숨김) */
-     .categorynew-overlay-info {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       z-index: 2;
-       text-align: start;
-       opacity: 0;
-       transition: opacity 0.3s ease;
-       //  background-color: tomato;
+        &::after {
+          opacity: 1;
+        }
+      }
 
-       .categorynew-name {
-         font-size: 2rem;
-         font-weight: 500;
-         margin-bottom: 20px;
-         color: g.$main-color2;
-         max-width: 90%;
-         white-space: normal; // 줄바꿈 허용
-         word-break: keep-all; // 너무 긴 단어도 줄바꿈
-       }
-
-       .categorynew-price {
-         display: flex;
-         align-items: center;
-         /* 수평 중앙 정렬 */
-         gap: 8px;
-         /* 가격들 사이에 8px 간격 */
-         white-space: nowrap; //한줄로 표시
-
-         .categorynew-sale-price {
-           font-size: 1.8rem;
-           color: g.$main-color2;
-         }
-
-         .categorynew-original-price {
-           font-size: 1.6rem;
-           color: g.$sub-color2;
-         }
-
-         .categorynew-discount {
-           font-size: 1.6rem;
-           color: g.$percent-color;
-
-         }
-       }
-     }
-
-     /* Hover 효과 */
-     &:hover {
-       .categorynew-product-img {
-         img {
-           transform: scale(1.05);
-         }
-
-         &::after {
-           opacity: 1;
-         }
-       }
-
-       .categorynew-overlay-info,.categorynew-likebtn {
-         opacity: 1;
-
-       }
-     }
-   }
- }
+      .categorynew-overlay-info,
+      .categorynew-likebtn {
+        opacity: 1;
+      }
+    }
+  }
+}

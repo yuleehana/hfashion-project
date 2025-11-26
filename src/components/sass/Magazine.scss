@@ -1,4 +1,4 @@
-@use '../../App.scss' as g;
+@use "../../App.scss" as g;
 
 .magazine {
   .magazine-wrap {
@@ -9,7 +9,6 @@
     height: 850px;
   }
 
-  // --- 왼쪽 이미지 영역 ---
   .magazine-left {
     flex: 5;
     display: flex;
@@ -52,7 +51,6 @@
     }
   }
 
-  // --- 오른쪽 텍스트 + 제품 영역 ---
   .magazine-right {
     flex: 5;
     display: flex;
@@ -62,7 +60,6 @@
     padding: 30px 40px;
     position: relative;
 
-    // 제목
     .magazine-title {
       font-size: 7.2rem;
       font-family: "Times New Roman";
@@ -72,7 +69,6 @@
       margin-left: 10px;
     }
 
-    // 제품 목록
     .magazine-product-list {
       display: flex;
       justify-content: space-around;
@@ -84,7 +80,6 @@
         align-items: center;
         cursor: pointer;
 
-        /* 이미지 위 오버레이가 정확히 올라가도록 기준 */
         position: relative;
         width: 100%;
         max-width: 240px;
@@ -97,9 +92,8 @@
           transition: transform 0.3s ease;
         }
 
-        /* 이미지 위에만 어두운 오버레이 */
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
@@ -112,7 +106,6 @@
           pointer-events: none;
         }
 
-        /* 제품명: 중앙 표시 */
         .product-name {
           position: absolute;
           top: 50%;
@@ -127,7 +120,6 @@
           text-align: center;
         }
 
-        // hover 효과
         &:hover {
           &::after {
             opacity: 1;
@@ -145,7 +137,6 @@
       }
     }
 
-    // 설명 문구
     .magazine-desc {
       color: g.$main-color1;
       display: flex;
