@@ -5,17 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
 
 const CartPo = () => {
-  const { totalPrice, checkedTotalPrice, cartItems } = useCartStore();
-
-  const [totalCheck, setTotalCheck] = useState(true);
-
-  // console.log('전체카트아이템 항목', cartItems);
-  // console.log('체크된항목', checkedTotalPrice);
-
+  const { checkedTotalPrice } = useCartStore();
   const { user } = useAuthStore();
-
-  // 선택된 상품 개수
-  const checkedCount = cartItems.filter((item) => item.checked).length;
 
   return (
     <div className="cartPo-wrap">
