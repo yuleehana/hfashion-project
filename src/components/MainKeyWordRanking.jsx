@@ -48,8 +48,9 @@ const MainKeyWordRanking = () => {
                   type="button"
                   onMouseEnter={() => handleHover(index)}
                   onClick={() => handleClick(index)}
+                  className='accord-btn'
                 >
-                  <span>{item.id}</span>
+                  <span className='accord-num'>{item.id}</span>
                   {item.title}
                 </button>
                 <ul className={`rank-list ${liMenu === index ? 'active' : ''}`}>
@@ -100,7 +101,7 @@ const MainKeyWordRanking = () => {
                   더보기
                 </button>
               </div>
-              {menuRankProduct[liMenu].rank.slice(0, 3).map((it) => {
+              {menuRankProduct[liMenu].rank.map((it) => {
                 const originalPrice = Number(it.price);
                 const salePrice = Math.round(originalPrice * 0.8);
 
