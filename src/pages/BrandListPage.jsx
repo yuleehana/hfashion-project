@@ -33,8 +33,8 @@ const BrandListPage = ({ brand }) => {
   const [filterName, setFilterName] = useState('신 상품순');
 
   //가격을 담을변수
-  const [filterPrice, setFilterPrice] = useState(0);
-  const [filterPrice2, setFilterPrice2] = useState(0);
+  const [filterPrice, setFilterPrice] = useState(null);
+  const [filterPrice2, setFilterPrice2] = useState(null);
 
   const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(
     items,
