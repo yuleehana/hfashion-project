@@ -135,7 +135,6 @@ const MainCategoryNew = () => {
                   onClick={(e) => handleAddToWishlist(e, item)}
                 >
                   <img src="/images/plusLike.svg" alt="찜하기" />
-                  <img src="/images/plusLike.svg" alt="찜하기" />
                 </button>
 
                 <div className="categorynew-product-img">
