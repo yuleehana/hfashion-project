@@ -3,35 +3,28 @@ import { useAuthStore } from "../store/authstore";
 import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
 import BuyProductList from "../components/BuyProductList";
 import "./sass/UserInfo.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const UserInfo = () => {
   const { user } = useAuthStore();
-  // const navigate = useNavigate(); // ← navigate 함수 선언
 
-  // if (!user) return <p>로딩중...</p>
-  // 영원 로딩은 안될 문제라 아래 코드로 수정했습니다. KIM:11-25
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
   return (
     <div className="sub-page">
-      <div className="content-inner">
-        {/* LEFT MENU */}
+      <div className="content-inner userinfo">
         <div className="user-info-left">
           <UserInfoLeftMenu />
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="user-info-right">
-          {/* PROFILE SECTION */}
+        <div className="user-info-main-right">
           <div className="profile-section">
             <div className="username">
               {`${user.email}(${user.displayName})님, 환영합니다!`}
             </div>
 
-            {/* ---- 메인 4개 박스 ---- */}
             <div className="info-summary">
               <div className="summary-box">
                 <span className="box-label">멤버십등급 &gt;</span>
@@ -55,13 +48,14 @@ const UserInfo = () => {
             </div>
           </div>
 
-          {/* RECENT ORDERS */}
           <div className="recent-orders-section">
-            <h2 className="section-title">최근 주문</h2>
+            <div className="recent-orders-top">
+              <h2 className="section-title">최근 주문</h2>
 
-            <ul className="order-list">
-              <li><BuyProductList /></li>
-            </ul>
+              <ul className="order-list">
+                <BuyProductList />
+              </ul>
+            </div>
 
             <div className="order-button-box">
               <button>주문/배송 조회</button>

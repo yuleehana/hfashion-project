@@ -20,7 +20,7 @@ const BuyProductList = () => {
 
   // 있으면 있다고 표시
   return (
-    <div className="buy-product-wrap">
+    <li className="buy-product-wrap">
       {orders.map((order, id) => {
         const firstProduct = order.products[0];
 
@@ -53,14 +53,14 @@ const BuyProductList = () => {
 
             <div className="product-price-box">
               <p className="product-price">
-                {(order.totalPrice * 0.8).toLocaleString()}
+                {(order.price * 0.8).toLocaleString()}
               </p>
               <p className="unit">원</p>
             </div>
           </div>
         );
       })}
-    </div>
+    </li>
   );
 };
 

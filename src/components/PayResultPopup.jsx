@@ -71,7 +71,7 @@ const PayResultPopup = ({ onClose }) => {
                   <span>
                     {truncateWords(lastOrder.products[0].title, 3)}
                     {lastOrder.products.length > 1
-                      ? `외 ${lastOrder.products.length}`
+                      ? ` 외 ${lastOrder.products.length}건`
                       : ""}
                   </span>
                 </div>

@@ -121,16 +121,27 @@ const Pay = () => {
         {"payDepth" in item ? (
           <div className="dropdown-wrapper">
             <button
-              className="dropdown-btn"
+              className={`dropdown-btn ${
+                openDepth === item.id ? "active" : ""
+              }`}
               onClick={() =>
                 setOpenDepth(openDepth === item.id ? null : item.id)
               }
             >
-              {selectValue[selectPay][item.id] || item.label || item.title}
+              <span>
+                {selectValue[selectPay][item.id] || item.label || item.title}
+              </span>
+              <span className="button-icon">
+                <img src="../images/arrow-down-white.svg" alt="" />
+              </span>
             </button>
 
             {openDepth === item.id && (
-              <ul className="dropdown-list">
+              <ul
+                className={`dropdown-list ${
+                  openDepth === item.id ? "active" : ""
+                }`}
+              >
                 {item.payDepth.map((depth) => (
                   <li
                     key={depth.id}
@@ -275,7 +286,7 @@ const Pay = () => {
               </div>
             </div>
 
-            <div className="coupon-wrap">
+            {/* <div className="coupon-wrap">
               <div className="coupon-top">
                 <span>할인정보</span>
               </div>
@@ -288,7 +299,7 @@ const Pay = () => {
                   <span>H.point Pay</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="payment-wrap">
               <div className="payment-top">
