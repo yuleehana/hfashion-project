@@ -20,8 +20,6 @@ const CartItem = ({ product, onOpenPopup }) => {
 
   const filteredCart = cartItems.filter((c) => c.checked);
 
-  const [isChecked, setIsChecked] = useState(true);
-
   const handleToggle = (code) => {
     // console.log('1121', code);
     setIsActive(!isActive);

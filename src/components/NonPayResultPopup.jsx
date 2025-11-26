@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCartStore } from "../store/useCartStore";
 import { usePayStore } from "../store/usePayStore";
 import "./sass/PayResultPopup.scss";
@@ -11,13 +11,10 @@ const NonPayResultPopup = ({ onClose }) => {
   const { today } = usePayStore();
   const addOrder = usePayStore((state) => state.addOrder);
   const { nonCart } = useAuthStore();
-  const navigate = useNavigate();
 
-  // cartItems [0]
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
 
-  // 팝업에 표시되는 아이템명 자르기
   const truncateWords = (text, maxWords) => {
     if (!text) return "";
 
@@ -32,7 +29,6 @@ const NonPayResultPopup = ({ onClose }) => {
     resetCart();
   };
 
-  // 주문내역 저장하기
   const handlePaymentSuccess = () => {
     const orderItem = {
       date: { today },

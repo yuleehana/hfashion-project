@@ -9,7 +9,6 @@ import CartOpChangePopup from '../components/CartOpChangePopup';
 const Cart = () => {
   const { cartItems } = useCartStore();
 
-  // op-change 팝업 열기
   const [showPopup, setShowPopup] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 

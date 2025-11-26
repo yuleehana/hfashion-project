@@ -55,7 +55,6 @@ import MainBrandLive from "./components/MainBrandLive";
 import { useAuthStore } from "./store/authstore";
 import Picklist from "./pages/Picklist";
 import ScrollToTop from "./components/ScrollToTop";
-import NotFoundMyPage from "./components/NotFoundMyPage";
 import MemberInfor from "./components/MemberInfor";
 import Breadcrumbs from "./components/Breadcrumbs";
 import NonPay from "./pages/NonPay";
@@ -77,7 +76,7 @@ function App() {
       <Header />
       <ScrollToTop />
       <Breadcrumbs />
-      {/* 로케이션 공통 */}
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/product-detail/:code" element={<ProductDetail />} />
@@ -119,10 +118,8 @@ function App() {
         </Route>
 
         <Route path="/brand" element={<Brand />}></Route>
-        {/* <Route path='/lifestyle' element={<LifeStyle />}></Route>  제거 KIM 11-10 */}
 
         <Route path="*" element={<NotFound />} />
-        <Route path="/userinfo/:notfoundmypage" element={<NotFoundMyPage />} />
 
         <Route path="/search" element={<Search />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -130,7 +127,7 @@ function App() {
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
         <Route path="/userinfo/memberinfor" element={<MemberInfor />} />
-        <Route path="/userinfo/delivery" element={<MemberDelivery />} />
+        <Route path="/userinfo/memberdelivery" element={<MemberDelivery />} />
         <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
