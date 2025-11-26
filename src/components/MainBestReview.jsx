@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "./sass/MainBestReview.scss";
 import { useProductStore } from '../store/useProductStore.js';
 import ReviewCard from './ReviewCard.jsx';
@@ -6,32 +6,52 @@ import ReviewCard from './ReviewCard.jsx';
 
 const MainBestReview = () => {
   const { items } = useProductStore();
-  // const top3 = [...items].filter((p) => p.rating === 5).slice(0, 3);
 
-  //1. 내가 BEST REVIEW에 넣고 싶은 카테고리 지정
-  // const bestItems = items.filter((p) => p.rating === 5);
   const targetCategories = ["cateman pants", "catewomen skirt", "sundries man etc"];
 
-  //2. 그 카테고리에서 rating = 5인 상품만 지정하기
-  // const categoryMap = new Map();
   const filtered = items.filter((p) =>
     targetCategories.includes(p.category) && p.rating === 5
   );
 
-  // bestItems.forEach((p) => {
-  //   if(!categoryMap.has(p.category)){
-  //     categoryMap.set(p.category, p);
-  //   }
-  // })
-
-  //3. 지정된 카테고리마다 1개씩만 선택 (순서는 targetCategories 순서대로)
-  // const top3 = Array.from(categoryMap.values()).slice(0, 3);
-
-  // console.log(top3);
   const result = targetCategories
     .map((cat) => filtered.find((p) => p.category === cat)) // 해당 카테고리에서 첫번째 상품만
     .filter(Boolean) // null 제거
     .slice(0, 3);
+
+  const scrollRef = useRef(null);
+  const isDownRef = useRef(false);
+  const startRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+
+  const handleMouseDown = (e) => {
+    const el = scrollRef.current;
+    if(!el) return;
+    el.classList.add("is-dragging"); // css에서 커서 모양 바꾸기용
+    startXRef.current = e.pageX - el.offsetLeft;
+    scrollLeftRef.current = el.scrollLeft;
+  }
+
+  const handleMouseLeave = () => {
+    const el = scrollRef.current;
+    if(!el) return;
+    isDownRef.current = false;
+    el.classList.remove("is-dragging");
+  }
+
+  const handleMouseUp = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    isDownRef.current = false;
+    el.classList.remove("is-dragging");
+  }
+
+  const handleMouseMove = (e) => {
+    const el = scrollRef.current;
+    if(!el || !isDownRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - el.offsetLeft;
+    const walk = x
+  }
   
   return (
     <section>
