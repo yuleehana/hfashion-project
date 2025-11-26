@@ -38,7 +38,10 @@ const MainCategoryNew = () => {
   }, [items, activeTab]);
 
   const maxIndex = Math.max(0, filteredItems.length - VISIBLE_COUNT);
-  const visibleItems = filteredItems.slice(startIndex, startIndex + VISIBLE_COUNT);
+  const visibleItems = filteredItems.slice(
+    startIndex,
+    startIndex + VISIBLE_COUNT
+  );
 
   const handlePrev = () => {
     setStartIndex((prev) => Math.max(0, prev - 1));
@@ -112,7 +115,11 @@ const MainCategoryNew = () => {
         </div>
 
         <div className="categorynew-slider-wrapper">
-          <button className="arrow-btn left" onClick={handlePrev} disabled={startIndex === 0}>
+          <button
+            className="arrow-btn left"
+            onClick={handlePrev}
+            disabled={startIndex === 0}
+          >
             <img src="/images/button/btn-slide-prev.svg" alt="이전" />
           </button>
 
@@ -165,9 +172,5 @@ const MainCategoryNew = () => {
     </section>
   );
 };
-  );
-};
-
-export default MainCategoryNew;
 
 export default MainCategoryNew;

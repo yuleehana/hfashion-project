@@ -16,7 +16,6 @@ const Magazine = () => {
     <section className="magazine">
       <h2 className="magazine-title">MAGAZINE</h2>
       <div className="container">
-      <div className="container">
         <div className="magazine-wrap">
           <div className="magazine-left">
             <div className="magazine-main-img">
@@ -79,8 +78,7 @@ const Magazine = () => {
               <div className="magazine-desc-right">
                 LOVELY
                 <br />
-                Essentials
-                LOVELY
+                Essentials LOVELY
                 <br />
                 Essentials
               </div>
@@ -93,4 +91,3 @@ const Magazine = () => {
 };
 
 export default Magazine;
-

@@ -20,10 +20,9 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const store = useProductStore();
   const products = useMemo(() => store.items ?? [], [store.items]);
 
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [recentKeywords, setRecentKeywords] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(-1);
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const inputRef = useRef(null);
@@ -56,7 +55,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleInputChange = (e) => setKeyword(e.target.value);
-  const handleClear = () => setKeyword('');
+  const handleClear = () => setKeyword("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +63,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
     if (!trimmed) return;
 
     addRecentKeyword(trimmed);
-    setKeyword('');
+    setKeyword("");
     navigate(`/search?q=${trimmed}`);
     onClose();
   };
@@ -72,24 +71,28 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const handleKeyDown = (e) => {
     if (!filteredItems.length) return;
 
-    if (e.key === 'ArrowDown') {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
-      setActiveIndex((prev) => (prev < filteredItems.length - 1 ? prev + 1 : 0));
+      setActiveIndex((prev) =>
+        prev < filteredItems.length - 1 ? prev + 1 : 0
+      );
     }
 
-    if (e.key === 'ArrowUp') {
+    if (e.key === "ArrowUp") {
       e.preventDefault();
-      setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredItems.length - 1));
+      setActiveIndex((prev) =>
+        prev > 0 ? prev - 1 : filteredItems.length - 1
+      );
     }
 
-    if (e.key === 'Enter' && activeIndex >= 0) {
+    if (e.key === "Enter" && activeIndex >= 0) {
       e.preventDefault();
       const item = filteredItems[activeIndex];
       if (!item) return;
 
       addRecentKeyword(item.title || item.name);
       navigate(`/product-detail/${item.code}`);
-      setKeyword('');
+      setKeyword("");
       onClose();
     }
   };
@@ -112,12 +115,12 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
   const highlightText = (text, keyword) => {
     if (!keyword) return text;
-    const regex = new RegExp(`(${keyword})`, 'gi');
+    const regex = new RegExp(`(${keyword})`, "gi");
     const parts = text.split(regex);
 
     return parts.map((part, i) =>
       part.toLowerCase() === keyword.toLowerCase() ? (
-        <mark key={i} style={{ color: '#EEBE81' }}>
+        <mark key={i} style={{ color: "#EEBE81" }}>
           {part}
         </mark>
       ) : (
@@ -149,11 +152,11 @@ const SearchOverlay = ({ isOpen, onClose }) => {
               {filteredItems.map((item, index) => (
                 <li
                   key={item.id}
-                  className={index === activeIndex ? 'active' : ''} // ⭐ 추가
+                  className={index === activeIndex ? "active" : ""} // ⭐ 추가
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);
-                    setKeyword('');
+                    setKeyword("");
                     onClose();
                   }}
                 >
@@ -191,7 +194,6 @@ const SearchOverlay = ({ isOpen, onClose }) => {
                   {recentKeywords.length === 0 ? (
                     <li className="no-recent">최근 검색어가 없습니다.</li>
                   ) : (
-                    recentKeywords.map((kw) => (
                     recentKeywords.map((kw) => (
                       <li key={kw}>
                         <button
