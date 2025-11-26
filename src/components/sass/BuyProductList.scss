@@ -1,5 +1,7 @@
+@use "../../App.scss" as g;
+
 .buy-product-wrap{
-  height: 120px;
+  padding: 2rem;
   width: 100%;
 
   .send-product-box{
@@ -9,7 +11,7 @@
 
     .gap-box{
       font-size: 40px;
-      color: #f2f2f2;
+      color: g.$sub-color1;
     }
 
     .date-code-box{

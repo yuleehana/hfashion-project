@@ -35,7 +35,7 @@ const MemberInfor = () => {
       <div className="channel-wrap">
         <div className="channel"></div>
       </div>
-      <div className="content-inner">
+      <div className="content-inner memberinfo">
         <div className="user-info-left">
           <UserInfoLeftMenu />
         </div>

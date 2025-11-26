@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './sass/UserInfoLeftMenu.scss';
 
 const UserInfoLeftMenu = () => {
-  // const [liOpen, setLiOpen] = useState(null);
   const navigate = useNavigate();
 
   const menuList = [
@@ -11,7 +10,7 @@ const UserInfoLeftMenu = () => {
       title: '쇼핑 정보',
       link: '',
       list: [
-        { name: '주문/배송', link: '/userinfo/memberdelivery' },
+        { name: '주문/배송', link: '/userinfo/delivery' },
         { name: '찜 리스트', link: '/picklist' },
       ],
     },

@@ -1,65 +1,66 @@
-import './App.css';
-import Header from './components/Header';
-import { Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
+import "./App.css";
+import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import Main from "./pages/Main";
 
-import Women from './pages/Women';
-import WomenDefault from './pages/WomenDefault';
-import WomenShirt from './pages/WomenShirt';
-import WomenPants from './pages/WomenPants';
-import WomenSkirt from './pages/WomenSkirt';
-import WomenShoes from './pages/WomenShoes';
+import Women from "./pages/Women";
+import WomenDefault from "./pages/WomenDefault";
+import WomenShirt from "./pages/WomenShirt";
+import WomenPants from "./pages/WomenPants";
+import WomenSkirt from "./pages/WomenSkirt";
+import WomenShoes from "./pages/WomenShoes";
 
-import Men from './pages/Men';
-import MenDefault from './pages/MenDefault';
-import ManPants from './pages/ManPants';
-import ManShirt from './pages/ManShirt';
-import ManOuter from './pages/ManOuter';
-import ManShoes from './pages/ManShoes';
+import Men from "./pages/Men";
+import MenDefault from "./pages/MenDefault";
+import ManPants from "./pages/ManPants";
+import ManShirt from "./pages/ManShirt";
+import ManOuter from "./pages/ManOuter";
+import ManShoes from "./pages/ManShoes";
 
-import Sundries from './pages/Sundries';
-import SundriesDefault from './pages/SundriesDefault';
-import SundriesWfashion from './pages/SundriesWfashion';
-import SundriesMfashion from './pages/SundriesMfashion';
-import SundriesWbag from './pages/SundriesWbag';
-import SundriesMbag from './pages/SundriesMbag';
+import Sundries from "./pages/Sundries";
+import SundriesDefault from "./pages/SundriesDefault";
+import SundriesWfashion from "./pages/SundriesWfashion";
+import SundriesMfashion from "./pages/SundriesMfashion";
+import SundriesWbag from "./pages/SundriesWbag";
+import SundriesMbag from "./pages/SundriesMbag";
 
-import Golf from './pages/Golf';
-import GolfDefault from './pages/GolfDefault';
-import GolfWouter from './pages/GolfWouter';
-import GolfMouter from './pages/GolfMouter';
-import GolfWpants from './pages/GolfWpants';
-import GolfMpants from './pages/GolfMpants';
-import GolfAcc from './pages/GolfAcc';
+import Golf from "./pages/Golf";
+import GolfDefault from "./pages/GolfDefault";
+import GolfWouter from "./pages/GolfWouter";
+import GolfMouter from "./pages/GolfMouter";
+import GolfWpants from "./pages/GolfWpants";
+import GolfMpants from "./pages/GolfMpants";
+import GolfAcc from "./pages/GolfAcc";
 
-import Brand from './pages/Brand';
-import BrandDefault from './pages/BrandDefault';
-import BrandRouge from './pages/BrandRouge';
-import BrandSJYP from './pages/BrandSJYP';
-import BrandTommy from './pages/BrandTommy';
+import Brand from "./pages/Brand";
+import BrandDefault from "./pages/BrandDefault";
+import BrandRouge from "./pages/BrandRouge";
+import BrandSJYP from "./pages/BrandSJYP";
+import BrandTommy from "./pages/BrandTommy";
 
-import Search from './components/Search';
-import Login from './pages/Login';
-import Join from './pages/Join';
-import UserInfo from './pages/UserInfo';
-import Cart from './pages/Cart';
-import Logout from './pages/Logout';
-import Pay from './pages/Pay';
-import NotFound from './pages/NotFound';
-import Footer from './components/Footer';
-import NonMember from './pages/NonMember';
-import ProductDetail from './pages/ProductDetail';
-import { useEffect } from 'react';
-import { useProductStore } from './store/useProductStore';
-import MainBrandLive from './components/MainBrandLive';
-import { useAuthStore } from './store/authstore';
-import Picklist from './pages/Picklist';
-import ScrollToTop from './components/ScrollToTop';
-import NotFoundMyPage from './components/NotFoundMyPage';
-import MemberInfor from './components/MemberInfor';
-import Breadcrumbs from './components/Breadcrumbs';
-import NonPay from './pages/NonPay';
-import NonMemberOrderSheet from './pages/NonMemberOrderSheet';
+import Search from "./components/Search";
+import Login from "./pages/Login";
+import Join from "./pages/Join";
+import UserInfo from "./pages/UserInfo";
+import Cart from "./pages/Cart";
+import Logout from "./pages/Logout";
+import Pay from "./pages/Pay";
+import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
+import NonMember from "./pages/NonMember";
+import ProductDetail from "./pages/ProductDetail";
+import { useEffect } from "react";
+import { useProductStore } from "./store/useProductStore";
+import MainBrandLive from "./components/MainBrandLive";
+import { useAuthStore } from "./store/authstore";
+import Picklist from "./pages/Picklist";
+import ScrollToTop from "./components/ScrollToTop";
+import NotFoundMyPage from "./components/NotFoundMyPage";
+import MemberInfor from "./components/MemberInfor";
+import Breadcrumbs from "./components/Breadcrumbs";
+import NonPay from "./pages/NonPay";
+import NonMemberOrderSheet from "./pages/NonMemberOrderSheet";
+import MemberDelivery from "./pages/MemberDelivery";
 
 function App() {
   const onFetchItem = useProductStore((state) => state.onFetchItem);
@@ -130,6 +131,7 @@ function App() {
         <Route path="/join" element={<Join />}></Route>
         <Route path="/userinfo" element={<UserInfo />}></Route>
         <Route path="/userinfo/memberinfor" element={<MemberInfor />} />
+        <Route path="/userinfo/delivery" element={<MemberDelivery />} />
         <Route path="/picklist" element={<Picklist />} />
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pay" element={<Pay />}></Route>
