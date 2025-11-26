@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import { useCartStore } from '../store/useCartStore';
-import './sass/CartItem.scss';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useCartStore } from "../store/useCartStore";
+import "./sass/CartItem.scss";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ product, onOpenPopup }) => {
   // const { code } = useParams();
 
-  const { cartItems, onRemoveCart, onCheckCart, resetCart, onCheckAll, onRemoveChecked } =
-    useCartStore();
+  const {
+    cartItems,
+    onRemoveCart,
+    onCheckCart,
+    resetCart,
+    onCheckAll,
+    onRemoveChecked,
+  } = useCartStore();
   console.log(cartItems);
   // 체크btn active
   const [isActive, setIsActive] = useState(true);
@@ -20,12 +26,13 @@ const CartItem = ({ product, onOpenPopup }) => {
     // console.log('1121', code);
     setIsActive(!isActive);
     onCheckCart(code);
-    console.log('카트아이템', cartItems);
+    console.log("카트아이템", cartItems);
   };
 
   //선택삭제
 
-  const isAllChecked = cartItems.length > 0 && cartItems.every((item) => item.checked);
+  const isAllChecked =
+    cartItems.length > 0 && cartItems.every((item) => item.checked);
 
   // 전체삭제
   const resetCartList = () => {
@@ -66,65 +73,65 @@ const CartItem = ({ product, onOpenPopup }) => {
         </div>
       </div>
       <ul className="cart-item-list">
-        {cartItems.map((item, id) => (
-          <>
-            <li key={id} className="cart-item">
-              <div className="cart-item-inner">
-                <div className="item-left">
-                  <input
-                    type="checkbox"
-                    checked={item.checked}
-                    onChange={(e) => handleToggle(item.code)}
-                  />
-                  <div className="item-img-box">
-                    <img src={item.thumbImg} alt={item.code} />
-                  </div>
-                  <div className="item-text-box">
-                    <div className="item-desc">
-                      <span className="item-brand">{item.brand}</span>
-                      <span className="item-title">{item.title}</span>
-                      <span className="item-op">
-                        <span>색상 : {item.color}</span>
-                        <span>사이즈 : {item.size}</span>
-                        <span>수량 : {item.count}</span>
-                      </span>
-                    </div>
-                    {/* <div className="op-change"></div> */}
+        {cartItems.map((item) => (
+          <li key={item.code + item.size + item.color} className="cart-item">
+            <div className="cart-item-inner">
+              <div className="item-left">
+                <input
+                  type="checkbox"
+                  checked={item.checked}
+                  onChange={(e) => handleToggle(item.code)}
+                />
+                <div className="item-img-box">
+                  <img src={item.thumbImg} alt={item.code} />
+                </div>
+                <div className="item-text-box">
+                  <div className="item-desc">
+                    <span className="item-brand">{item.brand}</span>
+                    <span className="item-title">{item.title}</span>
+                    <span className="item-op">
+                      <span>색상 : {item.color}</span>
+                      <span>사이즈 : {item.size}</span>
+                      <span>수량 : {item.count}</span>
+                    </span>
                   </div>
                 </div>
-                <p>{(item.price * 0.8 * item.count).toLocaleString()}원</p>
-                <div className="item-right">
-                  <span>
-                    <button
-                      className="btn xsmall secondary"
-                      onClick={() => {
-                        console.log('선택된아이템 : ', item);
-                        onOpenPopup(item);
-                      }}
-                    >
-                      옵션변경
-                    </button>
-                  </span>
-                  <span>
-                    <Link className="btn xsmall primary" to="/pay">
-                      바로구매
-                    </Link>
-                  </span>
-                </div>
-
-                <span
-                  className="del-icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRemoveCart(item.code, item.size, item.color);
-                    alert('장바구니에서 제거되었습니다.');
-                  }}
-                >
-                  <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
+              </div>
+              <p>{(item.price * 0.8 * item.count).toLocaleString()}원</p>
+              <div className="item-right">
+                <span>
+                  <button
+                    className="btn xsmall secondary"
+                    onClick={() => {
+                      console.log("선택된아이템 : ", item);
+                      onOpenPopup(item);
+                    }}
+                  >
+                    옵션변경
+                  </button>
+                </span>
+                <span>
+                  <Link className="btn xsmall primary" to="/pay">
+                    바로구매
+                  </Link>
                 </span>
               </div>
-            </li>
-          </>
+
+              <span
+                className="del-icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onRemoveCart(item.code, item.size, item.color);
+                  alert("장바구니에서 제거되었습니다.");
+                }}
+              >
+                <img
+                  src="../../images/close-icon-black.svg"
+                  alt="아이템 삭제"
+                />
+              </span>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
