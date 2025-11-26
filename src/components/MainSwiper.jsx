@@ -7,7 +7,6 @@ import 'swiper/css/pagination';
 import './sass/MainSwiper.scss';
 
 const MainSwiper = () => {
-  // 메인이미지 저장 배열
   const slides = [
     {
       src: './images/main-banner1.jpg',

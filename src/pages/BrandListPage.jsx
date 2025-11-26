@@ -236,14 +236,16 @@ const BrandListPage = ({ brand }) => {
               <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
                 <div className="price-tag-t">
                   {priceRange.map((p, id) => (
-                    <label onClick={() => handlePrice(p.value)} key={id}>
-                      {p.name}
-                      <input type="radio" className="product-detail-price" name="list-price" />
-                    </label>
+                    <p key={p.value}>
+                      <label onClick={() => handlePrice(p.value)} key={id}>
+                        {p.name}
+                        <input type="radio" className="product-detail-price" name="list-price" />
+                      </label>
+                    </p>
                   ))}
                 </div>
                 <div className="price-tag-b">
-                  직접입력{' '}
+                  직접입력
                   <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
                   -
                   <input
