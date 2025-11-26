@@ -89,7 +89,7 @@ const PayResultPopup = ({ onClose }) => {
             >
               <button>주문 상세 내역 보기</button>
             </Link>
-            <Link to="/" className="to-main">
+            <Link to="/" className="to-main" onClick={handlePayFinish()}>
               <button>메인 화면 가기</button>
             </Link>
           </div>
