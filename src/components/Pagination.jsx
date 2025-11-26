@@ -26,7 +26,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       >
         « 처음으로
       </button>
-
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -34,7 +33,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       >
         ‹ 이전
       </button>
-
       <div className="page-numbers">
         {pageNumbers.map((number) => (
           <button
@@ -46,7 +44,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           </button>
         ))}
       </div>
-
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
@@ -54,7 +51,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       >
         다음 ›
       </button>
-
       <button
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages || disableFirstLast}
