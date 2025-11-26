@@ -200,7 +200,7 @@ const Join = () => {
                 />
                 <button
                   type="button"
-                  className="btn middle outline"
+                  className="btn middle primary wFull"
                   onClick={() => setIsPostcodeOpen(false)}
                 >
                   닫기

@@ -202,3 +202,10 @@
     }
   }
 }
+
+.postcode-overlay {
+  @include g.postBackStyle();
+}
+.postcode-modal {
+  @include g.postStyle();
+}

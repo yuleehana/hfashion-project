@@ -5,6 +5,7 @@ import NonCartPo from '../components/NonCartPo';
 import { useCartStore } from '../store/useCartStore';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authstore';
+import DaumPostcode from 'react-daum-postcode';
 
 const NonMember = () => {
   const { onNMember, onNAddress, setNoncart } = useAuthStore();
@@ -13,6 +14,16 @@ const NonMember = () => {
 
   const checkedList = cartItems.filter((c) => c.checked);
   const navigate = useNavigate();
+
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const [rememberAddress, setRememberAddress] = useState('');
+
+  const handleComplete = (data) => {
+    const fullAddress = data.address;
+    setNonFormData({ ...nonFormDat, address: fullAddress });
+    setRememberAddress(fullAddress);
+    setIsPostcodeOpen(false);
+  };
 
   //비회원 data저장내용
 
@@ -182,12 +193,27 @@ const NonMember = () => {
                     <span>주소</span>
                     <div>
                       <div className="add-inf-inner-top">
-                        <input type="text" name="naddress" onChange={(e) => handleNonAddress(e)} />
-                        <button type="button" className="btn middle outline">
+                        <input
+                          type="text"
+                          name="naddress"
+                          placeholder="주소를 입력해주세요."
+                          onChange={(e) => handleNonAddress(e)}
+                          value={rememberAddress}
+                        />
+                        <button
+                          type="button"
+                          className="btn middle outline"
+                          onClick={() => setIsPostcodeOpen(true)}
+                        >
                           주소검색
                         </button>
                       </div>
-                      <input type="text" name="naddress2" onChange={(e) => handleNonAddress(e)} />
+                      <input
+                        type="text"
+                        name="naddress2"
+                        onChange={(e) => handleNonAddress(e)}
+                        placeholder="상세주소를 입력해주세요."
+                      />
                     </div>
                   </label>
 
@@ -216,6 +242,22 @@ const NonMember = () => {
           <NonCartPo sendNonData={handelsubmit} pirce={checkedTotalPrice} />
         </div>
       </div>
+      {/* 주소 검색 모달 */}
+      {isPostcodeOpen && (
+        <>
+          <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
+          <div className="postcode-modal">
+            <DaumPostcode onComplete={handleComplete} autoClose={false} />
+            <button
+              type="button"
+              className="btn middle primary wFull"
+              onClick={() => setIsPostcodeOpen(false)}
+            >
+              닫기
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
