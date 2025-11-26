@@ -1,0 +1,61 @@
+@use "../../App.scss" as g;
+
+.member-delivery-wrap {
+  display: flex;
+  flex-direction: column;
+
+  .member-delivery-inner-top {
+    font-size: 1.6rem;
+
+    .member-delivery-status {
+      display: flex;
+      flex-direction: column;
+
+      .member-delivery-box-wrap {
+        display: flex;
+        flex-direction: column;
+
+        .member-delivery-box-list {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .member-delivery-none {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .member-delivery-item-wrap{
+    
+    ul{
+
+      .member-del-item{
+        border: 1px solid g.$sub-color2;
+        border-radius: 2px;
+        padding: 2rem;
+
+        .member-del-item-inner{
+          display: flex;
+          flex-direction: column;
+
+          .del-item-inner-top{
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .del-item-inner-bottom{
+            display: flex;
+            justify-content: flex-start;
+
+            .del-inner-bottom-img-box{
+              width: 30%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,11 +6,10 @@ import "./sass/PayResultPopup.scss";
 
 const PayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
-  const { today } = usePayStore();
-  const addOrder = usePayStore((state) => state.addOrder);
+  const { today, orders } = usePayStore();
   const navigate = useNavigate();
 
-  // cartItems배열의 [0]번째 아이템만 가져오기
+  // cartItems [0]
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
 
@@ -23,28 +22,25 @@ const PayResultPopup = ({ onClose }) => {
       ? words.slice(0, maxWords).join(" ") + " ..."
       : text;
   };
+  const lastOrder = orders[orders.length - 1];
 
-  // 결제 후 결제된 아이템 삭제
   const handlePayFinish = () => {
     onRemoveChecked();
     navigate("/userinfo");
-  };
+    if (!itemFirstValue) return;
+    // const orderItem = {
+    //   date: today,
+    //   code: itemFirstValue.code,
+    //   products: filteredCart.map((item) => ({
+    //     thumbImg: item.thumbImg,
+    //     brand: item.brand,
+    //     title: item.title,
+    //   })),
 
-  // 주문내역 저장하기
-  const handlePaymentSuccess = () => {
-    if (filteredCart.length === 0) return;
+    //   price: checkedTotalPrice,
+    // };
 
-    // 결제된 전체 아이템 저장
-    const orderItems = filteredCart.map((item) => ({
-      date: today,
-      code: item.code,
-      thumbImg: item.thumbImg,
-      brand: item.brand,
-      title: item.title,
-      price: item.price, // checkedTotalPrice가 아니라 개별 가격
-    }));
-
-    addOrder(orderItems); // 배열 형태로 저장
+    // console.log(orders);
   };
 
   return (
@@ -69,15 +65,17 @@ const PayResultPopup = ({ onClose }) => {
                 <span>{today}</span>
               </div>
 
-              <div className="pay-result-bottom1 item">
-                <span>주문상품</span>
-                <span>
-                  {truncateWords(itemFirstValue?.title, 3)}
-                  {filteredCart.length > 1
-                    ? ` 외 ${filteredCart.length - 1}건`
-                    : ""}
-                </span>
-              </div>
+              {itemFirstValue && (
+                <div className="pay-result-bottom1 item">
+                  <span>주문상품</span>
+                  <span>
+                    {truncateWords(lastOrder.products[0].title, 3)}
+                    {lastOrder.products.length > 1
+                      ? `외 ${lastOrder.products.length}`
+                      : ""}
+                  </span>
+                </div>
+              )}
             </div>
 
             <div className="pay-result-bottom2-wrap">
@@ -99,7 +97,6 @@ const PayResultPopup = ({ onClose }) => {
               to="/userinfo"
               className="pay-detail"
               onClick={() => {
-                handlePaymentSuccess();
                 handlePayFinish();
               }}
             >
