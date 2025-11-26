@@ -62,7 +62,6 @@ const MemberLogin = () => {
   //카카오 로그인
   const handleKakaoLogin = async () => {
     await onKakaoLogin(navigate);
-    console.log("카카오");
   };
 
   return (
