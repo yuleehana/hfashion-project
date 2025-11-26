@@ -151,7 +151,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
             <ul className="search-preview">
               {filteredItems.map((item, index) => (
                 <li
-                  key={item.id}
+                  key={item.code}
                   className={index === activeIndex ? "active" : ""} // ⭐ 추가
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
