@@ -10,7 +10,7 @@ const UserInfoLeftMenu = () => {
       title: '쇼핑 정보',
       link: '',
       list: [
-        { name: '주문/배송', link: '/userinfo/delivery' },
+        { name: '주문/배송', link: '/userinfo/memberdelivery' },
         { name: '찜 리스트', link: '/picklist' },
       ],
     },

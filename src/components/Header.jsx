@@ -66,7 +66,7 @@ const Header = () => {
   const { resetCart, cartItems } = useCartStore();
   const { resetOrder } = usePayStore();
 
-  const navigate = useNavigate();
+  const navigate = useNavigate('');
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -76,9 +76,8 @@ const Header = () => {
     resetPcikList();
     resetCart();
     resetOrder();
-    onLogout();
     alert('로그아웃 되었습니다');
-
+    onLogout();
     navigate('/');
   };
   const isMainMenuActive = (menuKey) => {
@@ -138,7 +137,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link onClick={handleLogout}>
+                    <Link onClick={((e) => e.preventDefault(), handleLogout)}>
                       <img src="/images/logout-icon-white.svg" alt="로그아웃" />
                     </Link>
                   </li>
