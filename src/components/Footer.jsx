@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useAuthStore } from "../store/authstore";
-import "./sass/Footer.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/authstore';
+import './sass/Footer.scss';
 
 const Footer = () => {
   const { user } = useAuthStore();
@@ -35,9 +35,7 @@ const Footer = () => {
                   <span>이메일 hfashionmall@hyundaihmall.com</span>
                 </div>
                 <div className="copy">
-                  <span>
-                    COPYRIGHT 2023 HANDSOME CO.LTD.ALL RIGHTS RESERVED{" "}
-                  </span>
+                  <span>COPYRIGHT 2023 HANDSOME CO.LTD.ALL RIGHTS RESERVED </span>
                 </div>
               </div>
             </div>
@@ -54,23 +52,30 @@ const Footer = () => {
               <ul>
                 <li>
                   <Link
-                    to='https://www.facebook.com/Hfashionmall'
+                    to="https://www.facebook.com/Hfashionmall"
                     target="_blank"
                     rel="noopener noreferrer"
-                  ><img src="/images/sns-facebook-icon.svg" alt="facebook" /></Link>
-
+                  >
+                    <img src="/images/sns-facebook-icon.svg" alt="facebook" />
+                  </Link>
                 </li>
                 <li>
-                  <Link to='https://www.instagram.com/hfashion_official/'
+                  <Link
+                    to="https://www.instagram.com/hfashion_official/"
                     target="_blank"
                     rel="noopener noreferrer"
-                  ><img src="/images/sns-insta-icon.svg" alt="insta" /></Link>
+                  >
+                    <img src="/images/sns-insta-icon.svg" alt="insta" />
+                  </Link>
                 </li>
                 <li>
-                  <Link to='https://blog.naver.com/h_edit'
+                  <Link
+                    to="https://blog.naver.com/h_edit"
                     target="_blank"
                     rel="noopener noreferrer"
-                  ><img src="/images/sns-naver-icon.svg" alt="naver" /></Link>
+                  >
+                    <img src="/images/sns-naver-icon.svg" alt="naver" />
+                  </Link>
                 </li>
               </ul>
             </div>

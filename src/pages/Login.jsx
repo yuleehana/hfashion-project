@@ -30,7 +30,7 @@ const Login = () => {
             <li className={isLogin === true ? "active" : ""}>
               <Link onClick={handleSelect}>회원</Link>
             </li>
-            <li className={noMember === true ? "active" : ""}>
+            <li className={noMember === true ? 'active' : ''}>
               <Link onClick={handleSelect}>비회원</Link>
             </li>
           </ul>

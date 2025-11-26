@@ -1,224 +1,105 @@
-// .content-inner {
-//   &:has(>.user-info-left) {
-//     padding-top: 4rem;
-//   }
-
-//   display: flex;
-//   justify-content: space-between;
-//   gap: 44px;
-//   padding-top: 4rem;
-//   padding: 0 2rem;
-
-//   .user-info-left {
-//     width: 270px;
-//   }
-
-//   .user-info-right {
-//     width: 100%;
-//     border: 1px solid #bababa;
-//     padding: 62px 78px;
-
-//     .section {
-//       width: 100%;
-//       margin-bottom: 54px;
-
-//       .section-title {
-
-//         font-size: 26px;
-//         width: 100%;
-//         margin-bottom: 34px;
-//       }
-
-//       .favor-list-wrap {
-//         width: 100%;
-
-//         .favor-list-box {
-//           display: flex;
-//           justify-content: space-between;
-//           gap: 34px;
-
-//           .inlist-box {
-//             display: flex;
-//             justify-content: space-between;
-//             gap: 10px;
-//             width: 100%;
-
-//             >.list-box {
-//               padding: 18px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .list-box {
-//   background-color: #838383;
-//   padding: 18px 40px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   align-items: flex-start;
-//   gap: 54px;
-//   width: 100%;
-//   border-radius: 2px;
-
-//   .list-name {
-//     font-size: 16px;
-//     color: #fff;
-//   }
-
-//   p {
-//     font-size: 26px;
-//     color: #fff;
-//   }
-// }
-
-// .orders-product-table {
-//   .orders-product-list {
-//     padding: 0 8px;
-//   }
-
-//   .product-btn-list {
-//     margin-top: 20px;
-//     display: flex;
-//     justify-content: space-evenly;
-//     align-items: center;
-//     background-color: #F8F3F0;
-//     padding: 24px 0;
-
-//     p {
-//       font-size: 16px;
-//       color: #bababa;
-//     }
-
-//     .button-wrap {
-//       button {
-//         font-size: 14px;
-//         text-decoration: underline;
-//       }
-//     }
-//   }
-// }
-
-// .user-information {
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-
-//   .information-box {
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: center;
-
-//     .info-th {
-//       width: 140px;
-//       padding: 10px;
-//       font-size: 16px;
-//     }
-
-//     .info-td {
-//       display: flex;
-//       justify-content: flex-start;
-//       align-items: center;
-//       padding: 16px 10px;
-//       font-size: 14px;
-//       color: #bababa;
-//     }
-//   }
-// }
 @use "../../App.scss" as g;
 
 .content-inner {
-  display: flex;
-  gap: 44px;
-  padding: 4rem 2rem 0 2rem;
 
-  .user-info-left {
-    width: 270px;
-  }
+  &.userinfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
-  .user-info-right {
-    width: 100%;
-    border: 1px solid #bababa;
-    padding: 60px 78px;
-
-    /* ---------- 프로필 상단 ----------- */
-    .profile-section {
-      width: 100%;
-      margin-bottom: 60px;
-
-      .username {
-        font-size: 2.6rem;
-        margin-bottom: 34px;
-      }
-
-      /* ---- 시안 동일: 4박스 정렬 ---- */
-      .info-summary {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-
-        .summary-box {
-          background: g.$main-color1;
-          padding: 20px;
-          color: g.$main-color2;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 140px;
-
-          .box-label {
-            font-size: 1.6rem;
-            color: g.$main-color2;
-          }
-
-          .box-value {
-            font-size: 2.8rem;
-            font-weight: 500;
-            text-align: right;
-          }
-        }
-      }
+    .user-info-left {
+      width: 270px;
     }
 
-    /* --------------- 최근 주문 --------------- */
-    .recent-orders-section {
-      width: 100%;
+    .user-info-main-right {
+      // width: 100%;
+      border: 1px solid g.$sub-color2;
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
 
-      .section-title {
-        font-size: 2.6rem;
-        margin-bottom: 30px;
-      }
-
-      .order-list {
-        li {
-          margin-bottom: 40px;
-        }
-      }
-
-      .order-button-box {
-        margin-top: 20px;
+      .profile-section {
+        width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        background: g.$main-color2;
-        padding: 24px 0;
-        gap: 30px;
+        flex-direction: column;
+        gap: 2rem;
 
-        button {
-          font-size: 1.4rem;
-          text-decoration: underline;
-          background: none;
-          border: none;
-          cursor: pointer;
+        .username {
+          font-size: 2.6rem;
         }
 
-        p {
-          color: #bababa;
-          font-size: 1.6rem;
+        .info-summary {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+
+          .summary-box {
+            background: g.$main-color1;
+            padding: 20px;
+            color: g.$main-color2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 140px;
+
+            .box-label {
+              font-size: 1.6rem;
+              color: g.$main-color2;
+            }
+
+            .box-value {
+              font-size: 2.8rem;
+              font-weight: 500;
+              text-align: right;
+            }
+          }
+        }
+      }
+
+      .recent-orders-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        .recent-orders-top {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+
+          .section-title {
+            font-size: 2.4rem;
+            font-weight: 500;
+          }
+
+          .order-list {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid g.$sub-color2;
+
+            li {}
+          }
+        }
+
+        .order-button-box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: g.$main-color2;
+          gap: 3rem;
+
+          button {
+            font-size: 1.4rem;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            cursor: pointer;
+          }
+
+          p {
+            color: #bababa;
+            font-size: 1.6rem;
+          }
         }
       }
     }
