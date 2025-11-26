@@ -34,8 +34,10 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    store.onFetchItem();
-  }, []);
+    if (store.items.length === 0) {
+      store.onFetchItem();
+    }
+  }, [store]);
 
   useEffect(() => {
     if (keyword.trim() && products.length > 0) {
