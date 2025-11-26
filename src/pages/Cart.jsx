@@ -26,7 +26,6 @@ const Cart = () => {
             <h2 className="sub-page-title cart">장바구니</h2>
           </div>
           <div className="cart-inner-content">
-
             <div className="cart-inner-left">
               {cartItems.length === 0 ? <CartNone /> : <CartItem onOpenPopup={handleOpenPopup} />}
             </div>
@@ -34,7 +33,6 @@ const Cart = () => {
             <div className="cart-inner-right">
               <CartPo />
             </div>
-
           </div>
 
           <div className="cart-inner-bottom">

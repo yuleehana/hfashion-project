@@ -21,9 +21,7 @@ const UserInfo = () => {
 
         <div className="user-info-main-right">
           <div className="profile-section">
-            <div className="username">
-              {`${user.email}(${user.displayName})님, 환영합니다!`}
-            </div>
+            <div className="username">{`${user.email}(${user.displayName})님, 환영합니다!`}</div>
 
             <div className="info-summary">
               <div className="summary-box">

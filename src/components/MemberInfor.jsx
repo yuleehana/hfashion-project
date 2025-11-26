@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useAuthStore } from "../store/authstore";
-import UserInfoLeftMenu from "./UserInfoLeftMenu";
-import "./sass/MemberInfor.scss";
-import "./sass/button-normal.scss";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useAuthStore } from '../store/authstore';
+import UserInfoLeftMenu from './UserInfoLeftMenu';
+import './sass/MemberInfor.scss';
+import './sass/button-normal.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MemberInfor = () => {
   const { user } = useAuthStore();
@@ -17,10 +17,7 @@ const MemberInfor = () => {
         <div className="content-inner">
           <div className="go-login">
             <p>로그인이 필요한 서비스입니다</p>
-            <button
-              className="btn middle primary"
-              onClick={() => navigate("/login")}
-            >
+            <button className="btn middle primary" onClick={() => navigate('/login')}>
               로그인 페이지로 이동
             </button>
           </div>
@@ -65,7 +62,7 @@ const MemberInfor = () => {
                     className="btn small outline"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? "숨기기" : "비밀번호 확인"}
+                    {showPassword ? '숨기기' : '비밀번호 확인'}
                   </button>
                 </div>
               </div>

@@ -1,10 +1,43 @@
 .container{
   .review-box-list{
-    display: flex;
-    justify-content: space-between;
+    height: 100%;
+    
+    .review-box{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     gap: 66px;
-    height: 340px;
+    }
   }
 }
 
-@media (max-width: 1500px){}
+@media (max-width: 1500px){
+  .container{
+    .review-box-list{
+      
+      .review-box{
+        grid-template-columns: repeat(2,1fr);
+
+        .red-card:last-of-type{
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px){
+  .container{
+    .review-box-list{
+      height: 100%;
+    
+      .review-box{
+        grid-template-columns: repeat(1,50%);
+        justify-content: center;
+        
+        .red-card:nth-of-type(2){
+          display: none;
+        }
+      }
+    }
+  }
+}
