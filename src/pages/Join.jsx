@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import DaumPostcode from 'react-daum-postcode';
 import './sass/join.scss';
 import { useAuthStore } from '../store/authstore';
 
@@ -25,6 +26,17 @@ const Join = () => {
 
   const setUser = useAuthStore((state) => state.setUser);
   const { onMember } = useAuthStore();
+
+  //주소 모달열림상태
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+
+  //주소 검색완료시 -> 검색한 데이타를 firebase user방안에넣는 메서드
+  //address방으로 그대로 들어가니깐 구조에 문제 없음
+  const handleComplete = (data) => {
+    const fullAddress = data.address;
+    setFormData({ ...formData, address: fullAddress });
+    setIsPostcodeOpen(false);
+  };
 
   // 메서드
   // sotre에 저장하는 메서드
@@ -150,7 +162,11 @@ const Join = () => {
                   placeholder="주소를 검색해주세요"
                   onChange={handleChange}
                 />
-                <button className="btn middle outline" type="button">
+                <button
+                  className="btn middle outline"
+                  type="button"
+                  onClick={(_) => setIsPostcodeOpen(true)}
+                >
                   주소검색
                 </button>
               </span>
@@ -164,7 +180,97 @@ const Join = () => {
               </span>
             </span>
           </label>
+
+          {/* 주소 검색 모달 */}
+          {isPostcodeOpen && (
+            <>
+              <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
+              <div className="postcode-modal">
+                <DaumPostcode
+                  //Daumpostcode에서 제공하는 검색완료 이벤트 핸들러
+                  onComplete={handleComplete}
+                  //우편번호 검색 완료시 자동 닫힘여부확인용 핸들러
+                  autoClose={false}
+                />
+                <button
+                  type="button"
+                  className="btn middle outline"
+                  onClick={() => setIsPostcodeOpen(false)}
+                >
+                  닫기
+                </button>
+              </div>
+            </>
+          )}
           <div className="join-button-wrap">
+            <div className="join-policy-wrap">
+              <div className="privacy-agree">
+                <label>
+                  개인정보 수집 및 이용동의(필수)
+                  <input type="checkbox" required />
+                </label>
+                <p>
+                  <span>
+                    [개인정보 수집 및 이용 동의] <br></br>1. 수집하는 개인정보 항목 - 필수: 이름,
+                    이메일, 휴대폰 번호, 주소 - 선택: 생년월일, 성별 2. 수집 및 이용 목적 - 회원
+                    관리 및 서비스 제공 - 주문/배송 처리 및 결제 확인 - 고객 문의 응대 및 불만 처리
+                    - 마케팅 정보 제공(선택 동의 시) 3. 보유 및 이용 기간 - 회원 탈퇴 시까지 보유 및
+                    이용 - 관련 법령에 의거 필요 시 일정 기간 보관 가능 4. 제3자 제공 - 이용자 동의
+                    없이는 제3자 제공하지 않음 - 단, 배송업체 등 서비스 제공을 위해 필요한 경우
+                    제한적 제공 [개인정보 수집 및 이용 동의] <br></br>1. 수집하는 개인정보 항목 -
+                    필수: 이름, 이메일, 휴대폰 번호, 주소 - 선택: 생년월일, 성별 2. 수집 및 이용
+                    목적 - 회원 관리 및 서비스 제공 - 주문/배송 처리 및 결제 확인 - 고객 문의 응대
+                    및 불만 처리 - 마케팅 정보 제공(선택 동의 시) 3. 보유 및 이용 기간 - 회원 탈퇴
+                    시까지 보유 및 이용 - 관련 법령에 의거 필요 시 일정 기간 보관 가능 4. 제3자 제공
+                    - 이용자 동의 없이는 제3자 제공하지 않음 - 단, 배송업체 등 서비스 제공을 위해
+                    필요한 경우 제한적 제공 [개인정보 수집 및 이용 동의] <br></br>1. 수집하는
+                    개인정보 항목 - 필수: 이름, 이메일, 휴대폰 번호, 주소 - 선택: 생년월일, 성별 2.
+                    수집 및 이용 목적 - 회원 관리 및 서비스 제공 - 주문/배송 처리 및 결제 확인 -
+                    고객 문의 응대 및 불만 처리 - 마케팅 정보 제공(선택 동의 시) 3. 보유 및 이용
+                    기간 - 회원 탈퇴 시까지 보유 및 이용 - 관련 법령에 의거 필요 시 일정 기간 보관
+                    가능 4. 제3자 제공 - 이용자 동의 없이는 제3자 제공하지 않음 - 단, 배송업체 등
+                    서비스 제공을 위해 필요한 경우 제한적 제공
+                  </span>
+                </p>
+              </div>
+              <div className="service-agree">
+                <label>
+                  서비스 이용약관 동의(필수)
+                  <input type="checkbox" required />
+                </label>
+                <p>
+                  <span>
+                    [서비스 이용약관]<br></br> 1. 회원가입 및 계정 관리 - 회원가입 시 정확한 정보를
+                    입력해야 합니다. - 계정 및 비밀번호 관리 책임은 회원에게 있습니다. 2. 서비스
+                    제공 및 이용 - 쇼핑몰은 상품 판매 및 정보 제공을 위한 서비스를 제공합니다. -
+                    상품 정보, 가격, 재고는 변동될 수 있으며 쇼핑몰은 이를 고지할 책임이 있습니다.
+                    3. 결제, 환불 및 배송 - 결제는 안전하게 처리되며, 환불은 쇼핑몰 정책에 따릅니다.
+                    - 배송은 등록된 주소를 기준으로 이루어지며 배송 지연 시 안내를 받습니다. 4. 금지
+                    사항 - 타인의 개인정보 도용, 비정상적인 결제, 허위 게시글 작성 등을 금지합니다.
+                    - 위반 시 서비스 이용이 제한될 수 있습니다. 5. 기타 - 쇼핑몰은 서비스 운영을
+                    위해 약관을 수정할 수 있으며, 변경 시 회원에게 고지합니다. [서비스 이용약관]
+                    <br></br> 1. 회원가입 및 계정 관리 - 회원가입 시 정확한 정보를 입력해야 합니다.
+                    - 계정 및 비밀번호 관리 책임은 회원에게 있습니다. 2. 서비스 제공 및 이용 -
+                    쇼핑몰은 상품 판매 및 정보 제공을 위한 서비스를 제공합니다. - 상품 정보, 가격,
+                    재고는 변동될 수 있으며 쇼핑몰은 이를 고지할 책임이 있습니다. 3. 결제, 환불 및
+                    배송 - 결제는 안전하게 처리되며, 환불은 쇼핑몰 정책에 따릅니다. - 배송은 등록된
+                    주소를 기준으로 이루어지며 배송 지연 시 안내를 받습니다. 4. 금지 사항 - 타인의
+                    개인정보 도용, 비정상적인 결제, 허위 게시글 작성 등을 금지합니다. - 위반 시
+                    서비스 이용이 제한될 수 있습니다. 5. 기타 - 쇼핑몰은 서비스 운영을 위해 약관을
+                    수정할 수 있으며, 변경 시 회원에게 고지합니다. [서비스 이용약관]<br></br> 1.
+                    회원가입 및 계정 관리 - 회원가입 시 정확한 정보를 입력해야 합니다. - 계정 및
+                    비밀번호 관리 책임은 회원에게 있습니다. 2. 서비스 제공 및 이용 - 쇼핑몰은 상품
+                    판매 및 정보 제공을 위한 서비스를 제공합니다. - 상품 정보, 가격, 재고는 변동될
+                    수 있으며 쇼핑몰은 이를 고지할 책임이 있습니다. 3. 결제, 환불 및 배송 - 결제는
+                    안전하게 처리되며, 환불은 쇼핑몰 정책에 따릅니다. - 배송은 등록된 주소를
+                    기준으로 이루어지며 배송 지연 시 안내를 받습니다. 4. 금지 사항 - 타인의 개인정보
+                    도용, 비정상적인 결제, 허위 게시글 작성 등을 금지합니다. - 위반 시 서비스 이용이
+                    제한될 수 있습니다. 5. 기타 - 쇼핑몰은 서비스 운영을 위해 약관을 수정할 수
+                    있으며, 변경 시 회원에게 고지합니다.
+                  </span>
+                </p>
+              </div>
+            </div>
             <button className="btn middle primary" type="submit">
               회원가입
             </button>
