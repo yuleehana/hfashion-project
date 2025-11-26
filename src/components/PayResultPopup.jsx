@@ -1,32 +1,27 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useCartStore } from "../store/useCartStore";
-import { usePayStore } from "../store/usePayStore";
-import "./sass/PayResultPopup.scss";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCartStore } from '../store/useCartStore';
+import { usePayStore } from '../store/usePayStore';
+import './sass/PayResultPopup.scss';
 
 const PayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
   const { today, orders } = usePayStore();
   const navigate = useNavigate();
 
-  // cartItems [0]
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
-
-  // 팝업에 표시되는 아이템명 자르기
   const truncateWords = (text, maxWords) => {
-    if (!text) return "";
+    if (!text) return '';
 
-    const words = text.split(" ");
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + " ..."
-      : text;
+    const words = text.split(' ');
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
   };
   const lastOrder = orders[orders.length - 1];
 
   const handlePayFinish = () => {
     onRemoveChecked();
-    navigate("/userinfo");
+    navigate('/userinfo');
     if (!itemFirstValue) return;
   };
 
@@ -57,9 +52,7 @@ const PayResultPopup = ({ onClose }) => {
                   <span>주문상품</span>
                   <span>
                     {truncateWords(lastOrder.products[0].title, 3)}
-                    {lastOrder.products.length > 1
-                      ? ` 외 ${lastOrder.products.length}건`
-                      : ""}
+                    {lastOrder.products.length > 1 ? `외 ${lastOrder.products.length}` : ''}
                   </span>
                 </div>
               )}
@@ -73,9 +66,7 @@ const PayResultPopup = ({ onClose }) => {
 
               <div className="pay-result-bottom2 reward">
                 <span>리워드</span>
-                <span>
-                  {Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}
-                </span>
+                <span>{Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -89,7 +80,7 @@ const PayResultPopup = ({ onClose }) => {
             >
               <button>주문 상세 내역 보기</button>
             </Link>
-            <Link to="/" className="to-main" onClick={handlePayFinish()}>
+            <Link to="/" className="to-main">
               <button>메인 화면 가기</button>
             </Link>
           </div>

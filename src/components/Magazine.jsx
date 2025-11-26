@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import "./sass/Magazine.scss";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './sass/Magazine.scss';
 
-import img1 from "../assets/magazine/magazine_1.jpg";
-import img2 from "../assets/magazine/magazine_2.jpg";
-import img3 from "../assets/magazine/magazine_3.jpg";
+import img1 from '../assets/magazine/magazine_1.jpg';
+import img2 from '../assets/magazine/magazine_2.jpg';
+import img3 from '../assets/magazine/magazine_3.jpg';
 
-import p1 from "../assets/magazine/product_shirt.jpg";
-import p2 from "../assets/magazine/product_jeans.jpg";
-import p3 from "../assets/magazine/product_shoes.jpg";
+import p1 from '../assets/magazine/product_shirt.jpg';
+import p2 from '../assets/magazine/product_jeans.jpg';
+import p3 from '../assets/magazine/product_shoes.jpg';
 
 const Magazine = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Magazine = () => {
                 <img
                   src={p1}
                   alt="product1_shirt"
-                  onClick={() => navigate("/product-detail/T32F7WSH13TWT1XI5")}
+                  onClick={() => navigate('/product-detail/T32F7WSH13TWT1XI5')}
                 />
                 <p className="product-name">크롭 크레스트 셔츠</p>
               </div>
@@ -49,7 +50,7 @@ const Magazine = () => {
                 <img
                   src={p2}
                   alt="product2_jeans"
-                  onClick={() => navigate("/product-detail/T32F6NEW31TWT11AB")}
+                  onClick={() => navigate('/product-detail/T32F6NEW31TWT11AB')}
                 />
                 <p className="product-name">클레어 와이드 핏 데님 팬츠</p>
               </div>
@@ -57,7 +58,7 @@ const Magazine = () => {
                 <img
                   src={p3}
                   alt="product3_shoes"
-                  onClick={() => navigate("/product-detail/T52F6ARSC51JT1YBS")}
+                  onClick={() => navigate('/product-detail/T52F6ARSC51JT1YBS')}
                 />
                 <p className="product-name">길리안 경량 코트 스니커즈</p>
               </div>

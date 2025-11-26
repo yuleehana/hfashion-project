@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "./sass/Pay.scss";
-import PayItem from "../components/PayItem";
-import {
-  paymethodsCard,
-  paymethodsBank,
-  paymethodsPay,
-} from "../data/paymethod";
-import PayPo from "../components/PayPo";
-import PayResultPopup from "../components/PayResultPopup";
-import { useAuthStore } from "../store/authstore";
-import { usePayStore } from "../store/usePayStore";
-import { useCartStore } from "../store/useCartStore";
+import React, { useEffect, useState } from 'react';
+import './sass/Pay.scss';
+import PayItem from '../components/PayItem';
+import { paymethodsCard, paymethodsBank, paymethodsPay } from '../data/paymethod';
+import PayPo from '../components/PayPo';
+import PayResultPopup from '../components/PayResultPopup';
+import { useAuthStore } from '../store/authstore';
+import { usePayStore } from '../store/usePayStore';
+import { useCartStore } from '../store/useCartStore';
+import DaumPostcode from 'react-daum-postcode';
 
 const Pay = () => {
   const { user } = useAuthStore();
@@ -21,13 +18,22 @@ const Pay = () => {
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
 
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+  const [rememberAddress, setRememberAddress] = useState('');
+  const handleComplete = (data) => {
+    const fullAddress = data.address;
+    setReceiverInfo({ ...receiverInfo, address: fullAddress });
+    setRememberAddress(fullAddress);
+    setIsPostcodeOpen(false);
+  };
+
   const handleUserInfo = () => {
     setReceiverInfo({
       displayName: user.displayName,
       phone: user.phone,
       address: user.address,
       address2: user.address2,
-      request: "",
+      request: '',
     });
   };
 
@@ -51,7 +57,7 @@ const Pay = () => {
     console.log(orders);
   };
 
-  const [selectPay, setSelectPay] = useState("card");
+  const [selectPay, setSelectPay] = useState('card');
 
   const [openDepth, setOpenDepth] = useState(null);
 
@@ -81,9 +87,9 @@ const Pay = () => {
   const renderDepth = () => {
     let list = [];
 
-    if (selectPay === "card") {
+    if (selectPay === 'card') {
       list = paymethodsCard;
-    } else if (selectPay === "pay") {
+    } else if (selectPay === 'pay') {
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -103,43 +109,31 @@ const Pay = () => {
           </label>
         </div>
       ));
-    } else if (selectPay === "bank") {
+    } else if (selectPay === 'bank') {
       list = paymethodsBank;
     }
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-        {"payDepth" in item ? (
+        {'payDepth' in item ? (
           <div className="dropdown-wrapper">
             <button
-              className={`dropdown-btn ${
-                openDepth === item.id ? "active" : ""
-              }`}
-              onClick={() =>
-                setOpenDepth(openDepth === item.id ? null : item.id)
-              }
+              className={`dropdown-btn ${openDepth === item.id ? 'active' : ''}`}
+              onClick={() => setOpenDepth(openDepth === item.id ? null : item.id)}
             >
-              <span>
-                {selectValue[selectPay][item.id] || item.label || item.title}
-              </span>
+              <span>{selectValue[selectPay][item.id] || item.label || item.title}</span>
               <span className="button-icon">
                 <img src="../images/arrow-down-white.svg" alt="" />
               </span>
             </button>
 
             {openDepth === item.id && (
-              <ul
-                className={`dropdown-list ${
-                  openDepth === item.id ? "active" : ""
-                }`}
-              >
+              <ul className={`dropdown-list ${openDepth === item.id ? 'active' : ''}`}>
                 {item.payDepth.map((depth) => (
                   <li
                     key={depth.id}
                     className="dropdown-option"
-                    onClick={() =>
-                      handleSelect(selectPay, item.id, depth.label)
-                    }
+                    onClick={() => handleSelect(selectPay, item.id, depth.label)}
                   >
                     {depth.label}
                   </li>
@@ -224,7 +218,9 @@ const Pay = () => {
                 <div className="address-input delivery">
                   <span>
                     <span>배송지 주소</span>
-                    <button className="btn xsmall primary">주소검색</button>
+                    <button className="btn xsmall primary" onClick={() => setIsPostcodeOpen(true)}>
+                      주소검색
+                    </button>
                   </span>
                   <div>
                     <input
@@ -232,7 +228,7 @@ const Pay = () => {
                       name="address"
                       placeholder="상품을 받으실 분의 주소를 입력해주세요."
                       required
-                      value={receiverInfo.address}
+                      value={receiverInfo.address || rememberAddress}
                       onChange={(e) =>
                         setReceiverInfo({
                           ...receiverInfo,
@@ -284,22 +280,22 @@ const Pay = () => {
               <div className="payment-bottom">
                 <div className="pay-method-btns">
                   <button
-                    className={selectPay === "card" ? "active" : ""}
-                    onClick={() => setSelectPay("card")}
+                    className={selectPay === 'card' ? 'active' : ''}
+                    onClick={() => setSelectPay('card')}
                   >
                     신용카드
                   </button>
 
                   <button
-                    className={selectPay === "pay" ? "active" : ""}
-                    onClick={() => setSelectPay("pay")}
+                    className={selectPay === 'pay' ? 'active' : ''}
+                    onClick={() => setSelectPay('pay')}
                   >
                     간편결제
                   </button>
 
                   <button
-                    className={selectPay === "bank" ? "active" : ""}
-                    onClick={() => setSelectPay("bank")}
+                    className={selectPay === 'bank' ? 'active' : ''}
+                    onClick={() => setSelectPay('bank')}
                   >
                     무통장입금
                   </button>
@@ -314,6 +310,21 @@ const Pay = () => {
             <PayPo onOpenPopup={handlePaymentSuccess} />
           </div>
 
+          {isPostcodeOpen && (
+            <>
+              <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
+              <div className="postcode-modal">
+                <DaumPostcode onComplete={handleComplete} autoClose={false} />
+                <button
+                  type="button"
+                  className="btn middle primary wFull"
+                  onClick={() => setIsPostcodeOpen(false)}
+                >
+                  닫기
+                </button>
+              </div>
+            </>
+          )}
           {showPopup && <PayResultPopup onClose={() => setShowPopup(false)} />}
         </div>
       </div>
