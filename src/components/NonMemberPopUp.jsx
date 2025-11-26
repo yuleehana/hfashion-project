@@ -40,7 +40,7 @@ const NonMemberPopUp = ({ data, onClose }) => {
             <p>주문 내역을 확인하고 배송상태를 확인하세요!</p>
           </div>
           <p onClick={onClose}>
-            <img src="/public/images/close-icon-black.svg" alt="X" />
+            <img src="/images/close-icon-black.svg" alt="X" />
           </p>
         </div>
         <div className="non-popup-delivery">

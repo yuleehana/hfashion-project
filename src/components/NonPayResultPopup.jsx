@@ -1,13 +1,16 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useCartStore } from '../store/useCartStore';
-import { usePayStore } from '../store/usePayStore';
-import './sass/PayResultPopup.scss';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useCartStore } from "../store/useCartStore";
+import { usePayStore } from "../store/usePayStore";
+import "./sass/PayResultPopup.scss";
+import { useAuthStore } from "../store/authstore";
 
 const NonPayResultPopup = ({ onClose }) => {
-  const { checkedTotalPrice, cartItems, onRemoveChecked, resetCart } = useCartStore();
+  const { checkedTotalPrice, cartItems, onRemoveChecked, resetCart } =
+    useCartStore();
   const { today } = usePayStore();
   const addOrder = usePayStore((state) => state.addOrder);
+  const { nonCart } = useAuthStore();
   const navigate = useNavigate();
 
   // cartItems [0]
@@ -16,10 +19,12 @@ const NonPayResultPopup = ({ onClose }) => {
 
   // 팝업에 표시되는 아이템명 자르기
   const truncateWords = (text, maxWords) => {
-    if (!text) return '';
+    if (!text) return "";
 
-    const words = text.split(' ');
-    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
+    const words = text.split(" ");
+    return words.length > maxWords
+      ? words.slice(0, maxWords).join(" ") + " ..."
+      : text;
   };
 
   const handlePayFinish = () => {
@@ -31,11 +36,11 @@ const NonPayResultPopup = ({ onClose }) => {
   const handlePaymentSuccess = () => {
     const orderItem = {
       date: { today },
-      code: '',
-      thumbnail: '',
-      brand: '',
-      productName: '',
-      price: '',
+      code: "",
+      thumbnail: "",
+      brand: "",
+      productName: "",
+      price: "",
     };
 
     addOrder(orderItem);
@@ -65,9 +70,12 @@ const NonPayResultPopup = ({ onClose }) => {
 
               <div className="pay-result-bottom1 item">
                 <span>주문상품</span>
-                <span>{`${truncateWords(itemFirstValue?.title, 3)} 외 ${
-                  filteredCart.length - 1
-                }건`}</span>
+                <span>
+                  {truncateWords(itemFirstValue?.title, 3)}
+                  {nonCart.items.length > 1
+                    ? ` 외 ${nonCart.items.length - 1}건`
+                    : ""}
+                </span>
               </div>
             </div>
 
@@ -79,13 +87,19 @@ const NonPayResultPopup = ({ onClose }) => {
 
               <div className="pay-result-bottom2 reward">
                 <span>리워드</span>
-                <span>{(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}</span>
+                <span>
+                  {Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString()}
+                </span>
               </div>
             </div>
           </div>
           <div className="pay-result-btn">
-            <Link to={'/login'} className="pay-detail" onClick={handlePayFinish}>
-              <button>비회원 주문내역 보러가기</button>
+            <Link
+              to={"/login"}
+              className="pay-detail"
+              onClick={handlePayFinish}
+            >
+              <button>주문 상세 보기</button>
             </Link>
             <Link to="/" className="to-main" onClick={handlePayFinish}>
               <button>메인 화면 가기</button>
