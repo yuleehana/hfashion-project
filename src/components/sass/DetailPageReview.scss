@@ -1,3 +1,5 @@
+@use '../../App.scss' as g;
+
 section{
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@ section{
     }
     .best-review{
       font-size: 14px;
-      color:#838383;
+      color:g.$sub-color3;
     }
   }
   .like-btn{

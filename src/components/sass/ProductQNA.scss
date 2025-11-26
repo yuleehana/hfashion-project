@@ -1,3 +1,5 @@
+@use '../../App.scss' as g;
+
 .qna-header{
 
   h3{
@@ -5,7 +7,7 @@
   }
   .header-text{
     font-size: 14px;
-    color: #838383;
+    color: g.$sub-color3;
   }
 }
 .qna-list-wrap{
@@ -19,7 +21,7 @@
       justify-content: space-between;
       align-items: center;
       // border-top: 1px solid #bababa;
-      border-bottom: 1px solid #bababa;
+      border-bottom: 1px solid g.$sub-color2;
       height: 100%;
 
       .number-list{
@@ -46,23 +48,23 @@
           gap: 40px;
 
           .user-id{
-            color: #838383;
+            color: g.$sub-color3;
             font-size: 16px;
           }
           .split{
-            color:#838383;
+            color:g.$sub-color3;
           }
           .upload-date{
             font-size: 16px;
-            color:#838383;
+            color:g.$sub-color3;
           }
           .answer-wait{
-            color: #838383;
+            color: g.$sub-color3;
             font-size: 16px;
           }
           .answer-complete{
             font-size: 16px;
-            color: #EEBE81;
+            color: g.$percent-color;
           }
         }
         .item-qna-title{
@@ -74,7 +76,7 @@
           .qna-title{
             font-size: 16px;
             font-weight: 600;
-            color: #838383;
+            color: g.$sub-color3;
           }
           .lock-img{
             width: 20px;
@@ -135,11 +137,11 @@
     }
     .service-center{
       font-size: 16px;
-      color: #000;
+      color: g.$main-color1;
     }
     .answer-date{
       font-size: 16px;
-      color: #bababa;
+      color: g.$sub-color2;
     }
   }
   .answer-customer{
@@ -147,7 +149,7 @@
 
     .answer-customer-text{
       font-size: 16px;
-      color: #838383;
+      color: g.$sub-color3;
       line-height: 1.9;
     }
   }
