@@ -1,3 +1,5 @@
+@use '../../App.scss' as g;
+
 .review-card{
   display: flex;
   justify-content: space-between;
@@ -33,7 +35,7 @@
       .brand-name{
         font-size: 16px;
         font-family: 'Times New Roman', Times, serif;
-        color: #bababa;
+        color: g.$sub-color2;
       }
       .review-text{
         font-size: 16px;

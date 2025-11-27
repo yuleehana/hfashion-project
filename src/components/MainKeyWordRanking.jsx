@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
-import RankingItem from './RankingItem';
-import { Link, useNavigate } from 'react-router-dom';
-import './sass/MainKeyWordRanking.scss';
-import { menuRankProduct } from '../data/menuRankProduct.js';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./sass/MainKeyWordRanking.scss";
+import { menuRankProduct } from "../data/menuRankProduct.js";
 
 const MainKeyWordRanking = () => {
   const [liMenu, setLiMenu] = useState(0);
   const navigate = useNavigate();
 
   const handleHover = (index) => {
-    if (liMenu === index) return; // 같은 메뉴 누르면 그대로 유지
+    if (liMenu === index) return;
     setLiMenu(index);
-    // const menuname = menuRankProduct[index].link;
-    // if (menuname) navigate(menuname);
   };
   const handleClick = (index) => {
     const link = menuRankProduct[index].link;
@@ -26,10 +23,10 @@ const MainKeyWordRanking = () => {
     navigate(`/product-detail/${code}`);
   };
 
-  //가격, 할인가격=======================================================================
-  //rightMainData의 price
-  const originalPriceMain = Number(menuRankProduct[liMenu].rightMainData[0].price);
-  const salePriceMain = Math.round(originalPriceMain * 0.8); // 20% 할인
+  const originalPriceMain = Number(
+    menuRankProduct[liMenu].rightMainData[0].price
+  );
+  const salePriceMain = Math.round(originalPriceMain * 0.8);
 
   return (
     <section className="KWR-wrap">
@@ -48,12 +45,12 @@ const MainKeyWordRanking = () => {
                   type="button"
                   onMouseEnter={() => handleHover(index)}
                   onClick={() => handleClick(index)}
-                  className='accord-btn'
+                  className="accord-btn"
                 >
-                  <span className='accord-num'>{item.id}</span>
+                  <span className="accord-num">{item.id}</span>
                   {item.title}
                 </button>
-                <ul className={`rank-list ${liMenu === index ? 'active' : ''}`}>
+                <ul className={`rank-list ${liMenu === index ? "active" : ""}`}>
                   {item.rank.map((it, id) => (
                     <li
                       key={id}
@@ -81,10 +78,16 @@ const MainKeyWordRanking = () => {
             >
               <div className="kwr-main-text-wrap">
                 <div className="kwr-main-text">
-                  <p className="item-title">{menuRankProduct[liMenu].rightMainData[0].title}</p>
+                  <p className="item-title">
+                    {menuRankProduct[liMenu].rightMainData[0].title}
+                  </p>
                   <div className="price-item">
-                    <p className="sale-price">{salePriceMain.toLocaleString()}원</p>
-                    <p className="original-price">{originalPriceMain.toLocaleString()}원</p>
+                    <p className="sale-price">
+                      {salePriceMain.toLocaleString()}원
+                    </p>
+                    <p className="original-price">
+                      {originalPriceMain.toLocaleString()}원
+                    </p>
                     <p className="sale-num">20%</p>
                   </div>
                 </div>
@@ -97,7 +100,11 @@ const MainKeyWordRanking = () => {
                   <p className="khsn-title">{menuRankProduct[liMenu].title}</p>
                   <p className="khsn-item">옷장의 계절을 바꿀 타이밍</p>
                 </div>
-                <button type="button" onClick={() => handleClick(liMenu)} className="more-btn">
+                <button
+                  type="button"
+                  onClick={() => handleClick(liMenu)}
+                  className="more-btn"
+                >
                   더보기
                 </button>
               </div>
@@ -116,8 +123,12 @@ const MainKeyWordRanking = () => {
                       <div className="kwr-sub-text">
                         <p className="title">{it.title}</p>
                         <div className="price-item">
-                          <p className="sale-price">{salePrice.toLocaleString()}원</p>
-                          <p className="original-price">{originalPrice.toLocaleString()}원</p>
+                          <p className="sale-price">
+                            {salePrice.toLocaleString()}원
+                          </p>
+                          <p className="original-price">
+                            {originalPrice.toLocaleString()}원
+                          </p>
                           <p className="sale-num">20%</p>
                         </div>
                       </div>
