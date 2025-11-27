@@ -21,28 +21,38 @@ const Join = () => {
   const { onMember } = useAuthStore();
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
   const [rememberAddress, setRememberAddress] = useState('');
-  const [inputCheck, setInputCheck] = useState(false);
-  const [sInputCheck, setSInputCheck] = useState(false);
-  const [sInputCheck1, setSInputCheck1] = useState(false);
 
-  const handleCheck = (e) => {
-    setInputCheck(!inputCheck);
-    if (sInputCheck && sInputCheck1) {
-      setInputCheck(!inputCheck);
+  const [allAgree, setAllAgree] = useState(false);
+  const [privacyAgree, setPrivacyAgree] = useState(false);
+  const [serviceAgree, setServiceAgree] = useState(false);
+
+  const handleAllAgree = () => {
+    const newValue = !allAgree;
+    setAllAgree(newValue);
+    setPrivacyAgree(newValue);
+    setServiceAgree(newValue);
+  };
+
+  const handlePrivacyAgree = () => {
+    const newValue = !privacyAgree;
+    setPrivacyAgree(newValue);
+
+    if (!newValue || !serviceAgree) {
+      setAllAgree(false);
+    } else {
+      setAllAgree(true);
     }
-
-    // else if (!sInputCheck && !sInputCheck1) {
-    //   setSInputCheck(sInputCheck);
-    //   setSInputCheck1(sInputCheck1);
-    // }
   };
 
-  const handleInputCheck = () => {
-    setSInputCheck(!sInputCheck);
-  };
+  const handleServiceAgree = () => {
+    const newValue = !serviceAgree;
+    setServiceAgree(newValue);
 
-  const handleInputCheck1 = () => {
-    setSInputCheck1(!sInputCheck1);
+    if (!newValue || !privacyAgree) {
+      setAllAgree(false);
+    } else {
+      setAllAgree(true);
+    }
   };
 
   const handleComplete = (data) => {
@@ -188,18 +198,13 @@ const Join = () => {
           <div className="join-button-wrap">
             <div className="join-policy-wrap">
               <div className="join-all-agree-wrap">
-                <input type="checkbox" onChange={handleCheck} />
+                <input type="checkbox" checked={allAgree} onChange={handleAllAgree} />
                 <span>전체동의</span>
               </div>
               <div className="privacy-agree">
                 <label>
                   개인정보 수집 및 이용동의(필수)
-                  <input
-                    type="checkbox"
-                    checked={inputCheck}
-                    required
-                    onChange={(e) => handleCheck()}
-                  />
+                  <input type="checkbox" checked={privacyAgree} onChange={handlePrivacyAgree} />
                 </label>
                 <p>
                   <span>
@@ -228,7 +233,7 @@ const Join = () => {
               <div className="service-agree">
                 <label>
                   서비스 이용약관 동의(필수)
-                  <input type="checkbox" checked={inputCheck} required onChange={handleCheck} />
+                  <input type="checkbox" checked={serviceAgree} onChange={handleServiceAgree} />
                 </label>
                 <p>
                   <span>
