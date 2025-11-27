@@ -1,7 +1,6 @@
 @use "../../App.scss" as g;
 
 .content-inner {
-
   &.userinfo {
     display: flex;
     justify-content: space-between;
@@ -9,7 +8,7 @@
     padding: 5rem 3rem;
 
     .user-info-left {
-      width: 15%
+      width: 15%;
     }
 
     .user-info-main-right {
@@ -19,6 +18,7 @@
       flex-direction: column;
       gap: 6rem;
       padding: 5rem 3rem;
+      min-width: 900px;
 
       .profile-section {
         width: 100%;
@@ -79,7 +79,8 @@
             flex-direction: column;
             border: 1px solid g.$sub-color2;
 
-            li {}
+            li {
+            }
           }
         }
 

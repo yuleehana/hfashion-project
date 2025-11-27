@@ -5,12 +5,14 @@
 }
 
 .detail-sub-goods-list {
+  max-width: 1240px;
+  min-width: 580px;
+  width: -webkit-fill-available;
   a {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
-  max-width: 1240px;
 
   .img-box {
     aspect-ratio: 2/3;

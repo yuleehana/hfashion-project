@@ -32,6 +32,21 @@ const CartOpChangePopup = ({ onClose, item }) => {
         <div className="op-popup-inner">
           <div className="op-popup-content">
             <div className="op-popup-middle">
+              <div className="op-color-change">
+                <p>색상 선택</p>
+                <div className="color-option">
+                  {colors.map((color, id) => (
+                    <button
+                      key={id}
+                      className={`${color} ${
+                        selectColor === color ? "active" : ""
+                      }`}
+                      onClick={() => setSelectColor(color)}
+                    ></button>
+                  ))}
+                </div>
+              </div>
+
               <div className="op-size-change">
                 <p>사이즈 선택 </p>
                 <ul>
@@ -67,14 +82,25 @@ const CartOpChangePopup = ({ onClose, item }) => {
                 <span>{count}</span>
                 <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
               </div>
+
               <div className="op-change-price">
                 가격 : {(price * 0.8 * count).toLocaleString()}원{' '}
+                <span>가격 : </span>
+                <span className="price">
+                  {(price * 0.8 * count).toLocaleString()}원{" "}
+                </span>
               </div>
             </div>
           </div>
 
           <div className="op-popup-button" style={{ display: 'flex', gap: '20px' }}>
             <button className="btn middle secondary" type="button" onClick={onClose}>
+          <div className="op-popup-button-wrap">
+            <button
+              className="btn middle secondary"
+              type="button"
+              onClick={onClose}
+            >
               취소
             </button>
             <button className="btn middle primary " type="button" onClick={handleUpdate}>

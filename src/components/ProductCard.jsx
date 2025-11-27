@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import './sass/ProductCard.scss';
-import { usePickStore } from '../store/usePickStore';
+import React, { useState } from "react";
+import "./sass/ProductCard.scss";
+import { usePickStore } from "../store/usePickStore";
 
 const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
   const [isActive, setIsActive] = useState(null);
-
   const { onAddWishList, pickLists } = usePickStore();
-
   const handleFavoriteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -16,7 +14,6 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
 
   //
   const isPick = pickLists.some((pick) => pick.code === sendItem.code);
-
   const price = sendItem?.price ?? 0;
 
   return (
@@ -28,7 +25,7 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
           <span className="best-rank">{rank}</span>
         ) : (
           <span
-            className={`favorite ${isPick ? 'active' : ''}`}
+            className={`favorite ${isPick ? "active" : ""}`}
             onClick={handleFavoriteClick}
           ></span>
         )}
@@ -40,7 +37,9 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
         </p>
         <p className="price">
           <span>
-            <span className="sale-price">{(price * 0.8).toLocaleString()}원</span>
+            <span className="sale-price">
+              {(price * 0.8).toLocaleString()}원
+            </span>
             <del>{price.toLocaleString()}</del>
           </span>
           <span className="sale">20%</span>
