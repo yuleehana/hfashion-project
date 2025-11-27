@@ -36,7 +36,7 @@
           color: g.$sub-color2;
         }
 
-        >span {
+        > span {
           cursor: pointer;
           display: block;
           width: 2rem;
@@ -59,7 +59,6 @@
     font-size: 1.4rem;
     color: g.$sub-color3;
     font-weight: 300;
-
   }
 
   .item-title {
@@ -95,7 +94,6 @@
 
   .item-color {
     @include g.myFlex($gap: 14px, $jc: flex-start);
-
 
     button {
       border-radius: 10px;
@@ -212,7 +210,6 @@
 
         background-repeat: no-repeat;
         background-position: center;
-
       }
 
       span {
@@ -220,17 +217,14 @@
         border-right: none;
         width: 40px;
       }
-
     }
   }
-
 }
 
 .item-box {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-
 }
 
 .item-total {
@@ -245,7 +239,6 @@
     color: g.$main-color1;
     font-size: 2rem;
   }
-
 }
 
 .cart-btn {
@@ -266,7 +259,6 @@
       font-size: 1.2rem;
     }
   }
-
 }
 
 .etc-info {
@@ -292,3 +284,6 @@
     }
   }
 }
+// .swiper-wrapper {
+//   transform: none !important;
+// }

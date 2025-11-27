@@ -187,27 +187,6 @@ const Join = () => {
             </span>
           </label>
 
-          {/* 주소 검색 모달 */}
-          {isPostcodeOpen && (
-            <>
-              <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
-              <div className="postcode-modal">
-                <DaumPostcode
-                  //Daumpostcode에서 제공하는 검색완료 이벤트 핸들러
-                  onComplete={handleComplete}
-                  //우편번호 검색 완료시 자동 닫힘여부확인용 핸들러
-                  autoClose={false}
-                />
-                <button
-                  type="button"
-                  className="btn middle primary wFull"
-                  onClick={() => setIsPostcodeOpen(false)}
-                >
-                  닫기
-                </button>
-              </div>
-            </>
-          )}
           <div className="join-button-wrap">
             <div className="join-policy-wrap">
               <div className="privacy-agree">
@@ -283,6 +262,26 @@ const Join = () => {
           </div>
         </form>
       </div>
+      {isPostcodeOpen && (
+        <>
+          <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
+          <div className="postcode-modal">
+            <DaumPostcode
+              //Daumpostcode에서 제공하는 검색완료 이벤트 핸들러
+              onComplete={handleComplete}
+              //우편번호 검색 완료시 자동 닫힘여부확인용 핸들러
+              autoClose={false}
+            />
+            <button
+              type="button"
+              className="btn middle primary wFull"
+              onClick={() => setIsPostcodeOpen(false)}
+            >
+              닫기
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
