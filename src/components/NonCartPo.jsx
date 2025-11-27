@@ -1,15 +1,14 @@
-import React from 'react';
-import React from 'react';
-import { useCartStore } from '../store/useCartStore';
-import './sass/CartPo.scss';
-import Paybutton from './Paybutton';
+import React from "react";
+import { useCartStore } from "../store/useCartStore";
+import "./sass/CartPo.scss";
+import Paybutton from "./Paybutton";
 
 const NonCartPo = ({ sendNonData, to, onOpenPopup }) => {
   const { checkedTotalPrice } = useCartStore();
 
   const handleClick = async () => {
-    if (typeof onOpenPopup === 'function') onOpenPopup();
-    if (typeof sendNonData === 'function') {
+    if (typeof onOpenPopup === "function") onOpenPopup();
+    if (typeof sendNonData === "function") {
       try {
         await sendNonData();
       } catch (err) {}
@@ -46,7 +45,11 @@ const NonCartPo = ({ sendNonData, to, onOpenPopup }) => {
           </div>
 
           <div className="cartPo-btn">
-            <Paybutton onClick={handleClick} to={to} price={checkedTotalPrice * 0.8} />
+            <Paybutton
+              onClick={handleClick}
+              to={to}
+              price={checkedTotalPrice * 0.8}
+            />
           </div>
         </div>
       </div>
