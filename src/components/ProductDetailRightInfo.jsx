@@ -1,19 +1,72 @@
-import { useEffect, useState } from 'react';
-import { useProductStore } from '../store/useProductStore';
-import './sass/ProductDetailRightInfo.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { usePickStore } from '../store/usePickStore';
-import './sass/button-normal.scss';
-import { useCartStore } from '../store/useCartStore';
-import { useAuthStore } from '../store/authstore';
+import { useEffect, useState } from "react";
+import { useProductStore } from "../store/useProductStore";
+import "./sass/ProductDetailRightInfo.scss";
+import { useNavigate, useParams } from "react-router-dom";
+import { usePickStore } from "../store/usePickStore";
+import "./sass/button-normal.scss";
+import { useCartStore } from "../store/useCartStore";
+import { useAuthStore } from "../store/authstore";
 
-const sizes = ['XS', 'S', 'M', 'L', 'XL'];
-const colors = ['pink', 'sky', 'white', 'black'];
+// 상품 카테고리에 따른 사이즈 목록 생성
+const getSizesByCategory = (category) => {
+  // 카테고리 문자열이 유효하지 않으면 기본값 반환
+  if (!category || typeof category !== "string") {
+    return ["XS", "S", "M", "L", "XL"];
+  }
+
+  // category를 소문자로 변환하여 비교 (대소문자 무시)
+  const lowerCaseCategory = category.toLowerCase();
+
+  // 신발 (예: 'catewomen shoes'에 'shoes'가 포함)
+  if (lowerCaseCategory.includes("shoes")) {
+    const shoeSizes = [];
+    for (let i = 230; i <= 280; i += 10) {
+      shoeSizes.push(String(i));
+    }
+    return shoeSizes;
+  }
+
+  // 가방 (예: 'cate acc bag'에 'bag'이 포함)
+  if (lowerCaseCategory.includes("bag")) {
+    return ["FREE"];
+  }
+
+  // --- 하의 로직 수정 ---
+  // 남자 팬츠 (예: 'cate man pants'에 'man'과 'pants'가 모두 포함)
+  if (
+    lowerCaseCategory.includes("man") &&
+    lowerCaseCategory.includes("pants")
+  ) {
+    const manPantsSizes = [];
+    // 요청하신 28부터 34까지 사이즈 생성
+    for (let i = 28; i <= 34; i++) {
+      manPantsSizes.push(String(i));
+    }
+    return manPantsSizes;
+  }
+  // 기타 하의 (여자 팬츠, 스커트 등. 'pants' 또는 'skirt' 포함)
+  if (
+    lowerCaseCategory.includes("pants") ||
+    lowerCaseCategory.includes("skirt")
+  ) {
+    // 기존 24부터 30까지 사이즈 유지
+    const bottomSizes = [];
+    for (let i = 24; i <= 30; i++) {
+      bottomSizes.push(String(i));
+    }
+    return bottomSizes;
+  }
+  // -----------------------
+
+  // 상의 및 기타 (기본값)
+  return ["XS", "S", "M", "L", "XL"];
+};
+const colors = ["pink", "sky", "white", "black"];
 
 const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   const { code } = useParams();
 
-  const nav = useNavigate('');
+  const nav = useNavigate("");
 
   // ===== 공유하기 (URL 복사) =====
   const handleShare = async () => {
@@ -22,18 +75,18 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
     try {
       // 최신 브라우저용
       await navigator.clipboard.writeText(url);
-      alert('현재 페이지 주소가 복사되었습니다.');
+      alert("현재 페이지 주소가 복사되었습니다.");
     } catch (err) {
       // 구형 브라우저용 폴백
-      const textarea = document.createElement('textarea');
+      const textarea = document.createElement("textarea");
       textarea.value = url;
       document.body.appendChild(textarea);
       textarea.select();
 
       try {
-        alert('현재 페이지 주소가 복사되었습니다.');
+        alert("현재 페이지 주소가 복사되었습니다.");
       } catch (err) {
-        alert('URL 복사에 실패했습니다. 직접 복사해 주세요.');
+        alert("URL 복사에 실패했습니다. 직접 복사해 주세요.");
       } finally {
         document.body.removeChild(textarea);
       }
@@ -47,28 +100,34 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   const { user } = useAuthStore();
 
   // 상품을 저장할 변수
-  const [item, setItem] = useState('');
+  const [item, setItem] = useState("");
 
   // 선택한 사이즈 체크
-  const [selectSize, setSelectSize] = useState('');
+  const [selectSize, setSelectSize] = useState("");
   // 선택 색상 체크
-  const [selectColor, setSelectColor] = useState('');
+  const [selectColor, setSelectColor] = useState("");
 
   // 수량 체크 변수
   const [count, setCount] = useState(1);
 
-  const [coupon, setCoupon] = '';
+  // const [coupon, setCoupon] = "";
 
-  // [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 위한 새로운 상태를 추가
+  // 좋아요 개수를 위한 새로운 상태를 추가
   const [likeCount, setLikeCount] = useState(11);
+
+  // 현재 상품 카테고리에 해당하는 사이즈 목록을 계산
+  // item이 로드된 후 product.category를 사용하거나, prop으로 받은 product.category를 사용
+  const availableSizes = getSizesByCategory(
+    item?.category || product?.category
+  );
 
   // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
     }
-    setSelectSize('');
-    setSelectColor('');
+    setSelectSize("");
+    setSelectColor("");
     setCount(1);
   }, [code]);
 
@@ -83,10 +142,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   // 장바구니 메서드
   const handleAddToCart = () => {
     if (!selectColor) {
-      alert('색상을 선택해주세요');
+      alert("색상을 선택해주세요");
       return;
     } else if (!selectSize) {
-      alert('사이즈를 선택해주세요');
+      alert("사이즈를 선택해주세요");
       return;
     }
 
@@ -100,10 +159,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
 
     let aa = cartItems.find(
       (c) =>
-        c.code === productCart.code && c.size === productCart.size && c.color === productCart.color
+        c.code === productCart.code &&
+        c.size === productCart.size &&
+        c.color === productCart.color
     );
-
-    console.log(cartItems, aa, productCart);
 
     if (!aa) {
       onAddToCart(productCart);
@@ -115,11 +174,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
 
   const handlePay = () => {
     if (!selectColor) {
-      alert('색상을 선택해주세요');
-
+      alert("색상을 선택해주세요");
       return;
     } else if (!selectSize) {
-      alert('사이즈를 선택해주세요');
+      alert("사이즈를 선택해주세요");
       return;
     }
 
@@ -133,7 +191,9 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
 
     const bb = cartItems.find(
       (b) =>
-        b.code === productCart.code && b.size === productCart.size && b.color === productCart.color
+        b.code === productCart.code &&
+        b.size === productCart.size &&
+        b.color === productCart.color
     );
 
     if (!bb) {
@@ -151,7 +211,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
     }
   };
 
-  // [KIM: Add 좋아요 개수 증감 11-23] 찜리스트 메서드
+  // 찜리스트 메서드
   const handleAddToPick = () => {
     onAddWishList(item);
     // 좋아요 개수 증감 로직 추가 (isPicked 값에 따라 증감)
@@ -176,9 +236,12 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
             <p className="favorite">
               {/* 좋아요 */}
               <span className="favo">
-                {/* [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 likeCount 상태로 연결 */}
+                {/* 좋아요 개수를 likeCount 상태로 연결 */}
                 <i>{likeCount}</i>
-                <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
+                <span
+                  className={isPicked ? "active" : ""}
+                  onClick={handleAddToPick}
+                ></span>
               </span>
               {/* 공유하기 */}
               <span className="share" onClick={handleShare} role="button">
@@ -202,7 +265,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
             {colors.map((color, id) => (
               <button
                 key={id}
-                className={`${color} ${selectColor === color ? 'active' : ''}`}
+                className={`${color} ${selectColor === color ? "active" : ""}`}
                 onClick={() => setSelectColor(color)}
               ></button>
             ))}
@@ -211,10 +274,11 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
           <div className="item-size">
             <p>사이즈 선택 </p>
             <ul>
-              {sizes.map((size, id) => (
+              {/* availableSizes를 사용 */}
+              {availableSizes.map((size, id) => (
                 <li key={id}>
                   <button
-                    className={selectSize === size ? 'active' : ''}
+                    className={selectSize === size ? "active" : ""}
                     onClick={() => setSelectSize(size)}
                   >
                     {size}
@@ -227,19 +291,28 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
 
         <div className="item-info">
           <p>
-            색상 : {selectColor} <span className="division">|</span> 사이즈 : {selectSize}
+            색상 : {selectColor} <span className="division">|</span> 사이즈 :{" "}
+            {selectSize}
           </p>
           {/* 수량 선택 */}
           <p className="btn-count">
-            <button className="minus" onClick={() => setCount((c) => Math.max(1, c - 1))}></button>
+            <button
+              className="minus"
+              onClick={() => setCount((c) => Math.max(1, c - 1))}
+            ></button>
             <span>{count}</span>
-            <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
+            <button
+              className="plus"
+              onClick={() => setCount((c) => c + 1)}
+            ></button>
           </p>
         </div>
 
         <div className="item-total">
           <span className="text">합계</span>
-          <span className="num">{(product.price * 0.8 * `${count}`).toLocaleString()}</span>
+          <span className="num">
+            {(product.price * 0.8 * `${count}`).toLocaleString()}
+          </span>
         </div>
 
         <div className="cart-btn">
@@ -264,7 +337,11 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
               {
                 // product.rating 개수만큼 렌더링
                 Array.from({ length: product.rating }, (_, index) => (
-                  <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
+                  <img
+                    key={index}
+                    src="/images/icon-star-black.svg"
+                    alt="star-filled"
+                  />
                 ))
               }
               {Array.from({ length: 5 - product.rating }, (_, index) => (
