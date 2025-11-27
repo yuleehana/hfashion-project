@@ -240,8 +240,8 @@ const ProductListPage = ({ category }) => {
 
       <ul className="sub-goods-list">
         {currentItems.length > 0 ? (
-          currentItems.map((item) => (
-            <li key={item.code}>
+          currentItems.map((item, id) => (
+            <li key={id}>
               <Link to={`/product-detail/${item.code}`}>
                 <ProductCard sendItem={item} />
               </Link>
