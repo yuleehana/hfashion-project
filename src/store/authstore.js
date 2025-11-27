@@ -5,48 +5,22 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-} from "firebase/auth";
-import { create } from "zustand";
-import { auth, googleProvider, db } from "../firebase/firebase";
-import {
-  doc,
-  getDoc,
-  setDoc,
-} from "firebase/firestore";
+} from 'firebase/auth';
+import { create } from 'zustand';
+import { auth, googleProvider, db } from '../firebase/firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export const useAuthStore = create((set) => ({
-  // 변수
-
-  // 회원가입 변수
   user: null,
-
-  // 아이템 변수
   items: [],
-  // 아이템 데이터
-
-  // 회원가입
-  // firebase에 유저정보 보내는 메서드
-  // zustanduser에 데이터 정보 저장까지 같이
-  onMember: async ({
-    id,
-    displayName,
-    email,
-    password,
-    phone,
-    address,
-    address2,
-  }) => {
+  onMember: async ({ id, displayName, email, password, phone, address, address2 }) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       await updateProfile(user, { displayName });
 
-      await setDoc(doc(db, "users", user.uid), {
+      await setDoc(doc(db, 'users', user.uid), {
         id,
         displayName,
         email,
@@ -58,13 +32,12 @@ export const useAuthStore = create((set) => ({
       set({
         user: { id, displayName, email, phone, address, address2 },
       });
-      alert("회원가입 성공");
+      alert('회원가입 성공');
     } catch (err) {
       alert(err.message);
     }
   },
 
-  //비회원 상품리스트
   nonCart: {
     items: [],
     totalPrice: 0,
@@ -82,14 +55,11 @@ export const useAuthStore = create((set) => ({
     set({
       nonCart: { items: [], totalPrice: 0 },
     }),
-
-  //비회원 주문자 변수
   nuser: null,
 
   onNMember: async ({ oname, ophone, oemail, opassword, opasswordcheck }) => {
     try {
-      //비회원정보를 firestore에 저장
-      await setDoc(doc(db, "nuser", ophone), {
+      await setDoc(doc(db, 'nuser', ophone), {
         oname,
         ophone,
         oemail,
@@ -100,7 +70,7 @@ export const useAuthStore = create((set) => ({
         nuser: { oname, ophone, oemail, opassword, opasswordcheck },
       });
 
-      console.log("nuser데이터정보", {
+      console.log('nuser데이터정보', {
         oname,
         ophone,
         oemail,
@@ -115,7 +85,7 @@ export const useAuthStore = create((set) => ({
   naddress: null,
   onNAddress: async ({ nname, nphone, naddress, naddress2, nrequest }) => {
     try {
-      await setDoc(doc(db, "naddress", nname), {
+      await setDoc(doc(db, 'naddress', nname), {
         nname,
         nphone,
         naddress,
@@ -126,7 +96,7 @@ export const useAuthStore = create((set) => ({
         naddress: { nname, nphone, naddress, naddress2, nrequest },
       });
 
-      console.log("nuser주소정보", {
+      console.log('nuser주소정보', {
         nname,
         nphone,
         naddress,
@@ -141,14 +111,10 @@ export const useAuthStore = create((set) => ({
   // 로그인
   onLogin: async (email, password) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const fbUser = userCredential.user;
 
-      const userRef = doc(db, "users", fbUser.uid);
+      const userRef = doc(db, 'users', fbUser.uid);
       const userDoc = await getDoc(userRef);
 
       if (userDoc.exists()) {
@@ -160,24 +126,19 @@ export const useAuthStore = create((set) => ({
         });
       }
 
-      // set({ user: userCredential.user });
-      alert("로그인 성공!");
+      alert('로그인 성공!');
     } catch (err) {
       alert(err.message);
     }
   },
 
-  // 구글 로그인
   onGoogleLogin: async () => {
     try {
-      // 구글 로그인 팝업 & 데이터 저장
       const result = await signInWithPopup(auth, googleProvider);
 
-      // 성공
       const user = result.user;
-      const userRef = doc(db, "users", user.uid);
+      const userRef = doc(db, 'users', user.uid);
 
-      // 데이터 없음
       const userDoc = await getDoc(userRef);
       if (!userDoc.exists()) {
         const userInfo = {
@@ -189,9 +150,7 @@ export const useAuthStore = create((set) => ({
 
         await setDoc(userRef, userInfo);
         set({ user: userInfo });
-      }
-      // 데이터가져오기
-      else {
+      } else {
         set({ user: userDoc.data() });
       }
     } catch (err) {
@@ -199,75 +158,67 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  // 카카오 로그인
   onKakaoLogin: async (navigate) => {
     try {
-      // 1 카카오 SDK 초기화
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init("415096494840a6ca548a1d48257b2766");
-        console.log(" Kakao SDK 초기화 완료");
+        window.Kakao.init('415096494840a6ca548a1d48257b2766');
+        console.log(' Kakao SDK 초기화 완료');
       }
 
-      // 2 로그인 요청 (Promise 변환)
       const authObj = await new Promise((resolve, reject) => {
         window.Kakao.Auth.login({
-          scope: "profile_nickname, profile_image",
+          scope: 'profile_nickname, profile_image',
           success: resolve,
           fail: reject,
         });
       });
-      console.log(" 카카오 로그인 성공:", authObj);
+      console.log(' 카카오 로그인 성공:', authObj);
 
       // 3 사용자 정보 요청 (Promise 기반)
       const res = await window.Kakao.API.request({
-        url: "/v2/user/me",
+        url: '/v2/user/me',
       });
-      console.log(" 카카오 사용자 정보:", res);
+      console.log(' 카카오 사용자 정보:', res);
 
-      // 4 사용자 정보 가공
       const uid = res.id.toString();
       const kakaoUser = {
         uid,
-        email: res.kakao_account?.email || "",
-        name: res.kakao_account.profile?.nickname || "카카오사용자",
-        nickname: res.kakao_account.profile?.nickname || "카카오사용자",
-        photoURL: res.kakao_account.profile?.profile_image_url || "",
-        provider: "kakao",
+        email: res.kakao_account?.email || '',
+        name: res.kakao_account.profile?.nickname || '카카오사용자',
+        nickname: res.kakao_account.profile?.nickname || '카카오사용자',
+        photoURL: res.kakao_account.profile?.profile_image_url || '',
+        provider: 'kakao',
         createdAt: new Date(),
       };
 
-      // 5 Firestore에 저장
-      const userRef = doc(db, "users", uid);
+      const userRef = doc(db, 'users', uid);
       const userDoc = await getDoc(userRef);
 
       if (!userDoc.exists()) {
         await setDoc(userRef, kakaoUser);
-        console.log(" 신규 카카오 회원 Firestore에 등록 완료");
+        console.log(' 신규 카카오 회원 Firestore에 등록 완료');
       } else {
-        console.log("기존 카카오 회원 Firestore 데이터 있음");
+        console.log('기존 카카오 회원 Firestore 데이터 있음');
       }
 
-      // 6 Zustand 상태 업데이트
       set({ user: kakaoUser });
 
       alert(`${kakaoUser.nickname}님, 카카오 로그인 성공! `);
-      if (navigate) navigate("/");
+      if (navigate) navigate('/');
     } catch (err) {
-      console.error(" 카카오 로그인 중 오류:", err);
-      alert("카카오 로그인 실패: " + err.message);
+      console.error(' 카카오 로그인 중 오류:', err);
+      alert('카카오 로그인 실패: ' + err.message);
     }
   },
-  // 로그아웃하기
   onLogout: async () => {
     await signOut(auth);
     set({ user: null });
   },
 
   initAuth: () => {
-    //firebase Auth에서 제공하는 이벤트리스너
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const userRef = doc(db, "users", user.uid);
+        const userRef = doc(db, 'users', user.uid);
         const userDoc = await getDoc(userRef);
         if (userDoc.exists()) {
           set({ user: userDoc.data() });

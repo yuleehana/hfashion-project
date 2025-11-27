@@ -1,12 +1,12 @@
 import React from 'react';
 import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 import { usePickStore } from '../store/usePickStore';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './sass/picklist.scss';
 
 const Picklist = () => {
   const navigte = useNavigate();
-  const { pickLists, onRemoveList, resetPcikList } = usePickStore();
+  const { pickLists, onRemoveList } = usePickStore();
   const handleMoveDetail = (code) => {
     navigte(`/product-detail/${code}`);
   };
@@ -20,7 +20,6 @@ const Picklist = () => {
         <div className="user-info-left">
           <UserInfoLeftMenu />
         </div>
-
         <div className="user-info-right user-pick-wrap">
           <div className="user-info-right-inner">
             <div className="user-info-right-title">

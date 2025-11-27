@@ -2,9 +2,9 @@ import React from 'react';
 import BrandLiveProduct from './BrandLiveProduct';
 import { useNavigate } from 'react-router-dom';
 
-const BrandLiveProducts = ({ mainNew, brand }) => {
+const BrandLiveProducts = ({ brand }) => {
   const sData = brand.filter((b) => b.id !== 1);
-  const mData = brand.filter((b) => b.id == 1);
+  const mData = brand.filter((b) => b.id === 1);
   const navigte = useNavigate();
 
   return (

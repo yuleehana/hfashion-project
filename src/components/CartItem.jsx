@@ -1,40 +1,22 @@
-import React, { useState } from "react";
-import { useCartStore } from "../store/useCartStore";
-import "./sass/CartItem.scss";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useCartStore } from '../store/useCartStore';
+import './sass/CartItem.scss';
+import { Link } from 'react-router-dom';
 
-const CartItem = ({ product, onOpenPopup }) => {
-  // const { code } = useParams();
+const CartItem = ({ onOpenPopup }) => {
+  const { cartItems, onRemoveCart, onCheckCart, resetCart, onCheckAll, onRemoveChecked } =
+    useCartStore();
 
-  const {
-    cartItems,
-    onRemoveCart,
-    onCheckCart,
-    resetCart,
-    onCheckAll,
-    onRemoveChecked,
-  } = useCartStore();
-  console.log(cartItems);
-  // 체크btn active
   const [isActive, setIsActive] = useState(true);
 
-  // const filteredCart = cartItems.filter((c) => c.checked);
-
   const handleToggle = (code) => {
-    // console.log('1121', code);
     setIsActive(!isActive);
     onCheckCart(code);
-    console.log("카트아이템", cartItems);
   };
 
-  //선택삭제
+  const isAllChecked = cartItems.length > 0 && cartItems.every((item) => item.checked);
 
-  const isAllChecked =
-    cartItems.length > 0 && cartItems.every((item) => item.checked);
-
-  // 전체삭제
   const resetCartList = () => {
-    console.log(cartItems);
     resetCart();
   };
 
@@ -101,7 +83,7 @@ const CartItem = ({ product, onOpenPopup }) => {
                   <button
                     className="btn xsmall secondary"
                     onClick={() => {
-                      console.log("선택된아이템 : ", item);
+                      console.log('선택된아이템 : ', item);
                       onOpenPopup(item);
                     }}
                   >
@@ -120,13 +102,10 @@ const CartItem = ({ product, onOpenPopup }) => {
                 onClick={(e) => {
                   e.stopPropagation();
                   onRemoveCart(item.code, item.size, item.color);
-                  alert("장바구니에서 제거되었습니다.");
+                  alert('장바구니에서 제거되었습니다.');
                 }}
               >
-                <img
-                  src="../../images/close-icon-black.svg"
-                  alt="아이템 삭제"
-                />
+                <img src="../../images/close-icon-black.svg" alt="아이템 삭제" />
               </span>
             </div>
           </li>

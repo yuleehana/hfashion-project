@@ -53,7 +53,6 @@ const ProductListPage = ({ category }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
   const handleBrand = (brand) => {
     const match = allItems.filter((item) => item.brand === brand);
     setItems(match);
@@ -198,8 +197,8 @@ const ProductListPage = ({ category }) => {
               style={{ display: activeFilter === 2 ? "flex" : "none" }}
             >
               <div className="price-tag-t">
-                {priceRange.map((p) => (
-                  <p key={p.value}>
+                {priceRange.map((p, idd) => (
+                  <p key={idd}>
                     <label onClick={() => handlePrice(p.value)}>
                       {p.name}
                       <input

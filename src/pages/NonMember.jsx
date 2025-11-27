@@ -24,10 +24,6 @@ const NonMember = () => {
     setRememberAddress(fullAddress);
     setIsPostcodeOpen(false);
   };
-
-  //비회원 data저장내용
-
-  //주문자 정보
   const [nonFormDat, setNonFormData] = useState({
     oname: '',
     ophone: '',
@@ -35,8 +31,6 @@ const NonMember = () => {
     opassword: '',
     opasswordcheck: '',
   });
-
-  //배송지 정보
   const [nonAddress, setNonAddress] = useState({
     nname: '',
     nphone: '',
@@ -44,29 +38,19 @@ const NonMember = () => {
     naddress2: '',
     nrequest: '',
   });
-
-  //주문자정보 -> 상태변수에 저장메서드
   const handleNonFormData = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     const updateNform = { ...nonFormDat, [name]: value };
     setNonFormData(updateNform);
   };
-  console.log(nonFormDat);
-
-  //배송지정보 -> 상태변수에 저장메서드
   const handleNonAddress = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     const updateAddress = { ...nonAddress, [name]: value };
     setNonAddress(updateAddress);
   };
-  console.log(nonAddress);
-  console.log('체크된 아이템', checkedList);
-
-  //주문자정보 저장 메서드
   const handelsubmit = async () => {
-    // e.preventDefault();
     if (!nonFormDat.oname.trim()) {
       return alert('주문자 이름이 없습니다.');
     } else if (!nonFormDat.ophone.trim()) {
@@ -88,10 +72,8 @@ const NonMember = () => {
     } else if (!nonAddress.nrequest) {
       return alert('발송 요청사항이 없습니다.');
     }
-
     await onNMember(nonFormDat);
     await onNAddress(nonAddress);
-
     setNoncart({
       items: checkedList,
       totalPrice: checkedTotalPrice,
@@ -159,11 +141,7 @@ const NonMember = () => {
                     />
                   </label>
 
-                  <div>
-                    {/* <button type="button" onClick={handelsubmit}>
-                      주문자정보저장
-                    </button> */}
-                  </div>
+                  <div></div>
                 </form>
               </div>
               <div className="sub-address-inf">
@@ -226,11 +204,7 @@ const NonMember = () => {
                       onChange={(e) => handleNonAddress(e)}
                     />
                   </label>
-                  <div>
-                    {/* <button type="button" onClick={handelsubmit}>
-                      배송지정보저장
-                    </button> */}
-                  </div>
+                  <div></div>
                 </form>
               </div>
             </div>
@@ -242,7 +216,6 @@ const NonMember = () => {
           <NonCartPo sendNonData={handelsubmit} pirce={checkedTotalPrice} />
         </div>
       </div>
-      {/* 주소 검색 모달 */}
       {isPostcodeOpen && (
         <>
           <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />

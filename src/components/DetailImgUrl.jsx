@@ -2,7 +2,7 @@ import React from 'react';
 import './sass/DetailImgUrl.scss';
 const DetailImgUrl = ({ product }) => {
   const ditailImgUrls = product?.detail || [];
-  console.log(ditailImgUrls);
+  // console.log(ditailImgUrls);
 
   return (
     <ul className="detail-img">

@@ -1,34 +1,20 @@
 import React from 'react';
+import React from 'react';
 import { useCartStore } from '../store/useCartStore';
 import './sass/CartPo.scss';
-// import { useAuthStore } from '../store/authstore';
 import Paybutton from './Paybutton';
 
-const NonCartPo = ({ sendNonData, to, price, onOpenPopup }) => {
-  const { checkedTotalPrice, cartItems } = useCartStore();
+const NonCartPo = ({ sendNonData, to, onOpenPopup }) => {
+  const { checkedTotalPrice } = useCartStore();
 
   const handleClick = async () => {
-    // 옵션: 팝업 먼저 열기
     if (typeof onOpenPopup === 'function') onOpenPopup();
-
-    // DB 저장은 비동기라 try/catch 권장
     if (typeof sendNonData === 'function') {
       try {
         await sendNonData();
-      } catch (err) {
-        console.error('save error', err);
-      }
+      } catch (err) {}
     }
   };
-
-  console.log('전체카트아이템 항목', cartItems);
-  console.log('체크된항목', checkedTotalPrice);
-
-  // const { user } = useAuthStore();
-
-  // 선택된 상품 개수
-  // const checkedCount = cartItems.filter((item) => item.checked).length;
-
   return (
     <div className="cartPo-wrap">
       <div className="cartPo-inner">
