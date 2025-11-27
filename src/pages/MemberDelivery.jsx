@@ -43,12 +43,17 @@ const MemberDelivery = () => {
                       <ul className="member-delivery-box-list">
                         {delStatus.map((s, id) => (
                           <li key={id} className="member-delivery-box">
-                            {s}
+                            <div className="del-icon-wrap">
+                              <span className={`del-icon${id + 1}`}></span>
+                            </div>
+                            <span>{s}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <span>주문 내역과 배송 상태를 확인하세요!</span>
+                    <div className="member-delivery-text">
+                      <span>주문 내역과 배송 상태를 확인하세요!</span>
+                    </div>
                   </div>
                   <ul className="member-del-item-list">
                     {orders.map((order, id) => {
