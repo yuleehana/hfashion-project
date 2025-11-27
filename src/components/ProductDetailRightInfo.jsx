@@ -63,7 +63,7 @@ const getSizesByCategory = (category) => {
 };
 const colors = ["pink", "sky", "white", "black"];
 
-const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
+const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   const { code } = useParams();
 
   const nav = useNavigate("");
@@ -197,12 +197,17 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
     );
 
     if (!bb) {
-      alert("주문서로이동합니다");
+      setTimeout(() => {
+        nav(user ? '/pay' : '/nonmember');
+      }, 3000);
       onAddToCart(productCart);
-      nav(user ? "/pay" : "/nonmember");
+      onOpenPay();
     } else {
-      alert("이미 장바구니에있는 상품입니다.");
-      nav(user ? "/pay" : "/nonmember");
+      setTimeout(() => {
+        nav(user ? '/pay' : '/nonmember');
+      }, 3000);
+      onOpenPay();
+      alert('이미 장바구니에있는 상품입니다.');
     }
   };
 
@@ -315,9 +320,12 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
             장바구니
           </button>
           <button
-            onClick={((e) => e.preventDefault(), handlePay)}
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              handlePay();
+            }}
             className="btn middle secondary"
-            to={user ? "/pay" : "/nonmember"}
           >
             바로구매
           </button>

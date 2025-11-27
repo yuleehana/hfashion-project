@@ -27,6 +27,13 @@ const ProductDetail = () => {
   // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');
 
+  const [isPayClicked, setIsPayClicked] = useState(false);
+
+  const handleOpenPay = (productInfo) => {
+    console.log('자식에서 받은 상품 정보:', productInfo);
+    setIsPayClicked(true);
+  };
+
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
@@ -77,10 +84,23 @@ const ProductDetail = () => {
           )}
         </div>
         <div className="detail-right" style={{ backgroundImage: 'url(``)' }}>
-          <ProductDetailRightInfo product={product} onOpenPopup={() => setShowPopup(true)} />
+          <ProductDetailRightInfo
+            product={product}
+            onOpenPay={() => setIsPayClicked(true)}
+            onOpenPopup={() => setShowPopup(true)}
+          />
         </div>
       </div>
-
+      {isPayClicked && (
+        <>
+          <div className="back-overlay"></div>
+          <div className="overlay-text-wrap">
+            <p className="over-title">주문서로 이동중</p>
+            <p className="over-middle"> 고객님을 위한 주문서양식을 받아오는중입니다.</p>
+            <p className="over-box"></p>
+          </div>
+        </>
+      )}
       {showPopup && <CartPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
