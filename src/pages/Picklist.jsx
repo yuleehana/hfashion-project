@@ -16,7 +16,7 @@ const Picklist = () => {
       <div className="channel-wrap">
         <div className="channel"></div>
       </div>
-      <div className="content-inner">
+      <div className="content-inner-picklist">
         <div className="user-info-left">
           <UserInfoLeftMenu />
         </div>
