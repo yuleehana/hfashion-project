@@ -9,7 +9,6 @@ const PayItem = () => {
     <div className="pay-item-list-wrap">
       <ul className="pay-item-list">
         {cartItems.map((item, id) => (
-          // <>
           <li key={id} className="pay-item">
             <div className="pay-item-inner">
               <div className="item-left">
@@ -40,7 +39,6 @@ const PayItem = () => {
               </div>
             </div>
           </li>
-          // </>
         ))}
       </ul>
     </div>

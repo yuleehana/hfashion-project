@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DaumPostcode from 'react-daum-postcode';
 import './sass/join.scss';
 import { useAuthStore } from '../store/authstore';
 
 const Join = () => {
   const navigate = useNavigate();
-
-  // 변수
   const [formData, setFormData] = useState({
     id: '',
     password: '',
@@ -18,49 +16,30 @@ const Join = () => {
     address: '',
     address2: '',
   });
-
-  // 비밀번호 동일변수
   const [passwordMatch, setPasswordMatch] = useState(false);
-  // 비밀번호 input 진입변수
   const [passwordTouched, setPasswordTouched] = useState(false);
-
-  const setUser = useAuthStore((state) => state.setUser);
-  const { onMember, user } = useAuthStore();
-
-  //주소 모달열림상태
+  const { onMember } = useAuthStore();
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
   const [rememberAddress, setRememberAddress] = useState('');
-
-  //주소 검색완료시 -> 검색한 데이타를 firebase user방안에넣는 메서드
-  //address방으로 그대로 들어가니깐 구조에 문제 없음
   const handleComplete = (data) => {
     const fullAddress = data.address;
     setFormData({ ...formData, address: fullAddress });
     setRememberAddress(fullAddress);
     setIsPostcodeOpen(false);
   };
-
-  // 메서드
-  // sotre에 저장하는 메서드
   const handleSubmit = (e) => {
     e.preventDefault();
     onMember(formData);
     alert('회원가입을 성공적으로 완료했습니다');
-    console.log(formData);
     navigate('/');
   };
-
   const handleIdCheck = (e) => {
     alert('사용 가능한아아디입니다.');
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     const updatedForm = { ...formData, [name]: value };
     setFormData(updatedForm);
-
-    console.log('handleChange 호출', { name, value });
-    // 비밀번호확인 메서드
     if (name === 'password' || name === 'passwordCheck') {
       setPasswordTouched(true);
 
@@ -71,10 +50,6 @@ const Join = () => {
       }
     }
   };
-
-  console.log('선택한 주소', rememberAddress);
-  console.log('사용자 정보', user);
-
   return (
     <div className="sub-page">
       <div className="join-inner">
@@ -266,12 +241,7 @@ const Join = () => {
         <>
           <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
           <div className="postcode-modal">
-            <DaumPostcode
-              //Daumpostcode에서 제공하는 검색완료 이벤트 핸들러
-              onComplete={handleComplete}
-              //우편번호 검색 완료시 자동 닫힘여부확인용 핸들러
-              autoClose={false}
-            />
+            <DaumPostcode onComplete={handleComplete} autoClose={false} />
             <button
               type="button"
               className="btn middle primary wFull"

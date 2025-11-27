@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './sass/NonMemberPopUp.scss';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
 
 const STATUS = ['결제완료', '배송준비', '배송중', '배송완료'];
 
 const NonMemberPopUp = ({ data, onClose }) => {
-  console.log(data);
-
-  //data갖어온값에 status0으로설정
   const [items, setItems] = useState(data.items.map((item) => ({ ...item, status: 0 })));
-
-  // 상태 카운트 계산
   const statusCounts = items.reduce(
     (acc, item) => {
       acc[item.status]++;
@@ -19,18 +12,14 @@ const NonMemberPopUp = ({ data, onClose }) => {
     },
     [0, 0, 0, 0]
   );
-
-  // 5초마다 상태 업데이트
   useEffect(() => {
     const interval = setInterval(() => {
       setItems((prev) =>
         prev.map((item) => (item.status < 3 ? { ...item, status: item.status + 1 } : item))
       );
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div className="non-popup-wrap">
       <div className="non-popup-inner">

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useCartStore } from "../store/useCartStore";
-import "./sass/CartOpChangePopup.scss";
+import React, { useState } from 'react';
+import { useCartStore } from '../store/useCartStore';
+import './sass/CartOpChangePopup.scss';
 
 // 상품 카테고리에 따른 사이즈 목록 생성
 const getSizesByCategory = (category) => {
@@ -70,14 +70,12 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
   const [selectSize, setSelectSize] = useState(item.size);
   const [selectColor, setSelectColor] = useState(item.color);
   const [count, setCount] = useState(item.count);
-  const [price, setPrice] = useState(item.price);
+  const [price] = useState(item.price);
 
   const { updateCartOptions } = useCartStore();
 
   const handleItemSize = (size) => {
     setSelectSize(size);
-    console.log("개수", count);
-    console.log(size);
   };
 
   const handleUpdate = () => {
@@ -126,6 +124,15 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
                   ))}
                 </ul>
               </div>
+              <div className="op-color-change">
+                {colors.map((color, id) => (
+                  <button
+                    key={id}
+                    className={`${color} ${selectColor === color ? 'active' : ''}`}
+                    onClick={() => setSelectColor(color)}
+                  ></button>
+                ))}
+              </div>
             </div>
 
             <div className="op-popup-bottom">
@@ -135,13 +142,11 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
                   onClick={() => setCount((c) => Math.max(1, c - 1))}
                 ></button>
                 <span>{count}</span>
-                <button
-                  className="plus"
-                  onClick={() => setCount((c) => c + 1)}
-                ></button>
+                <button className="plus" onClick={() => setCount((c) => c + 1)}></button>
               </div>
 
               <div className="op-change-price">
+                가격 : {(price * 0.8 * count).toLocaleString()}원{' '}
                 <span>가격 : </span>
                 <span className="price">
                   {(price * 0.8 * count).toLocaleString()}원{" "}
@@ -150,6 +155,8 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
             </div>
           </div>
 
+          <div className="op-popup-button" style={{ display: 'flex', gap: '20px' }}>
+            <button className="btn middle secondary" type="button" onClick={onClose}>
           <div className="op-popup-button-wrap">
             <button
               className="btn middle secondary"
@@ -158,11 +165,7 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
             >
               취소
             </button>
-            <button
-              className="btn middle primary "
-              type="button"
-              onClick={handleUpdate}
-            >
+            <button className="btn middle primary " type="button" onClick={handleUpdate}>
               변경
             </button>
           </div>

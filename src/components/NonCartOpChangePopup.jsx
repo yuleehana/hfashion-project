@@ -70,15 +70,12 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
   const [selectColor, setSelectColor] = useState(item.color);
   const [count, setCount] = useState(item.count);
 
-  const [price, setPrice] = useState(item.price);
+  const price = item.price;
 
-  const { cartItems, totalPrice, updateCartOptions, onPlusPrice } =
-    useCartStore();
+  const { updateCartOptions } = useCartStore();
 
   const handleItemSize = (size) => {
     setSelectSize(size);
-    console.log("개수", count);
-    console.log(size);
   };
 
   const handleUpdate = () => {

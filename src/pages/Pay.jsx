@@ -14,10 +14,8 @@ const Pay = () => {
   const { receiverInfo, setReceiverInfo } = usePayStore();
   const { orders, addOrder, today } = usePayStore();
   const { cartItems, checkedTotalPrice } = useCartStore();
-
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
-
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
   const [rememberAddress, setRememberAddress] = useState('');
   const handleComplete = (data) => {
@@ -54,7 +52,6 @@ const Pay = () => {
 
     addOrder(orderItem);
     setShowPopup(true);
-    console.log(orders);
   };
 
   const [selectPay, setSelectPay] = useState('card');

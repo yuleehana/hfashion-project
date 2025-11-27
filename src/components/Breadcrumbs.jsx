@@ -1,9 +1,7 @@
-// src/components/Breadcrumbs.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../pages/sass/Breadcrumbs.scss';
 
-// 각 경로별로 보여줄 이름을 정의
 const breadcrumbNameMap = {
   '/': 'HOME',
 
@@ -49,10 +47,8 @@ const Breadcrumbs = () => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // /men/man-pants => ['men','man-pants']
   const pathnames = pathname.split('/').filter((x) => x);
 
-  // 홈 + 상품 상세 페이지에서는 브레드크럼 숨김
   if (pathname === '/' || pathname.startsWith('/product-detail')) {
     return null;
   }

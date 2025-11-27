@@ -17,42 +17,23 @@ import CartPopup from '../components/CartPopup';
 
 const ProductDetail = () => {
   const { code } = useParams();
-  // console.log(code);
-
   const [product, setProduct] = useState(null);
-
-  // 팝업창을 보이고 숨길 변수
   const [showPopup, setShowPopup] = useState(false);
-
-  // 탭 상태와 핸들러
   const [activeTab, setActiveTab] = useState('detail');
-
   const [isPayClicked, setIsPayClicked] = useState(false);
-
-  const handleOpenPay = (productInfo) => {
-    console.log('자식에서 받은 상품 정보:', productInfo);
-    setIsPayClicked(true);
-  };
-
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
-
-  // 컴포넌트가 처음 렌더링되거나 code가 변경될 때 상품 찾기
   useEffect(() => {
     if (!code) {
       setProduct(null);
       return;
     }
-    // products 배열에서 현재 code와 일치하는 항목을 찾기
-    // item.code와 code 모두 문자열 타입이므로 바로 === 비교
     const findItem = products.find((item) => item.code === code);
-    // 업데이트
-    setProduct(findItem || null); // 찾지 못하면 null로 설정하여 오류 방지
-  }, [code]); // code가 변경될 때마다 다시 실행
-
+    setProduct(findItem || null);
+  }, [code]);
   if (!product) {
-    return null; // 또는 로딩 스피너
+    return null;
   }
 
   return (
