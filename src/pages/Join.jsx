@@ -21,6 +21,30 @@ const Join = () => {
   const { onMember } = useAuthStore();
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
   const [rememberAddress, setRememberAddress] = useState('');
+  const [inputCheck, setInputCheck] = useState(false);
+  const [sInputCheck, setSInputCheck] = useState(false);
+  const [sInputCheck1, setSInputCheck1] = useState(false);
+
+  const handleCheck = (e) => {
+    setInputCheck(!inputCheck);
+    if (sInputCheck && sInputCheck1) {
+      setInputCheck(!inputCheck);
+    }
+
+    // else if (!sInputCheck && !sInputCheck1) {
+    //   setSInputCheck(sInputCheck);
+    //   setSInputCheck1(sInputCheck1);
+    // }
+  };
+
+  const handleInputCheck = () => {
+    setSInputCheck(!sInputCheck);
+  };
+
+  const handleInputCheck1 = () => {
+    setSInputCheck1(!sInputCheck1);
+  };
+
   const handleComplete = (data) => {
     const fullAddress = data.address;
     setFormData({ ...formData, address: fullAddress });
@@ -102,7 +126,6 @@ const Join = () => {
               )}
             </span>
           </label>
-
           <label>
             <span className="label-tag">이름</span>
             <input
@@ -164,10 +187,19 @@ const Join = () => {
 
           <div className="join-button-wrap">
             <div className="join-policy-wrap">
+              <div className="join-all-agree-wrap">
+                <input type="checkbox" onChange={handleCheck} />
+                <span>전체동의</span>
+              </div>
               <div className="privacy-agree">
                 <label>
                   개인정보 수집 및 이용동의(필수)
-                  <input type="checkbox" required />
+                  <input
+                    type="checkbox"
+                    checked={inputCheck}
+                    required
+                    onChange={(e) => handleCheck()}
+                  />
                 </label>
                 <p>
                   <span>
@@ -196,7 +228,7 @@ const Join = () => {
               <div className="service-agree">
                 <label>
                   서비스 이용약관 동의(필수)
-                  <input type="checkbox" required />
+                  <input type="checkbox" checked={inputCheck} required onChange={handleCheck} />
                 </label>
                 <p>
                   <span>
