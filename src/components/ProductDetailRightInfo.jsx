@@ -165,13 +165,13 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
     if (!bb) {
       setTimeout(() => {
         nav(user ? "/pay" : "/nonmember");
-      }, 3000);
+      }, 500);
       onAddToCart(productCart);
       onOpenPay();
     } else {
       setTimeout(() => {
         nav(user ? "/pay" : "/nonmember");
-      }, 3000);
+      }, 500);
       onOpenPay();
       alert("이미 장바구니에있는 상품입니다.");
     }
