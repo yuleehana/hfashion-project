@@ -18,7 +18,7 @@ const CartItem = ({ product, onOpenPopup }) => {
   // 체크btn active
   const [isActive, setIsActive] = useState(true);
 
-  const filteredCart = cartItems.filter((c) => c.checked);
+  // const filteredCart = cartItems.filter((c) => c.checked);
 
   const handleToggle = (code) => {
     // console.log('1121', code);
