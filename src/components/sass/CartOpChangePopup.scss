@@ -1,4 +1,4 @@
-@use '../../App.scss' as g;
+@use "../../App.scss" as g;
 
 .cart-op-change-wrap {
   position: fixed;
@@ -45,20 +45,19 @@
 }
 
 .op-color-change {
-
   button {
     border-radius: 10px;
     width: 2rem;
     height: 2rem;
 
     &.active {
-      background-image: url('../../../public/images/icon/icon-color-check.png');
+      background-image: url("../../../public/images/icon/icon-color-check.png");
       background-repeat: no-repeat;
       background-position: center;
     }
 
     &.active.white {
-      background-image: url('../../../public/images/icon/icon-color-check-white.png');
+      background-image: url("../../../public/images/icon/icon-color-check-white.png");
     }
 
     &.pink {
@@ -96,7 +95,6 @@
     gap: 4px;
 
     li {
-
       button {
         min-width: 32px;
         min-height: 24px;
@@ -139,11 +137,11 @@
     width: 28px;
 
     &.minus {
-      background-image: url('../../../public/images/icon/icon-minus.png');
+      background-image: url("../../../public/images/icon/icon-minus.png");
     }
 
     &.plus {
-      background-image: url('../../../public/images/icon/icon-plus.png');
+      background-image: url("../../../public/images/icon/icon-plus.png");
     }
 
     background-repeat: no-repeat;
