@@ -111,7 +111,6 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
               <div className="op-size-change">
                 <p>사이즈 선택 </p>
                 <ul>
-                  {/* availableSizes를 사용 */}
                   {availableSizes.map((size, id) => (
                     <li key={id}>
                       <button
@@ -146,7 +145,6 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
               </div>
 
               <div className="op-change-price">
-                가격 : {(price * 0.8 * count).toLocaleString()}원{' '}
                 <span>가격 : </span>
                 <span className="price">
                   {(price * 0.8 * count).toLocaleString()}원{" "}
@@ -154,9 +152,6 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
               </div>
             </div>
           </div>
-
-          <div className="op-popup-button" style={{ display: 'flex', gap: '20px' }}>
-            <button className="btn middle secondary" type="button" onClick={onClose}>
           <div className="op-popup-button-wrap">
             <button
               className="btn middle secondary"
