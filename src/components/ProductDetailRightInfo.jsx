@@ -13,31 +13,50 @@ const getSizesByCategory = (category) => {
   if (!category || typeof category !== "string") {
     return ["XS", "S", "M", "L", "XL"];
   }
+
   // category를 소문자로 변환하여 비교 (대소문자 무시)
   const lowerCaseCategory = category.toLowerCase();
+
   // 신발 (예: 'catewomen shoes'에 'shoes'가 포함)
   if (lowerCaseCategory.includes("shoes")) {
     const shoeSizes = [];
-    for (let i = 230; i <= 290; i += 10) {
+    for (let i = 230; i <= 280; i += 10) {
       shoeSizes.push(String(i));
     }
     return shoeSizes;
   }
+
   // 가방 (예: 'cate acc bag'에 'bag'이 포함)
   if (lowerCaseCategory.includes("bag")) {
     return ["FREE"];
   }
-  // 하의 (예: 'cate man pants' 또는 'cate women skirt'에 'pants' 또는 'skirt'가 포함)
+
+  // --- 하의 로직 수정 ---
+  // 남자 팬츠 (예: 'cate man pants'에 'man'과 'pants'가 모두 포함)
+  if (
+    lowerCaseCategory.includes("man") &&
+    lowerCaseCategory.includes("pants")
+  ) {
+    const manPantsSizes = [];
+    // 요청하신 28부터 34까지 사이즈 생성
+    for (let i = 28; i <= 34; i++) {
+      manPantsSizes.push(String(i));
+    }
+    return manPantsSizes;
+  }
+  // 기타 하의 (여자 팬츠, 스커트 등. 'pants' 또는 'skirt' 포함)
   if (
     lowerCaseCategory.includes("pants") ||
     lowerCaseCategory.includes("skirt")
   ) {
+    // 기존 24부터 30까지 사이즈 유지
     const bottomSizes = [];
-    for (let i = 24; i <= 32; i++) {
+    for (let i = 24; i <= 30; i++) {
       bottomSizes.push(String(i));
     }
     return bottomSizes;
   }
+  // -----------------------
 
   // 상의 및 기타 (기본값)
   return ["XS", "S", "M", "L", "XL"];
@@ -145,8 +164,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
         c.color === productCart.color
     );
 
-    console.log(cartItems, aa, productCart);
-
     if (!aa) {
       onAddToCart(productCart);
       onOpenPopup();
@@ -172,7 +189,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup }) => {
       checked: false,
     };
 
-    console.log("11월 26일", cartItems);
     const bb = cartItems.find(
       (b) =>
         b.code === productCart.code &&
