@@ -30,7 +30,12 @@ const OrderDetailModal = ({ order, onClose }) => {
                     {product.title} 몇개?????
                   </span>
                 </div>
-                <span className="product-price">그래서 얼마????</span>
+                <div className="product-price-wrap">
+                  <span className="product-price">
+                    {(product.itemPrice * 0.8).toLocaleString()}
+                  </span>
+                  <span>원</span>
+                </div>
               </li>
             ))}
           </ul>

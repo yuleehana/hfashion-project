@@ -43,9 +43,11 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+
       p {
         line-height: 1.5;
       }
+
       .date-totalPrice {
         @include g.myFlex();
         color: g.$sub-color3;
@@ -54,6 +56,7 @@
       .product-list {
         list-style: none;
         padding: 0;
+
         .product-item {
           display: flex;
           justify-content: space-between;
@@ -68,13 +71,19 @@
           .product-details {
             display: flex;
             align-items: center;
+
             img {
               width: 60px;
               margin-right: 12px;
             }
+
+            .product-title {
+              font-weight: 500;
+            }
           }
-          .product-title {
-            font-weight: 500;
+
+          .product-price-wrap {
+            display: flex;
           }
         }
       }
@@ -83,6 +92,7 @@
     .modal-footer {
       text-align: center;
       margin-top: 20px;
+
       .confirm-button {
         padding: 8px 15px;
         background-color: #007bff;
