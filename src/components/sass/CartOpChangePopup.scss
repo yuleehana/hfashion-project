@@ -1,4 +1,4 @@
-@use '../../App.scss' as g;
+@use "../../App.scss" as g;
 
 .cart-op-change-wrap {
   position: fixed;
@@ -191,11 +191,11 @@
     width: 28px;
 
     &.minus {
-      background-image: url('../../../public/images/icon/icon-minus.png');
+      background-image: url("../../../public/images/icon/icon-minus.png");
     }
 
     &.plus {
-      background-image: url('../../../public/images/icon/icon-plus.png');
+      background-image: url("../../../public/images/icon/icon-plus.png");
     }
 
     background-repeat: no-repeat;
