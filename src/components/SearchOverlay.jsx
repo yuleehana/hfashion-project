@@ -147,7 +147,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
               {filteredItems.map((item, index) => (
                 <li
                   key={item.id}
-                  className={index === activeIndex ? "active" : ""} // ⭐ 추가
+                  className={index === activeIndex ? 'active' : ''}
                   onClick={() => {
                     addRecentKeyword(item.title || item.name);
                     navigate(`/product-detail/${item.code}`);

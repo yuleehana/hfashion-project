@@ -40,7 +40,6 @@ const NoMemberLogin = () => {
         alert('등록된 휴대폰 번호가 없습니다.');
       }
     } catch (err) {
-      console.error(err);
       alert('오류가 발생했습니다.');
     }
   };

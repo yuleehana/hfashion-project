@@ -4,7 +4,7 @@ import './sass/PayPo.scss';
 import { useCartStore } from '../store/useCartStore';
 
 const PayPo = ({ onOpenPopup }) => {
-  const { totalPrice, checkedTotalPrice, cartItems } = useCartStore();
+  const { checkedTotalPrice } = useCartStore();
 
   return (
     <div className="payPo-wrap">

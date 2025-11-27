@@ -10,7 +10,6 @@ const DetailSimilarSwiper = ({ category, product }) => {
   const { onItemsCategory } = useProductStore();
   const currentItems = onItemsCategory(category);
   const filteredItems = currentItems.filter((item) => item.category === product.category);
-  console.log(filteredItems);
 
   return (
     <Swiper className="detail-sub-goods-list" slidesPerView={4.6} spaceBetween={20}>

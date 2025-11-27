@@ -20,12 +20,10 @@ const UserInfoLeftMenu = () => {
       list: [],
     },
   ];
-
   const handleNavigate = (index) => {
     const pathname = menuList[index].link;
     if (pathname) navigate(pathname);
   };
-
   return (
     <div className="menu-list-wrap">
       <h2>MYPAGE</h2>

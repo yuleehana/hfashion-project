@@ -4,14 +4,11 @@ import { persist } from 'zustand/middleware';
 export const usePickStore = create(
   persist(
     (set, get) => ({
-      // 찜 데이터를 담을배열
       pickLists: [],
 
-      // 찜리스트에 넣을 메서드
       onAddWishList: (item) => {
         const pick = get().pickLists;
 
-        //중복아이템체크
         const exisiting = pick.find((p) => p.code == item.code);
 
         let updatePick;
@@ -27,7 +24,6 @@ export const usePickStore = create(
         });
       },
 
-      // 찜목록에서 데이터 제거
       onRemoveList: (code) => {
         const pick = get().pickLists;
         const updatePick = pick.filter((p) => !(p.code === code));
@@ -35,16 +31,12 @@ export const usePickStore = create(
           pickLists: updatePick,
         });
       },
-
-      // 찜버튼 클릭상태 확인
       isActive: null,
       setIsActive: (item) => set({ setIsActive: item }),
 
-      // 로그아웃,전체삭제 찜리스트 리셋메서드
       resetPcikList: () => set({ pickLists: [] }),
     }),
 
-    //localStorage 저장키
     { name: 'pick-storage' }
   )
 );

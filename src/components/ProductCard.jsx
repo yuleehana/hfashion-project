@@ -12,7 +12,6 @@ const ProductCard = ({ sendItem, isBestSeller = false, rank }) => {
     e.stopPropagation();
     setIsActive(!isActive);
     onAddWishList(sendItem);
-    console.log(pickLists);
   };
 
   //

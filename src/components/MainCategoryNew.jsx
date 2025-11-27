@@ -62,7 +62,6 @@ const MainCategoryNew = () => {
     }
 
     onAddWishList(item);
-    // alert('찜목록에 추가되었습니다!');
   };
 
   const categoryPaths = {

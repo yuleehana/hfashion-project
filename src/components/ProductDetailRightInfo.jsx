@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore';
 import './sass/ProductDetailRightInfo.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { usePickStore } from '../store/usePickStore';
 import './sass/button-normal.scss';
 import { useCartStore } from '../store/useCartStore';
@@ -12,24 +12,17 @@ const colors = ['pink', 'sky', 'white', 'black'];
 
 const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   const { code } = useParams();
-
   const nav = useNavigate('');
-
-  // ===== 공유하기 (URL 복사) =====
   const handleShare = async () => {
     const url = window.location.href;
-
     try {
-      // 최신 브라우저용
       await navigator.clipboard.writeText(url);
       alert('현재 페이지 주소가 복사되었습니다.');
     } catch (err) {
-      // 구형 브라우저용 폴백
       const textarea = document.createElement('textarea');
       textarea.value = url;
       document.body.appendChild(textarea);
       textarea.select();
-
       try {
         alert('현재 페이지 주소가 복사되었습니다.');
       } catch (err) {
@@ -39,30 +32,16 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       }
     }
   };
-
-  // 전역변수 불러오기
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
   const { onAddToCart, cartItems } = useCartStore();
   const { user } = useAuthStore();
-
-  // 상품을 저장할 변수
   const [item, setItem] = useState('');
-
-  // 선택한 사이즈 체크
   const [selectSize, setSelectSize] = useState('');
-  // 선택 색상 체크
   const [selectColor, setSelectColor] = useState('');
-
-  // 수량 체크 변수
   const [count, setCount] = useState(1);
-
-  const [coupon, setCoupon] = '';
-
-  // [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 위한 새로운 상태를 추가
   const [likeCount, setLikeCount] = useState(11);
 
-  // 새로고침시 다시 렌더링 되면서 초기화
   useEffect(() => {
     if (items.length === 0) {
       onFetchItem();
@@ -72,15 +51,11 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
     setCount(1);
   }, [code]);
 
-  // 제품 다시 불러오기
   useEffect(() => {
     if (!code || items.length === 0) return;
-
     const findItem = items.find((it) => it.code === code);
     setItem(findItem);
   }, [code, items]);
-
-  // 장바구니 메서드
   const handleAddToCart = () => {
     if (!selectColor) {
       alert('색상을 선택해주세요');
@@ -89,7 +64,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       alert('사이즈를 선택해주세요');
       return;
     }
-
     const productCart = {
       ...item,
       size: selectSize,
@@ -102,9 +76,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       (c) =>
         c.code === productCart.code && c.size === productCart.size && c.color === productCart.color
     );
-
-    console.log(cartItems, aa, productCart);
-
     if (!aa) {
       onAddToCart(productCart);
       onOpenPopup();
@@ -112,17 +83,14 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       onAddToCart(productCart);
     }
   };
-
   const handlePay = () => {
     if (!selectColor) {
       alert('색상을 선택해주세요');
-
       return;
     } else if (!selectSize) {
       alert('사이즈를 선택해주세요');
       return;
     }
-
     const productCart = {
       ...item,
       size: selectSize,
@@ -130,12 +98,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       color: selectColor,
       checked: false,
     };
-
     const bb = cartItems.find(
       (b) =>
         b.code === productCart.code && b.size === productCart.size && b.color === productCart.color
     );
-
     if (!bb) {
       setTimeout(() => {
         nav(user ? '/pay' : '/nonmember');
@@ -150,23 +116,16 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
       alert('이미 장바구니에있는 상품입니다.');
     }
   };
-
-  // [KIM: Add 좋아요 개수 증감 11-23] 찜리스트 메서드
   const handleAddToPick = () => {
     onAddWishList(item);
-    // 좋아요 개수 증감 로직 추가 (isPicked 값에 따라 증감)
     if (isPicked) {
-      // 현재 찜 상태가 활성화(true)이면 -> 해제하는 동작이므로 숫자를 감소
       setLikeCount((prevCount) => prevCount - 1);
     } else {
-      // 현재 찜 상태가 비활성화(false)이면 -> 활성화하는 동작이므로 숫자를 증가
       setLikeCount((prevCount) => prevCount + 1);
     }
   };
-
   const currentProductCode = item?.code || product?.code;
   const isPicked = pickLists.some((pick) => pick.code === currentProductCode);
-
   return (
     <>
       <div className="detail-info">
@@ -174,13 +133,10 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
           <div className="item-brand-favorite">
             <p className="brand">{product.brand}</p>
             <p className="favorite">
-              {/* 좋아요 */}
               <span className="favo">
-                {/* [KIM: Add 좋아요 개수 증감 11-23] 좋아요 개수를 likeCount 상태로 연결 */}
                 <i>{likeCount}</i>
                 <span className={isPicked ? 'active' : ''} onClick={handleAddToPick}></span>
               </span>
-              {/* 공유하기 */}
               <span className="share" onClick={handleShare} role="button">
                 <img src="/images/icon/icon-share.svg" alt="공유하기" />
               </span>
@@ -229,7 +185,6 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
           <p>
             색상 : {selectColor} <span className="division">|</span> 사이즈 : {selectSize}
           </p>
-          {/* 수량 선택 */}
           <p className="btn-count">
             <button className="minus" onClick={() => setCount((c) => Math.max(1, c - 1))}></button>
             <span>{count}</span>
@@ -261,12 +216,9 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
         <div className="item-box">
           <div className="rating">
             <p>
-              {
-                // product.rating 개수만큼 렌더링
-                Array.from({ length: product.rating }, (_, index) => (
-                  <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
-                ))
-              }
+              {Array.from({ length: product.rating }, (_, index) => (
+                <img key={index} src="/images/icon-star-black.svg" alt="star-filled" />
+              ))}
               {Array.from({ length: 5 - product.rating }, (_, index) => (
                 <img
                   key={product.rating + index}

@@ -8,7 +8,6 @@ export const useCartStore = create(
       totalPrice: 0,
       checkedTotalPrice: 0,
 
-      // 장바구니에 상품 추가
       onAddToCart: (item) => {
         const cart = get().cartItems;
 
@@ -34,7 +33,6 @@ export const useCartStore = create(
         });
       },
 
-      // 삭제
       onRemoveCart: (code, size, color) => {
         const newCart = get().cartItems.filter(
           (c) => !(c.code === code && c.size === size && c.color === color)
@@ -52,7 +50,6 @@ export const useCartStore = create(
         });
       },
 
-      // 체크 토글
       onCheckCart: (code) => {
         const newCart = get().cartItems.map((item) =>
           item.code === code ? { ...item, checked: !item.checked } : item
@@ -70,29 +67,23 @@ export const useCartStore = create(
         });
       },
 
-      //전체 토글
       onCheckAll: (checked) => {
         const cart = get().cartItems;
 
-        // 체크 상태 모두 변경
         const updatedCart = cart.map((item) => ({
           ...item,
           checked: checked,
         }));
-
-        // 체크된 아이템 기준으로 총 가격 계산
         const checkedTotal = checked
           ? updatedCart.reduce((acc, item) => acc + item.price * item.count, 0)
           : 0;
 
-        // store 업데이트
         set({
           cartItems: updatedCart,
           checkedTotalPrice: checkedTotal,
         });
       },
 
-      //선택살제토글
       onRemoveChecked: () => {
         const cart = get().cartItems;
 
@@ -107,7 +98,6 @@ export const useCartStore = create(
         });
       },
 
-      // 옵션 변경
       updateCartOptions: (code, size, color, count) => {
         const newCart = get().cartItems.map((item) =>
           item.code === code ? { ...item, size, color, count } : item
@@ -125,7 +115,6 @@ export const useCartStore = create(
         });
       },
 
-      // 수량 증가
       onPlusCount: (code, size, color) => {
         const newCart = get().cartItems.map((item) =>
           item.code === code && item.size === size && item.color === color
@@ -144,8 +133,6 @@ export const useCartStore = create(
           checkedTotalPrice: checkedTotal,
         });
       },
-
-      // 수량 감소
       onMinusCount: (code, size, color) => {
         const newCart = get().cartItems.map((item) =>
           item.code === code && item.size === size && item.color === color
@@ -165,7 +152,6 @@ export const useCartStore = create(
         });
       },
 
-      // 초기화
       resetCart: () => set({ cartItems: [], totalPrice: 0, checkedTotalPrice: 0 }),
     }),
     { name: 'cart-storage' }

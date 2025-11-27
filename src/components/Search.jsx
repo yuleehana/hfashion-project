@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
-import { useProductStore } from "../store/useProductStore";
-import "./sass/Search.scss";
-import "../pages/sass/ProductListPage.scss"; // ProductListPage 스타일
-import ProductCard from "../components/ProductCard"; // ProductCard 컴포넌트 임포트
+import React, { useEffect, useState } from 'react';
+import { useSearchParams, Link } from 'react-router-dom';
+import { useProductStore } from '../store/useProductStore';
+import './sass/Search.scss';
+import '../pages/sass/ProductListPage.scss';
+import ProductCard from '../components/ProductCard';
 
 const Search = () => {
   const { items, onFetchItem } = useProductStore();
   const [searchParams] = useSearchParams();
-  const keyword = searchParams.get("q") || ""; // 검색어 추출
+  const keyword = searchParams.get('q') || '';
   const [results, setResults] = useState([]);
 
   useEffect(() => {
