@@ -144,12 +144,27 @@
           flex-direction: row-reverse;
           justify-content: space-between;
 
-          .op-count-change {}
+          // .op-count-change {}
+
+          .op-change-price {
+
+            span {
+              font-size: 1.4rem;
+              color: g.$sub-color4;
+            }
+
+            .price {
+              font-size: 1.6rem;
+              font-weight: 600;
+            }
+          }
         }
       }
 
       .op-popup-button-wrap {
         display: flex;
+        justify-content: space-between;
+        gap: 1rem;
       }
     }
   }

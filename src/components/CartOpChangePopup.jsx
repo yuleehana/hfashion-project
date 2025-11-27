@@ -80,15 +80,15 @@ const CartOpChangePopup = ({ onClose, item }) => {
               </div>
 
               <div className="op-change-price">
-                가격 : {(price * 0.8 * count).toLocaleString()}원{" "}
+                <span>가격 : </span>
+                <span className="price">
+                  {(price * 0.8 * count).toLocaleString()}원{" "}
+                </span>
               </div>
             </div>
           </div>
 
-          <div
-            className="op-popup-button-wrap"
-            // style={{ display: "flex", gap: "20px" }}
-          >
+          <div className="op-popup-button-wrap">
             <button
               className="btn middle secondary"
               type="button"
