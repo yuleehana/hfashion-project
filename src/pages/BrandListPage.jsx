@@ -16,7 +16,7 @@ const BrandListPage = ({ brand }) => {
   const [rightFilter, setRightFilter] = useState(false);
   const [filterName, setFilterName] = useState('신 상품순');
   const [filterPrice, setFilterPrice] = useState(null);
-  const [filterPrice2, setFilterPrice2] = useState(null);
+  const [filterPrice2, setFilterPrice2] = useState("");
   const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(
     items,
     10,
@@ -171,7 +171,7 @@ const BrandListPage = ({ brand }) => {
                 </div>
                 <div className="price-tag-b">
                   직접입력
-                  <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
+                  <input className="xsmall" type="text" value={filterPrice || ""} onChange={rememberP} />
                   -
                   <input
                     className="xsmall"

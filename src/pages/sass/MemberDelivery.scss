@@ -136,7 +136,10 @@
             }
           }
 
-          ul {
+          .member-del-item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
 
             .member-del-item {
               border: 1px solid g.$sub-color2;

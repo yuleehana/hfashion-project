@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { usePayStore } from "../store/usePayStore";
 import { Link } from "react-router-dom";
 import "./sass/MemberDelivery.scss";
 import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
+// 새로 생성한 모달 컴포넌트 임포트
+import OrderDetailModal from "../components/OrderDetailModal";
 
 const delStatus = ["결제완료", "배송준비", "배송중", "배송완료"];
 
 const MemberDelivery = () => {
   const { orders } = usePayStore();
+
+  // 팝업 표시 상태: null이면 닫힌 상태, 주문 객체면 열린 상태
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  // 모달 열기 함수
+  const openModal = (order) => {
+    setSelectedOrder(order);
+  };
+
+  // 모달 닫기 함수
+  const closeModal = () => {
+    setSelectedOrder(null);
+  };
 
   const truncateWords = (text, maxWords) => {
     if (!text) return "";
@@ -57,7 +72,7 @@ const MemberDelivery = () => {
                   </div>
                   <ul className="member-del-item-list">
                     {orders.map((order, id) => {
-                      const firstProductCode = orders[0];
+                      // const firstProductCode = orders[0];
                       const firstProduct = order.products[0];
 
                       return (
@@ -66,10 +81,13 @@ const MemberDelivery = () => {
                             <div className="del-item-inner-top">
                               <div className="del-inner-top-left">
                                 <span>{order.date}</span>
-                                <span>{firstProductCode.code}</span>
+                                <span>{order.code}</span>
                               </div>
                               <div className="del-inner-top-right">
-                                <button>주문 상세</button>
+                                {/* 버튼 클릭 시 openModal 함수 호출, 현재 주문 객체 전달 */}
+                                <button onClick={() => openModal(order)}>
+                                  주문 상세
+                                </button>
                               </div>
                             </div>
                             <div className="del-item-inner-bottom">
@@ -87,7 +105,8 @@ const MemberDelivery = () => {
                                 </div>
                                 <div className="del-item-price">
                                   <span className="item-price">
-                                    {(order.price * 0.8).toLocaleString()}
+                                    {/* {(order.price * 0.8).toLocaleString()} */}
+                                    {order.price.toLocaleString()}
                                   </span>
                                   <span>원</span>
                                 </div>
@@ -104,6 +123,8 @@ const MemberDelivery = () => {
           </div>
         </div>
       </div>
+      {/* 주문 상세 모달 컴포넌트 추가 */}
+      <OrderDetailModal order={selectedOrder} onClose={closeModal} />
     </div>
   );
 };

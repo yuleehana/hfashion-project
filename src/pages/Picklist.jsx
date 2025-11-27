@@ -16,7 +16,7 @@ const Picklist = () => {
       <div className="channel-wrap">
         <div className="channel"></div>
       </div>
-      <div className="content-inner">
+      <div className="content-inner-picklist">
         <div className="user-info-left">
           <UserInfoLeftMenu />
         </div>
@@ -28,7 +28,7 @@ const Picklist = () => {
             </div>
             <div className="user-picklist-card-wrap">
               {pickLists.map((p) => (
-                <ul className="user-picklist-card" onClick={() => handleMoveDetail(p.code)}>
+                <ul key={p.code} className="user-picklist-card" onClick={() => handleMoveDetail(p.code)}>
                   <li>
                     <div className="user-picklist-card-img">
                       <img src={p.thumbImg} alt="픽이미지" />

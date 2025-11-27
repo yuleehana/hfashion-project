@@ -203,6 +203,38 @@
   }
 }
 
+.request-label{
+  position: relative;
+
+  .request-input-wrap{
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  .request-list{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 10;
+    border: 1px solid g.$sub-color2;
+    border-top: none;
+
+    .request-item{
+      cursor:pointer;
+      background-color: g.$main-color2;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 20px;
+      color: g.$sub-color3;
+      font-size: 1.6rem;
+      line-height: 40px;
+    }
+  }
+}
+
 .postcode-overlay {
   @include g.postBackStyle();
 }
