@@ -1,9 +1,8 @@
 @use "../../App.scss" as g;
 
 .sub-page {
-
+  min-width: 1024px;
   .inner {
-
     &.cart {
       display: flex;
       flex-direction: column;
@@ -11,7 +10,6 @@
 
       .cart-inner-content {
         display: flex;
-        
       }
 
       .cart-inner-top {
@@ -20,7 +18,6 @@
         gap: 2rem;
 
         .cart-inner-title {
-
           .sub-page-title {
             color: g.$main-color1;
             font-size: 4rem;
@@ -49,8 +46,6 @@
       .cart-inner-bottom {
         display: flex;
         justify-content: space-between;
-
-
       }
     }
   }

@@ -1,7 +1,6 @@
 @use "../../App.scss" as g;
 
 .content-inner {
-
   &.delivery {
     display: flex;
     justify-content: space-between;
@@ -16,6 +15,7 @@
       border: 1px solid g.$sub-color2;
       padding: 5rem 3rem;
       display: flex;
+      font-size: 1.6rem;
 
       .member-delivery-wrap {
         display: flex;
@@ -29,8 +29,6 @@
           display: flex;
           align-items: flex-start;
           width: 100%;
-
-
         }
 
         .member-delivery-none {
@@ -65,7 +63,6 @@
             justify-content: center;
 
             .member-delivery-box-wrap {
-
               .member-delivery-box-list {
                 display: flex;
                 justify-content: space-between;
@@ -93,7 +90,7 @@
                       height: 3rem;
                       background-position: center;
                       background-repeat: no-repeat;
-                      background-image: url('../../../public/images/del-icon1.svg');
+                      background-image: url("../../../public/images/del-icon1.svg");
                     }
 
                     .del-icon2 {
@@ -102,7 +99,7 @@
                       height: 3rem;
                       background-position: center;
                       background-repeat: no-repeat;
-                      background-image: url('../../../public/images/del-icon2.svg');
+                      background-image: url("../../../public/images/del-icon2.svg");
                     }
 
                     .del-icon3 {
@@ -111,7 +108,7 @@
                       height: 3rem;
                       background-position: center;
                       background-repeat: no-repeat;
-                      background-image: url('../../../public/images/del-icon3.svg');
+                      background-image: url("../../../public/images/del-icon3.svg");
                     }
 
                     .del-icon4 {
@@ -120,7 +117,7 @@
                       height: 3rem;
                       background-position: center;
                       background-repeat: no-repeat;
-                      background-image: url('../../../public/images/del-icon4.svg');
+                      background-image: url("../../../public/images/del-icon4.svg");
                     }
                   }
                 }
@@ -137,9 +134,12 @@
           }
 
           .member-del-item-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            // display: flex;
+            // flex-direction: column;
+            // gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
 
             .member-del-item {
               border: 1px solid g.$sub-color2;
@@ -167,7 +167,7 @@
                   gap: 3rem;
 
                   .del-inner-bottom-img-box {
-                    width: 10%;
+                    width: 100px;
                   }
 
                   .del-inner-bottom-text-box {
@@ -181,13 +181,11 @@
                     }
 
                     .del-item-price {
-
                       .item-price {
                         font-weight: 500;
                         font-size: 1.6rem;
                       }
                     }
-
                   }
                 }
               }
