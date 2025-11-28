@@ -33,7 +33,6 @@ const NonPay = () => {
       totalPrice: nonCart.totalPrice,
       createdAt: new Date(),
     });
-    alert('비회원 주문이 완료되었습니다.');
   };
 
   const handleSelect = (method, id, value) => {
