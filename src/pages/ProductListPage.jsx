@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useProductStore } from "../store/useProductStore";
-import ProductCard from "../components/ProductCard";
-import { Link } from "react-router-dom";
-import "./sass/ProductListPage.scss";
-import Pagination from "../components/Pagination";
-import usePagination from "../hooks/usePagination";
+import React, { useEffect, useRef, useState } from 'react';
+import { useProductStore } from '../store/useProductStore';
+import ProductCard from '../components/ProductCard';
+import { Link } from 'react-router-dom';
+import './sass/ProductListPage.scss';
+import Pagination from '../components/Pagination';
+import usePagination from '../hooks/usePagination';
 
 const ProductListPage = ({ category }) => {
   const { onItemsCategory } = useProductStore();
@@ -12,25 +12,22 @@ const ProductListPage = ({ category }) => {
   const allItems = onItemsCategory(category);
   const [items, setItems] = useState(allItems);
 
-  const [filterPrice, setFilterPrice] = useState("");
-  const [filterPrice2, setFilterPrice2] = useState("");
+  const [filterPrice, setFilterPrice] = useState('');
+  const [filterPrice2, setFilterPrice2] = useState('');
 
-  const { currentItems, currentPage, totalPages, handlePageChange } =
-    usePagination(items, 30);
+  const { currentItems, currentPage, totalPages, handlePageChange } = usePagination(items, 30);
 
   const itemBrands = allItems
     .map((item) => item.brand)
     .filter((brand, index, self) => self.indexOf(brand) === index);
 
-  const itemMades = allItems
-    .map((item) => item.made)
-    .filter((m, id, all) => all.indexOf(m) === id);
+  const itemMades = allItems.map((item) => item.made).filter((m, id, all) => all.indexOf(m) === id);
 
   const priceRange = [
-    { name: "10만원 이하", value: 99999 },
-    { name: "10만원 - 20만원", value: 100000 },
-    { name: "20만원 - 30만원", value: 200000 },
-    { name: "30만원이상", value: 300000 },
+    { name: '10만원 이하', value: 99999 },
+    { name: '10만원 - 20만원', value: 100000 },
+    { name: '20만원 - 30만원', value: 200000 },
+    { name: '30만원이상', value: 300000 },
   ];
 
   const [activeFilter, setActiveFilter] = useState(0);
@@ -39,7 +36,7 @@ const ProductListPage = ({ category }) => {
 
   const filterRef = useRef(null);
 
-  const [filterName, setFilterName] = useState("신상품순");
+  const [filterName, setFilterName] = useState('신상품순');
 
   const handleClickOutside = (event) => {
     if (filterRef.current && !filterRef.current.contains(event.target)) {
@@ -48,9 +45,9 @@ const ProductListPage = ({ category }) => {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, []);
   const handleBrand = (brand) => {
@@ -85,43 +82,37 @@ const ProductListPage = ({ category }) => {
   };
   const checkPrice = () => {
     const priceFinalItem = allItems.filter(
-      (i) =>
-        Number(filterPrice) <= i.price * 0.8 &&
-        Number(filterPrice2) >= i.price * 0.8
+      (i) => Number(filterPrice) <= i.price * 0.8 && Number(filterPrice2) >= i.price * 0.8
     );
     setItems(priceFinalItem);
   };
 
   const sortByPriceAsc = () => {
-    const sortedItems = [...items].sort(
-      (a, b) => a.price * 0.8 - b.price * 0.8
-    );
-    setFilterName("낮은가격순");
+    const sortedItems = [...items].sort((a, b) => a.price * 0.8 - b.price * 0.8);
+    setFilterName('낮은가격순');
     setItems(sortedItems);
   };
 
   const sortByPriceDesc = () => {
-    const sortedItems = [...items].sort(
-      (a, b) => b.price * 0.8 - a.price * 0.8
-    );
-    setFilterName("높은가격순");
+    const sortedItems = [...items].sort((a, b) => b.price * 0.8 - a.price * 0.8);
+    setFilterName('높은가격순');
     setItems(sortedItems);
   };
 
   const sortByNewest = () => {
     const sortedItems = [...items].sort((a, b) => {
-      const dateA = Number(String(a.date).replace(/\./g, ""));
-      const dateB = Number(String(b.date).replace(/\./g, ""));
+      const dateA = Number(String(a.date).replace(/\./g, ''));
+      const dateB = Number(String(b.date).replace(/\./g, ''));
       return dateB - dateA;
     });
-    setFilterName("신상품순");
+    setFilterName('신상품순');
     setItems(sortedItems);
   };
 
   const sortOptions = [
-    { name: "신상품순", handler: sortByNewest },
-    { name: "낮은가격순", handler: sortByPriceAsc },
-    { name: "높은가격순", handler: sortByPriceDesc },
+    { name: '신상품순', handler: sortByNewest },
+    { name: '낮은가격순', handler: sortByPriceAsc },
+    { name: '높은가격순', handler: sortByPriceDesc },
   ];
 
   return (
@@ -130,15 +121,13 @@ const ProductListPage = ({ category }) => {
         <div className="product-filter-top">
           <p className="product-filter-top-l">Filter</p>
           <div
-            className={`product-filter-top-filter ${
-              rightFilter ? "active" : ""
-            }`}
+            className={`product-filter-top-filter ${rightFilter ? 'active' : ''}`}
             onClick={() => setRightFilter(!rightFilter)}
             ref={filterRef}
           >
             {filterName}
             <div className="product-filter-top-r ">
-              <ul className={rightFilter === true ? "active" : " "}>
+              <ul className={rightFilter === true ? 'active' : ' '}>
                 {sortOptions.map((sortOption, id) => (
                   <li key={id} onClick={sortOption.handler}>
                     {sortOption.name}
@@ -150,30 +139,18 @@ const ProductListPage = ({ category }) => {
         </div>
         <div className="product-filter-bot">
           <ul className="product-filter-bot-t">
-            <li
-              className={activeFilter === 0 ? "active" : ""}
-              onClick={() => setActiveFilter(0)}
-            >
+            <li className={activeFilter === 0 ? 'active' : ''} onClick={() => setActiveFilter(0)}>
               브랜드
             </li>
-            <li
-              className={activeFilter === 1 ? "active" : ""}
-              onClick={() => setActiveFilter(1)}
-            >
+            <li className={activeFilter === 1 ? 'active' : ''} onClick={() => setActiveFilter(1)}>
               제조국
             </li>
-            <li
-              className={activeFilter === 2 ? "active" : ""}
-              onClick={() => setActiveFilter(2)}
-            >
+            <li className={activeFilter === 2 ? 'active' : ''} onClick={() => setActiveFilter(2)}>
               가격
             </li>
           </ul>
           <ul className="product-filter-bot-b">
-            <li
-              className="brand-label"
-              style={{ display: activeFilter === 0 ? "flex" : "none" }}
-            >
+            <li className="brand-label" style={{ display: activeFilter === 0 ? 'flex' : 'none' }}>
               {itemBrands.map((brand) => (
                 <label onClick={() => handleBrand(brand)} key={brand}>
                   {brand}
@@ -181,10 +158,7 @@ const ProductListPage = ({ category }) => {
                 </label>
               ))}
             </li>
-            <li
-              className="country-label"
-              style={{ display: activeFilter === 1 ? "flex" : "none" }}
-            >
+            <li className="country-label" style={{ display: activeFilter === 1 ? 'flex' : 'none' }}>
               {itemMades.map((made) => (
                 <label key={made} onClick={() => handleCountry(made)}>
                   {made}
@@ -192,20 +166,13 @@ const ProductListPage = ({ category }) => {
                 </label>
               ))}
             </li>
-            <li
-              className="price-label"
-              style={{ display: activeFilter === 2 ? "flex" : "none" }}
-            >
+            <li className="price-label" style={{ display: activeFilter === 2 ? 'flex' : 'none' }}>
               <div className="price-tag-t">
                 {priceRange.map((p, idd) => (
                   <p key={idd}>
                     <label onClick={() => handlePrice(p.value)}>
                       {p.name}
-                      <input
-                        type="radio"
-                        className="product-detail-price"
-                        name="list-price"
-                      />
+                      <input type="radio" className="product-detail-price" name="list-price" />
                     </label>
                   </p>
                 ))}
@@ -222,14 +189,10 @@ const ProductListPage = ({ category }) => {
                 <input
                   className="xsmall"
                   type="text"
-                  value={filterPrice2}
+                  value={filterPrice2 || ''}
                   onChange={rememberP2}
                 />
-                <button
-                  className="btn xsmall primary"
-                  type="button"
-                  onClick={checkPrice}
-                >
+                <button className="btn xsmall primary" type="button" onClick={checkPrice}>
                   적용
                 </button>
               </div>
