@@ -7,6 +7,7 @@ export const useCartStore = create(
       cartItems: [],
       totalPrice: 0,
       checkedTotalPrice: 0,
+      opChangeCartItems: [],
 
       onAddToCart: (item) => {
         const cart = get().cartItems;
@@ -19,7 +20,6 @@ export const useCartStore = create(
           alert('이미 장바구니에 담긴 상품입니다.');
           return;
         }
-
         const newCart = [...cart, { ...item, checked: true }];
         const total = newCart.reduce((acc, i) => acc + i.price * i.count, 0);
         const checkedTotal = newCart

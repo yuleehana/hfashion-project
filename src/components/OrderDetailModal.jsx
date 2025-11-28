@@ -1,8 +1,10 @@
-import React from "react";
-import "./sass/OrderDetailModal.scss";
+import React from 'react';
+import './sass/OrderDetailModal.scss';
 
 const OrderDetailModal = ({ order, onClose }) => {
   // order 데이터가 없거나 모달이 닫혀야 할 경우 null 반환
+  console.log('제품데이터정보', order);
+  const {cart}
   if (!order) return null;
   console.log(order);
   return (
