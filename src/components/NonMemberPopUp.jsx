@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './sass/NonMemberPopUp.scss';
+import React, { useEffect, useState } from "react";
+import "./sass/NonMemberPopUp.scss";
 
-const STATUS = ['결제완료', '배송준비', '배송중', '배송완료'];
+const STATUS = ["결제완료", "배송준비", "배송중", "배송완료"];
 
 const NonMemberPopUp = ({ data, onClose }) => {
-  const [items, setItems] = useState(data.items.map((item) => ({ ...item, status: 0 })));
+  const [items, setItems] = useState(
+    data.items.map((item) => ({ ...item, status: 0 }))
+  );
   const statusCounts = items.reduce(
     (acc, item) => {
       acc[item.status]++;
@@ -15,7 +17,9 @@ const NonMemberPopUp = ({ data, onClose }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setItems((prev) =>
-        prev.map((item) => (item.status < 3 ? { ...item, status: item.status + 1 } : item))
+        prev.map((item) =>
+          item.status < 3 ? { ...item, status: item.status + 1 } : item
+        )
       );
     }, 3000);
     return () => clearInterval(interval);
@@ -34,22 +38,38 @@ const NonMemberPopUp = ({ data, onClose }) => {
         </div>
         <div className="non-popup-delivery">
           <div className="delivery delivery1">
-            <span className="delivery-box delivery1-box"></span>
+            <span className="delivery-box delivery1-box">
+              <div className="icon-wrap">
+                <span className="icon"></span>
+              </div>
+            </span>
             <span className="delivery-count">{statusCounts[0]}</span>
             <span className="delivery-status">결제완료</span>
           </div>
           <div className="delivery delivery2">
-            <span className="delivery-box delivery2-box"></span>
+            <span className="delivery-box delivery2-box">
+              <div className="icon-wrap">
+                <span className="icon"></span>
+              </div>
+            </span>
             <span className="delivery-count">{statusCounts[1]}</span>
             <span className="delivery-status">배송준비</span>
           </div>
           <div className="delivery delivery3">
-            <span className="delivery-box delivery3-box"></span>
+            <span className="delivery-box delivery3-box">
+              <div className="icon-wrap">
+                <span className="icon"></span>
+              </div>
+            </span>
             <span className="delivery-count">{statusCounts[2]}</span>
             <span className="delivery-status">배송중</span>
           </div>
           <div className="delivery delivery4">
-            <span className="delivery-box delivery4-box"></span>
+            <span className="delivery-box delivery4-box">
+              <div className="icon-wrap">
+                <span className="icon"></span>
+              </div>
+            </span>
             <span className="delivery-count">{statusCounts[3]}</span>
             <span className="delivery-status">배송완료</span>
           </div>
@@ -66,12 +86,16 @@ const NonMemberPopUp = ({ data, onClose }) => {
                   <img src={d.thumbImg} alt={d.title} />
                 </div>
                 <div className="non-popup-item-b-l">
-                  <span className="popup-item-title">{d.title}</span>
+                  <div className="popup-item-brand">{d.brand}</div>
+                  <p className="popup-item-title">{d.title}</p>
                   <span className="popup-item-color">
-                    색상 : {d.color} | 수량 : {d.count}
+                    <span>색상 : {d.color}</span>
+                    <span>수량 : {d.count}</span>
                   </span>
-                  <span className="popup-item-price">{(d.price * 0.8).toLocaleString()}원</span>
                 </div>
+                <p className="popup-item-price">
+                  {(d.price * 0.8).toLocaleString()}원
+                </p>
               </div>
             </div>
           ))}
