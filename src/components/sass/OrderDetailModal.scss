@@ -1,5 +1,9 @@
 @use "../../App.scss" as g;
 
+body {
+  position: static;
+  overflow: hidden;
+}
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -86,6 +90,7 @@
           }
           &:last-child {
             padding-bottom: 0;
+            border-bottom: none;
           }
           .product-details {
             flex: 1;
