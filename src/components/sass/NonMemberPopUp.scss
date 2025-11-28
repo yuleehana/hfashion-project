@@ -1,5 +1,8 @@
 @use "../../App.scss" as g;
-
+body {
+  position: static;
+  overflow: hidden;
+}
 .non-popup-wrap {
   z-index: 999;
   position: absolute;

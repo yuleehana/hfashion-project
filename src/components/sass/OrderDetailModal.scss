@@ -1,5 +1,9 @@
 @use "../../App.scss" as g;
 
+body {
+  position: static;
+  overflow: hidden;
+}
 .modal-overlay {
   position: fixed;
   top: 0;
