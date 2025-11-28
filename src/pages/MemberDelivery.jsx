@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { usePayStore } from "../store/usePayStore";
-import { Link } from "react-router-dom";
-import "./sass/MemberDelivery.scss";
-import UserInfoLeftMenu from "../components/UserInfoLeftMenu";
+import React, { useState } from 'react';
+import { usePayStore } from '../store/usePayStore';
+import { Link } from 'react-router-dom';
+import './sass/MemberDelivery.scss';
+import UserInfoLeftMenu from '../components/UserInfoLeftMenu';
 // 새로 생성한 모달 컴포넌트 임포트
-import OrderDetailModal from "../components/OrderDetailModal";
+import OrderDetailModal from '../components/OrderDetailModal';
 
-const delStatus = ["결제완료", "배송준비", "배송중", "배송완료"];
+const delStatus = ['결제완료', '배송준비', '배송중', '배송완료'];
 
 const MemberDelivery = () => {
   const { orders } = usePayStore();
@@ -25,12 +25,10 @@ const MemberDelivery = () => {
   };
 
   const truncateWords = (text, maxWords) => {
-    if (!text) return "";
+    if (!text) return '';
 
-    const words = text.split(" ");
-    return words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + " ..."
-      : text;
+    const words = text.split(' ');
+    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
   };
 
   return (
@@ -85,9 +83,7 @@ const MemberDelivery = () => {
                               </div>
                               <div className="del-inner-top-right">
                                 {/* 버튼 클릭 시 openModal 함수 호출, 현재 주문 객체 전달 */}
-                                <button onClick={() => openModal(order)}>
-                                  주문 상세
-                                </button>
+                                <button onClick={() => openModal(order)}>주문 상세</button>
                               </div>
                             </div>
                             <div className="del-item-inner-bottom">
@@ -100,7 +96,7 @@ const MemberDelivery = () => {
                                     {truncateWords(firstProduct.title, 5)}
                                     {order.products.length > 1
                                       ? ` 외 ${order.products.length - 1}건`
-                                      : ""}
+                                      : ''}
                                   </span>
                                 </div>
                                 <div className="del-item-price">
