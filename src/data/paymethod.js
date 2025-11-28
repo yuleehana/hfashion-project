@@ -40,7 +40,7 @@ export const paymethodsCard = [
         label: "3개월(무이자)",
       },
       {
-        id: 1,
+        id: 4,
         label: "4개월",
       },
     ],
