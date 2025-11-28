@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./sass/NonMember.scss";
-import PayItem from "../components/PayItem";
-import NonCartPo from "../components/NonCartPo";
-import { useCartStore } from "../store/useCartStore";
-import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/authstore";
-import DaumPostcode from "react-daum-postcode";
+import React, { useEffect, useRef, useState } from 'react';
+import './sass/NonMember.scss';
+import PayItem from '../components/PayItem';
+import NonCartPo from '../components/NonCartPo';
+import { useCartStore } from '../store/useCartStore';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/authstore';
+import DaumPostcode from 'react-daum-postcode';
 
 const NonMember = () => {
   const { onNMember, onNAddress, setNoncart } = useAuthStore();
@@ -16,37 +16,36 @@ const NonMember = () => {
   const navigate = useNavigate();
 
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
-  const [rememberAddress, setRememberAddress] = useState("");
-
-  const requestOptions = [
-    "문 앞에 놓아주세요.",
-    "경비실에 맡겨주세요.",
-    "배송 전 연락주세요.",
-    "부재 시 문 앞에 놓아주세요.",
-  ];
+  const [rememberAddress, setRememberAddress] = useState('');
 
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const requestBoxRef = useRef(null);
 
   const handleComplete = (data) => {
     const fullAddress = data.address;
-    setNonFormData({ ...nonFormDat, address: fullAddress });
     setRememberAddress(fullAddress);
+    console.log('주소데이터', fullAddress);
+    setNonAddress((prev) => ({
+      ...prev,
+      naddress: fullAddress,
+    }));
+
     setIsPostcodeOpen(false);
   };
+
   const [nonFormDat, setNonFormData] = useState({
-    oname: "",
-    ophone: "",
-    oemail: "",
-    opassword: "",
-    opasswordcheck: "",
+    oname: '',
+    ophone: '',
+    oemail: '',
+    opassword: '',
+    opasswordcheck: '',
   });
   const [nonAddress, setNonAddress] = useState({
-    nname: "",
-    nphone: "",
-    naddress: "",
-    naddress2: "",
-    nrequest: "",
+    nname: '',
+    nphone: '',
+    naddress: '',
+    naddress2: '',
+    nrequest: '',
   });
   const handleNonFormData = (e) => {
     e.preventDefault();
@@ -57,40 +56,30 @@ const NonMember = () => {
   const handleNonAddress = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    // const updateAddress = { ...nonAddress, [name]: value };
-    // setNonAddress(updateAddress);
-    // if (name === "nrequest") {
-    //   setIsRequestOpen(false);
-    // }
-    setNonAddress(prev => ({
-      ...prev,
-      [name]: value,
-    }))
-    if(name === "nrequest"){
-      setIsRequestOpen(false);
-    }
+    const updateNaddress = { ...nonAddress, [name]: value };
+    setNonAddress(updateNaddress);
   };
   const handelsubmit = async () => {
     if (!nonFormDat.oname.trim()) {
-      return alert("주문자 이름이 없습니다.");
+      return alert('주문자 이름이 없습니다.');
     } else if (!nonFormDat.ophone.trim()) {
-      return alert("주문자 전화번호가 없습니다.");
+      return alert('주문자 전화번호가 없습니다.');
     } else if (!nonFormDat.oemail.trim()) {
-      return alert("주문자 이메일이 없습니다.");
+      return alert('주문자 이메일이 없습니다.');
     } else if (!nonFormDat.opassword.trim()) {
-      return alert("주문 비밀번호가 없습니다.");
+      return alert('주문 비밀번호가 없습니다.');
     } else if (!nonFormDat.opasswordcheck.trim()) {
-      return alert("주문 비밀번호가 없습니다.");
-    } else if (!nonAddress.nname) {
-      return alert("수령자 이름이 없습니다.");
-    } else if (!nonAddress.nphone) {
-      return alert("수령자 전화번호가 없습니다.");
-    } else if (!nonAddress.naddress) {
-      return alert("발송 주소가 없습니다.");
-    } else if (!nonAddress.naddress2) {
-      return alert("발송 주소가 없습니다.");
-    } else if (!nonAddress.nrequest) {
-      return alert("발송 요청사항이 없습니다.");
+      return alert('주문 비밀번호가 없습니다.');
+    } else if (!nonAddress.nname.trim()) {
+      return alert('수령자 이름이 없습니다.');
+    } else if (!nonAddress.nphone.trim()) {
+      return alert('수령자 전화번호가 없습니다.');
+    } else if (!nonAddress.naddress.trim()) {
+      return alert('발송 주소가 없습니다.');
+    } else if (!nonAddress.naddress2.trim()) {
+      return alert('발송 상세주소가 없습니다.');
+    } else if (!nonAddress.nrequest.trim()) {
+      return alert('발송 요청사항이 없습니다.');
     }
     await onNMember(nonFormDat);
     await onNAddress(nonAddress);
@@ -98,7 +87,7 @@ const NonMember = () => {
       items: checkedList,
       totalPrice: checkedTotalPrice,
     });
-    navigate("/nonpay");
+    navigate('/nonpay');
   };
 
   useEffect(() => {
@@ -107,23 +96,11 @@ const NonMember = () => {
         setIsRequestOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  // useEffect(() => {
-  //   setIsRequestOpen(null);
-  // }, []);
-
-  const handleSelectRequest = (option) => {
-    setNonAddress((prev) => ({
-      ...prev,
-      nrequest: option,
-    }));
-    setIsRequestOpen(false);
-  };
 
   return (
     <div className="sub-page">
@@ -225,7 +202,10 @@ const NonMember = () => {
                         <button
                           type="button"
                           className="btn middle outline"
-                          onClick={() => setIsPostcodeOpen(true)}
+                          onClick={(e) => {
+                            handleNonAddress(e);
+                            setIsPostcodeOpen(true);
+                          }}
                         >
                           주소검색
                         </button>
@@ -246,25 +226,8 @@ const NonMember = () => {
                         type="text"
                         name="nrequest"
                         placeholder="배송시 요청사항을 선택해주세요."
-                        value={nonAddress.nrequest || ""}
-                        onChange={handleNonAddress}
-                        onFocus={() => setIsRequestOpen(true)}
-                        onClick={() => setIsRequestOpen(true)}
+                        onChange={(e) => handleNonAddress(e)}
                       />
-                      {isRequestOpen && (
-                        <ul className="request-list">
-                          {requestOptions.map((option, idx) => (
-                            <li
-                              key={idx}
-                              className="request-item"
-                              onMouseDown={(e) => e.preventDefault()}
-                              onClick={() => handleSelectRequest(option)}
-                            >
-                              {option}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
                     </div>
                   </label>
                   <div></div>
@@ -281,10 +244,7 @@ const NonMember = () => {
       </div>
       {isPostcodeOpen && (
         <>
-          <div
-            className="postcode-overlay"
-            onClick={() => setIsPostcodeOpen(false)}
-          />
+          <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
           <div className="postcode-modal">
             <DaumPostcode onComplete={handleComplete} autoClose={false} />
             <button
