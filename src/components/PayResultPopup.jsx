@@ -6,10 +6,11 @@ import './sass/PayResultPopup.scss';
 
 const PayResultPopup = ({ onClose }) => {
   const { checkedTotalPrice, cartItems, onRemoveChecked } = useCartStore();
-  const { today, orders } = usePayStore();
+  const { today, orders, addOrder } = usePayStore();
   const navigate = useNavigate();
 
   const filteredCart = cartItems.filter((c) => c.checked);
+  console.log('핕터된 아이템?', filteredCart);
   const itemFirstValue = filteredCart[0] || null;
   const truncateWords = (text, maxWords) => {
     if (!text) return '';
@@ -19,11 +20,15 @@ const PayResultPopup = ({ onClose }) => {
   };
   const lastOrder = orders[orders.length - 1];
 
-  const handlePayFinish = () => {
+  const handlePayFinish = (color, size, count) => {
     onRemoveChecked();
+    addOrder(...orders, color, size, count);
     navigate('/userinfo');
     if (!itemFirstValue) return;
   };
+
+  console.log('결제 완료 제품아이템', orders);
+  console.log('결제 전 아이템', cartItems);
 
   return (
     <div className="pay-result-popup-wrap" onClick={onClose}>

@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export const usePayStore = create(
   persist(
@@ -8,11 +8,11 @@ export const usePayStore = create(
       today: new Date().toLocaleDateString(),
 
       receiverInfo: {
-        displayName: "",
-        phone: "",
-        address: "",
-        address2: "",
-        request: "",
+        displayName: '',
+        phone: '',
+        address: '',
+        address2: '',
+        request: '',
       },
 
       setReceiverInfo: (info) => set({ receiverInfo: info }),
@@ -29,6 +29,6 @@ export const usePayStore = create(
       // 초기화
       resetOrder: () => set({ orders: [] }),
     }),
-    { name: "order-storage" }
+    { name: 'order-storage' }
   )
 );

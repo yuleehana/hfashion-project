@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "./sass/Pay.scss";
-import PayItem from "../components/PayItem";
-import {
-  paymethodsCard,
-  paymethodsBank,
-  paymethodsPay,
-} from "../data/paymethod";
-import PayPo from "../components/PayPo";
-import PayResultPopup from "../components/PayResultPopup";
-import { useAuthStore } from "../store/authstore";
-import { usePayStore } from "../store/usePayStore";
-import { useCartStore } from "../store/useCartStore";
-import DaumPostcode from "react-daum-postcode";
+import React, { useEffect, useState } from 'react';
+import './sass/Pay.scss';
+import PayItem from '../components/PayItem';
+import { paymethodsCard, paymethodsBank, paymethodsPay } from '../data/paymethod';
+import PayPo from '../components/PayPo';
+import PayResultPopup from '../components/PayResultPopup';
+import { useAuthStore } from '../store/authstore';
+import { usePayStore } from '../store/usePayStore';
+import { useCartStore } from '../store/useCartStore';
+import DaumPostcode from 'react-daum-postcode';
 
 const Pay = () => {
   const { user } = useAuthStore();
@@ -21,7 +17,7 @@ const Pay = () => {
   const filteredCart = cartItems.filter((c) => c.checked);
   const itemFirstValue = filteredCart[0] || null;
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
-  const [rememberAddress, setRememberAddress] = useState("");
+  const [rememberAddress, setRememberAddress] = useState('');
   const handleComplete = (data) => {
     const fullAddress = data.address;
     setReceiverInfo({ ...receiverInfo, address: fullAddress });
@@ -35,9 +31,11 @@ const Pay = () => {
       phone: user.phone,
       address: user.address,
       address2: user.address2,
-      request: "",
+      request: '',
     });
   };
+
+  console.log('뭐가 들어있는데?', filteredCart);
 
   const handlePaymentSuccess = () => {
     if (!itemFirstValue) return;
@@ -45,11 +43,14 @@ const Pay = () => {
     const orderItem = {
       date: today,
       code: itemFirstValue.code,
-      products: filteredCart.map((item) => ({
+      products: cartItems.map((item) => ({
         thumbImg: item.thumbImg,
         brand: item.brand,
         title: item.title,
-        itemPrice: item.price,
+        itemPrice: item.price * 0.8,
+        color: item.color,
+        size: item.size,
+        count: item.count,
       })),
       reward: Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString(),
       price: checkedTotalPrice,
@@ -58,8 +59,9 @@ const Pay = () => {
     addOrder(orderItem);
     setShowPopup(true);
   };
+  console.log('값좀 들어가라', orders);
 
-  const [selectPay, setSelectPay] = useState("card");
+  const [selectPay, setSelectPay] = useState('card');
 
   const [openDepth, setOpenDepth] = useState(null);
 
@@ -89,9 +91,9 @@ const Pay = () => {
   const renderDepth = () => {
     let list = [];
 
-    if (selectPay === "card") {
+    if (selectPay === 'card') {
       list = paymethodsCard;
-    } else if (selectPay === "pay") {
+    } else if (selectPay === 'pay') {
       return paymethodsPay.map((item) => (
         <div key={item.id} className="radio-pay-item">
           <label className="radio-label">
@@ -111,43 +113,31 @@ const Pay = () => {
           </label>
         </div>
       ));
-    } else if (selectPay === "bank") {
+    } else if (selectPay === 'bank') {
       list = paymethodsBank;
     }
 
     return list.map((item) => (
       <div key={item.id} className="depth-item">
-        {"payDepth" in item ? (
+        {'payDepth' in item ? (
           <div className="dropdown-wrapper">
             <button
-              className={`dropdown-btn ${
-                openDepth === item.id ? "active" : ""
-              }`}
-              onClick={() =>
-                setOpenDepth(openDepth === item.id ? null : item.id)
-              }
+              className={`dropdown-btn ${openDepth === item.id ? 'active' : ''}`}
+              onClick={() => setOpenDepth(openDepth === item.id ? null : item.id)}
             >
-              <span>
-                {selectValue[selectPay][item.id] || item.label || item.title}
-              </span>
+              <span>{selectValue[selectPay][item.id] || item.label || item.title}</span>
               <span className="button-icon">
                 <img src="../images/arrow-down-white.svg" alt="" />
               </span>
             </button>
 
             {openDepth === item.id && (
-              <ul
-                className={`dropdown-list ${
-                  openDepth === item.id ? "active" : ""
-                }`}
-              >
+              <ul className={`dropdown-list ${openDepth === item.id ? 'active' : ''}`}>
                 {item.payDepth.map((depth) => (
                   <li
                     key={depth.id}
                     className="dropdown-option"
-                    onClick={() =>
-                      handleSelect(selectPay, item.id, depth.label)
-                    }
+                    onClick={() => handleSelect(selectPay, item.id, depth.label)}
                   >
                     {depth.label}
                   </li>
@@ -232,10 +222,7 @@ const Pay = () => {
                 <div className="address-input delivery">
                   <span>
                     <span>배송지 주소</span>
-                    <button
-                      className="btn xsmall primary"
-                      onClick={() => setIsPostcodeOpen(true)}
-                    >
+                    <button className="btn xsmall primary" onClick={() => setIsPostcodeOpen(true)}>
                       주소검색
                     </button>
                   </span>
@@ -297,22 +284,22 @@ const Pay = () => {
               <div className="payment-bottom">
                 <div className="pay-method-btns">
                   <button
-                    className={selectPay === "card" ? "active" : ""}
-                    onClick={() => setSelectPay("card")}
+                    className={selectPay === 'card' ? 'active' : ''}
+                    onClick={() => setSelectPay('card')}
                   >
                     신용카드
                   </button>
 
                   <button
-                    className={selectPay === "pay" ? "active" : ""}
-                    onClick={() => setSelectPay("pay")}
+                    className={selectPay === 'pay' ? 'active' : ''}
+                    onClick={() => setSelectPay('pay')}
                   >
                     간편결제
                   </button>
 
                   <button
-                    className={selectPay === "bank" ? "active" : ""}
-                    onClick={() => setSelectPay("bank")}
+                    className={selectPay === 'bank' ? 'active' : ''}
+                    onClick={() => setSelectPay('bank')}
                   >
                     무통장입금
                   </button>
@@ -329,10 +316,7 @@ const Pay = () => {
 
           {isPostcodeOpen && (
             <>
-              <div
-                className="postcode-overlay"
-                onClick={() => setIsPostcodeOpen(false)}
-              />
+              <div className="postcode-overlay" onClick={() => setIsPostcodeOpen(false)} />
               <div className="postcode-modal">
                 <DaumPostcode onComplete={handleComplete} autoClose={false} />
                 <button
