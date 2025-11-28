@@ -181,7 +181,7 @@ const BrandListPage = ({ brand }) => {
                   <input
                     className="xsmall"
                     type="text"
-                    value={filterPrice2}
+                    value={filterPrice2 || ''}
                     onChange={rememberP2}
                   />
                   <button className="btn xsmall primary" type="button" onClick={checkPrice}>
