@@ -1,18 +1,19 @@
-import React from 'react';
-import './sass/BuyProductList.scss';
-import { usePayStore } from '../store/usePayStore';
+import React from "react";
+import "./sass/BuyProductList.scss";
+import { usePayStore } from "../store/usePayStore";
+import { Link } from "react-router-dom";
 
 const BuyProductList = () => {
   const orders = usePayStore((state) => state.orders);
 
   const truncateWords = (text, maxWords) => {
-    if (!text) return '';
+    if (!text) return "";
 
-    const words = text.split(' ');
-    return words.length > maxWords ? words.slice(0, maxWords).join(' ') + ' ...' : text;
+    const words = text.split(" ");
+    return words.length > maxWords
+      ? words.slice(0, maxWords).join(" ") + " ..."
+      : text;
   };
-
-  // if (orders.length === 0) return null;
 
   return (
     <li className="buy-product-wrap">
@@ -36,17 +37,22 @@ const BuyProductList = () => {
                 <p className="brand-name">{firstProduct.brand}</p>
                 <p className="product-name">
                   {truncateWords(firstProduct.title, 5)}
-                  {order.products.length > 1 && ` 외 ${order.products.length - 1}건`}
+                  {order.products.length > 1 &&
+                    ` 외 ${order.products.length - 1}건`}
                 </p>
 
-                <button>상세정보</button>
+                <Link to="/userinfo/memberdelivery">
+                  <button>상세정보</button>
+                </Link>
               </div>
             </div>
 
             <p className="gap-box">|</p>
 
             <div className="product-price-box">
-              <p className="product-price">{(order.price * 0.8).toLocaleString()}</p>
+              <p className="product-price">
+                {(order.price * 0.8).toLocaleString()}
+              </p>
               <p className="unit">원</p>
             </div>
           </div>
