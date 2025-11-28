@@ -3,6 +3,8 @@
 .buy-product-wrap {
   padding: 2rem;
   width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
 
   .send-product-box {
     display: flex;
