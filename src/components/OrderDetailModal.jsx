@@ -26,7 +26,7 @@ const OrderDetailModal = ({ order, onClose }) => {
           </div>
           <div className="total-price">
             <p>
-              총 결제 금액 : <strong>{order.price.toLocaleString()}</strong>원
+              총 결제 금액 : <strong>{(order.price * 0.8).toLocaleString()}</strong>원
             </p>
           </div>
           <ul className="product-list">
@@ -40,16 +40,14 @@ const OrderDetailModal = ({ order, onClose }) => {
                     <p className="product-brand">{product.brand}</p>
                     <p className="product-title">{product.title}</p>
                     <p className="product-option">
-                      <span>색상 : pink</span>
-                      <span>사이즈 : 28</span>
-                      <span>수량 : 1</span>
+                      <span>색상 : {product.color}</span>
+                      <span>사이즈 : {product.size}</span>
+                      <span>수량 : {product.count}</span>
                     </p>
                   </div>
                 </div>
                 <div className="product-price-wrap">
-                  <span className="product-price">
-                    {(product.itemPrice * 0.8).toLocaleString()}
-                  </span>
+                  <span className="product-price">{product.itemPrice.toLocaleString()}</span>
                   <span>원</span>
                 </div>
               </li>

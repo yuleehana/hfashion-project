@@ -22,7 +22,7 @@ const PayResultPopup = ({ onClose }) => {
 
   const handlePayFinish = (color, size, count) => {
     onRemoveChecked();
-    addOrder(...orders, color, size, count);
+    // addOrder(...orders, color, size, count);
     navigate('/userinfo');
     if (!itemFirstValue) return;
   };
