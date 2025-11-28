@@ -78,10 +78,10 @@ const ProductListPage = ({ category }) => {
     }
   };
   const rememberP = (e) => {
-    setFilterPrice(e.target.value);
+    setFilterPrice(Number(e.target.value));
   };
   const rememberP2 = (e) => {
-    setFilterPrice2(e.target.value);
+    setFilterPrice2(Number(e.target.value));
   };
   const checkPrice = () => {
     const priceFinalItem = allItems.filter(
@@ -215,7 +215,7 @@ const ProductListPage = ({ category }) => {
                 <input
                   className="xsmall"
                   type="text"
-                  value={filterPrice}
+                  value={filterPrice || ''}
                   onChange={rememberP}
                 />
                 -
