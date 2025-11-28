@@ -101,8 +101,8 @@ const MemberDelivery = () => {
                                 </div>
                                 <div className="del-item-price">
                                   <span className="item-price">
-                                    {/* {(order.price * 0.8).toLocaleString()} */}
-                                    {order.price.toLocaleString()}
+                                    {(order.price * 0.8).toLocaleString()}
+                                    {/* {order.price.toLocaleString()} */}
                                   </span>
                                   <span>원</span>
                                 </div>

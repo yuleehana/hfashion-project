@@ -52,7 +52,7 @@ const Pay = () => {
         size: item.size,
         count: item.count,
       })),
-      reward: Math.floor(checkedTotalPrice * 0.8 * 0.01).toLocaleString(),
+      reward: Math.floor(checkedTotalPrice * 0.8).toLocaleString(),
       price: checkedTotalPrice,
     };
 
