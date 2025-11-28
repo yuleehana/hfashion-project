@@ -15,18 +15,24 @@
 
   .modal-content {
     background: white;
-    padding: 20px;
+    padding: 20px 40px;
     width: 90%;
-    max-width: 600px;
+    max-width: 680px;
     max-height: 80vh;
     overflow-y: auto;
 
     .modal-header {
       @include g.myFlex();
-
-      h2 {
-        font-size: 2rem;
-        margin: 0;
+      .h-totalPrice {
+        flex: 1;
+        @include g.myFlex();
+        h2 {
+          font-size: 2rem;
+          margin: 0;
+        }
+        p {
+          font-size: 20px;
+        }
       }
 
       .close-button {
@@ -42,48 +48,81 @@
     .modal-body {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-
+      gap: 12px;
       p {
-        line-height: 1.5;
+        line-height: 1.4;
       }
-
-      .date-totalPrice {
+      .date {
         @include g.myFlex();
         color: g.$sub-color3;
+        font-size: 14px;
       }
-
+      .total-price {
+        padding: 8px;
+        text-align: right;
+        background-color: g.$sub-color1;
+      }
       .product-list {
-        list-style: none;
-        padding: 0;
-
+        max-height: 400px;
+        overflow: auto;
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+        &::-webkit-scrollbar-button {
+          display: none;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: g.$sub-color2;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: g.$sub-color1;
+        }
         .product-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+          @include g.myFlex($gap: 0px);
           padding: 10px 0;
           border-bottom: 1px dashed #eee;
-
+          &:first-child {
+            padding-top: 0;
+          }
           &:last-child {
-            border-bottom: none;
+            padding-bottom: 0;
           }
-
           .product-details {
-            display: flex;
-            align-items: center;
-
-            img {
+            flex: 1;
+            @include g.myFlex($gap: 12px, $jc: flex-start);
+            .img-box {
               width: 60px;
-              margin-right: 12px;
+              img {
+                width: 100%;
+              }
             }
-
-            .product-title {
-              font-weight: 500;
+            .text-box {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              gap: 0px;
+              .product-brand {
+                font-size: 12px;
+                color: g.$sub-color3;
+              }
+              .product-title {
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+              }
+              .product-option {
+                @include g.myFlex($gap: 20px, $jc: flex-start);
+                font-size: 14px;
+                color: g.$sub-color3;
+              }
             }
           }
-
           .product-price-wrap {
-            display: flex;
+            padding-right: 8px;
+            text-align: right;
+            width: 120px;
           }
         }
       }
