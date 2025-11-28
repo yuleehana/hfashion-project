@@ -75,10 +75,10 @@ const ProductListPage = ({ category }) => {
     }
   };
   const rememberP = (e) => {
-    setFilterPrice(e.target.value);
+    setFilterPrice(Number(e.target.value));
   };
   const rememberP2 = (e) => {
-    setFilterPrice2(e.target.value);
+    setFilterPrice2(Number(e.target.value));
   };
   const checkPrice = () => {
     const priceFinalItem = allItems.filter(
@@ -179,7 +179,12 @@ const ProductListPage = ({ category }) => {
               </div>
               <div className="price-tag-b">
                 직접입력
-                <input className="xsmall" type="text" value={filterPrice} onChange={rememberP} />
+                <input
+                  className="xsmall"
+                  type="text"
+                  value={filterPrice || ''}
+                  onChange={rememberP}
+                />
                 -
                 <input className="xsmall" type="text" value={filterPrice2} onChange={rememberP2} />
                 <button className="btn xsmall primary" type="button" onClick={checkPrice}>
