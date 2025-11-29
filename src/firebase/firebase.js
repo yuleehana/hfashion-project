@@ -18,13 +18,6 @@ const firebaseConfig = {
   // storageBucket: "ezen-test.firebasestorage.app",
   // messagingSenderId: "980118669217",
   // measurementId: "G-FK9Z03NNFV",
-
-  // apiKey: "AIzaSyB2BzDQYK6mgABdzPmAA3nMTosBAA7LiPM",
-  // authDomain: "hfashion-project.firebaseapp.com",
-  // projectId: "hfashion-project",
-  // storageBucket: "hfashion-project.firebasestorage.app",
-  // messagingSenderId: "326422964641",
-  // appId: "1:326422964641:web:1febdf63866201946cc3e0",
 };
 
 // Initialize Firebase
