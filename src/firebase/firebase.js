@@ -10,14 +10,6 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGEN_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-
-  // appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  // apiKey: "AIzaSyDD6lh6FVHDXQE4K9ZvFxC4YAypLoirGTY",
-  // authDomain: "ezen-test.firebaseapp.com",
-  // projectId: "ezen-test",
-  // storageBucket: "ezen-test.firebasestorage.app",
-  // messagingSenderId: "980118669217",
-  // measurementId: "G-FK9Z03NNFV",
 };
 
 const app = initializeApp(firebaseConfig);
