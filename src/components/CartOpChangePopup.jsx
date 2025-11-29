@@ -74,10 +74,6 @@ const CartOpChangePopup = ({ product, onClose, item }) => {
 
   const { updateCartOptions } = useCartStore();
 
-  const handleItemSize = (size) => {
-    setSelectSize(size);
-  };
-
   const handleUpdate = () => {
     updateCartOptions(item.code, selectSize, selectColor, count);
     onClose();

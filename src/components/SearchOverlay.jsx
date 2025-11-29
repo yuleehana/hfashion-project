@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import  { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './sass/SearchOverlay.scss';
 import { useProductStore } from '../store/useProductStore.js';
@@ -19,6 +19,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const store = useProductStore();
   const products = store.items || [];
+
 
   const [keyword, setKeyword] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
