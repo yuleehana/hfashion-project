@@ -87,7 +87,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
   };
   const { items, onFetchItem } = useProductStore();
   const { onAddWishList, pickLists } = usePickStore();
-  const { onAddToCart, cartItems, opChangeCartItems } = useCartStore();
+  const { onAddToCart, cartItems } = useCartStore();
   const { user } = useAuthStore();
   const [item, setItem] = useState("");
   const [selectSize, setSelectSize] = useState("");
@@ -105,7 +105,7 @@ const ProductDetailRightInfo = ({ product, onOpenPopup, onOpenPay }) => {
     setSelectSize("");
     setSelectColor("");
     setCount(1);
-  }, [code]);
+  }, [code,items.length, onFetchItem]);
 
   useEffect(() => {
     if (!code || items.length === 0) return;
