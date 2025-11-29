@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './sass/NonMember.scss';
 import PayItem from '../components/PayItem';
 import NonCartPo from '../components/NonCartPo';
@@ -18,7 +18,6 @@ const NonMember = () => {
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
   const [rememberAddress, setRememberAddress] = useState('');
 
-  const [setIsRequestOpen] = useState(false);
   const requestBoxRef = useRef(null);
 
   const handleComplete = (data) => {
@@ -89,18 +88,6 @@ const NonMember = () => {
     });
     navigate('/nonpay');
   };
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (requestBoxRef.current && !requestBoxRef.current.contains(e.target)) {
-        setIsRequestOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [setIsRequestOpen]);
 
   return (
     <div className="sub-page">
