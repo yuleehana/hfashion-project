@@ -161,8 +161,9 @@ export const useAuthStore = create((set) => ({
   onKakaoLogin: async (navigate) => {
     try {
       if (!window.Kakao.isInitialized()) {
-        window.Kakao.init('415096494840a6ca548a1d48257b2766');
-        console.log(' Kakao SDK 초기화 완료');
+        // window.Kakao.init('415096494840a6ca548a1d48257b2766');
+        window.Kakao.init('a8c9b821c3f7bd6fcb74997b1962e4bd');
+        // console.log(' Kakao SDK 초기화 완료');
       }
 
       const authObj = await new Promise((resolve, reject) => {
