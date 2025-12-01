@@ -3,6 +3,7 @@
 .sub-page {
   min-width: 1024px;
   max-width: 1720px;
+
   .inner {
     &.cart {
       display: flex;
@@ -25,6 +26,7 @@
             font-weight: 500;
           }
         }
+
         .cart-inner-content {
           display: flex;
           justify-content: space-between;
@@ -40,6 +42,8 @@
             width: 25%;
             height: 30%;
             padding: 4rem;
+            position: sticky;
+            top: 120px;
           }
         }
       }
